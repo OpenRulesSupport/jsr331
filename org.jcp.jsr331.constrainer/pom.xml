@@ -1,0 +1,140 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>com.javasolver</groupId>
+		<artifactId>jsr331-parent</artifactId>
+		<version>2.0.0</version>
+	</parent>
+	
+	<groupId>com.javasolver</groupId>
+	<artifactId>jsr331-constrainer</artifactId>
+	<version>2.0.0</version>
+	<name>JSR331 Constrainer</name>
+	<description>This is a JSR331 implementation based on the Java constraint programming library "Constrainer" copyrighted by Exigen Properties, Inc. and/or affiliates and available under the terms of the open source GNU LGPL license.</description>
+	<url>https://github.com/OpenRulesSupport/jsr331</url>
+
+	<licenses>
+		<license>
+			<name>JCP License</name>
+			<url>https://download.oracle.com/otndocs/jcp/constraint-1_1_0-mrel-spec/license.html</url>
+			<distribution>repo</distribution>
+			<comments>Open source license that allows unresticted use by the commercial and open source applications</comments>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Jacob Feldman</name>
+			<email>jacobfeldman@openrules.com</email>
+			<organization>OpenRules, Inc.</organization>
+			<organizationUrl>https://openrules.com</organizationUrl>
+		</developer>
+	</developers>
+	
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.javasolver</groupId>
+			<artifactId>jsr331</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+		</dependency>
+	</dependencies>
+	
+	
+<!--  
+This is a light-weight version of the Java Constraint Programming library
+known as "Constrainer" 
+
+///////////////////////////////////////////////////////////////////////////////
+/*
+ * Copyright Exigen Group 1998, 1999, 2000
+ * 320 Amboy Ave., Metuchen, NJ, 08840, USA, www.exigengroup.com
+ *
+ * The copyright to the computer program(s) herein
+ * is the property of Exigen Group, USA. All rights reserved.
+ * The program(s) may be used and/or copied only with
+ * the written permission of Exigen Group
+ * or in accordance with the terms and conditions
+ * stipulated in the agreement/contract under which
+ * the program(s) have been supplied.
+ */
+///////////////////////////////////////////////////////////////////////////////
+
+The original Constrainer was developed  in 1998-1999 by IntelEngine, Inc.
+In 2000 IntelEngine, Inc. was acquired by Exigen Group that made
+Constrainer publicly available under the terms of open source GNU LGPL 
+license from the SourceForge: http://sourceforge.net/projects/constrainer/
+
+In 2010 JCP Standard JSR-331 "Constraint Programming API" has been developed -
+see https://jcp.org/en/jsr/detail?id=331. It allows to utilize different constraint
+solvers without changing the problem definition. Exigen's Constrainer was selected 
+among other off-the-shelf constraint solvers to be included into JSR-331.
+
+This is a modified version of Exigen's Constrainer that contains only 
+pure constraint programming concepts needed to support the JSR-331. 
+The source code of the Exigen's Constrainer version 5.4 was downloaded from:
+  cvs -d:pserver:anonymous@openl-tablets.cvs.sourceforge.net:/cvsroot/openl-tablets
+
+The modified source code of this version keeps all Exigen Copyright notices. 
+All modifications in the source code are marked by "== Changed". 
+
+Major Changes and Bug Fixes:
+
+March, 2020
+===========
+The Constrainer has been made available from the public GitHub and MVN 
+repositories under the terms of open source GNU LGPL.
+
+The development and deployment facilities were modernized to support
+modern building and version control options. The modified Constrainer is
+available under the terms of open source GNU LGPL from the public GitHub and 
+MVN repositories.
+
+August, 2012
+============
+Constrainer did not correctly stop upon a time limit for one solution search. 
+Fixed problems in Constrainer's execute() and GoalFastMinimize.
+
+March, 2010 
+===========
+The search Time Limit originally defined in seconds has been changed to
+support milliseconds
+
+March, 2010
+===========
+An error was found in constrainer/impl/IntExpArrayElement1.java
+The test /tests/TestElementConstraint.java triggered an java.lang.RuntimeException: 
+Invalid elementAt-expression: [A[10] B[4..10] C[7..10]][ind[0..2]]. 
+java.lang.ArrayIndexOutOfBoundsException: 7
+The fix: in the line 944 of IntExpArrayElement1:935 
+"min < values[valCounter-1]" had been replaced with "min <= values[valCounter-1]"
+The TestIntExpElementAt1.java works fine.
+
+The following packages have been removed:
+- com.exigen.ie.ccc
+- com.exigen.ie.constrainer.consistencyChecking
+- com.exigen.ie.constrainer.lpsolver
+- com.exigen.ie.constrainer.lpsolver.impl
+- com.exigen.ie.exigensimplex
+- com.exigen.ie.exigensimplex.glpkimpl
+- com.exigen.ie.simplex
+- org.open.crt
+- org.openl.util
+
+-->
+	
+</project>

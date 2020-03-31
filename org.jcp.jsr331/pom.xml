@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>com.javasolver</groupId>
+		<artifactId>jsr331-parent</artifactId>
+		<version>2.0.0</version>
+	</parent>
+	
+	<groupId>com.javasolver</groupId>
+	<artifactId>jsr331</artifactId>
+	<version>2.0.0</version>
+	<packaging>jar</packaging>
+	
+	<name>JSR 331</name>
+	<description>JCP Standard JSR331 “Java Constraint Programming API”. It is used for Modeling and Solving Constraint Satisfaction and Optimization Problems using Java and off-the-shelf Constraint/Linear Solvers</description>
+	<url>https://jsr331.org/</url>
+
+</project>

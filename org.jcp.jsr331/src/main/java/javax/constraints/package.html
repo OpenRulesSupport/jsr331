@@ -1,0 +1,34 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title> JSR-331 "Java Constraint Programming API" v.1.0.1 </title>
+
+
+</head>
+<body bgcolor="white">
+
+This package describes a generic Java programming interface for Constraint Programming (CP API)
+- see <a href="http://jcp.org/en/jsr/proposalDetails?id=331"> www.jcp.org </a>.
+
+<p> CP API supports two clearly separated concepts:
+<ul>
+<li> Problem Definition (class Problem): contains all Constrained Variables and
+Constraints that define and control relationships between constrained objects
+<li> Problem Resolution (class Solver): contains search algorithms for finding problem solutions.
+</ul>
+</p>
+<p>The Constrained Variables are represented in form of Java objects
+which may use the predefined constrained variables types such as Var, VarBool, VarReal, and
+VarSet.
+</p>
+<p>The Constraints themselves are objects inherited from a generic class Constraint.
+The API covers major binary and global constraints required for the practical CP
+programming. 
+</p>
+<p>To find the problem solutions, the API uses predefined search algorithms expressed
+by class SearchStrategy. There are predefined methods that allow a user to find a feasible  solution, 
+all solutions, or an optimal solution. 
+</p>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="package" author="false" classpath="../lib/commons-logging-api-1.1.jar;../lib/log4j-1.2.15.jar;../lib/commons-logging-1.1.jar" destdir="api" doctitle="Java Constraint Programming API" nodeprecated="true" nodeprecatedlist="true" noindex="false" nonavbar="false" notree="false" overview="C:\_SVN\jsr331\org.jcp.jsr331\src\javax\constraints\package.html" packagenames="javax.constraints" source="1.6" sourcepath="../src" splitindex="true" use="true" version="false"/>
+    </target>
+</project>
