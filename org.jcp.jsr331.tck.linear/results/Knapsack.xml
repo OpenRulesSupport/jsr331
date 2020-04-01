@@ -1,0 +1,35 @@
+<?xml version = "1.0" encoding="UTF-8" standalone="yes"?>
+<CPLEXSolution version="1.2">
+ <header
+   problemName="Knapsack.mps"
+   solutionName="incumbent"
+   solutionIndex="-1"
+   objectiveValue="-320"
+   solutionTypeValue="3"
+   solutionTypeString="primal"
+   solutionStatusValue="101"
+   solutionStatusString="integer optimal solution"
+   solutionMethodString="mip"
+   primalFeasible="1"
+   dualFeasible="1"
+   MIPNodes="0"
+   MIPIterations="0"
+   writeLevel="1"/>
+ <quality
+   epInt="1e-05"
+   epRHS="1e-06"
+   maxIntInfeas="0"
+   maxPrimalInfeas="0"
+   maxX="320"
+   maxSlack="1"/>
+ <linearConstraints>
+  <constraint name="C1" index="0" slack="1"/>
+  <constraint name="C2" index="1" slack="0"/>
+ </linearConstraints>
+ <variables>
+  <variable name="G" index="0" value="20"/>
+  <variable name="S" index="1" value="2"/>
+  <variable name="B" index="2" value="0"/>
+  <variable name="cost" index="3" value="320"/>
+ </variables>
+</CPLEXSolution>

@@ -1,0 +1,15 @@
+      0 MonFT                 5                      0
+      1 MonPT                 0                    -50
+      2 TueFT                 8                      0
+      3 TuePT                 0                    -50
+      4 WedFT                 9                      0
+      5 WedPT                 0                    -50
+      6 ThuFT                10                      0
+      7 ThuPT                 0                    -50
+      8 FriFT                14                     50
+      9 FriPT                 2                      0
+     10 SatFT                14                     50
+     11 SatPT                 4                      0
+     12 SunFT                12                      0
+     13 SunPT                 0                    -50
+     14 Cost               8100                      0
