@@ -1,0 +1,16 @@
+<project name="jsr331.scip.jar" default="jsr331.scip.jar">
+
+	<target name="jsr331.scip.jar">
+		<jar file="lib/jsr331.scip.jar">
+			<fileset dir="./bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+			<!--
+			<fileset dir="./src">
+				<include name="javax/constraints/**/*.java" />
+			</fileset>
+			-->
+		</jar>
+	</target>
+	
+</project>

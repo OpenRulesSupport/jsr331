@@ -1,0 +1,36 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>com.javasolver</groupId>
+		<artifactId>jsr331-parent</artifactId>
+		<version>2.0.0</version>
+	</parent>
+	
+	<groupId>com.javasolver</groupId>
+	<artifactId>jsr331-scip</artifactId>
+	<version>2.0.0</version>
+	<name>JSR331 Scip</name>
+	<description>This is a JSR331 interface for the open source linear solver "SCIP"</description>
+	<!-- 
+	To use SCIP with JSR331, download it from https://scip.zib.de/index.php#download 
+	and make sure that your Environment variable PATH includes the path to scip.exe
+	 -->
+	<url>https://scip.zib.de/index.php#about</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.javasolver</groupId>
+			<artifactId>jsr331</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.javasolver</groupId>
+			<artifactId>jsr331-linear</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+	</dependencies>
+	
+</project>
