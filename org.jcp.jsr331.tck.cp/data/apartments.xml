@@ -1,0 +1,82 @@
+<ApartmentLooker id="1">
+  <id>apartments</id>
+  <apartmentList id="2">
+    <Apartment id="3">
+      <id>a1</id>
+      <numberOfBedrooms>1</numberOfBedrooms>
+      <squareMeters>50</squareMeters>
+      <central>yes</central>
+      <floor>1</floor>
+      <lift>no</lift>
+      <petsAllowed>yes</petsAllowed>
+      <gardenSize>0</gardenSize>
+      <price>300</price>
+    </Apartment>
+    <Apartment id="4">
+      <id>a2</id>
+      <numberOfBedrooms>2</numberOfBedrooms>
+      <squareMeters>45</squareMeters>
+      <central>yes</central>
+      <floor>0</floor>
+      <lift>no</lift>
+      <petsAllowed>yes</petsAllowed>
+      <gardenSize>0</gardenSize>
+      <price>335</price>
+    </Apartment>
+    <Apartment id="5">
+      <id>a3</id>
+      <numberOfBedrooms>2</numberOfBedrooms>
+      <squareMeters>65</squareMeters>
+      <central>no</central>
+      <floor>2</floor>
+      <lift>no</lift>
+      <petsAllowed>yes</petsAllowed>
+      <gardenSize>0</gardenSize>
+      <price>350</price>
+    </Apartment>
+    <Apartment id="6">
+      <id>a4</id>
+      <numberOfBedrooms>2</numberOfBedrooms>
+      <squareMeters>55</squareMeters>
+      <central>no</central>
+      <floor>1</floor>
+      <lift>yes</lift>
+      <petsAllowed>no</petsAllowed>
+      <gardenSize>15</gardenSize>
+      <price>330</price>
+    </Apartment>
+    <Apartment id="7">
+      <id>a5</id>
+      <numberOfBedrooms>3</numberOfBedrooms>
+      <squareMeters>55</squareMeters>
+      <central>yes</central>
+      <floor>0</floor>
+      <lift>no</lift>
+      <petsAllowed>yes</petsAllowed>
+      <gardenSize>15</gardenSize>
+      <price>350</price>
+    </Apartment>
+    <Apartment id="8">
+      <id>a6</id>
+      <numberOfBedrooms>2</numberOfBedrooms>
+      <squareMeters>60</squareMeters>
+      <central>yes</central>
+      <floor>3</floor>
+      <lift>no</lift>
+      <petsAllowed>no</petsAllowed>
+      <gardenSize>0</gardenSize>
+      <price>370</price>
+    </Apartment>
+    <Apartment id="9">
+      <id>a7</id>
+      <numberOfBedrooms>3</numberOfBedrooms>
+      <squareMeters>65</squareMeters>
+      <central>yes</central>
+      <floor>1</floor>
+      <lift>no</lift>
+      <petsAllowed>yes</petsAllowed>
+      <gardenSize>12</gardenSize>
+      <price>375</price>
+    </Apartment>
+  </apartmentList>
+</ApartmentLooker>
