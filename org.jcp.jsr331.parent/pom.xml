@@ -10,6 +10,7 @@
 	
 	<name>jsr331 Parent pom</name>
 	<description>parent pom for all org.jcp.jsr331 projects</description>
+	<url>https://jsr331.org/</url>
 
 	<licenses>
 		<license>
