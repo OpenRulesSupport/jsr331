@@ -6,12 +6,12 @@
 	<parent>
 		<groupId>com.javasolver</groupId>
 		<artifactId>jsr331-parent</artifactId>
-		<version>2.0.0</version>
+		<version>2.0.1</version>
 	</parent>
 	
 	<groupId>com.javasolver</groupId>
 	<artifactId>jsr331-constrainer</artifactId>
-	<version>2.0.0</version>
+	<version>2.0.1</version>
 	<name>JSR331 Constrainer</name>
 	<description>This is a JSR331 implementation based on the Java constraint programming library "Constrainer" copyrighted by Exigen Properties, Inc. and/or affiliates and available under the terms of the open source GNU LGPL license.</description>
 	<url>https://github.com/OpenRulesSupport/jsr331</url>
@@ -39,7 +39,13 @@
 		<dependency>
 			<groupId>com.javasolver</groupId>
 			<artifactId>jsr331</artifactId>
-			<version>2.0.0</version>
+			<version>2.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	
@@ -63,15 +69,16 @@ known as "Constrainer"
  */
 ///////////////////////////////////////////////////////////////////////////////
 
-The original Constrainer was developed  in 1998-1999 by IntelEngine, Inc.
-In 2000 IntelEngine, Inc. was acquired by Exigen Group that made
+The original Constrainer was developed in 1998-1999 by Jacob Feldman of 
+IntelEngine, Inc. In 2000 IntelEngine was acquired by Exigen Group that made
 Constrainer publicly available under the terms of open source GNU LGPL 
 license from the SourceForge: http://sourceforge.net/projects/constrainer/
 
 In 2010 JCP Standard JSR-331 "Constraint Programming API" has been developed -
-see https://jcp.org/en/jsr/detail?id=331. It allows to utilize different constraint
-solvers without changing the problem definition. Exigen's Constrainer was selected 
-among other off-the-shelf constraint solvers to be included into JSR-331.
+see https://jcp.org/en/jsr/detail?id=331. It allows Java developers to utilize
+different off-the-shelf constraint solvers without changing the problem definition. 
+Exigen's Constrainer was selected among other constraint solvers to be included 
+into JSR-331.
 
 This is a modified version of Exigen's Constrainer that contains only 
 pure constraint programming concepts needed to support the JSR-331. 
@@ -83,15 +90,15 @@ All modifications in the source code are marked by "== Changed".
 
 Major Changes and Bug Fixes:
 
-March, 2020
+April, 2020
 ===========
 The Constrainer has been made available from the public GitHub and MVN 
 repositories under the terms of open source GNU LGPL.
 
 The development and deployment facilities were modernized to support
 modern building and version control options. The modified Constrainer is
-available under the terms of open source GNU LGPL from the public GitHub and 
-MVN repositories.
+available from the public GitHub and MVN repositories as an open source
+product with unresticted use by the commercial and open source applications.
 
 August, 2012
 ============
