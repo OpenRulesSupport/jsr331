@@ -78,7 +78,7 @@ public class Problem extends AbstractProblem {
 	/**
 	 * CP API Reference Implementation with Constrainer - release version number
 	 */
-	static public final String JSR331_CONSTRAINER_VERSION = "JSR-331 Implementation based on Constrainer 5.4 (light)";
+	static public final String JSR331_CONSTRAINER_VERSION = "JSR-331 Implementation based on Constrainer 5.4.0";
 	
 	public static org.apache.commons.logging.Log logger = LogFactory.getLog("javax.constraints");
 	
