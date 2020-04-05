@@ -59,7 +59,7 @@ public class Queens {
 	}
 	
 	public static void main(String[] args) {
-		String arg = (args.length == 0) ? "9000" : args[0];
+		String arg = (args.length == 0) ? "1000" : args[0];
 		int n = Integer.parseInt(arg);
 		Queens q = new Queens(n);
 		q.define();

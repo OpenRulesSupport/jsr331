@@ -1,5 +1,5 @@
+set CLASS_NAME=org.jcp.jsr331.samples.GraphColoring
+set SOLVER=Constrainer
 cd %~dp0
-run org.jcp.jsr331.samples.GraphColoring
-
-
-  
+call run
+pause

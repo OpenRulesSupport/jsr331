@@ -1,5 +1,5 @@
+set CLASS_NAME=org.jcp.jsr331.samples.EmployeeRostering1
+set SOLVER=Constrainer
 cd %~dp0
-runLinear org.jcp.jsr331.linear.samples.EmployeeRostering1
-
-
-  
+call run
+pause
