@@ -18,7 +18,7 @@ COLUMNS
     Vi4       C4                  -1   C5                   1   
     Vi5       C3                  -1   
     M0001     'MARKER'                 'INTEND'
-    Vi5       _OBJ_                1   
+    Vi5       _OBJ_               -1   
 RHS
     rhs       C2                  25   C5                  10   
 BOUNDS
