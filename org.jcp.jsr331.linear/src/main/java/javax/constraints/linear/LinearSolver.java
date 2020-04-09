@@ -82,6 +82,11 @@ abstract public class LinearSolver extends Solver {
 	}
 	
 	public String getInputFilename() {
+	    File file = new File("./");
+	    File outFolder = new File(file.getParentFile(),OUTPUT_FOLDER);
+        if ( !outFolder.exists() ) {
+            outFolder.mkdir();
+        }
 		return OUTPUT_FOLDER + getProblem().getName() + ".mps";
 	}
 	

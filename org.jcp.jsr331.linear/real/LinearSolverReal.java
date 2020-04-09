@@ -17,7 +17,7 @@ abstract public class LinearSolverReal extends Solver {
 	
 	public static String LP_SOLVER_EXE = "LP_SOLVER_EXE";
 	public static String LP_SOLVER_OPTIONS = "LP_SOLVER_OPTIONS";
-	public static String OUTPUT_FOLDER = "results/";
+	public static String OUTPUT_FOLDER = "results";
 	
 	public LinearSolverReal() {  
 		super();
@@ -74,11 +74,11 @@ abstract public class LinearSolverReal extends Solver {
 	}
 	
 	public String getInputFilename() {
-		return OUTPUT_FOLDER + getProblem().getName() + ".mps";
+		return OUTPUT_FOLDER + "/" + getProblem().getName() + ".mps";
 	}
 	
 	public String getOutputFilename() {
-		return OUTPUT_FOLDER + getProblem().getName() + ".sol";
+		return OUTPUT_FOLDER + "/" + getProblem().getName() + ".sol";
 	}
 	
 	public String getLogFilename() {
