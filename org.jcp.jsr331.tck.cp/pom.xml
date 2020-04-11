@@ -34,8 +34,11 @@
 		<profile>
 			<id>Constrainer</id>
 			<activation>
-	            <activeByDefault>true</activeByDefault>
-	        </activation>
+				<property>
+					<name>solver</name>
+					<value>Constrainer</value>
+				</property>
+			</activation>
 			<dependencies>
 				<dependency>
 					<groupId>com.javasolver</groupId>
@@ -46,6 +49,13 @@
 		</profile>
 		<profile>
 			<id>Choco</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>solver</name>
+					<value>Choco</value>
+				</property>
+			</activation>
 			<dependencies>
 				<dependency>
 					<groupId>com.javasolver</groupId>
@@ -56,6 +66,12 @@
 		</profile>
 		<profile>
 			<id>JSetL</id>
+			<activation>
+				<property>
+					<name>solver</name>
+					<value>JSetL</value>
+				</property>
+			</activation>
 			<dependencies>
 				<dependency>
 					<groupId>com.javasolver</groupId>

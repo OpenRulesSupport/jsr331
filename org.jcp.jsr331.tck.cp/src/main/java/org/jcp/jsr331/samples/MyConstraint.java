@@ -1,11 +1,12 @@
 package org.jcp.jsr331.samples;
 
 import javax.constraints.Constraint;
+import javax.constraints.Problem;
+import javax.constraints.ProblemFactory;
 import javax.constraints.Var;
 import javax.constraints.extra.PropagationEvent;
 import javax.constraints.extra.Propagator;
 import javax.constraints.impl.AbstractConstraint;
-import javax.constraints.impl.Problem;
 import javax.constraints.impl.AbstractVar;
 
 /**
@@ -79,18 +80,18 @@ public class MyConstraint extends AbstractConstraint {
 	}
 	
 	public static void main(String[] args) {
-		Problem problem = new Problem("TestMyConstraint");
+		Problem problem = ProblemFactory.newProblem("TestMyConstraint");
 		Var x = problem.variable("X", 0, 15);
 		Var y = problem.variable("Y", -5, 10);
 		Constraint my = new MyConstraint(x, y, 3);
-		problem.log("Before MyConstraint Posting",problem.getVars());
+		problem.log("Before MyConstraint Posting: " +problem.getVars());
 		my.post();
 		try {
-			problem.log("After MyConstraint Posting",problem.getVars());
+			problem.log("After MyConstraint Posting: " + problem.getVars());
 			problem.post(x,">=",4); // x.setMin(4);
-			problem.log("After X >= 4",problem.getVars());
+			problem.log("After X >= 4: " +problem.getVars());
 			problem.post(y,"<=",5); // y.setMax(5);
-			problem.log("After Y <= 9",problem.getVars());
+			problem.log("After Y <= 9: " + problem.getVars());
 			
 		} catch (Exception e) {
 			problem.log("error in modifiers");

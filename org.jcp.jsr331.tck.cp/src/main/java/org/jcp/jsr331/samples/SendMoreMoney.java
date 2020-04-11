@@ -18,9 +18,14 @@ import javax.constraints.Problem;
 
 public class SendMoreMoney {
 	
-	Problem p = ProblemFactory.newProblem("SendMoreMoney");
+	Problem p;	
 	
-	// Problem Definition
+	public SendMoreMoney() {
+        super();
+        p = ProblemFactory.newProblem("SendMoreMoney");
+    }
+
+    // Problem Definition
 	public void define() {
 		// define variables
 		Var S = p.variable( "S",1, 9);
