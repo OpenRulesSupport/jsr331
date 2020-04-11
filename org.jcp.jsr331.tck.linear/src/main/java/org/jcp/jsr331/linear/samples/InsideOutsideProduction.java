@@ -128,7 +128,7 @@ public class InsideOutsideProduction {
 			p.log(p.getVars());
 			p.log(p.getVarReals());
 			Solver solver = p.getSolver(); 
-			Solution solution = solver.findOptimalSolution(Objective.MAXIMIZE,totalCost);
+			Solution solution = solver.findOptimalSolution(Objective.MINIMIZE,totalCost);
 			if (solution == null) {
 				System.out.println("The problem has no solution!");
 				return;
