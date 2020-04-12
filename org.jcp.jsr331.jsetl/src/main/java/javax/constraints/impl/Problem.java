@@ -6,18 +6,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
-import javax.constraints.impl.Constraint;
 import javax.constraints.impl.constraint.AllDifferent;
 import javax.constraints.impl.constraint.Cardinality;
 import javax.constraints.impl.constraint.Element;
 import javax.constraints.impl.constraint.GlobalCardinality;
 import javax.constraints.impl.constraint.Linear;
 import javax.constraints.impl.search.Solver;
-import javax.constraints.impl.Var;
-import javax.constraints.impl.VarBool;
-import javax.constraints.impl.VarSet;
 
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.LoggerFactory;
 
 import JSetL.IntLVar;
 import JSetL.MultiInterval;
@@ -37,7 +33,8 @@ import JSetL.MultiInterval;
  */
 public class Problem extends AbstractProblem {
 	
-	public static org.apache.commons.logging.Log logger = LogFactory.getLog("javax.constraints");
+	//public static org.apache.commons.logging.Log logger = LogFactory.getLog("javax.constraints");
+    private static org.slf4j.Logger logger = LoggerFactory.getLogger("javax.constraints");
 	
 	/**
 	 * Problem integer set variables.
