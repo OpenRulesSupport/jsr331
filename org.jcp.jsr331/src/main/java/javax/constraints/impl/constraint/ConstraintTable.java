@@ -53,8 +53,8 @@ public class ConstraintTable extends AbstractConstraint {
 	 * Creates and returns a new constraint stating that all variables from "vars"
 	 * must take values compatible with the table "table",
 	 * which represents the set of (permitted)/(not permitted) combinations.
-	 * @param vars
-	 * @param table
+	 * @param vars array of variables
+	 * @param table a matrix
 	 * @param mode - EXCLUDE or INCLUDE
 	 */
 	public ConstraintTable(Var[] vars, int[][] table, int mode) {
@@ -105,7 +105,7 @@ public class ConstraintTable extends AbstractConstraint {
 	}
 
 	/**
-	 * @param args
+	 * @param args arguments
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

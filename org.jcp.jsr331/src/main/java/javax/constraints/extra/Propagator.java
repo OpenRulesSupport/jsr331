@@ -14,7 +14,7 @@ import java.util.EventListener;
 
 /**
  * This interface represents propagators that used to 
- * propagate {@link PropagationEvent}s when new(!) custom constraints
+ * propagate PropagationEvents when new(!) custom constraints
  * are defined. It does NOT specify how to implement actual propagators 
  * (a.k.a observers, listeners, or just constraints) inside reference implementations.
  */

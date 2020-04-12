@@ -96,7 +96,7 @@ public interface Constraint {
 	 * this methods specifies a particular level of consistency that will
 	 * be selected by an implementation to control the propagation strength of
 	 * this constraint.
-	 * @param consistencyLevel
+	 * @param consistencyLevel ConsistencyLevel
 	 * @throws RuntimeException if a failure happened during the posting
 	 */
 	public void post(ConsistencyLevel consistencyLevel);
@@ -114,7 +114,7 @@ public interface Constraint {
 	 * Thus, posting related constraints with different probabilities
 	 * may resolve their conflicts.
 	 * @param name of the constraint
-	 * @param probability
+	 * @param probability Probability
 	 * @throws RuntimeException if a failure happened during the posting
 	 */
 	public void post(String name, Probability probability);

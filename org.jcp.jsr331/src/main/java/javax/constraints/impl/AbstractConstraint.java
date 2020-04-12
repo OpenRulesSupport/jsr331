@@ -47,7 +47,7 @@ abstract public class AbstractConstraint extends CommonBase implements javax.con
 	 * this methods specifies a particular level of consistency that will
 	 * be selected by an implementation to control the propagation strength of
 	 * this constraint. If this method is not overloaded by an implementation, it will work as a post(). 
-	 * @param consistencyLevel
+	 * @param consistencyLevel ConsistencyLevel
 	 * @throws RuntimeException if a failure happened during the posting
 	 */
 	public void post(ConsistencyLevel consistencyLevel) {
@@ -68,7 +68,7 @@ abstract public class AbstractConstraint extends CommonBase implements javax.con
 	 * Thus, posting related constraints with different probabilities
 	 * may resolve their conflicts.
 	 * @param name of the constraint
-	 * @param probability
+	 * @param probability Probability
 	 * @throws RuntimeException if a failure happened during the posting
 	 */
 	public void post(String name, Probability probability) {

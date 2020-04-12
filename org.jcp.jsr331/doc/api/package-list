@@ -1,1 +1,8 @@
 javax.constraints
+javax.constraints.extra
+javax.constraints.impl
+javax.constraints.impl.constraint
+javax.constraints.impl.search
+javax.constraints.impl.search.goal
+javax.constraints.impl.search.selectors
+javax.constraints.impl.selector

@@ -34,7 +34,7 @@ abstract public class Goal extends AbstractSearchStrategy {
 	/**
 	 * Method that executes an underlying goal in the proper implementation.
 	 * @return goal or null
-	 * @throws Exception
+	 * @throws Exception exception
 	 */
 	abstract public Goal execute() throws Exception;
 	

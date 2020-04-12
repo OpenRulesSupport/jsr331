@@ -121,7 +121,7 @@ abstract public class AbstractSearchStrategy extends CommonBase implements Searc
 	
 	/**
 	 * Sets a variable selector type to be used by this strategy
-	 * @param varSelectorType
+	 * @param varSelectorType VarSelectorType
 	 */
 	public void setVarSelectorType(VarSelectorType varSelectorType) {
 		switch (varSelectorType) {
@@ -145,7 +145,7 @@ abstract public class AbstractSearchStrategy extends CommonBase implements Searc
 	
 	/**
 	 * Sets a value selector type to be used by this strategy
-	 * @param valueSelectorType
+	 * @param valueSelectorType ValueSelectorType
 	 */
 	public void setValueSelectorType(ValueSelectorType valueSelectorType) {
 		switch (valueSelectorType) {

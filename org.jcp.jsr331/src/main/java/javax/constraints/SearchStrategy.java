@@ -44,6 +44,7 @@ public interface SearchStrategy {
 	
 	/**
 	 * Sets a type of this Search Strategy
+	 * @param type SearchStrategyType
 	 */
 	public void setType(SearchStrategyType type);
 
@@ -62,6 +63,7 @@ public interface SearchStrategy {
 	
 	/**
 	 * Returns a an array of integer variables that is in use by this strategy
+	 * @return an array of variables
 	 */
 	public Var[] getVars();
 	
@@ -74,35 +76,36 @@ public interface SearchStrategy {
 	
 	/**
 	 * Sets a variable selector that may be used (or not) by this strategy
-	 * @param varSelector
+	 * @param varSelector VarSelector
 	 */
 	public void setVarSelector(VarSelector varSelector);
 	
 	/**
 	 * Sets a variable selector type to be used by this strategy
-	 * @param varSelectorType
+	 * @param varSelectorType VarSelectorType
 	 */
 	public void setVarSelectorType(VarSelectorType varSelectorType);
 	
 	/**
 	 * Returns a variable selector that was set for this strategy
+	 * @return VarSelector
 	 */
 	public VarSelector getVarSelector();
 	
 	/**
 	 * Sets a value selector that may be used (or not) by this strategy
-	 * @param valueSelector
+	 * @param valueSelector ValueSelector
 	 */
 	public void setValueSelector(ValueSelector valueSelector);
 	
 	/**
 	 * Sets a value selector type to be used by this strategy
-	 * @param valueSelectorType
+	 * @param valueSelectorType ValueSelectorType
 	 */
 	public void setValueSelectorType(ValueSelectorType valueSelectorType);
 	
 	/**
-	 * Returns a value selector that was set for this strategy
+	 * @return a value selector that was set for this strategy
 	 */
 	public ValueSelector getValueSelector();
 
@@ -129,13 +132,13 @@ public interface SearchStrategy {
 	public void trace();
 	
 	/**
-	 * Returns a an array of real variables that is in use by this strategy
+	 * @return a an array of real variables that is in use by this strategy
 	 */
 	public VarReal[] getVarReals();
 	
 	/**
 	 * Defines an array of real variables that may be used (or not) by this strategy
-	 * @param varReals
+	 * @param varReals an array of real variables
 	 */
 	public void setVarReals(VarReal[] varReals);
 

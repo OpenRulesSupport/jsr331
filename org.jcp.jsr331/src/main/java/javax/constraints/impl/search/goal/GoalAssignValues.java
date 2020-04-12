@@ -50,6 +50,7 @@ public class GoalAssignValues extends Goal {
 	
 	/**
 	 * This is equivalent to GoalAssignValues(solver, solver.getProblem().getVars());
+	 * @param solver Solver
 	 */
 	public GoalAssignValues(Solver solver) {
 		this(solver, solver.getProblem().getVars());

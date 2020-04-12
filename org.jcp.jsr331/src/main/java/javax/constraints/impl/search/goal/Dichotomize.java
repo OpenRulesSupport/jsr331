@@ -75,6 +75,7 @@ public class Dichotomize {
 	 * process it switches the search target: one time in looks at in the upper
 	 * half of the selected interval, another time - to the lower half.
 	 * Successful search stops when (objectiveMax - objectiveMin) is less or equal to tolerance.
+	 * @return a solution
 	 */
 	public Solution execute() {
 
