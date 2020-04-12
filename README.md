@@ -41,7 +41,7 @@ Open Source LP Solvers:
 
 More implementations will be included in the standard installation as they become available.
 
-== Dependencies and Profiles
+# Dependencies and Profiles
 To add JSR331 dependencies and selected constraint and/or linear solvers to your Maven-based application, your own pom.xml should include
 <parent>   
 &nbsp;&nbsp;&nbsp;&nbsp;<groupId>com.javasolver</groupId>
