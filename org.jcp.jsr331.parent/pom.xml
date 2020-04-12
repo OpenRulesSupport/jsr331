@@ -3,11 +3,20 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<slf4j.version>1.7.30</slf4j.version>
+		<jsr331.version>2.0.2</jsr331.version>
+	</properties>
+
 	<groupId>com.javasolver</groupId>
 	<artifactId>jsr331-parent</artifactId>
-	<version>2.0.1</version>
+	<version>${jsr331.version}</version>
 	<packaging>pom</packaging>
-	
+
 	<name>jsr331 Parent pom</name>
 	<description>parent pom for all org.jcp.jsr331 projects</description>
 	<url>https://jsr331.org/</url>
@@ -20,7 +29,7 @@
 			<comments>Open Source</comments>
 		</license>
 	</licenses>
-	
+
 	<developers>
 		<developer>
 			<name>Jacob Feldman</name>
@@ -36,25 +45,13 @@
 		<tag>HEAD</tag>
 	</scm>
 
-	<properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
-		    <groupId>log4j</groupId>
-		    <artifactId>log4j</artifactId>
-		    <version>1.2.17</version>
-		    <scope>test</scope>
-		</dependency>
-		
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
 	</dependencies>
 
 	<distributionManagement>

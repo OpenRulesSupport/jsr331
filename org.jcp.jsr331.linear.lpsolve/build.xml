@@ -1,0 +1,16 @@
+<project name="jsr331.lpsolve.jar" default="jsr331.lpsolve.jar">
+
+	<target name="jsr331.lpsolve.jar">
+		<jar file="lib/jsr331.lpsolve.jar">
+			<fileset dir="./bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+			<!--
+			<fileset dir="./src">
+				<include name="javax/constraints/**/*.java" />
+			</fileset>
+			-->
+		</jar>
+	</target>
+	
+</project>

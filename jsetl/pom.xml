@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>com.javasolver</groupId>
+		<artifactId>jsr331-parent</artifactId> 
+		<version>2.0.2</version>
+	</parent>
+	
+	<groupId>com.javasolver</groupId>
+	<artifactId>jsr331-jsetl</artifactId>
+	<version>${jsr331.version}</version>
+	<name>JSR331 JSetL</name>
+	<description>This is a JSR331 implementation based on the Java constraint programming library "JSetl"</description>
+	<url>http://www.clpset.unipr.it/jsetl/</url>
+
+	<licenses>
+		<license>
+			<name>GNU LESSER GENERAL PUBLIC LICENSE Version 3, 29 June 2007</name>
+			<url>https://www.gnu.org/licenses/lgpl-3.0.en.html</url>
+			<distribution>repo</distribution>
+			<comments>Open source license that allows unresticted use by the commercial and open source applications</comments>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Federico Bergenti</name>
+			<email>bergenti@ce.unipr.it</email>
+			<organization>Department of Mathematics, Physics and Computer Science of the University of Parma</organization>
+			<organizationUrl>https://en.unipr.it/</organizationUrl>
+		</developer>
+		<developer>
+			<name>Jacob Feldman</name>
+			<email>jacobfeldman@openrules.com</email>
+			<organization>OpenRules, Inc.</organization>
+			<organizationUrl>https://openrules.com</organizationUrl>
+		</developer>
+	</developers>
+	
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.javasolver</groupId>
+			<artifactId>jsr331</artifactId>
+			<version>${jsr331.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	
+</project>

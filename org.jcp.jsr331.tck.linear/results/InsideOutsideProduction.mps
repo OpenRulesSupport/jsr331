@@ -28,7 +28,7 @@ COLUMNS
     Vr9       C8                  -1   C9                   1   
     Vr10      C10                 -1   C11                  1   
     Vr11      C3                  -1   
-    Vr11      _OBJ_               -1   
+    Vr11      _OBJ_                1   
 RHS
     rhs       C4                  20   C5                  40   
     rhs       C7                 100   C9                 200   

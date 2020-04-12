@@ -6,12 +6,12 @@
 	<parent>
 		<groupId>com.javasolver</groupId>
 		<artifactId>jsr331-parent</artifactId>
-		<version>2.0.1</version>
+		<version>2.0.2</version>
 	</parent>
 	
 	<groupId>com.javasolver</groupId>
 	<artifactId>jsr331-linear</artifactId>
-	<version>2.0.1</version>
+	<version>${jsr331.version}</version>
 	<name>JSR331 Linear</name>
 	<description>This is a common JSR331 interface for different linear solvers</description>
 	<url>https://github.com/OpenRulesSupport/jsr331</url>
@@ -20,7 +20,7 @@
 		<dependency>
 			<groupId>com.javasolver</groupId>
 			<artifactId>jsr331</artifactId>
-			<version>2.0.1</version>
+			<version>${jsr331.version}</version>
 		</dependency>
 	</dependencies>
 	

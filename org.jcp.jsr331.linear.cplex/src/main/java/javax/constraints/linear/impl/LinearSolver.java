@@ -22,20 +22,20 @@ import org.xml.sax.SAXException;
 
 public class LinearSolver extends javax.constraints.linear.LinearSolver {
 
-	static public final String JSR331_LINEAR_SOLVER_VERSION = "CPLEX v12.4";
+	static public final String JSR331_LINEAR_SOLVER_VERSION = "CPLEX";
 
 	public LinearSolver() {
 	}
 	
 	@Override
 	public String getOutputFilename() {
-		return OUTPUT_FOLDER + getProblem().getName() + ".xml";
+		return OUTPUT_FOLDER + "/" + getProblem().getName() + ".xml";
 	}
 	
 	@Override
 	protected String preProcess() {
 		// create Cplex cmd-file
-		String name = OUTPUT_FOLDER + getProblem().getName() + ".cmd";
+		String name = OUTPUT_FOLDER + "/" + getProblem().getName() + ".cmd";
 		try {
 			PrintStream out = new PrintStream(name);
 //			System.out.println("Cplex commands:");

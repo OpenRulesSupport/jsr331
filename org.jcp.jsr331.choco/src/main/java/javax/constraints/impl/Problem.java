@@ -29,6 +29,23 @@
 //* * * * * * * * * * * * * * * * * * * * * * * * *
 package javax.constraints.impl;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import javax.constraints.Constraint;
+import javax.constraints.DomainType;
+import javax.constraints.Oper;
+import javax.constraints.Solver;
+import javax.constraints.Var;
+import javax.constraints.VarBool;
+import javax.constraints.impl.constraint.AllDifferent;
+import javax.constraints.impl.constraint.Cardinality;
+import javax.constraints.impl.constraint.Element;
+import javax.constraints.impl.constraint.GlobalCardinality;
+import javax.constraints.impl.constraint.Linear;
+
+import org.slf4j.LoggerFactory;
+
 /**
  * An implementation of the interface "Problem"
  * @author J.Feldman
@@ -42,15 +59,6 @@ import choco.kernel.common.logging.Verbosity;
 import choco.kernel.model.Model;
 import choco.kernel.model.variables.integer.IntegerExpressionVariable;
 import choco.kernel.model.variables.integer.IntegerVariable;
-import org.apache.commons.logging.LogFactory;
-
-import javax.constraints.Constraint;
-import javax.constraints.*;
-import javax.constraints.Var;
-import javax.constraints.VarBool;
-import javax.constraints.impl.constraint.*;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 public class Problem extends AbstractProblem {
 
@@ -60,7 +68,7 @@ public class Problem extends AbstractProblem {
 	static public final String JSR331_CHOCO_VERSION = "JSR-331 Implementation based on CHOCO 2.1.5, build 2012.06.03";
 
 	//public final static Logger LOGGER = ChocoLogging.getMainLogger();
-	public static org.apache.commons.logging.Log logger = LogFactory.getLog("javax.constraints");
+	private static org.slf4j.Logger logger = LoggerFactory.getLogger("javax.constraints");
 
 	Constraint falseConstraint;
 	Constraint trueConstraint;

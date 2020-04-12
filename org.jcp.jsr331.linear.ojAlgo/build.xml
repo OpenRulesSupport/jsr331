@@ -1,0 +1,16 @@
+<project name="jsr331.ojalgo.jar" default="jsr331.ojalgo.jar">
+
+	<target name="jsr331.ojalgo.jar">
+		<jar file="lib/jsr331.ojalgo.jar">
+			<fileset dir="./bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+			<!--
+			<fileset dir="./src">
+				<include name="javax/constraints/**/*.java" />
+			</fileset>
+			-->
+		</jar>
+	</target>
+	
+</project>

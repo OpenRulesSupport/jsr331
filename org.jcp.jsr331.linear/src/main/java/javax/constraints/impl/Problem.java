@@ -10,13 +10,11 @@ import javax.constraints.Solver;
 import javax.constraints.Var;
 import javax.constraints.VarBool;
 import javax.constraints.VarReal;
-import javax.constraints.impl.AbstractConstrainedVariable;
-import javax.constraints.impl.AbstractProblem;
 import javax.constraints.linear.LinearSolver;
 import javax.constraints.linear.LinearSolverFactory;
 import javax.constraints.linear.NonLinearProblemException;
 
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.LoggerFactory;
 
 public class Problem extends AbstractProblem {
 	
@@ -601,7 +599,8 @@ public class Problem extends AbstractProblem {
 		return solver;
 	}
 
-	public static org.apache.commons.logging.Log logger = LogFactory.getLog("javax.constraints");
+	private static org.slf4j.Logger logger = LoggerFactory.getLogger("javax.constraints");
+	
 	@Override
 	public void log(String text) {
 		logger.info(text);

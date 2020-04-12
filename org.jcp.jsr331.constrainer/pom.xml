@@ -6,12 +6,11 @@
 	<parent>
 		<groupId>com.javasolver</groupId>
 		<artifactId>jsr331-parent</artifactId>
-		<version>2.0.1</version>
+		<version>2.0.2</version>
 	</parent>
 	
-	<groupId>com.javasolver</groupId>
 	<artifactId>jsr331-constrainer</artifactId>
-	<version>2.0.1</version>
+	
 	<name>JSR331 Constrainer</name>
 	<description>This is a JSR331 implementation based on the Java constraint programming library "Constrainer" copyrighted by Exigen Properties, Inc. and/or affiliates and available under the terms of the open source GNU LGPL license.</description>
 	<url>https://github.com/OpenRulesSupport/jsr331</url>
@@ -34,12 +33,15 @@
 		</developer>
 	</developers>
 	
-	
+	<properties>
+		<log4j.version>2.7</log4j.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.javasolver</groupId>
 			<artifactId>jsr331</artifactId>
-			<version>2.0.1</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -47,6 +49,25 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>${log4j.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
 	</dependencies>
 	
 	
@@ -119,6 +140,8 @@ java.lang.ArrayIndexOutOfBoundsException: 7
 The fix: in the line 944 of IntExpArrayElement1:935 
 "min < values[valCounter-1]" had been replaced with "min <= values[valCounter-1]"
 The TestIntExpElementAt1.java works fine.
+
+Switched from commons.logging to slf4j
 
 The following packages have been removed:
 - com.exigen.ie.ccc

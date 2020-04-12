@@ -28,14 +28,13 @@ import javax.constraints.VarBool;
 import javax.constraints.VarReal;
 import javax.constraints.VarSet;
 import javax.constraints.extra.ConstraintElementAtOnSets;
-import javax.constraints.impl.AbstractProblem;
 import javax.constraints.impl.constraint.AllDifferent;
 import javax.constraints.impl.constraint.Cardinality;
 import javax.constraints.impl.constraint.Element;
 import javax.constraints.impl.constraint.GlobalCardinality;
 import javax.constraints.impl.constraint.Linear;
 
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.LoggerFactory;
 
 import com.exigen.ie.constrainer.Constrainer;
 import com.exigen.ie.constrainer.ConstraintConst;
@@ -80,7 +79,8 @@ public class Problem extends AbstractProblem {
 	 */
 	static public final String JSR331_CONSTRAINER_VERSION = "JSR-331 Implementation based on Constrainer 5.4.0";
 	
-	public static org.apache.commons.logging.Log logger = LogFactory.getLog("javax.constraints");
+	//public static org.apache.commons.logging.Log logger = LogFactory.getLog("javax.constraints");
+	private static org.slf4j.Logger logger = LoggerFactory.getLogger("javax.constraints");
 	
 	/**
 	 * @return JSR331 Implementation version number

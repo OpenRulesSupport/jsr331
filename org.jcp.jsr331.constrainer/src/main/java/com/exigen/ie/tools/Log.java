@@ -6,16 +6,21 @@
  
 package com.exigen.ie.tools;
 
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.LoggerFactory;
+
+//import org.apache.commons.logging.LogFactory;
 
 /**
  * @author snshor
+ * 
+ * Switched from commons.logging to slf4j ==JF
  *
  */
 public class Log
 {
 
-	static org.apache.commons.logging.Log logger = LogFactory.getLog(Log.class);
+	//static org.apache.commons.logging.Log logger = LogFactory.getLog(Log.class);
+	private static org.slf4j.Logger logger = LoggerFactory.getLogger(Log.class);
 	
 
 	public static boolean isTraceEnabled()
@@ -47,58 +52,55 @@ public class Log
 	
 	public static void debug(Object message)
 	{
-		logger.debug(message);
+		logger.debug(String.valueOf(message));
 	}
 	
 	
 	public static void debug(Object message, Throwable t)
 	{
-		logger.debug(message, t);
+		logger.debug(String.valueOf(message), t);
 	}
 
 	public static void info(Object message)
 	{
-		logger.info(message);
+		logger.info(String.valueOf(message));
 	}
 
 	public static void info(Object message, Throwable t)
 	{
-		logger.info(message, t);
+		logger.info(String.valueOf(message), t);
 	}
 	
 	public static void trace(Object message)
 	{
-		logger.trace(message);
+		logger.trace(String.valueOf(message));
 	}
 
 	public static void trace(Object message, Throwable t)
 	{
-		logger.trace(message, t);
+		logger.trace(String.valueOf(message), t);
 	}
 
 
 	public static void warn(Object message)
 	{
-		logger.warn(message);
+		logger.warn(String.valueOf(message));
 	}
 
 	public static void warn(Object message, Throwable t)
 	{
-		logger.warn(message, t);
+		logger.warn(String.valueOf(message), t);
 	}
 
 	public static void error(Object message)
 	{
-		logger.error(message);
+		logger.error(String.valueOf(message));
 	}
 
 	public static void error(Object message, Throwable t)
 	{
-		logger.error(message, t);
+		logger.error(String.valueOf(message), t);
 	}
-
-
-
 
 
 }
