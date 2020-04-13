@@ -15,31 +15,7 @@
 	<name>JSR331 TCK Linear</name>
 	<description>This is a JSR331 JSR331 Technology Compatibility Kit for linear solvers</description>
 	<url>https://github.com/OpenRulesSupport/jsr331</url>
-<!-- 
-	<dependencies>
-		<dependency>
-			<groupId>com.javasolver</groupId>
-			<artifactId>jsr331</artifactId>
-			<version>${jsr331.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.javasolver</groupId>
-			<artifactId>jsr331-linear</artifactId>
-			<version>${jsr331.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
-		    <groupId>log4j</groupId>
-		    <artifactId>log4j</artifactId>
-		    <version>1.2.17</version>
-		    <scope>test</scope>
-		</dependency>
-	</dependencies>
--->	
+
 	<properties>
 		<log4j.version>2.7</log4j.version>
 	</properties>
