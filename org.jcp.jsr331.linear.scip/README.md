@@ -6,6 +6,6 @@
 This project provides the JSR331 implementation of a linear solver that is based on  an open-source linear programming solver ["SCIP"](https://scip.zib.de/index.php) written in C++. It is avaible from this [GitHub repository](https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.scip). 
 
 # Installation
-As this implementation uses the GLPK's executable **scip.exe**, you need to download this executable from https://www.gnu.org/software/glpk/ and make sure that your Environment variable PATH includes the path to scip.exe.
+As this implementation uses the SCIP's executable **scip.exe**, you need to download this executable from https://scip.zib.de/index.php/ and make sure that your Environment variable PATH includes the path to scip.exe.
 
 
