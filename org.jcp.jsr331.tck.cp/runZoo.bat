@@ -1,4 +1,4 @@
-set CLASS_NAME=org.jcp.jsr331.samples.Bins
+set CLASS_NAME=org.jcp.jsr331.samples.Zoo
 rem set SOLVER=Constrainer
 set SOLVER=Choco
 rem set SOLVER=JSetL

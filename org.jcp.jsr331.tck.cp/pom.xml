@@ -58,6 +58,7 @@
 					<name>solver</name>
 					<value>Constrainer</value>
 				</property>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<dependencies>
 				<dependency>
