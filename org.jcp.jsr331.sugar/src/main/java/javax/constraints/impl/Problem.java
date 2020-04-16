@@ -35,7 +35,7 @@ public class Problem extends AbstractProblem {
      * CP API Reference Implementation
      */
     private static final String JSR331_IMPLEMENTATION_VERSION =
-            "JSR-331 Implementation based on Sugar version 2 and Sat4j version 2";
+            "JSR-331 Implementation based on Sugar version 2.1.3 and Sat4j version 2.3.5";
 
     //public static org.apache.commons.logging.Log logger =  LogFactory.getLog("javax.constraints");
     private static org.slf4j.Logger logger = LoggerFactory.getLogger("javax.constraints");
