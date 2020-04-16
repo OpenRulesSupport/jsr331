@@ -3,7 +3,7 @@
 [JSR331 “Java Constraint Programming API”](http://jsr331.org) is a JCP Specification Standard that has been developed under the terms of the www.JCP.org. 
 
 # Project org.jcp.jsr331
-This project provide common Java classes for the JSR-331 interface and its common implementation in teh following packages:
+This project provide common Java classes for the JSR-331 interface and its common implementation in the following packages:
 -	**javax.constraints** - pure CP/LP interface
 -	**javax.constraints.impl** - common implementation.
 

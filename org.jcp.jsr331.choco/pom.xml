@@ -6,12 +6,11 @@
 	<parent>
 		<groupId>com.javasolver</groupId>
 		<artifactId>jsr331-parent</artifactId>
-		<version>2.0.2</version>
+		<version>2.0.3</version>
 	</parent>
 
-	<groupId>com.javasolver</groupId>
 	<artifactId>jsr331-choco</artifactId>
-	<version>${jsr331.version}</version>
+	
 	<name>JSR331 Choco</name>
 	<description>This is a JSR331 interface for the open source Java constraint programming library "Choco" v. 2.1.5</description>
 	<url>https://github.com/OpenRulesSupport/jsr331</url>
