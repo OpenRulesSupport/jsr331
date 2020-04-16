@@ -2,6 +2,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.javasolver</groupId>
+	<artifactId>jsr331-parent</artifactId>
+	<version>2.0.3</version>
+	<packaging>pom</packaging>
+
+	<name>jsr331 Parent pom</name>
+	<description>parent pom for all org.jcp.jsr331 projects</description>
+	<url>https://jsr331.org/</url>
 	
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -9,17 +18,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<slf4j.version>1.7.30</slf4j.version>
-		<jsr331.version>2.0.2</jsr331.version>
+		<jsr331.version>${project.version}</jsr331.version>
+	    <doclint>none</doclint>
 	</properties>
-
-	<groupId>com.javasolver</groupId>
-	<artifactId>jsr331-parent</artifactId>
-	<version>${jsr331.version}</version>
-	<packaging>pom</packaging>
-
-	<name>jsr331 Parent pom</name>
-	<description>parent pom for all org.jcp.jsr331 projects</description>
-	<url>https://jsr331.org/</url>
 
 	<licenses>
 		<license>
@@ -48,10 +49,10 @@
 
 	<dependencies>
 		<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
 	</dependencies>
 
 	<distributionManagement>
@@ -82,7 +83,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.9.1</version>
+				<version>3.0.0</version>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
@@ -91,6 +92,10 @@
 						</goals>
 					</execution>
 				</executions>
+				<configuration>
+		            <additionalJOption>-Xdoclint:none</additionalJOption>
+		        </configuration>
+ 
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

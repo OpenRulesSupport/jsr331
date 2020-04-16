@@ -23,9 +23,10 @@ JSR-331 allow business application developers to easily switch between different
 ![N|Solid](https://jsr331.files.wordpress.com/2018/08/jsr331implementations.png)
 
 The current release includes three implementations that are based on open source CP solvers: 
--	[Choco™](http://choco.sourceforge.net/) (version 2, BSD license) 
+-	[Sugar™](http://bach.istc.kobe-u.ac.jp/sugar/) (BSD-3-Clause license) 
 -	[Constrainer™](http://sourceforge.net/projects/openl-tablets/?source=directory) (GNU LGPL license)
 -	[JSetL™](http://cmt.math.unipr.it/jsetl.html) (GNU GPL license)
+-   [Choco™](http://choco.sourceforge.net/) (version 2, BSD license) 
 
 There are seven implementations that are based on the following LP/MIP tools. 
 Commercial LP Solvers:
@@ -46,7 +47,7 @@ To add JSR331 dependencies and selected constraint and/or linear solvers to your
 <parent>   
 &nbsp;&nbsp;&nbsp;&nbsp;<groupId>com.javasolver</groupId>
 &nbsp;&nbsp;&nbsp;&nbsp;<artifactId>jsr331-parent</artifactId>
-&nbsp;&nbsp;&nbsp;&nbsp;<version>2.0.2</version>
+&nbsp;&nbsp;&nbsp;&nbsp;<version>2.0.3</version>
 </parent>
 
 You also need to add these dependencies and profiles:
@@ -126,6 +127,22 @@ To use CP solvers, you also need to add these profiles:
 				<dependency>
 					<groupId>com.javasolver</groupId>
 					<artifactId>jsr331-jsetl</artifactId>
+					<version>${jsr331.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>Sugar</id>
+			<activation>
+				<property>
+					<name>solver</name>
+					<value>Sugar</value>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.javasolver</groupId>
+					<artifactId>jsr331-sugar</artifactId>
 					<version>${jsr331.version}</version>
 				</dependency>
 			</dependencies>

@@ -6,11 +6,13 @@
 This project a parent project that contains the [pom.xml](https://github.com/OpenRulesSupport/jsr331/blob/master/org.jcp.jsr331.parent/pom.xml) file common for all JSR331 projects. It is avaible from this [GitHub repository](https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.parent) 
 
 To add JSR331 dependencies and selected constraint and/or linear solvers to your Maven-based application, your own pom.xml should include
+~~~
 <parent>   
-&nbsp;&nbsp;&nbsp;&nbsp;<groupId>com.javasolver</groupId>
-&nbsp;&nbsp;&nbsp;&nbsp;<artifactId>jsr331-parent</artifactId>
-&nbsp;&nbsp;&nbsp;&nbsp;<version>2.0.2</version>
+    <groupId>com.javasolver</groupId>
+    <artifactId>jsr331-parent</artifactId>
+    <version>2.0.3</version>
 </parent>
+~~~
 
 You also need to add these dependencies and profiles:
 ~~~
@@ -89,6 +91,22 @@ To use CP solvers, you also need to add these profiles:
 				<dependency>
 					<groupId>com.javasolver</groupId>
 					<artifactId>jsr331-jsetl</artifactId>
+					<version>${jsr331.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>Sugar</id>
+			<activation>
+				<property>
+					<name>solver</name>
+					<value>Sugar</value>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.javasolver</groupId>
+					<artifactId>jsr331-sugar</artifactId>
 					<version>${jsr331.version}</version>
 				</dependency>
 			</dependencies>
