@@ -9,9 +9,8 @@
 		<version>2.0.3</version>
 	</parent>
 	
-	<groupId>com.javasolver</groupId>
 	<artifactId>jsr331-glpk</artifactId>
-	<version>${jsr331.version}</version>
+
 	<name>JSR331 GLPK</name>
 	<description>This is a JSR331 interface for the open source linear solver "GLPK"</description>
 	<!-- 
