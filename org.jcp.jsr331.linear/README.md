@@ -3,5 +3,5 @@
 [JSR331 “Java Constraint Programming API”](http://jsr331.org) is a JCP Specification Standard that has been developed under the terms of the www.JCP.org. 
 
 # Project org.jcp.jsr331.linear
-This project provides the common interface and implementation classes for the JSR-331 linear solvers. It's used by all JSR331 linera solvers included in the JSR331 implementations.
+This project provides the common interface and implementation classes for the JSR-331 linear solvers. It's used by all JSR331 linear solvers included in the JSR331 implementations.
 

@@ -6,12 +6,11 @@
 	<parent>
 		<groupId>com.javasolver</groupId>
 		<artifactId>jsr331-parent</artifactId>
-		<version>2.0.2</version>
+		<version>2.0.3</version>
 	</parent>
 	
-	<groupId>com.javasolver</groupId>
 	<artifactId>jsr331-jsetl</artifactId>
-	<version>${jsr331.version}</version>
+
 	<name>JSR331 JSetL</name>
 	<description>This is a JSR331 implementation based on the Java constraint programming library "JSetl" v. 2.3</description>
 	<url>http://www.clpset.unipr.it/jsetl/</url>
