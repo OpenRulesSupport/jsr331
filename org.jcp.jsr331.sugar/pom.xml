@@ -9,8 +9,8 @@
 		<version>2.0.3</version>
 	</parent>
 
-	<groupId>com.javasolver</groupId>
 	<artifactId>jsr331-sugar</artifactId>
+	
 	<name>JSR331 Sugar</name>
 	<description>This is a JSR331 interface for the open source Java constraint programming library "Sugar" v. 2.1.3</description>
 	<url>http://bach.istc.kobe-u.ac.jp/sugar/</url>
