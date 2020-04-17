@@ -26,6 +26,11 @@
 			<version>${jsr331.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>com.javasolver</groupId>
+			<artifactId>jsr331-scheduler</artifactId>
+			<version>${jsr331.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>

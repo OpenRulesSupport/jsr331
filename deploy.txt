@@ -1,1 +1,3 @@
 >mvn clean install -DadditionalJOption=-Xdoclint=none
+
+>mvn eclispe:eclipse

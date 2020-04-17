@@ -45,8 +45,8 @@ Here the problem data:</p>
 <p>Inside cost - cost of the product unit produced in the company's factories.</p>
 <p>Outside cost - cost of the product unit bought from another company.</p>
 <p>Products produced by inside production have to satisfy resource constraints; each
-product consumes a certain amount of each resource.� The company manager must take
-into account the capacity constraints:� resource-1 has capacity 20; resource-2 has
+product consumes a certain amount of each resource.  The company manager must take
+into account the capacity constraints:  resource-1 has capacity 20; resource-2 has
 capacity 40.</p>
 */
 

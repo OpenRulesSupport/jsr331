@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title> Java Constraint Programming API </title>
+
+
+</head>
+<body bgcolor="white">
+
+This package "org.jcp.jsr331.scheduler" describes a generic Java programming interface for defining and solving scheduling
+and resource allocation problems. It is based on the 
+<a href="http://jcp.org/en/jsr/proposalDetails?id=331"> JSR-331 "Constraint Programming API" </a> but it 
+is not a part of the standard.
+
+<p> It supports the following major concepts:
+<ul>
+<li> <strong>Schedule</strong> as a factory and a placeholder for different activities, resources and constraints between them.
+<li> <strong>Activity</strong> that is a task or work to be performed in a schedule. Activities have a duration and can be 
+executed without breaks over a specific time intervals in a schedule. They may be subject to temporal and precedence constraints.
+They may require or produce different resources.
+<li> <strong>Resource</strong> that is used to represent a resource of finite not negative capacity that can vary with time. 
+Each activity may require some amount of the capacity of a resource. 
+There are discrete resources and boolean resources (with maximal capacity 1).
+This version of the API specifies only recoverable and consumable resources.
+</ul>
+</p>
+
+<p>To find the problem solutions, the API uses predefined search strategies. 
+</p>
+
+<p>The API covers basic scheduling and resource allocation constraints implemented on the top of JSR-331 in a CP solver independent way. 
+</p>
+
+</body>
+</html>
