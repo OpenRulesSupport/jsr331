@@ -18,6 +18,7 @@ This package was developed by Jacob Feldman and made publicly available as a par
 The following scheme represents the major scheduling and resource allocation concepts implemented in JSR331 Scheduler:
 
 ![N|Solid](https://javasolvers.files.wordpress.com/2020/04/jsr331scheduler.concepts.png)
+
 JSR331 Scheduler follows the representation of scheduling and resource allocation problems introduced in the great product called [ILOG Scheduler](http://lia.deis.unibo.it/Courses/AI/applicationsAI2009-2010/materiale/cp15doc/pdf/usrscheduler.pdf) written by Claude LePape and Jean-Francois Puget in 1990s. The following [presentation](http://openrules.com/pdf/BRForum2012.Feldman.v1.pdf) explains how to use JSR331 Scheduler. 
 
 # Sample Problems

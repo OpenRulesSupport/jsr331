@@ -1,8 +1,12 @@
 package org.jcp.jsr331.scheduler.samples;
 
-import javax.constraints.*;
-import javax.constraints.scheduler.*;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
+import javax.constraints.Objective;
+import javax.constraints.Solution;
+import javax.constraints.Solver;
+import javax.constraints.Var;
+import javax.constraints.scheduler.Activity;
+import javax.constraints.scheduler.Schedule;
+import javax.constraints.scheduler.ScheduleFactory;
 
 public final class ScheduleActivities {
 	
