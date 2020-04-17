@@ -17,10 +17,10 @@
 	
 	<licenses>
 		<license>
-			<name>JCP License</name>
-			<url>https://download.oracle.com/otndocs/jcp/constraint-1_1_0-mrel-spec/license.html</url>
+			<name>GPL v2 License</name>
+			<url>https://www.gnu.org/licenses/old-licenses/gpl-2.0.html</url>
 			<distribution>repo</distribution>
-			<comments>Open source license that allows unresticted use by the commercial and open source applications</comments>
+			<comments>GPLv2 - GNU General Public License</comments>
 		</license>
 	</licenses>
 	
@@ -45,18 +45,6 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>org.ow2.sat4j</groupId>
-		    <artifactId>org.ow2.sat4j.core</artifactId>
-		    <version>2.3.5</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
 			<version>${log4j.version}</version>
@@ -65,12 +53,6 @@
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
-			<version>${log4j.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-slf4j-impl</artifactId>
 			<version>${log4j.version}</version>
 			<scope>test</scope>
 		</dependency>
