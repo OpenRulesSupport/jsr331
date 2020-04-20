@@ -61,7 +61,7 @@ public class Problem extends AbstractProblem {
 	 * CP API Reference Implementation.
 	 */
 	private static final String JSR331_JSetL_Version = 
-			"JSR-331 Implementation based on JSetL 2.3";
+			"JSR-331 Implementation based on JSetL 3.0";
 	
 	/**
 	 * Auxiliary counter for naming variables.
