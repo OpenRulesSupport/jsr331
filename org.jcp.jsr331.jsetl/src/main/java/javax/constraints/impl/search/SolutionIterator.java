@@ -4,13 +4,13 @@ import javax.constraints.ProblemState;
 import javax.constraints.impl.search.Solution;
 import javax.constraints.impl.search.Solver;
 
-import JSetL.Failure;
+import jsetl.exception.Failure;
 
 
 /**
  * Implement the JSR331 solution iterator extending the 
  * interface SolutionIterator. The implementation is base on the solver 
- * JSetL. The class allows a user to search and to iterate through multiple 
+ * jsetl. The class allows a user to search and to iterate through multiple 
  * solutions.
  * 
  * @author Fabio Biselli
@@ -25,9 +25,9 @@ public class SolutionIterator implements javax.constraints.SolutionIterator {
 	Boolean checked = false;
 	
 	/**
-	 * Build a new SolutionIterator bound to a given Solver.
+	 * Build a new SolutionIterator bound to a given SolverClass.
 	 * 
-	 * @param s the Solver.
+	 * @param s the SolverClass.
 	 */
 	public SolutionIterator(javax.constraints.Solver s) {
 		solver = (Solver) s;
@@ -36,7 +36,7 @@ public class SolutionIterator implements javax.constraints.SolutionIterator {
 	}
 
 	/**
-	 * Returns a boolean values, true if the Problem which the Solver is bound
+	 * Returns a boolean values, true if the Problem which the SolverClass is bound
 	 * has a next solution, false otherwise.
 	 * 
 	 */

@@ -4,7 +4,8 @@ import javax.constraints.impl.Problem;
 import javax.constraints.impl.Constraint;
 import javax.constraints.impl.Var;
 
-import JSetL.IntLVar;
+import jsetl.ConstraintClass;
+import jsetl.IntLVar;
 
 
 /**
@@ -33,7 +34,7 @@ public class AllDifferent extends Constraint {
 		IntLVar[] vec = new IntLVar[vars.length];
 		for (int i = 0; i < vars.length; i++)
 			vec[i] = ((Var) vars[i]).getIntLVar();
-		JSetL.Constraint alldiff = IntLVar.allDifferent(vec);
+		ConstraintClass alldiff = ConstraintClass.allDifferent(vec);
 		setImpl(alldiff);
 		((javax.constraints.impl.Problem) getProblem()).addAuxVariables(vars);
 	}

@@ -13,7 +13,7 @@ import javax.constraints.impl.Problem;
 public class Neg extends Constraint {
 
 	/**
-	 * Build a Constraint that is satisfied if and only if the constraint 
+	 * Build a ConstraintClass that is satisfied if and only if the constraint
 	 * <code>c1</code> is not satisfied.
 	 * @param c1 constraint
 	 */

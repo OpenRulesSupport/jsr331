@@ -1,10 +1,12 @@
 package javax.constraints.impl;
 
 
+import jsetl.ConstraintClass;
+
 /**
  * This class implements the JSR331 constraint class extending the common
  * implementation AbstractConstraint. The implementation is based on the solver
- * JSetL.
+ * jsetl.
  * 
  * @author Fabio Biselli
  *
@@ -12,23 +14,23 @@ package javax.constraints.impl;
 public class Constraint extends AbstractConstraint {
 	
 	/**
-	 * Build a new Constraint.
+	 * Build a new ConstraintClass.
 	 * 
 	 * @param problem the problem which the constraint is related.
 	 */
 	public Constraint(javax.constraints.Problem problem) {
 		super(problem);
-		setImpl(new JSetL.Constraint());
+		setImpl(new ConstraintClass());
 	}
 
 	/**
-	 * Build a new Constraint from a instance of the class Constraint of
+	 * Build a new ConstraintClass from a instance of the class ConstraintClass of
 	 * JSetL solver.
 	 * 
 	 * @param problem the problem which the constraint is related
 	 * @param constraint the JSetL constraint.
 	 */
-	public Constraint(javax.constraints.Problem problem, JSetL.Constraint constraint) {
+	public Constraint(javax.constraints.Problem problem, ConstraintClass constraint) {
 		super(problem);
 		setImpl(constraint);
 	}
@@ -39,12 +41,12 @@ public class Constraint extends AbstractConstraint {
 	 */
 	public javax.constraints.VarBool asBool() {
 		if (getImpl() == null) {
-			throw new RuntimeException("Constraint " + getName() + 
+			throw new RuntimeException("ConstraintClass " + getName() +
 					" has no implementation for the method toVar()." +
 					" It cannot be used in logical expressions.");
 		}
 		Problem p = (Problem) getProblem();
-		JSetL.Constraint constraint = (JSetL.Constraint) getImpl();
+		ConstraintClass constraint = (ConstraintClass) getImpl();
 		if (constraint == null) {
 			String msg = "Failure to convert constraint " + getName() + 
 			        " to VarBool. Not implemented.";
@@ -58,53 +60,53 @@ public class Constraint extends AbstractConstraint {
 	}
 	
 	/**
-	 * Getter method for the JSetL.Constraint.
+	 * Getter method for the jsetl.ConstraintClass.
 	 * 
-	 * @return the JSetL.Constraint.
+	 * @return the jsetl.ConstraintClass.
 	 */
-	public JSetL.Constraint getConstraint() {
-		return (JSetL.Constraint) getImpl();
+	public ConstraintClass getConstraint() {
+		return (ConstraintClass) getImpl();
 	}
 	
 	/**
-	 * Returns an "AND" Constraint. The Constraint "AND" is satisfied if both 
-	 * of the Constraints "this" and "c" are satisfied. The Constraint "AND" 
+	 * Returns an "AND" ConstraintClass. The ConstraintClass "AND" is satisfied if both
+	 * of the Constraints "this" and "c" are satisfied. The ConstraintClass "AND"
 	 * is not satisfied if at least one of the Constraints "this" or "c" is 
 	 * not satisfied.
 	 * 
-	 * @param c the Constraint which is part of the new "AND" Constraint.
+	 * @param c the ConstraintClass which is part of the new "AND" ConstraintClass.
 	 * 
-	 * @return a Constraint "AND" between the Constraints "this" and "c2".
+	 * @return a ConstraintClass "AND" between the Constraints "this" and "c2".
 	 */
 	public Constraint and(javax.constraints.Constraint c) {
-		JSetL.Constraint constraint = ((Constraint) c).getConstraint();
+		ConstraintClass constraint = ((Constraint) c).getConstraint();
 		Constraint result = new Constraint(getProblem(), 
 				this.getConstraint().and(constraint));
 		return result;
 	}
 	
 	/**
-	 * Returns an "OR" Constraint. The Constraint "OR" is satisfied if either 
-	 * of the Constraints "this" and "c" is satisfied. The Constraint "OR" is 
+	 * Returns an "OR" ConstraintClass. The ConstraintClass "OR" is satisfied if either
+	 * of the Constraints "this" and "c" is satisfied. The ConstraintClass "OR" is
 	 * not satisfied if both of the Constraints "this" and "c" are not 
 	 * satisfied.
 	 * 
-	 * @param c the Constraint which is part of the new "OR" Constraint.
+	 * @param c the ConstraintClass which is part of the new "OR" ConstraintClass.
 	 * 
-	 * @return a Constraint "OR" between the Constraints "this" and "c".
+	 * @return a ConstraintClass "OR" between the Constraints "this" and "c".
 	 */
 	public Constraint or(javax.constraints.Constraint c) {
-		JSetL.Constraint constraint = ((Constraint) c).getConstraint();
+		ConstraintClass constraint = ((Constraint) c).getConstraint();
 		Constraint result = new Constraint(getProblem(), 
 				this.getConstraint().orTest(constraint));
 		return result;
 	}
 	
 	/**
-	 * Returns a Constraint that is satisfied if and only if this constraint 
+	 * Returns a ConstraintClass that is satisfied if and only if this constraint
 	 * is not satisfied.
 	 * 
-	 * @return a Constraint that is satisfied if and only if this 
+	 * @return a ConstraintClass that is satisfied if and only if this
 	 * constraint is not satisfied.
 	 */
 	public Constraint negation() {
@@ -114,17 +116,17 @@ public class Constraint extends AbstractConstraint {
 	}
 	
 	/**
-	 * Returns a Constraint that states the implication: this more or equals c.
+	 * Returns a ConstraintClass that states the implication: this more or equals c.
 	 * In other words, if this constraint is satisfied, then constraint "c"
 	 * should also be satisfied.
 	 * 
-	 * @param c the Constraint in the implication.
+	 * @param c the ConstraintClass in the implication.
 	 * 
-	 * @return a Constraint that means this more or equals c (if this then c).
+	 * @return a ConstraintClass that means this more or equals c (if this then c).
 	 *
 	 */
 	public Constraint implies(javax.constraints.Constraint c) {	
-		JSetL.Constraint constraint = ((Constraint) c).getConstraint();
+		ConstraintClass constraint = ((Constraint) c).getConstraint();
 		Constraint result = new Constraint(getProblem(), 
 				this.getConstraint().impliesTest(constraint));
 		return result;

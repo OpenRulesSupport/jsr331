@@ -91,15 +91,15 @@ public class DefeasibleLogic {
 /*
 	public void run() {
         p.log("=== run ===");
-		Constraint isBird = p.linear(bird, "=", TRUE);
-		Constraint isNotBird = p.linear(bird, "=", FALSE);
-		Constraint isPenguin = p.linear(penguin, "=", TRUE);
-		Constraint isNotPenguin = p.linear(penguin, "=", FALSE);
-		Constraint hasRocket = p.linear(rocket, "=", TRUE);
-		Constraint noRocket = p.linear(rocket, "=", FALSE);
+		ConstraintClass isBird = p.linear(bird, "=", TRUE);
+		ConstraintClass isNotBird = p.linear(bird, "=", FALSE);
+		ConstraintClass isPenguin = p.linear(penguin, "=", TRUE);
+		ConstraintClass isNotPenguin = p.linear(penguin, "=", FALSE);
+		ConstraintClass hasRocket = p.linear(rocket, "=", TRUE);
+		ConstraintClass noRocket = p.linear(rocket, "=", FALSE);
 		
-		Constraint canFly = p.linear(abilityToFly, "=", TRUE);
-		Constraint canNotFly = p.linear(abilityToFly, "=", FALSE);
+		ConstraintClass canFly = p.linear(abilityToFly, "=", TRUE);
+		ConstraintClass canNotFly = p.linear(abilityToFly, "=", FALSE);
 		
 //		p.postIfThen(hasRocket,canFly);
 //		p.postIfThen(noRocket.and(isBird.and(isNotPenguin)), canFly);
@@ -115,7 +115,7 @@ public class DefeasibleLogic {
 		p.log("After posting isBird, isPenguin, hasRocket");
 		p.log(p.getVars());
 
-//		Solver solver = p.getSolver();
+//		SolverClass solver = p.getSolver();
 //		Solution[] solutions = solver.findAllSolutions();
 //		for (Solution solution : solutions)
 //			solution.log();
@@ -124,18 +124,18 @@ public class DefeasibleLogic {
 	
 	public void solve() {
 		p.log("=== solve ===");
-		Constraint isBird = p.linear(bird, "=", TRUE);
-		Constraint isNotBird = p.linear(bird, "=", FALSE);
-		Constraint isPenguin = p.linear(penguin, "=", TRUE);
-		Constraint isNotPenguin = p.linear(penguin, "=", FALSE);
-		Constraint hasRocket = p.linear(rocket, "=", TRUE);
-		Constraint noRocket = p.linear(rocket, "=", FALSE);
+		ConstraintClass isBird = p.linear(bird, "=", TRUE);
+		ConstraintClass isNotBird = p.linear(bird, "=", FALSE);
+		ConstraintClass isPenguin = p.linear(penguin, "=", TRUE);
+		ConstraintClass isNotPenguin = p.linear(penguin, "=", FALSE);
+		ConstraintClass hasRocket = p.linear(rocket, "=", TRUE);
+		ConstraintClass noRocket = p.linear(rocket, "=", FALSE);
 		
-		Constraint canFly = p.linear(abilityToFly, "=", TRUE);
-		Constraint canNotFly = p.linear(abilityToFly, "=", FALSE);
+		ConstraintClass canFly = p.linear(abilityToFly, "=", TRUE);
+		ConstraintClass canNotFly = p.linear(abilityToFly, "=", FALSE);
 		
-		Constraint birdCanFly = isBird.implies(canFly);
-		Constraint penguinCanNotFly = isPenguin.implies(canNotFly);
+		ConstraintClass birdCanFly = isBird.implies(canFly);
+		ConstraintClass penguinCanNotFly = isPenguin.implies(canNotFly);
 		
 		// Hard constraints
 		p.postIfThen(isPenguin, isBird);
@@ -152,7 +152,7 @@ public class DefeasibleLogic {
 		};
 		// Optimization objective
 		Var totalViolations = p.sum(weightVars);
-		totalViolations.setName("Total Constraint Violations");
+		totalViolations.setName("Total ConstraintClass Violations");
 		
 		p.log("After posting all constraints");
 		p.log(p.getVars());
@@ -165,7 +165,7 @@ public class DefeasibleLogic {
 		p.log("After posting test constraints");
 		p.log(p.getVars());
 
-		Solver solver = p.getSolver();
+		SolverClass solver = p.getSolver();
 		Solution solution = solver.findOptimalSolution(totalViolations);
 		if (solution != null) {
 			solution.log();

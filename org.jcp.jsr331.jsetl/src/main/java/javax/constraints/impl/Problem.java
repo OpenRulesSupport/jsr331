@@ -13,16 +13,16 @@ import javax.constraints.impl.constraint.GlobalCardinality;
 import javax.constraints.impl.constraint.Linear;
 import javax.constraints.impl.search.Solver;
 
+import jsetl.ConstraintClass;
+import jsetl.IntLVar;
+import jsetl.MultiInterval;
+
 import org.slf4j.LoggerFactory;
-
-import JSetL.IntLVar;
-import JSetL.MultiInterval;
-
 
 /**
  * This class implement the JSR331 problem
  * extending the common implementation AbstractProblem. The implementation is
- * based on the solver JSetL.
+ * based on the solver jsetl.
  * 
  * <p>The class contains an integer value <code>counter</code> that count the 
  * number of objects created without a name, or temporary variable. This 
@@ -44,12 +44,12 @@ public class Problem extends AbstractProblem {
 	/**
 	 * Problem constraints.
 	 */
-	ArrayList<JSetL.Constraint> constraints;
+	ArrayList<ConstraintClass> constraints;
 	
 	/**
 	 * Auxiliary vars.
 	 */
-	ArrayList<JSetL.IntLVar> auxIntLVar;
+	ArrayList<jsetl.IntLVar> auxIntLVar;
 	
 	/**
 	 * Constants for Relationship Operator.
@@ -82,8 +82,8 @@ public class Problem extends AbstractProblem {
 	public Problem(String name) {
 		super(name);
 		varSets = new ArrayList<VarSet>();
-		constraints = new ArrayList<JSetL.Constraint>();
-		auxIntLVar = new ArrayList<JSetL.IntLVar>();
+		constraints = new ArrayList<ConstraintClass>();
+		auxIntLVar = new ArrayList<jsetl.IntLVar>();
 	}
 	
 	/**
@@ -93,8 +93,8 @@ public class Problem extends AbstractProblem {
 	public Problem() {
 		super("_P"+(counter++));
 		varSets = new ArrayList<VarSet>();
-		constraints = new ArrayList<JSetL.Constraint>();
-		auxIntLVar = new ArrayList<JSetL.IntLVar>();
+		constraints = new ArrayList<ConstraintClass>();
+		auxIntLVar = new ArrayList<jsetl.IntLVar>();
 	}
 
 	/**
@@ -103,7 +103,7 @@ public class Problem extends AbstractProblem {
 	 * @param constraint a constraint
 	 * @return a constraint
 	 */
-	public JSetL.Constraint addJSetLConstraints(JSetL.Constraint constraint) {
+	public ConstraintClass addJSetLConstraints(ConstraintClass constraint) {
 		if (solverReady)
 			((Solver) solver).addJSetLConstraint(constraint);
 		constraints.add(constraint);
@@ -116,10 +116,10 @@ public class Problem extends AbstractProblem {
 	 * 
 	 * @return the array of JSetL constraints bound to <code>this</code> problem.
 	 */
-	public JSetL.Constraint[] getJSetLConstraints() {
+	public ConstraintClass[] getJSetLConstraints() {
 		if (constraints.size() == 0)
 			return null;
-		JSetL.Constraint[] array = new JSetL.Constraint[constraints.size()];
+		ConstraintClass[] array = new ConstraintClass[constraints.size()];
 		for (int i = 0; i < array.length; i++) {
 			array[i] = constraints.get(i);
 		}
@@ -127,7 +127,7 @@ public class Problem extends AbstractProblem {
 	}
 	
 	/**
-	 * Create and post a new Constraint such as: <code> array[indexVar]
+	 * Create and post a new ConstraintClass such as: <code> array[indexVar]
 	 * oper value </code>.
 	 * 
 	 * @param array an array of integers
@@ -152,7 +152,7 @@ public class Problem extends AbstractProblem {
 	}
 
 	/**
-	 * Create and post a new Constraint such as: <code> array[indexVar]
+	 * Create and post a new ConstraintClass such as: <code> array[indexVar]
 	 * oper value </code>.
 	 * 
 	 * @param array an array of integers
@@ -178,7 +178,7 @@ public class Problem extends AbstractProblem {
 	}
 
 	/**
-	 * Create and post a new Constraint such as: <code> vars[indexVar]
+	 * Create and post a new ConstraintClass such as: <code> vars[indexVar]
 	 * oper value </code>.
 	 * 
 	 * @param vars an array of integer variables
@@ -204,7 +204,7 @@ public class Problem extends AbstractProblem {
 	}
 
 	/**
-	 * Create and post a new Constraint such as: <code> vars[indexVar]
+	 * Create and post a new ConstraintClass such as: <code> vars[indexVar]
 	 * oper var </code>.
 	 * 
 	 * @param vars an array of integer variables
@@ -229,7 +229,7 @@ public class Problem extends AbstractProblem {
 	}
 
 	/**
-	 * Build a new Constraint based on the linear expression that is the 
+	 * Build a new ConstraintClass based on the linear expression that is the
 	 * sum of the constrained variables <code>vars[i]</code> multiplied for 
 	 * the integer coefficient <code>array[i]</code>, constrained to the given 
 	 * <code>value</code> with the operator <code>oper</code>.
@@ -260,7 +260,7 @@ public class Problem extends AbstractProblem {
 	}
 
 	/**
-	 * Build a new Constraint based on the linear expression that is the 
+	 * Build a new ConstraintClass based on the linear expression that is the
 	 * sum of the constrained variables <code>vars[i]</code> multiplied for 
 	 * the integer coefficient <code>array[i]</code>, constrained to the given
 	 * integer variable <code>var</code> with the operator <code>oper</code>.
@@ -292,7 +292,7 @@ public class Problem extends AbstractProblem {
 	}
 
 	/**
-	 * Build a new Constraint based on the linear expression that is the
+	 * Build a new ConstraintClass based on the linear expression that is the
 	 * sum of the constrained variables <code>vars[i]</code>, constrained to 
 	 * the given integer <code>value</code> with the operator 
 	 * <code>oper</code>.
@@ -324,7 +324,7 @@ public class Problem extends AbstractProblem {
 	}
 	
 	/**
-	 * Build a new Constraint based on the linear expression that is the 
+	 * Build a new ConstraintClass based on the linear expression that is the
 	 * sum of the constrained variables <code>vars[i]</code>, constrained to 
 	 * the given integer variable <code>var</code> with the operator
 	 * <code>oper</code>.
@@ -354,7 +354,7 @@ public class Problem extends AbstractProblem {
 	}
 
 	/**
-	 * Build a new Constraint that constrain the variable given to
+	 * Build a new ConstraintClass that constrain the variable given to
 	 * the integer <code>value</code> with the operator <code>oper</code>,
 	 * and add it to the problem.
 	 * 
@@ -362,7 +362,7 @@ public class Problem extends AbstractProblem {
 	 * @param value the integer value
 	 * @param oper the string representing the operator 
 	 *  
-	 * @return result the Constraint built.
+	 * @return result the ConstraintClass built.
 	 */
 	public Constraint post(
 			javax.constraints.Var var, 
@@ -384,7 +384,7 @@ public class Problem extends AbstractProblem {
 	 * @param var2 the second integer variable
 	 * @param oper the string representing the operator 
 	 *  
-	 *  @return result the Constraint built.
+	 *  @return result the ConstraintClass built.
 	 */
 	public Constraint post(
 			javax.constraints.Var var1, 
@@ -400,7 +400,7 @@ public class Problem extends AbstractProblem {
 	}
 
 	/**
-	 * Build a new Constraint that constrain the variable given to
+	 * Build a new ConstraintClass that constrain the variable given to
 	 * the integer <code>value</code> with the operator <code>oper</code>,
 	 * without adding it to the problem.
 	 * 
@@ -408,7 +408,7 @@ public class Problem extends AbstractProblem {
 	 * @param value the integer value
 	 * @param oper the string representing the operator 
 	 *  
-	 *  @return result the Constraint built.
+	 *  @return result the ConstraintClass built.
 	 */
 	public Constraint linear(
 			javax.constraints.Var var, 
@@ -421,7 +421,7 @@ public class Problem extends AbstractProblem {
 	}
 
 	/**
-	 * Build a new Constraint that constrain the variable 
+	 * Build a new ConstraintClass that constrain the variable
 	 * <code>var1</code> to the integer variable <code>var2</code> with the 
 	 * operator <code>oper</code>, without adding it to the problem.
 	 * 
@@ -429,7 +429,7 @@ public class Problem extends AbstractProblem {
 	 * @param var2 the second integer variable
 	 * @param oper the string representing the operator 
 	 *  
-	 *  @return result the Constraint built.
+	 *  @return result the ConstraintClass built.
 	 */
 	public Constraint linear(
 			javax.constraints.Var var1, 
@@ -442,7 +442,7 @@ public class Problem extends AbstractProblem {
 	}
 	
 	/**
-	 * Build a new Constraint based on the linear expression that is the 
+	 * Build a new ConstraintClass based on the linear expression that is the
 	 * sum of the constrained variables <code>vars[i]</code> multiplied for 
 	 * the integer coefficient <code>array[i]</code>, constrained to the given 
 	 * <code>value</code> with the operator <code>oper</code>.
@@ -455,7 +455,7 @@ public class Problem extends AbstractProblem {
 	 *  @param oper the string representing the operator 
 	 *  @param value the integer value.
 	 *  
-	 *  @return the Constraint built.
+	 *  @return the ConstraintClass built.
 	 */
 	public Constraint linear(
 			int[] array, 
@@ -471,7 +471,7 @@ public class Problem extends AbstractProblem {
 	}
 	
 	/**
-	 * Build a new Constraint based on the linear expression that is the 
+	 * Build a new ConstraintClass based on the linear expression that is the
 	 * sum of the constrained variables <code>vars[i]</code> multiplied for 
 	 * the integer coefficient <code>array[i]</code>, constrained to the given
 	 * integer variable <code>var</code> with the operator <code>oper</code>.
@@ -484,7 +484,7 @@ public class Problem extends AbstractProblem {
 	 *  @param oper the string representing the operator 
 	 *  @param var the integer variable.
 	 *  
-	 *  @return result the Constraint built.
+	 *  @return result the ConstraintClass built.
 	 */
 	public Constraint linear(int[] array, javax.constraints.Var[] vars, 
 			String oper, javax.constraints.Var var) {
@@ -537,14 +537,14 @@ public class Problem extends AbstractProblem {
 	}
 
 	/**
-	 * Build a new Constraint that constrain all variables in the array
+	 * Build a new ConstraintClass that constrain all variables in the array
 	 * <code>vars</code> to be all different:
 	 * <code>vars[0] != vars[1] != ...</code>
 	 * Than add the constraint to the problem. 
 	 * 
 	 * @param vars the array of integer variable.
 	 * 
-	 * @return result the Constraint built.
+	 * @return result the ConstraintClass built.
 	 */
 	public Constraint postAllDifferent(javax.constraints.Var[] vars) {
 		if (vars.length == 0)
@@ -556,7 +556,7 @@ public class Problem extends AbstractProblem {
 	}
 
 	/**
-	 * Build a new Constraint that bind the cardinality of the variables
+	 * Build a new ConstraintClass that bind the cardinality of the variables
 	 * of the given array of variables <code>vars</code> that satisfy the 
 	 * constraint "oper <code>value</code>" to be equal the given
 	 * integer <code>cardValue</code>. Where <code>oper</code> is a string 
@@ -567,7 +567,7 @@ public class Problem extends AbstractProblem {
 	 * @param oper the string representing the operator 
 	 * @param value the value that the variable must be constrained to.
 	 * 
-	 * @return a new Constraint.
+	 * @return a new ConstraintClass.
 	 */
 	public Constraint postCardinality(
 			javax.constraints.Var[] vars, 
@@ -583,7 +583,7 @@ public class Problem extends AbstractProblem {
 	}
 
 	/**
-	 * Build a new Constraint that bind the cardinality of the variables
+	 * Build a new ConstraintClass that bind the cardinality of the variables
 	 * of the given array of variables <code>vars</code> that satisfy the 
 	 * constraint "oper <code>value</code>" to be equal the given
 	 * integer variable <code>cardValue</code>. Where <code>oper</code> is a 
@@ -594,7 +594,7 @@ public class Problem extends AbstractProblem {
 	 * @param oper the string representing the operator 
 	 * @param value the value that the variable must be constrained to.
 	 * 
-	 * @return a new Constraint.
+	 * @return a new ConstraintClass.
 	 */
 	public Constraint postCardinality(
 			javax.constraints.Var[] vars, 
@@ -612,7 +612,7 @@ public class Problem extends AbstractProblem {
 
 
 	/**
-	 * Build a new Constraint that bind the cardinality of the variables
+	 * Build a new ConstraintClass that bind the cardinality of the variables
 	 * of the given array of variables <code>vars</code> that satisfy the 
 	 * constraint "oper <code>var</code>" to be equal the given
 	 * integer <code>cardValue</code>. Where <code>oper</code> is a string 
@@ -624,7 +624,7 @@ public class Problem extends AbstractProblem {
 	 * @param var the integer variable that the variable must be 
 	 * constrained to.
 	 * 
-	 * @return a new Constraint.
+	 * @return a new ConstraintClass.
 	 */
 	public Constraint postCardinality(
 			javax.constraints.Var[] vars,
@@ -641,7 +641,7 @@ public class Problem extends AbstractProblem {
 	}
 	
 	/**
-	 * Build and post a new Constraint that bind the cardinality of the variables
+	 * Build and post a new ConstraintClass that bind the cardinality of the variables
 	 * of the given array of variables <code>vars</code> that satisfy the 
 	 * constraint "oper <code>var</code>" to be equal the given
 	 * integer variable <code>cardValue</code>. Where <code>oper</code> is a 
@@ -653,7 +653,7 @@ public class Problem extends AbstractProblem {
 	 * @param var the integer variable that the variable must be 
 	 * constrained to.
 	 * 
-	 * @return a new Constraint.
+	 * @return a new ConstraintClass.
 	 */
 	public Constraint postCardinality(
 			javax.constraints.Var[] vars,
@@ -670,7 +670,7 @@ public class Problem extends AbstractProblem {
 	}
 
 	/**
-	 * Build and post a new Constraint such as for each index i the number of time
+	 * Build and post a new ConstraintClass such as for each index i the number of time
 	 * the values <code>value[i]</code> occurs in the array of variables
 	 * <code>vars</code> is exactly <code>cardinalityVars</code>.
 	 * 
@@ -679,7 +679,7 @@ public class Problem extends AbstractProblem {
 	 * @param cardinalityVars the array of integer variables that represent 
 	 * the cardinality the variable must be constrained to.
 	 * 
-	 * @return a new Constraint.
+	 * @return a new ConstraintClass.
 	 */
 	public Constraint postGlobalCardinality(
 			Var[] vars, 
@@ -792,13 +792,13 @@ public class Problem extends AbstractProblem {
 	 */
 	public void post(javax.constraints.Constraint constraint) {
 		add(constraint);
-		addJSetLConstraints((JSetL.Constraint) constraint.getImpl());
+		addJSetLConstraints((ConstraintClass) constraint.getImpl());
 	}
 	
 	/**
-	 * Creates a new Solver bound to the problem.
+	 * Creates a new SolverClass bound to the problem.
 	 * 
-	 * @return an instance of Solver class.
+	 * @return an instance of SolverClass class.
 	 */
 	protected Solver createSolver() {
 		Solver result = new Solver(this);
@@ -910,7 +910,7 @@ public class Problem extends AbstractProblem {
 		IntLVar[] vec = new IntLVar[vars.length];
 		for (int i = 0; i < vars.length; i++)
 			vec[i] = ((Var) vars[i]).getIntLVar();
-		JSetL.Constraint alldiff = IntLVar.allDifferent(vec);
+		ConstraintClass alldiff = ConstraintClass.allDifferent(vec);
 		Constraint result = new Constraint(this,alldiff);
 		addJSetLConstraints(alldiff);
 		addAuxVariables(vars);
@@ -1075,7 +1075,7 @@ public class Problem extends AbstractProblem {
 	 *  
 	 * @param x the IntLVar to be added.
 	 */
-	public void addAuxVariable(JSetL.IntLVar x) {
+	public void addAuxVariable(jsetl.IntLVar x) {
 		javax.constraints.Var[] v = getVars();
 		if (v == null) {
 			if(notContains(x))
@@ -1147,7 +1147,7 @@ public class Problem extends AbstractProblem {
 	public IntLVar[] getAuxIntLVar() {
 		if (auxIntLVar.size() == 0)
 			return null;
-		JSetL.IntLVar[] array = new JSetL.IntLVar[auxIntLVar.size()];
+		jsetl.IntLVar[] array = new jsetl.IntLVar[auxIntLVar.size()];
 		for (int i = 0; i < array.length; i++) {
 			array[i] = auxIntLVar.get(i);
 		}

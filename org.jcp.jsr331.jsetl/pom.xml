@@ -32,6 +32,12 @@
 			<organizationUrl>https://en.unipr.it/</organizationUrl>
 		</developer>
 		<developer>
+			<name>Andrea Fois</name>
+			<email>andreafois96@gmail.com</email>
+			<organization>Department of Mathematics, Physics and Computer Science of the University of Parma</organization>
+			<organizationUrl>https://en.unipr.it/</organizationUrl>
+		</developer>
+		<developer>
 			<name>Federico Bergenti</name>
 			<email>bergenti@ce.unipr.it</email>
 			<organization>Department of Mathematics, Physics and Computer Science of the University of Parma</organization>
@@ -54,12 +60,6 @@
 			<groupId>com.javasolver</groupId>
 			<artifactId>jsr331</artifactId>
 			<version>${jsr331.version}</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.javasolver</groupId>
-			<artifactId>jsr331-jsetl2</artifactId>
-			<version>2.3.0</version>
 		</dependency>
 		
 		<dependency>
@@ -86,7 +86,18 @@
 			<version>${log4j.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.12</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+
 	</dependencies>
 	
 </project>

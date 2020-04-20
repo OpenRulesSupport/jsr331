@@ -7,9 +7,11 @@ import javax.constraints.impl.Constraint;
 import javax.constraints.impl.Problem;
 import javax.constraints.impl.search.Solver;
 
-import JSetL.IntLVar;
-import JSetL.SolverClass;
-import JSetL.lib.GlobalConstraints;
+import jsetl.ConstraintClass;
+import jsetl.IntLVar;
+import jsetl.SolverClass;
+import jsetl.lib.GlobalConstraints;
+//import jsetl.lib.GlobalConstraints;
 
 
 /**
@@ -25,7 +27,7 @@ import JSetL.lib.GlobalConstraints;
 public class Cardinality extends Constraint {
 	
 	/**
-	 * Build a new Constraint that bind the cardinality of the variables
+	 * Build a new ConstraintClass that bind the cardinality of the variables
 	 * of the given array of variables <code>vars</code> that satisfy the 
 	 * constraint "oper <code>var</code>" to be equal the given
 	 * integer <code>cardValue</code>. Where <code>oper</code> is a string 
@@ -41,7 +43,7 @@ public class Cardinality extends Constraint {
 		super(vars[0].getProblem());
 		Problem p = (Problem) vars[0].getProblem();
 		IntLVar value = ((javax.constraints.impl.Var) var).getIntLVar();
-		JSetL.Constraint cardinality;
+		ConstraintClass cardinality;
 		IntLVar v = new IntLVar(p.getFreshName()+"c"+cardValue, cardValue);
 		IntLVar k = new IntLVar(p.getFreshName()+"_card"+cardValue);
 		SolverClass solver = ((Solver) p.getSolver()).getSolverClass();
@@ -49,33 +51,32 @@ public class Cardinality extends Constraint {
 		Vector<IntLVar> varsList = new Vector<IntLVar>();
 		for (int i = 0; i < vars.length; i++)
 			varsList.add((IntLVar) vars[i].getImpl());
-        cardinality = new JSetL.Constraint(
-        		listOps.occurrence(varsList, v, k));
-        JSetL.Constraint linear;
+        cardinality = listOps.occurrence(varsList, v, k);
+        ConstraintClass linear;
 		switch(p.getOperator(oper)) {
 		case 1: {
 			// Case = "equals". 
-			linear = new JSetL.Constraint(cardinality.and(k.eq(value)));
+			linear = cardinality.and(k.eq(value));
 		} break;
 		case 2: {
 			// Case != "not equals".
-			linear = new JSetL.Constraint(cardinality.and(k.neq(value)));
+			linear = cardinality.and(k.neq(value));
 		} break;
 		case 3: {
 			// Case < "less".
-			linear = new JSetL.Constraint(cardinality.and(k.lt(value)));
+			linear = cardinality.and(k.lt(value));
 		}  break;
 		case 4: {
 			// Case <= "less equals".
-			linear = new JSetL.Constraint(cardinality.and(k.le(value)));
+			linear = cardinality.and(k.le(value));
 		}  break;
 		case 5: {
 			// Case > "greater".
-			linear = new JSetL.Constraint(cardinality.and(k.gt(value)));
+			linear = cardinality.and(k.gt(value));
 		}  break;
 		case 6: {
 			// Case >= "greater equals".
-			linear = new JSetL.Constraint(cardinality.and(k.ge(value)));
+			linear = cardinality.and(k.ge(value));
 		}  break;
 		default: throw new UnsupportedOperationException();
 		}
@@ -89,7 +90,7 @@ public class Cardinality extends Constraint {
 	}
 
 	/**
-	 * Build a new Constraint that bind the cardinality of the variables
+	 * Build a new ConstraintClass that bind the cardinality of the variables
 	 * of the given array of variables <code>vars</code> that satisfy the 
 	 * constraint "oper <code>var</code>" to be equal the given
 	 * integer <code>cardValue</code>. Where <code>oper</code> is a string 
@@ -104,7 +105,7 @@ public class Cardinality extends Constraint {
 	public Cardinality(Var[] vars, Var cardValue, String oper, Var var) {
 		super(vars[0].getProblem());
 		Problem p = (Problem) vars[0].getProblem();
-		JSetL.Constraint cardinality;
+		ConstraintClass cardinality;
 		IntLVar v = new IntLVar(((IntLVar)cardValue.getImpl()));
 		IntLVar k = new IntLVar(p.getFreshName());
 		SolverClass solver = ((Solver) p.getSolver()).getSolverClass();
@@ -112,33 +113,33 @@ public class Cardinality extends Constraint {
 		Vector<IntLVar> varsList = new Vector<IntLVar>();
 		for (int i = 0; i < vars.length; i++)
 			varsList.add((IntLVar) vars[i].getImpl());
-        cardinality = new JSetL.Constraint(listOps.occurrence(varsList, v, k));
+        cardinality = listOps.occurrence(varsList, v, k);
 		IntLVar value = ((javax.constraints.impl.Var) var).getIntLVar();
-		JSetL.Constraint linear;
+		ConstraintClass linear;
 		switch(p.getOperator(oper)) {
 		case 1: {
 			// Case = "equals".
-			linear = new JSetL.Constraint(cardinality.and(k.eq(value)));
+			linear = cardinality.and(k.eq(value));
 		} break;
 		case 2: {
 			// Case != "not equals".
-			linear = new JSetL.Constraint(cardinality.and(k.neq(value)));
+			linear = cardinality.and(k.neq(value));
 		} break;
 		case 3: {
 			// Case < "less".
-			linear = new JSetL.Constraint(cardinality.and(k.lt(value)));
+			linear = cardinality.and(k.lt(value));
 		}  break;
 		case 4: {
 			// Case <= "less equals".
-			linear = new JSetL.Constraint(cardinality.and(k.le(value)));
+			linear = cardinality.and(k.le(value));
 		}  break;
 		case 5: {
 			// Case > "greater".
-			linear = new JSetL.Constraint(cardinality.and(k.gt(value)));
+			linear = cardinality.and(k.gt(value));
 		}  break;
 		case 6: {
 			// Case >= "greater equals".
-			linear = new JSetL.Constraint(cardinality.and(k.ge(value)));
+			linear = cardinality.and(k.ge(value));
 		}  break;
 		default: throw new UnsupportedOperationException();
 		}
@@ -152,7 +153,7 @@ public class Cardinality extends Constraint {
 	}
 	
 	/**
-	 * Build a new Constraint that bind the cardinality of the variables
+	 * Build a new ConstraintClass that bind the cardinality of the variables
 	 * of the given array of variables <code>vars</code> that satisfy the 
 	 * constraint "oper <code>value</code>" to be equal the given
 	 * integer <code>cardValue</code>. Where <code>oper</code> is a string 
@@ -167,7 +168,7 @@ public class Cardinality extends Constraint {
 	public Cardinality(Var[] vars, int cardValue, String oper, int value) {
 		super(vars[0].getProblem());
 		Problem p = (Problem) vars[0].getProblem();
-		JSetL.Constraint cardinality; 
+		ConstraintClass cardinality;
 		IntLVar v = new IntLVar(p.getFreshName()+"c"+cardValue, cardValue);
 		IntLVar k = new IntLVar(p.getFreshName()+"_card");
 		
@@ -176,32 +177,32 @@ public class Cardinality extends Constraint {
 		Vector<IntLVar> varsList = new Vector<IntLVar>();
 		for (int i = 0; i < vars.length; i++)
 			varsList.add((IntLVar) vars[i].getImpl());
-        cardinality = new JSetL.Constraint(listOps.occurrence(varsList, v, k));
-        JSetL.Constraint linear;
+        cardinality = listOps.occurrence(varsList, v, k);
+        ConstraintClass linear;
 		switch(p.getOperator(oper)) {
 		case 1: {
 			// Case = "equals".
-			linear = new JSetL.Constraint(cardinality.and(k.eq(value)));
+			linear = cardinality.and(k.eq(value));
 		} break;
 		case 2: {
 			// Case != "not equals".
-			linear = new JSetL.Constraint(cardinality.and(k.neq(value)));
+			linear = cardinality.and(k.neq(value));
 		} break;
 		case 3: {
 			// Case < "less".
-			linear = new JSetL.Constraint(cardinality.and(k.lt(value)));
+			linear = cardinality.and(k.lt(value));
 		}  break;
 		case 4: {
 			// Case <= "less equals".
-			linear = new JSetL.Constraint(cardinality.and(k.le(value)));
+			linear = cardinality.and(k.le(value));
 		}  break;
 		case 5: {
 			// Case > "greater".
-			linear = new JSetL.Constraint(cardinality.and(k.gt(value)));
+			linear = cardinality.and(k.gt(value));
 		}  break;
 		case 6: {
 			// Case >= "greater equals".
-			linear = new JSetL.Constraint(cardinality.and(k.ge(value)));
+			linear = cardinality.and(k.ge(value));
 		}  break;
 		default: throw new UnsupportedOperationException();
 		}
@@ -214,7 +215,7 @@ public class Cardinality extends Constraint {
 	}
 
 	/**
-	 * Build a new Constraint that bind the cardinality of the variables
+	 * Build a new ConstraintClass that bind the cardinality of the variables
 	 * of the given array of variables <code>vars</code> that satisfy the 
 	 * constraint "oper <code>value</code>" to be equal the given
 	 * integer variable <code>cardValue</code>. Where <code>oper</code> is a 
@@ -229,7 +230,7 @@ public class Cardinality extends Constraint {
 	public Cardinality(Var[] vars, Var cardValue, String oper, int value) {
 		super(vars[0].getProblem());
 		Problem p = (Problem) vars[0].getProblem();
-		JSetL.Constraint cardinality;
+		ConstraintClass cardinality;
 		IntLVar v = new IntLVar(((IntLVar)cardValue.getImpl()));
 		IntLVar k = new IntLVar(p.getFreshName()+"_card");
 		SolverClass solver = ((Solver) p.getSolver()).getSolverClass();
@@ -237,32 +238,32 @@ public class Cardinality extends Constraint {
 		Vector<IntLVar> varsList = new Vector<IntLVar>();
 		for (int i = 0; i < vars.length; i++)
 			varsList.add((IntLVar) vars[i].getImpl());
-        cardinality = new JSetL.Constraint(listOps.occurrence(varsList, v, k)); 
-        JSetL.Constraint linear;
+        cardinality = listOps.occurrence(varsList, v, k);
+        ConstraintClass linear;
 		switch(p.getOperator(oper)) {
 		case 1: {
 			// Case = "equals".
-			linear  = new JSetL.Constraint(cardinality.and(k.eq(value)));
+			linear  = cardinality.and(k.eq(value));
 		} break;
 		case 2: {
 			// Case != "not equals".
-			linear = new JSetL.Constraint(cardinality.and(k.neq(value)));
+			linear = cardinality.and(k.neq(value));
 		} break;
 		case 3: {
 			// Case < "less".
-			linear = new JSetL.Constraint(cardinality.and(k.lt(value)));
+			linear = cardinality.and(k.lt(value));
 		}  break;
 		case 4: {
 			// Case <= "less equals".
-			linear = new JSetL.Constraint(cardinality.and(k.le(value)));
+			linear = cardinality.and(k.le(value));
 		}  break;
 		case 5: {
 			// Case > "greater".
-			linear = new JSetL.Constraint(cardinality.and(k.gt(value)));
+			linear = cardinality.and(k.gt(value));
 		}  break;
 		case 6: {
 			// Case >= "greater equals".
-			linear = new JSetL.Constraint(cardinality.and(k.ge(value)));
+			linear = cardinality.and(k.ge(value));
 		}  break;
 		default: throw new UnsupportedOperationException();
 		}
@@ -275,6 +276,6 @@ public class Cardinality extends Constraint {
 	}
 	
 	public void post() {
-		((Problem) getProblem()).add(this);
+		 getProblem().add(this);
 	}
 }

@@ -1,16 +1,16 @@
 package javax.constraints.impl.constraint;
 
-import java.util.ArrayList;
-import java.util.List;
+import jsetl.ConstraintClass;
+import jsetl.IntLVar;
+import jsetl.LList;
+import jsetl.SolverClass;
+import jsetl.lib.LListOps;
 
 import javax.constraints.impl.Constraint;
 import javax.constraints.impl.Problem;
 import javax.constraints.impl.search.Solver;
-
-import JSetL.IntLVar;
-import JSetL.LList;
-import JSetL.SolverClass;
-import JSetL.lib.ListOps;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Implements a global constraint that deal with elements of the arrays of 
@@ -28,7 +28,7 @@ import JSetL.lib.ListOps;
 public class Element extends Constraint {
 
 	/**
-	 * Create a new Constraint such as: <code> array[indexVar]
+	 * Create a new ConstraintClass such as: <code> array[indexVar]
 	 * oper value </code>.
 	 * 
 	 * @param array an array of integers
@@ -48,34 +48,34 @@ public class Element extends Constraint {
 		if (indexVar.getMin() > array.length - 1 || indexVar.getMax() < 0)
 			throw new RuntimeException("elementAt: invalid index variable");
 		Problem p = (Problem) indexVar.getProblem();
-		JSetL.Constraint element;
+		ConstraintClass element;
 		IntLVar z = new IntLVar(p.getFreshName());
 		IntLVar index = (IntLVar) indexVar.getImpl();
 		SolverClass solver = ((Solver) p.getSolver()).getSolverClass();
-		ListOps listOps = new ListOps(solver);
+		LListOps listOps = new LListOps(solver);
 		List<Integer> list = new ArrayList<Integer>();
 		for (int i = 0; i < array.length; i++)
 			list.add(i,array[i]);
 		LList l = new LList("array", list);
-		element = new JSetL.Constraint(listOps.ithElem(l, index, z));
-		JSetL.Constraint linear = null;
+		element = listOps.ithElem(l, index, z);
+		ConstraintClass linear = null;
         if (oper.equals("=")) {
-        	linear = new JSetL.Constraint(element.and(z.eq(value)));
+        	linear = element.and(z.eq(value));
         }
         if (oper.equals("!=")) {
-        	linear = new JSetL.Constraint(element.and(z.neq(value)));
+        	linear = element.and(z.neq(value));
         }
         if (oper.equals(">")) {
-        	linear = new JSetL.Constraint(element.and(z.gt(value)));
+        	linear = element.and(z.gt(value));
         }
         if (oper.equals(">=")) {
-        	linear = new JSetL.Constraint(element.and(z.ge(value)));
+        	linear = element.and(z.ge(value));
         }
         if (oper.equals("<")) {
-        	linear = new JSetL.Constraint(element.and(z.lt(value)));
+        	linear = element.and(z.lt(value));
         }
         if (oper.equals("<=")) {
-        	linear = new JSetL.Constraint(element.and(z.le(value)));
+        	linear = element.and(z.le(value));
         }
         setImpl(linear);
         p.addAuxVariable(z);
@@ -83,7 +83,7 @@ public class Element extends Constraint {
 	}
 	
 	/**
-	 * Create a new Constraint such as: <code> array[indexVar]
+	 * Create a new ConstraintClass such as: <code> array[indexVar]
 	 * oper value </code>.
 	 * 
 	 * @param array an array of integers
@@ -103,40 +103,34 @@ public class Element extends Constraint {
 		if (indexVar.getMin() > array.length - 1 || indexVar.getMax() < 0)
 			throw new RuntimeException("elementAt: invalid index variable");
 		Problem p = (Problem) var.getProblem();
-		JSetL.Constraint element;
+		ConstraintClass element;
 		IntLVar z = new IntLVar(p.getFreshName());
 		IntLVar index = (IntLVar) indexVar.getImpl();
 		SolverClass solver = ((Solver) p.getSolver()).getSolverClass();
-		ListOps listOps = new ListOps(solver);
+		LListOps listOps = new LListOps(solver);
 		List<Integer> list = new ArrayList<Integer>();
 		for (int i = 0; i < array.length; i++)
 			list.add(i,array[i]);
 		LList l = new LList("array", list);
-		element = new JSetL.Constraint(listOps.ithElem(l, index, z));
-		JSetL.Constraint linear = null;
+		element = listOps.ithElem(l, index, z);
+		ConstraintClass linear = null;
         if (oper.equals("=")) {
-        	linear = new JSetL.Constraint(
-        			element.and(z.eq((IntLVar)var.getImpl())));
+        	linear = element.and(z.eq((IntLVar)var.getImpl()));
         }
         if (oper.equals("!=")) {
-        	linear = new JSetL.Constraint(
-        			element.and(z.neq((IntLVar)var.getImpl())));
+        	linear = element.and(z.neq((IntLVar)var.getImpl()));
         }
         if (oper.equals(">")) {
-        	linear = new JSetL.Constraint(
-        			element.and(z.gt((IntLVar)var.getImpl())));
+        	linear = element.and(z.gt((IntLVar)var.getImpl()));
         }
         if (oper.equals(">=")) {
-        	linear = new JSetL.Constraint(
-        			element.and(z.ge((IntLVar)var.getImpl())));
+        	linear = element.and(z.ge((IntLVar)var.getImpl()));
         }
         if (oper.equals("<")) {
-        	linear = new JSetL.Constraint(
-        			element.and(z.lt((IntLVar)var.getImpl())));
+        	linear = element.and(z.lt((IntLVar)var.getImpl()));
         }
         if (oper.equals("<=")) {
-        	linear = new JSetL.Constraint(
-        			element.and(z.le((IntLVar)var.getImpl())));
+        	linear = element.and(z.le((IntLVar)var.getImpl()));
         }
         setImpl(linear);
         p.addAuxVariable(z);
@@ -145,7 +139,7 @@ public class Element extends Constraint {
 	}
 	
 	/**
-	 * Create a new Constraint such as: <code> vars[indexVar]
+	 * Create a new ConstraintClass such as: <code> vars[indexVar]
 	 * oper value </code>.
 	 * 
 	 * @param vars an array of integer variables
@@ -165,35 +159,35 @@ public class Element extends Constraint {
 		if (indexVar.getMin() > vars.length - 1 || indexVar.getMax() < 0)
 			throw new RuntimeException("elementAt: invalid index variable");
 		Problem p = (Problem) indexVar.getProblem();
-		JSetL.Constraint element;
+		ConstraintClass element;
 		IntLVar z = new IntLVar(p.getFreshName());
 		IntLVar index = (IntLVar) indexVar.getImpl();
 		SolverClass solver = ((Solver) p.getSolver()).getSolverClass();
-		ListOps listOps = new ListOps(solver);
+		LListOps listOps = new LListOps(solver);
 		List<IntLVar> list = 
 			new ArrayList<IntLVar>();
 		for (int i = 0; i < vars.length; i++)
 			list.add(i,(IntLVar) vars[i].getImpl());
 		LList l = new LList("array", list);
-		element = new JSetL.Constraint(listOps.ithElem(l, index, z));
-		JSetL.Constraint linear = null;
+		element = listOps.ithElem(l, index, z);
+		ConstraintClass linear = null;
 		if (oper.equals("=")) {
-			linear = new JSetL.Constraint(element.and(z.eq(value)));
+			linear = element.and(z.eq(value));
         }
         if (oper.equals("!=")) {
-        	linear = new JSetL.Constraint(element.and(z.neq(value)));
+        	linear = element.and(z.neq(value));
         }
         if (oper.equals(">")) {
-        	linear = new JSetL.Constraint(element.and(z.gt(value)));
+        	linear = element.and(z.gt(value));
         }
         if (oper.equals(">=")) {
-        	linear = new JSetL.Constraint(element.and(z.ge(value)));
+        	linear = element.and(z.ge(value));
         }
         if (oper.equals("<")) {
-        	linear = new JSetL.Constraint(element.and(z.lt(value)));
+        	linear = element.and(z.lt(value));
         }
         if (oper.equals("<=")) {
-        	linear = new JSetL.Constraint(element.and(z.le(value)));
+        	linear = element.and(z.le(value));
         }
         setImpl(linear);
         p.addAuxVariable(z);
@@ -202,7 +196,7 @@ public class Element extends Constraint {
 	}
 	
 	/**
-	 * Create a new Constraint such as: <code> vars[indexVar]
+	 * Create a new ConstraintClass such as: <code> vars[indexVar]
 	 * oper var </code>.
 	 * 
 	 * @param vars an array of integer variables
@@ -222,41 +216,35 @@ public class Element extends Constraint {
 		if (indexVar.getMin() > vars.length - 1 || indexVar.getMax() < 0)
 			throw new RuntimeException("elementAt: invalid index variable");
 		Problem p = (Problem) indexVar.getProblem();
-		JSetL.Constraint element = new JSetL.Constraint();
+		ConstraintClass element = new ConstraintClass();
 		IntLVar z = new IntLVar(p.getFreshName());
 		IntLVar index = (IntLVar) indexVar.getImpl();
 		SolverClass solver = ((Solver) p.getSolver()).getSolverClass();
-		ListOps listOps = new ListOps(solver);
+		LListOps listOps = new LListOps(solver);
 		List<IntLVar> list = 
 			new ArrayList<IntLVar>();
 		for (int i = 0; i < vars.length; i++)
 			list.add(i,(IntLVar) vars[i].getImpl());
 		LList l = new LList("array", list);
 		element.and(listOps.ithElem(l, index, z));
-		JSetL.Constraint linear = null;
+		ConstraintClass linear = null;
 		if (oper.equals("=")) {
-			linear = new JSetL.Constraint(
-					element.and(z.eq((IntLVar)var.getImpl())));
+			linear = element.and(z.eq((IntLVar)var.getImpl()));
         }
         if (oper.equals("!=")) {
-        	linear = new JSetL.Constraint(
-        			element.and(z.neq((IntLVar)var.getImpl())));
+        	linear = element.and(z.neq((IntLVar)var.getImpl()));
         }
         if (oper.equals(">")) {
-        	linear = new JSetL.Constraint(
-        			element.and(z.gt((IntLVar)var.getImpl())));
+        	linear = element.and(z.gt((IntLVar)var.getImpl()));
         }
         if (oper.equals(">=")) {
-        	linear = new JSetL.Constraint(
-        			element.and(z.ge((IntLVar)var.getImpl())));
+        	linear = element.and(z.ge((IntLVar)var.getImpl()));
         }
         if (oper.equals("<")) {
-        	linear = new JSetL.Constraint(
-        			element.and(z.lt((IntLVar)var.getImpl())));
+        	linear = element.and(z.lt((IntLVar)var.getImpl()));
         }
         if (oper.equals("<=")) {
-        	linear = new JSetL.Constraint(
-        			element.and(z.le((IntLVar)var.getImpl())));
+        	linear = element.and(z.le((IntLVar)var.getImpl()));
         }
         setImpl(linear);
         p.addAuxVariable(z);
@@ -266,7 +254,7 @@ public class Element extends Constraint {
 	}
 	
 	public void post() {
-		((Problem) getProblem()).post(this);
+		 getProblem().post(this);
 	}
 	
 }

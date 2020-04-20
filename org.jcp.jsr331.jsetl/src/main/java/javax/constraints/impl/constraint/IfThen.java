@@ -13,12 +13,12 @@ import javax.constraints.impl.Problem;
 public class IfThen extends Constraint {
 
 	/**
-	 * Returns a Constraint that states the implication: c1 more or equals to c2.
+	 * Returns a ConstraintClass that states the implication: c1 more or equals to c2.
 	 * In other words, if c1 is satisfied, then constraint c2
 	 * should also be satisfied.
 	 * 
-	 * @param c1 the antecedent Constraint in the implication
-	 * @param c2 the consequent Constraint in the implication.
+	 * @param c1 the antecedent ConstraintClass in the implication
+	 * @param c2 the consequent ConstraintClass in the implication.
 	 *
 	 */
 	public IfThen(Constraint c1, Constraint c2) {

@@ -3,13 +3,13 @@ package javax.constraints.impl;
 import javax.constraints.extra.PropagationEvent;
 import javax.constraints.extra.Propagator;
 
-import JSetL.IntLVar;
-import JSetL.MultiInterval;
+import jsetl.IntLVar;
+import jsetl.MultiInterval;
 
 /**
  * This class implement the JSR331 constrained integer variable "Var",
  * extending the common implementation AbstractVar. The implementation is
- * based on the solver JSetL.
+ * based on the solver jsetl.
  * 
  * @author Fabio Biselli
  */
