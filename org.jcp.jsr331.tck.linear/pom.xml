@@ -6,12 +6,10 @@
 	<parent>
 		<groupId>com.javasolver</groupId>
 		<artifactId>jsr331-parent</artifactId>
-		<version>2.0.2</version>
+		<version>2.0.3</version>
 	</parent>
 	
-	<groupId>com.javasolver</groupId>
 	<artifactId>jsr331-tck-linear</artifactId>
-	<version>${jsr331.version}</version>
 	<name>JSR331 TCK Linear</name>
 	<description>This is a JSR331 JSR331 Technology Compatibility Kit for linear solvers</description>
 	<url>https://github.com/OpenRulesSupport/jsr331</url>
@@ -85,6 +83,16 @@
 				<dependency>
 					<groupId>com.javasolver</groupId>
 					<artifactId>jsr331-coin</artifactId>
+					<version>${jsr331.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>lpsolve</id>
+			<dependencies>
+				<dependency>
+					<groupId>com.javasolver</groupId>
+					<artifactId>jsr331-lpsolve</artifactId>
 					<version>${jsr331.version}</version>
 				</dependency>
 			</dependencies>
