@@ -113,6 +113,16 @@ public interface Problem {
 	 * @return the VarReal variable added to the problem.
 	 */
 	public VarReal add(VarReal var);
+	
+	/**
+     * Gives the VarReal variable "var" a new name "name", adds it to the problem,
+     * and returns the newly added var.
+     * 
+     * @param name the new name for var.
+     * @param var the variable to add to the problem.
+     * @return the VarReal variable added to the problem.
+     */
+    public VarReal add(String name, VarReal var);
 
 //	/**
 //	 * Creates a Var variable based on the symbolicExpression such as "x*y-z", adds this
