@@ -200,7 +200,7 @@ public class Problem extends AbstractProblem {
 		return post(coefs,vars1,oper,value);
 	}
 	
-//	@Override
+	@Override
 	public Constraint post(VarReal[] vars, String oper, double value) {
 		double[] coefs = new double[vars.length];
 		for (int i = 0; i < vars.length; i++) {
@@ -208,6 +208,11 @@ public class Problem extends AbstractProblem {
 		}
 		return post(coefs,vars,oper,value); 
 	}	
+	
+//	@Override
+    public Constraint post(VarReal[] vars, String oper, int value) {
+        return post(vars,oper,(double)value); 
+    }   
 	
 
 //	@Override
@@ -224,11 +229,16 @@ public class Problem extends AbstractProblem {
 		return post(coefs,vars1,oper,value);
 	}
 	
-//	@Override
+	@Override
 	public Constraint post(VarReal var, String oper, double value) {
 		VarReal[] vars = { var };
 		return post(vars,oper,value);
 	}
+	
+	@Override
+    public Constraint post(VarReal var, String oper, int value) {
+        return post(var,oper,(double)value);
+    }
 
 	@Override
 	public Constraint post(VarReal var1, String oper, VarReal var2) {
@@ -247,6 +257,8 @@ public class Problem extends AbstractProblem {
 	public Constraint post(Var var1, String oper, VarReal var2) {
 		return post(var1.asReal(),oper,var2);
 	}
+	
+
 	
 	/**
 	 * Creates and posts a constraint: var "oper" scalProd(arrayOfValues,arrayOfVariables)
