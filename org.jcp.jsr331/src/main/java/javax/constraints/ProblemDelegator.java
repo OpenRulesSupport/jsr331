@@ -19,7 +19,11 @@ public abstract class ProblemDelegator implements Problem {
 		return problem.getAPIVersion();
 	}
 
-	public String getImplVersion() {
+	public VarReal add(String name, VarReal var) {
+        return problem.add(name, var);
+    }
+
+    public String getImplVersion() {
 		return problem.getImplVersion();
 	}
 
