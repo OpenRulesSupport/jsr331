@@ -42,7 +42,11 @@ public abstract class ScheduleDelegator implements	Schedule {
 			return schedule.getAPIVersion();
 		}
 
-		public int getDuration() {
+		public VarReal add(String name, VarReal var) {
+            return schedule.add(name, var);
+        }
+
+        public int getDuration() {
 			return schedule.getDuration();
 		}
 
