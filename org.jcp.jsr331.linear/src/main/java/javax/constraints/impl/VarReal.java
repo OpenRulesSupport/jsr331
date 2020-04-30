@@ -72,5 +72,13 @@ public class VarReal extends AbstractVarReal implements javax.constraints.VarRea
 	public void setUsedInConstraints(boolean usedInConstraints) {
 		this.usedInConstraints = usedInConstraints;
 	}
+	
+	@Override
+    public javax.constraints.VarReal multiply(double value) {
+        Problem p = getProblem();
+        VarReal prod = (VarReal)p.scalProd(new double[]{value}, new VarReal[]{this});
+        //p.add(name,prod);
+        return prod;
+    }
 
 }
