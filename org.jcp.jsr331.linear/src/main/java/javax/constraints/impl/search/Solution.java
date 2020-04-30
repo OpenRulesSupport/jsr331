@@ -104,6 +104,11 @@ public class Solution implements javax.constraints.Solution {
 		//throw new RuntimeException("variable " + name + " is not bound");
 	}
 	
+	public void setValue(String name, int value) {
+        int i = getIndexOfInt(name);
+        intResults[i].value = value;
+    }
+	
 //	public String getValueString(String name){
 //		VarString varString = getProblem().getVarString(name);
 //		int i = getValue(name);
@@ -127,6 +132,11 @@ public class Solution implements javax.constraints.Solution {
 			return ((realResults[i].min + realResults[i].max) / 2);
 		//throw new RuntimeException("real variable " + name + " is not bound");
 	}
+	
+	public void setValueReal(String name, double value) {
+        int i = getIndexOfReal(name);
+        realResults[i]. value = value;
+    }
 	
 	public Set<Integer> getValueSet(String name) {
 		throw new RuntimeException("Linear solver does not deal with set variables");
