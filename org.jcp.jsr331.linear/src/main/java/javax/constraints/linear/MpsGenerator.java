@@ -72,12 +72,13 @@ public class MpsGenerator {
 			}
 
 		VarReal[] varReals = problem.getVarReals();
-		if (varReals != null)
+		if (varReals != null) {
 			for (int i = 0; i < varReals.length; i++) {
 				if (varReals[i].getName().length() > maxNameSize) {
 					maxNameSize = varReals[i].getName().length();
 				}
 			}
+		}
 
 		double precision = 1; //0.00000001;
 		if (isIntegerVariablesOnly())

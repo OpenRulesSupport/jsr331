@@ -1,7 +1,6 @@
 package javax.constraints.linear;
 
 import java.io.File;
-import java.io.InputStream;
 import java.util.HashMap;
 
 import javax.constraints.Objective;
@@ -11,7 +10,6 @@ import javax.constraints.Var;
 import javax.constraints.VarReal;
 import javax.constraints.impl.AbstractConstrainedVariable;
 import javax.constraints.impl.search.Solver;
-import javax.management.RuntimeErrorException;
 
 abstract public class LinearSolver extends Solver {
 	
