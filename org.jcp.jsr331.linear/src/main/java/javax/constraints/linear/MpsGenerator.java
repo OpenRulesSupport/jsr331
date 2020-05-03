@@ -53,7 +53,7 @@ public class MpsGenerator {
 		this.objectiveDirection = objectiveDirection;
 		this.objectiveVar = objectiveVar;
 		
-		System.out.println("MpsGenerator for file " + file.getPath());
+		System.out.println("MpsGenerator for file " + file.getAbsolutePath());
 
 		setIntegerVariablesOnly(false);
 

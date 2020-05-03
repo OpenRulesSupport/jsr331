@@ -1,7 +1,10 @@
 package javax.constraints.linear;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.HashMap;
+import java.util.UUID;
 
 import javax.constraints.Objective;
 import javax.constraints.OptimizationStrategy;
@@ -16,6 +19,8 @@ abstract public class LinearSolver extends Solver {
 	public static String LP_SOLVER_EXE = "LP_SOLVER_EXE";
 	public static String LP_SOLVER_OPTIONS = "LP_SOLVER_OPTIONS";
 	public static String OUTPUT_FOLDER = "results/";
+	
+	private String correlationID = UUID.randomUUID().toString();
 	
 	public LinearSolver() {  
 		super();
@@ -79,21 +84,27 @@ abstract public class LinearSolver extends Solver {
 		return file;
 	}
 	
-	public String getInputFilename() {
-	    File file = new File("./");
-	    File outFolder = new File(file.getParentFile(),OUTPUT_FOLDER);
+	public String uniqueName(String ext) {
+	    File file = new File("/tmp");
+        File outFolder = new File(file,OUTPUT_FOLDER);
         if ( !outFolder.exists() ) {
-            outFolder.mkdir();
+            outFolder.mkdirs();
         }
-		return OUTPUT_FOLDER + getProblem().getName() + ".mps";
+	    return new File(outFolder,getProblem().getName()+"_"+correlationID + ext).getAbsolutePath();
+	}
+	
+	public String getInputFilename() {
+	    
+		//return OUTPUT_FOLDER, + uniqueName() + ".mps";
+        return uniqueName(".mps");
 	}
 	
 	public String getOutputFilename() {
-		return OUTPUT_FOLDER + getProblem().getName() + ".sol";
+		return uniqueName(".sol");
 	}
 	
 	public String getLogFilename() {
-		return getOutputFilename() + ".log"; 
+		return uniqueName(".log"); 
 	}
 	
 	protected String preProcess() {
@@ -146,6 +157,12 @@ abstract public class LinearSolver extends Solver {
 //		else
 //			return null;
 		
+		try {
+            FileReader reader = new FileReader(getOutputFilename());
+        } catch (FileNotFoundException e1) {
+            log("This solver cannot find a solution");
+            return null;
+        }
 		HashMap<String,String> results = readResults();
 		if (results != null) {
 			javax.constraints.impl.Problem problem = (javax.constraints.impl.Problem) getProblem();

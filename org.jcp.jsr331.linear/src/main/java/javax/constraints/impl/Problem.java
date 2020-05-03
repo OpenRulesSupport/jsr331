@@ -585,6 +585,7 @@ public class Problem extends AbstractProblem {
 		javax.constraints.impl.VarReal var = new javax.constraints.impl.VarReal(this,name);
 		var.setMin(min);
 		var.setMax(max);
+		add(name,var);
 		return var;
 	}
 	
