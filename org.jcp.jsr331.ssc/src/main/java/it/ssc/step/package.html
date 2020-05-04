@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<ul>
+
+<li>Le operazioni di scrittura dei dataset saranno di tipo classico, senza utilizzo di NIO. 
+ Anche le operazioni di lettura da file di input in formato testo, saranno di tipo classico. 
+ Solo le operazioni di lettura di dataset in formato nativo FMT sarammo di tipo NIO con la 
+ mappatura dei file in memoria. VEDERE BENE SCAMBIO DI DATI TRA FILE , PARTE NIO.   <br><br>
+</li>
+
+
+<li>
+ <strong>Operazioni di lettura fa file e scrittura su dataset FMT:</strong> <br>
+Oggetti in gioco : <br>
+<ul>
+<li>ParserInformatString (mettere i link alle classi): effettua il parsing della stringa di input, 
+    e crea una lista di 
+    oggetti che implementano InputSubDichiarationInterface: InputSubDichiarationVar per le 
+    dichiarazioni del tipo di variabili e InputSubDichiarationAction per quelle relative alle 
+    azioni<br>
+</li>
+<li>InputSubDichiarationVar: recepisce le informazioni di una singola dichiarazione di input 
+    relativa alle variabili. Per ogni oggetto di questo tipo vengono valorizzati i seguenti attributi: <br>
+
+	<br> String name_var; 
+	<br> int start_column;
+	<br> int end_column;
+	<br> boolean is_column_format; //se il formato di lettura e' a colonna
+	<br> int length_var;
+	<br> Class type_var;
+	<br> SETTING_MISSING manager_missing_value;
+	<br> ParserDateTime.DATE_FORMAT formate_data;  //formato di lettura della data 
+	<br>
+	
+Questa classe permette anche la costruzione di un oggetto InputDichiarationInfo(lista), partendo 
+dalla lista di oggetti InputSubDichiarationAction.
+
+<br><br>
+</li>
+
+<li>InputDichiarationInfo: Questa classe memorizza la lista di InputSubDichiarationInterface 
+e, a partere da questa,  crea, memorizzandola ,la lista dei FieldInterface. <br>
+</li>
+
+<li>
+FieldInterface; l'oggetto che implementa questa classe ha questi attributi, presi dal
+InputSubDichiarationVar :
+
+		<br> Class type_fiels;
+		<br> int lenght_field;
+		<br> String name_field;
+</li>
+
+<li>ReadData: Ha la responsabilita' di puntare alla sorgente di input per il passo di datastep e
+        permettere la lettura dei dati da questo. Deve assimilare le opzioni di lettura (classe OptionRead),
+        e la responsabilita della creazione del PDV </li>
+	<li>TrasformationData</li>
+	<li>WriteData</li>
+	<li>OptionsRead</li>
+	<li>OptionsTrasformation</li>
+	<li>OptionsWrite</li>
+	
+	
+</ul>
+
+
+<br><br>
+</li>
+
+<li> 
+
+
+   <strong>Tipo dato STRING:</strong> <br>
+   Per la gestione delle Stringhe  si opera in questo modo.  I dati di tipo String da db o 
+   da file di tipo testo verranno letti come stringhe. Essi dovranno avere una dimensione massima 
+   che e' quella dichiarata dal db o nel tracciato record di lettura del file. Nel PDV verranno 
+   memorizzati come StringBuffer con una specifica capacita massima che e' quella della dimensione 
+   finale del campo'. Su questo Stringbuffer potranno essere effettuate 
+   le operazioni di confronto nelle fasi di where o nella fase di trasformazione. 
+   <br> 
+   
+   In fase di scrittura la stringa dovra sempre avere la stessa lunghezza, che e' quella del campo. 
+   Quindi se in fase di input la stringa ha minori dimensioni rispetto alla grandezza del campo di 
+   output,  occorre aggiungere tanti n spazi finali in piu'.  Questo solo nell'operazione di 
+   salvataggio su dataset FMT, se la lunghezza della stringa e' inferiore' allora occorre aggiungere
+   tutti spazi alla destra della stringa.  La chiamata per  salvare la stringa sara : 
+   <br><br>
+   dataOutput.writeChars(String)  //La string deve essere  delle giusta lunghezza
+   <br><br>
+   Comportamento di ORACLE sui CHAR(128) (campi a lunghezza fissa). Se inserisco nel campo il valore 
+   "pippo" , quando faccio la select lo trovo sia con "pippo" che con "pippo    ".
+   Oracle fa una trim a destra. Nel caso metto " pappo" , lo trovo solo con " pappo" o " pappo   " , 
+   ma lo spazio davanti c'e' sempre. Per cui vanno aggiunti dei campi vuoti a destra nel momento in cui 
+   scriviamo il dato sul dataset FMT. 
+ 
+     
+   <br><br>
+   </li>
+   <li>
+    <strong>Tipo dato VARSTRING:</strong> <br>
+    In questo caso il record non avra lunghezza fissa e la stringa memorizzata occupera' i byte
+    di effettiva lunghezza della stringa originaria. Nel dataset il dato e' salvato con il 
+    metodo wirteUTF(); 
+   </li>
+
+
+</ul>  
+</body>
+</html>

@@ -1,0 +1,187 @@
+http://plato.la.asu.edu/bench.html
+http://lpsolve.sourceforge.net/5.1/formulate.htm
+
+
+Versione 2.0.0r6, implementato pivoting parallelo. Tolta la table_exended. Sostituita integralmente con TBEX 
+Versione 2.1.0r1, come versione precedente , per pubblicazione
+Versione 2.1.0r2, (introdotto controlli su TBEX_i[in]!=0.0  dentro il metodo pivoting), 
+                   introdotto pivoting parallelo parte inglese. 
+                   Deprecato Costruttore Constraint(double[],type,Double)
+                   
+Versione 2.1.0r3,  Salvataggio della matrice A su disco.  Aperte sessioni interne ( Sempre) 
+Versione 2.1.0r4,  Ottimizzazione metodo loggerAccurancy. Introdotti metodi final. 
+Versione 2.1.0r5,  B&B parallelo. 
+Versione 2.1.0r6,  Aggiunta seconda versione LP parallelo (versione b). 
+Versione 2.1.0r7,  Tolto clone sulla fo.clone (), spostata la creazione della matrice A per ultima
+                   in modo da cancellare gli internal costraint.
+                   Commentato 
+Versione 2.1.0r8, Serializzazione plproblem, sostituita deletecolunmAux con versione 2. 
+                  Introdotta la clearColumnAux a posto della delete 
+                  (in questa o nella versione successiva, non ricordo) 
+
+Versione 2.1.0r9, Utilizzo la stessa matrice TBEX per fase 1 e fase 2. MEtto NaN le colonne 
+                  relative alle variabili ausiliarie. 
+
+Versione 2.1.1r0, Migliorare il formato a disequazioni
+Versione 3.0.0r0, Passato dal null a NaN
+Versione 3.0.0r1, continuo sviluppo formato a disequazioni
+Versione 3.0.0r2,  sviluppo formato a disequazioni con lettura da file. OK
+
+Versione 3.0.0r4 Ottimizzo milp :
+				  Tolto clone.Ai=(double[])Ai.clone(); dal clone() degli internarCostraint
+				  
+Versione 3.0.0r5 Introdotta la soluzione Ammissibile FEASIBLE
+
+Versione 3.0.0r6, introdotto fix per baco stackException. Rimesso clone. 
+
+Versione 3.0.1r1, Tolto la parte della tolleranza strana.  
+                  
+Versione 3.0.1r2, Inseriti i ConsType nuovi (OPTIMAL,FEASIBLE,ETC).                    
+
+
+Cose da fare : 1) Inserire metodo per recuperare errori 
+               2) Idea tolleranza strana da non buttare, e l'altra che considera come upper il valore rilassato. 
+               3) Inserire metodi per settare tutte le variabili int o bin (formato matriciale) 
+              
+               ATTENZIONE A QUELLO LETTO : sSE SI HA UNA SOLUZIONE AMMISSIBILE PER PADRE, 
+               Se abbiamo risolto il rilassamento del nodo padre con il metodo del simplesso,
+abbiamo a disposizione una soluzione ottima di base per il nodo padre. Tramite una
+variante del metodo del simplesso chiamata "metodo del simplesso duale", si puO ottenere
+in modo molto efficiente la soluzione ottima di un problema a cui E' stato aggiunto un
+vincolo, a partire dalla soluzione ottima prima dell'aggiunta del vincolo stesso. Questo
+E' uno dei fattori implementativi che accelera l'esplorazione dei vari nodi dell'albero di
+Branch-and-Bound
+               
+
+(mix integer )
+https://optimization.mccormick.northwestern.edu/index.php/Mixed-integer_cuts
+
+
+
+
+a) Trovare piu soluzioni e memorizzarle
+a) verificare effettivo funzionamento di deleteRowAux
+0) SOS Special order set - > (lpsolver)
+1) E' possibile implementare CUDA ? 
+3) Fare in modo da mettere sul log le caratteristicge del problema : n. Variabli, n. vincoli, target , N. variabili intere
+   N. Variabili semicontinue. 
+4) Fare in modo di poter salvare un problema in diversi formati. 
+5) Leggere da diversi formati (MPS)
+
+10) C'e qualche controllo sulle variabili per vedere che non siano negative ??? (Fine fase 2 prima della traslazione sull'originale)
+
+11) Simplesso rivisto : Un ulteriore vantaggio proviene dalla riduzione degli errori di arrotondamento cumulativi che sono 
+    evitati calcolando cj -zj dai dati originali con aj aggiornato direttamente (ROGA.pdf).
+    
+12) Eliminare aree di work piu' vecchie di n giorni.     
+
+
+
+
+Gestione della soluzione Duale 
+
+Partendo dalla matrice iniziale, la matrice standard differisce per i seguenti motivi :
+a) la presenza di variabili con Lower bound determina una traslazione della variabile costruendo una nuova 
+   variabile data da X' = x - lower. Cio determina un ricalcolo dei coefficienti B ai quali viane aggiuta la quantita 
+   lower. Inoltre se le variabili sono libere (lower = -inf ), si intruducono due nuove variabili X' - X''  per simulare
+   la variabile libera. Per questo motivo il numero delle variabili presenti nella matrice originale, e il numero 
+   di variabili presenti nella tabella standardizzata possono differire. Come possono differire i valori bi. 
+   Occorre trovare un metodo per risalire alla soluzione duale riconducibile al problema iniziale. Si puo ? 
+   Occorre inoltre anche ricordare che alla fine dalla fase 1, alcune righe potrebbero essere eliminate in quanto 
+   ridondanti.  
+   
+   Primale                      Duale 
+   
+   Max							Min
+   Vincoli 	<=					Variabili
+   Variabili					Vincoli  >=
+   termini noti					Costo
+   Costo 						Termini Noti
+   Xi libera					vincolo =
+   Vincolo = 					Ui libera
+   Lower resettato ? 			??????
+   
+   
+   
+
+######################################################
+######################################################
+
+
+C
+valentina.cacchiani@unibo.it
+
+
+
+
+D
+mauro.dellamico@unimore.it
+
+
+
+G
+manlio.gaudioso@dimes.unical.it
+
+
+L
+giampaolo.liuzzi@iasi.cnr.it
+lucidi@dis.uniroma1.it
+
+
+--------------------------------------------------------
+
+Aprile-Giugno 2000, segue presso il Dipartimento di Informatica e Sistemistica “Antonio
+Ruberti” dell’Universit`a di Roma “La Sapienza”, il corso di Ottimizzazione
+Continua comprendente i seguenti insegnamenti: Condizioni di Ottimalita (Prof.
+Stefano Lucidi), Metodi di Ottimizzazione non Vincolata (Dr. Massimo Roma),
+Metodi per Problemi ai Minimi Quadrati (Ing. Marco Sciandrone), Metodi di Ottimizzazione
+Vincolata (Prof. Gianni Di Pillo), Ottimizzazione Globale (Ing. Laura
+Palagi).
+
+Michele Conforti
+Universita di Padova, Italy
+e-mail: conforti@math.unipd.it
+
+Giacomo Zambelli
+Universita' di Padova, Italy
+e-mail: giacomo@math.unipd.it
+
+
+####################################################
+####################################################
+
+
+Version 3.0 of SSC is available.  
+The java library for solving linear programming problems, simple and easy to incorporate into other software ......
+
+http://www.ssclab.org/
+
+regards !
+
+
+####################################################
+BRANCH & CUT DUALE
+####################################################
+
+In che modo implementare sul Branch &Bound il simplesso duale per ottimizzare la procedura ? 
+Ricordarsi che sono presenti le variabili semicontinue. 
+
+Se tutte le variabili sono intere e' possibile applicare il metodo dei tagli di Gomory. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

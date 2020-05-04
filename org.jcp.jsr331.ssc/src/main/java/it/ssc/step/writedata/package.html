@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<strong>Scrittura dei datasets</strong><br><br>
+Per la scrittura dei datasets occorre definire il funzionamento dei seguenti aspetti :
+<ul>
+
+<li><strong>Scrittura dei dati</strong>
+La scrittura dei dati avviene invocando i metodi della classe DataOutput. Il nome del dataset e' il nome
+assegnato e che viene passato dalla classe WriteDataToFMT. Il file scritto nella libreria assegnata 
+avra nome nome_ds.fmt1data  OCCORRE GESTIRE SOVRASCRITTURA O APPEND. NEL CASO INVECE CHE SI RISCRIVA 
+SULLO STESSO DATASETS OCCORRE APPOGGIARLO DA QUALCHE PARTE e poi sostituirlo al vecchio. 
+</li>
+
+<li> <strong>Scrittura dei metadati</strong>
+La scrittura dei metadati avviene memorizzando in un file a parte le seguenti informazioni 
+recuperabili dagli oggetti gia presenti nell'applicazione. Queste metainformazioni verranno scritte 
+in un file separato con nome uguale al nome del dataset e con estensione nome_ds.fmt1mtdt. Possiamo 
+pensare allo stesso criterio di memorizzazione di metainformazioni utilizzato in sintesi per il memoreport.
+Un hashmap con la seguente ramificazione : 
+
+osservazioni -> valore
+data_creazione -> valore
+lista_campi -> hashmap 
+lista_campi -> hashmap -> nome_campo ->  hasamap -> type -> valore
+lista_campi -> hashmap -> nome_campo ->  hasamap -> lenght -> valore
+lista_campi -> hashmap -> nome_campo ->  hasamap -> label -> valore
+lista_campi -> hashmap -> nome_campo ->  hasamap -> formato -> valore
+
+
+<ul><li>Numero di osservazioni. 
+Nei metadati occorre definire il numero di osservazioni che possiede il dataset. Questo valore e'
+recuperabile dalla classe WriteDataToFMT, in quanto e' la stessa classe che scrive, record per record, 
+il dataset.
+</li>
+
+<li>Informazioni sui campi.
+Le informazioni sui campi, sono rispettivamente : <br>
+Nome campo<br>
+Tipo di dato<br>
+Lunghezza (se di tipo string)<br>
+Label (opzionale)<br>
+Formato di visualizzazione (opzionale)<br><br>
+Il nome del dataset non viene memorizzzato in quanto essi sono rinominabili. 
+
+</li>
+</ul>
+
+</li>
+</ul>  
+</body>
+</html>
