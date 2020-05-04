@@ -56,6 +56,22 @@
 	
 	<profiles>
 		<profile>
+			<id>Sugar</id>
+			<activation>
+				<property>
+					<name>solver</name>
+					<value>Sugar</value>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.javasolver</groupId>
+					<artifactId>jsr331-sugar</artifactId>
+					<version>${jsr331.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
 			<id>Constrainer</id>
 			<activation>
 				<property>
@@ -100,22 +116,6 @@
 				<dependency>
 					<groupId>com.javasolver</groupId>
 					<artifactId>jsr331-jsetl</artifactId>
-					<version>${jsr331.version}</version>
-				</dependency>
-			</dependencies>
-		</profile>
-		<profile>
-			<id>Sugar</id>
-			<activation>
-				<property>
-					<name>solver</name>
-					<value>Sugar</value>
-				</property>
-			</activation>
-			<dependencies>
-				<dependency>
-					<groupId>com.javasolver</groupId>
-					<artifactId>jsr331-sugar</artifactId>
 					<version>${jsr331.version}</version>
 				</dependency>
 			</dependencies>
