@@ -14,9 +14,9 @@ import jsetl.ConstraintClass;
 public class Constraint extends AbstractConstraint {
 	
 	/**
-	 * Build a new ConstraintClass.
+	 * Build a new Constraint.
 	 * 
-	 * @param problem the problem which the constraint is related.
+	 * @param problem the problem which the constraint is related to.
 	 */
 	public Constraint(javax.constraints.Problem problem) {
 		super(problem);
@@ -24,8 +24,8 @@ public class Constraint extends AbstractConstraint {
 	}
 
 	/**
-	 * Build a new ConstraintClass from a instance of the class ConstraintClass of
-	 * JSetL solver.
+	 * Build a new Constraint from an instance of the class ConstraintClass of
+	 * JSetL.
 	 * 
 	 * @param problem the problem which the constraint is related
 	 * @param constraint the JSetL constraint.
@@ -80,7 +80,7 @@ public class Constraint extends AbstractConstraint {
 	 */
 	public Constraint and(javax.constraints.Constraint c) {
 		ConstraintClass constraint = ((Constraint) c).getConstraint();
-		Constraint result = new Constraint(getProblem(), 
+		Constraint result = new Constraint(getProblem(),
 				this.getConstraint().and(constraint));
 		return result;
 	}

@@ -15,7 +15,7 @@ package org.jcp.jsr331.hakan;
   * - ECLiPSE: http://www.hakank.org/eclipse/least_diff2.ecl
   * - Gecode/R: http://www.hakank.org/gecode_r/least_diff.rb
   * - Gecode: http://www.hakank.org/gecode/least_diff.cpp
-  * - Google CP Solver: http://www.hakank.org/google_or_tools/least_diff.py
+  * - Google CP SolverClass: http://www.hakank.org/google_or_tools/least_diff.py
   * - JaCoP: http://www.hakank.org/JaCoP/LeastDiff.java
   * - MiniZinc: http://www.hakank.org/minizinc/least_diff.mzn
   * - SICStus: http://www.hakank.org/sicstus/least_diff.pl

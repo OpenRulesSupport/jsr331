@@ -20,7 +20,7 @@ public class Test2 {
 		p.post(y,">",5); 			// Y > 5
 		p.post(cost,">",2);		    // cost > 2
 		p.post(cost,"<=",25);    	// cost <= 25
-		p.log("After Constraint Posting");
+		p.log("After ConstraintClass Posting");
 		p.log(p.getVars());
 		
 		//cost.eq(30).p.post();

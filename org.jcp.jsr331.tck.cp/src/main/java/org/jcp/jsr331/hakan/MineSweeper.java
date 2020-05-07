@@ -27,7 +27,7 @@ package org.jcp.jsr331.hakan;
  * - Comet: http://www.hakank.org/comet/minesweeper.co
  * - ECLiPSE: http://www.hakank.org/eclipse/minesweeper.ecl
  * - Gecode/R: http://www.hakank.org/gecode_r/minesweeper.rb
- * - Google CP Solver: http://www.hakank.org/google_or_tools/minesweeper.py
+ * - Google CP SolverClass: http://www.hakank.org/google_or_tools/minesweeper.py
  * - JaCoP: http://www.hakank.org/JaCoP/MineSweeper.java
  * - MiniZinc: http://www.hakank.org/minizinc/minesweeper.mzn
  * - SICStus: http://www.hakank.org/sicstus/minesweeper.pl

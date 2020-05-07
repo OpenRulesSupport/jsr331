@@ -350,12 +350,12 @@ public class Problem extends AbstractProblem {
      **************************************************************************/
 
     /**
-     * Creates (without posting) a new Constraint stating that all of the elements of
+     * Creates (without posting) a new ConstraintClass stating that all of the elements of
      * the array of variables "vars" must take different values from each other.
      *
      * @param vars
      *            the array of Vars which must all take different values.
-     * @return the all-different Constraint on the array of Vars.
+     * @return the all-different ConstraintClass on the array of Vars.
      */
     @Override
     public javax.constraints.Constraint allDiff(javax.constraints.Var[] vars) {
@@ -466,7 +466,7 @@ public class Problem extends AbstractProblem {
 
     /**
      * Returns the constant constraint that always will fail when it is posted or executed.
-     * @return the False Constraint
+     * @return the False ConstraintClass
      */
     @Override
     public Constraint getFalseConstraint() {
@@ -479,7 +479,7 @@ public class Problem extends AbstractProblem {
 
     /**
      * Returns the constant constraint that always succeeds when it is posted or executed.
-     * @return the True Constraint
+     * @return the True ConstraintClass
      */
     @Override
     public Constraint getTrueConstraint() {

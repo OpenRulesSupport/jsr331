@@ -16,7 +16,7 @@ public class TestTraceVar {
 		Var z = p.variable("Z", 0, 10);
 		Var cost = x.multiply(3).multiply(y).minus(z.multiply(4)); // Cost=3XY-4Z
 		p.add("cost", cost);
-		p.log("Before Constraint Posting");
+		p.log("Before ConstraintClass Posting");
 		p.log(p.getVars());
 
 		vars = new Var[] { x, y, z };
@@ -34,7 +34,7 @@ public class TestTraceVar {
 			System.exit(-1);
 		}
 
-		p.log("After Constraint Posting");
+		p.log("After ConstraintClass Posting");
 		p.log(p.getVars());
 	}
 

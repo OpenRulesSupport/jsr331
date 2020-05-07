@@ -10,7 +10,7 @@ package org.jcp.jsr331.hakan;
   *    http://www.hakank.org/minizinc/debruijn_binary.mzn
   *
   * and is explained somewhat in the swedish blog post
-  * "Constraint Programming: Minizinc, Gecode/flatzinc och ECLiPSe/minizinc"
+  * "ConstraintClass Programming: Minizinc, Gecode/flatzinc och ECLiPSe/minizinc"
   * http://www.hakank.org/webblogg/archives/001209.html
   *
   * Related programs:
@@ -33,7 +33,7 @@ package org.jcp.jsr331.hakan;
   * - ECLiPSE: http://www.hakank.org/eclipse/debruijn.ecl
   * - Gecode/R: http://www.hakank.org/gecode_r/debruijn_binary.rb
   * - Gecode: http://www.hakank.org/gecode/debruijn.cpp
-  * - Google CP Solver: http://www.hakank.org/google_or_tools/debruijn_binary.py
+  * - Google CP SolverClass: http://www.hakank.org/google_or_tools/debruijn_binary.py
   * - JaCoP: http://www.hakank.org/JaCoP/DeBruijn.java
   * - MiniZinc: http://www.hakank.org/minizinc/debruijn_binary.mzn
   * - SICStus: http://www.hakank.org/sicstus/debruijn.pl
@@ -44,10 +44,10 @@ package org.jcp.jsr331.hakan;
   * Also see http://www.hakank.org/jsr_331/
   *
   */
-//import javax.constraints.Solver.Objective;
-// import javax.constraints.Solver.ProblemState;
+//import javax.constraints.SolverClass.Objective;
+// import javax.constraints.SolverClass.ProblemState;
 // import javax.constraints.Problem;
-// import javax.constraints.Constraint;
+// import javax.constraints.ConstraintClass;
 // import javax.constraints.ProblemFactory;
 import javax.constraints.*;
 

@@ -8,6 +8,7 @@ import jsetl.exception.NotDefConstraintException;
 import jsetl.ris.cache.CacheKey;
 import jsetl.ris.cache.RisExpansionCache;
 
+import javax.constraints.impl.search.Solver;
 import java.util.*;
 import java.util.function.Consumer;
 
@@ -366,23 +367,49 @@ public class SolverClass {
      */
     public @NotNull Integer minimize(@NotNull IntLVar intLVar) {
         Objects.requireNonNull(intLVar);
-
         findNotInitializedLogicalObjectsInStore();
+
+        int min = Integer.MIN_VALUE;
+        ConstraintClass cCopy = this.getConstraint().clone();
+        SolverClass localSolver = new SolverClass();
+        localSolver.add(cCopy);
         ChoicePoint backupChoicePoint = this.backtracking.createBackupChoicePoint();
-        Integer min = java.lang.Integer.MAX_VALUE;
-        do {
-            ConstraintClass cCopy = this.getConstraint().clone();
-            SolverClass localSolver = new SolverClass();
-            localSolver.add(cCopy.and(intLVar.lt(min)));
-            boolean b = localSolver.check(cCopy);
-            if (!b) break;
-            if (intLVar.getValue() < min)
-                min = intLVar.getValue();
-            localSolver.backtracking.restoreFromChoicePoint(backupChoicePoint);
-        } while(true);
+
+        if(!localSolver.check())
+            return null;
+        int max = intLVar.getValue();
+        int result = Integer.MIN_VALUE;
+        while(max>min) {
+
+            int medium = (max + min)/2;
+            //System.out.println("MIN: " + min + " MAX: " + max + " MEDIUM: " + medium + " VALUE: "+ intLVar.getValue());
+
+            //try lower half
+            this.backtracking.restoreFromChoicePoint(backupChoicePoint);
+            ConstraintClass cCopy1 = this.getConstraint().clone();
+            localSolver.clearStore();
+            localSolver.add(cCopy1.and(intLVar.le(medium)).and(intLVar.ge(min)));
+            localSolver.add(intLVar.label());
+            if (localSolver.check()) {
+                //System.out.println("SOLUTION FOUND!");
+                max = intLVar.getValue()-1;
+                result = intLVar.getValue();
+            } else {
+                //System.out.println("SOLUTION NOT FOUND!");
+                min = medium + 1;
+            }
+
+        }
+
+        this.backtracking.restoreFromChoicePoint(backupChoicePoint);
+        localSolver.clearStore();
+        ConstraintClass cCopy2 = this.getConstraint().clone();
+        localSolver.add(cCopy2.and(intLVar.eq(result)));
+        localSolver.check();
+
         LObject.getNotInitializedLObjectsArrayList().clear();
-        assert min != null;
-        return min;
+
+        return result;
     }
 
     /**
@@ -393,25 +420,51 @@ public class SolverClass {
      */
     public @NotNull Integer maximize(@NotNull IntLVar intLVar) {
         Objects.requireNonNull(intLVar);
-
-        Integer max = java.lang.Integer.MIN_VALUE/2 + 1;
         findNotInitializedLogicalObjectsInStore();
+
+        ConstraintClass cCopy = this.getConstraint().clone();
+        SolverClass localSolver = new SolverClass();
+        localSolver.add(cCopy);
         ChoicePoint backupChoicePoint = this.backtracking.createBackupChoicePoint();
 
-        do {
-            ConstraintClass cCopy = this.getConstraint().clone();
-            SolverClass localSolver = new SolverClass();
-            localSolver.add(cCopy.and(intLVar.gt(max)));
-            boolean b = localSolver.check(cCopy);
-            if (!b) break;
-            if (intLVar.getValue() > max)
-                max = intLVar.getValue();
-            localSolver.backtracking.restoreFromChoicePoint(backupChoicePoint);
-        } while(true);
+        if(!localSolver.check())
+            return null;
+        int min = intLVar.getValue();
+
+        int max = Integer.MAX_VALUE/2;
+        int result = Integer.MAX_VALUE/2;
+        while(max>min) {
+
+            int medium = (max + min)/2;
+            //System.out.println("MIN: " + min + " MAX: " + max + " MEDIUM: " + medium + " VALUE: "+ intLVar.getValue());
+
+            //try upper half
+            this.backtracking.restoreFromChoicePoint(backupChoicePoint);
+            ConstraintClass cCopy1 = this.getConstraint().clone();
+            localSolver.clearStore();
+            localSolver.add(cCopy1.and(intLVar.ge(medium)).and(intLVar.le(max)));
+            localSolver.add(intLVar.label());
+            if (localSolver.check()) {
+                //System.out.println("SOLUTION FOUND! " + intLVar.getValue());
+
+                min = intLVar.getValue()+1;
+                result = intLVar.getValue();
+            } else {
+                //System.out.println("SOLUTION NOT FOUND!");
+                max = medium - 1;
+            }
+
+        }
+
+        this.backtracking.restoreFromChoicePoint(backupChoicePoint);
+        localSolver.clearStore();
+        ConstraintClass cCopy2 = this.getConstraint().clone();
+        localSolver.add(cCopy2.and(intLVar.eq(result)));
+        localSolver.check();
+
         LObject.getNotInitializedLObjectsArrayList().clear();
 
-        assert max != null;
-        return max;
+        return result;
     }
 
     /**

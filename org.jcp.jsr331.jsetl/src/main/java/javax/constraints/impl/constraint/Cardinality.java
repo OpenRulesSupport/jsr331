@@ -11,11 +11,9 @@ import jsetl.ConstraintClass;
 import jsetl.IntLVar;
 import jsetl.SolverClass;
 import jsetl.lib.GlobalConstraints;
-//import jsetl.lib.GlobalConstraints;
-
 
 /**
- * Implements a global constraint that deal with cardinalities of the arrays of 
+ * Implements a global constraint that deals with cardinalities of the arrays of
  * constrained variables. The ``cardinality variable'' is a constrained variable 
  * that is equal to the number of those elements in the given array that are bound 
  * to a given value. The class represents a linear constraint that involve the 

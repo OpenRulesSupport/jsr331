@@ -50,7 +50,7 @@ package org.jcp.jsr331.samples;
 
  What is the minimum total number of bins required to contain the components?
  
- Note. This problem was initially described in the ILOG Solver User Manual
+ Note. This problem was initially described in the ILOG SolverClass User Manual
 
  ------------------------------------------------------------ */
 

@@ -9,8 +9,8 @@ import jsetl.IntLVar;
 
 
 /**
- * Implements the popular constraint know as "allDifferent" that 
- * bound all variables of an array of integer variables to take different values
+ * Implements the constraint known as "allDifferent" that
+ * bounds all variables of an array of integer variables to take different values
  * from each other.
  * 
  * @author Fabio Biselli
@@ -19,7 +19,7 @@ import jsetl.IntLVar;
 public class AllDifferent extends Constraint {
 
 	/**
-	 * Build a new Contraint that constrain all variables in the array
+	 * Build a new Constraint that constrain all variables in the array
 	 * vars to be all different:
 	 * 
 	 * vars[0] != vars[1] != ...
@@ -37,6 +37,7 @@ public class AllDifferent extends Constraint {
 		ConstraintClass alldiff = ConstraintClass.allDifferent(vec);
 		setImpl(alldiff);
 		((javax.constraints.impl.Problem) getProblem()).addAuxVariables(vars);
+
 	}
 	
 	public void post() {

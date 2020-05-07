@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Implements a global constraint that deal with elements of the arrays of 
  * constrained variables. If a constrained integer variable <code>index</code> 
- * serve as an index within an array <code>V</code>, than the result of 
+ * serve as an index within an array <code>V</code>, then the result of
  * <code>V[index]</code> will be another constrainted variable. 
  * 
  * <p>This was introduced since Java does not allow overloading ot the operator 
@@ -54,7 +54,7 @@ public class Element extends Constraint {
 		SolverClass solver = ((Solver) p.getSolver()).getSolverClass();
 		LListOps listOps = new LListOps(solver);
 		List<Integer> list = new ArrayList<Integer>();
-		for (int i = 0; i < array.length; i++)
+		for (int i = 0; i < array.length; ++i)
 			list.add(i,array[i]);
 		LList l = new LList("array", list);
 		element = listOps.ithElem(l, index, z);

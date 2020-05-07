@@ -10,9 +10,9 @@ import jp.kobe_u.sugar.SugarException;
 import jp.kobe_u.sugar.expression.Expression;
 
 /**
- * An implementation of the Constraint "AllDifferent"
+ * An implementation of the ConstraintClass "AllDifferent"
  * 
- * This is one of the most popular Constraint that
+ * This is one of the most popular ConstraintClass that
  * states that all of the elements within the array of variables "vars" 
  * must take different values from each other.
  * The RI should overload the method "defineNativeImpl" and 

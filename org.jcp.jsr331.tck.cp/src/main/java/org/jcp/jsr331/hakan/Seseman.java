@@ -20,7 +20,7 @@ package org.jcp.jsr331.hakan;
  *
  * For more information about this problem:
  * - Swedish blog post with a fuller description of the problem:
- *   "Sesemans matematiska klosterproblem samt lite Constraint Logic Programming"
+ *   "Sesemans matematiska klosterproblem samt lite ConstraintClass Logic Programming"
  *   http://www.hakank.org/webblogg/archives/001084.html
  *
  * Compare with the following models:
@@ -29,7 +29,7 @@ package org.jcp.jsr331.hakan;
  * - ECLiPSE: http://www.hakank.org/eclipse/seseman.ecl
  * - Gecode: http://www.hakank.org/gecode/seseman.cpp
  * - Gecode/R: http://www.hakank.org/gecode_r/seseman.rb
- * - Google CP Solver: http://www.hakank.org/google_or_tools/seseman.py
+ * - Google CP SolverClass: http://www.hakank.org/google_or_tools/seseman.py
  * - JaCoP: http://www.hakank.org/JaCoP/Seseman.java
  * - MiniZinc: http://www.hakank.org/minizinc/seseman.mzn
  * - SICStus: http://www.hakank.org/sicstus/seseman.pl

@@ -32,7 +32,7 @@ package org.jcp.jsr331.hakan;
  * - Gecode/R: http://www.hakank.org/gecode_r/all_interval.rb
  * - ECLiPSe : http://www.hakank.org/eclipse/all_interval.ecl
  * - SICStus : http://www.hakank.org/sicstus/all_interval.pl
- * - Google CP Solver: http://hakank.org/google_or_tools/all_interval.py
+ * - Google CP SolverClass: http://hakank.org/google_or_tools/all_interval.py
  *
  * Model created by Hakan Kjellerstrand (hakank@bonetmail.com)
  * Also see http://www.hakank.org/jsr_331/

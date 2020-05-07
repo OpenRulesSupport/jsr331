@@ -15,11 +15,11 @@ import jsetl.SetLVar;
  * implementation BasicSolution. The implementation is base on the solver 
  * jsetl. 
  * 
- * <p>To support the implementation of set variables a new array of
+ * To support the implementation of set variables a new array of
  * ResultSet as result was added to the class, like the BasicSolution do for
  * integer and real variables.
  * 
- * <p>ResultSet is a new class that represent the set result of the
+ * ResultSet is a new class that represent the set result of the
  * solution.
  * 
  * @author Fabio Biselli

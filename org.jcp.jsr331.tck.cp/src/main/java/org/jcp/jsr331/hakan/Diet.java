@@ -37,7 +37,7 @@ package org.jcp.jsr331.hakan;
  * - ECLiPSE: http://www.hakank.org/eclipse/diet.ecl
  * - Gecode/R: http://www.hakank.org/gecode_r/diet.rb
  * - Gecode: http://www.hakank.org/gecode/diet.cpp
- * - Google CP Solver: http://www.hakank.org/google_or_tools/diet1.py
+ * - Google CP SolverClass: http://www.hakank.org/google_or_tools/diet1.py
  * - JaCoP: http://www.hakank.org/JaCoP/Diet.java
  * - MiniZinc: http://www.hakank.org/minizinc/diet1.mzn
  * - SICStus: http://www.hakank.org/sicstus/diet1.pl

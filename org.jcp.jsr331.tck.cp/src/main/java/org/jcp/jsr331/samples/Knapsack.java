@@ -55,7 +55,7 @@ public class Knapsack {
 		Var B = p.variable("B", 0, 40);
 		Var[] vars = new Var[] { G, S, B };
 
-		// === Post Constraint(s)
+		// === Post ConstraintClass(s)
 		// 1. 1G + 2S + 3B <= 25
 		Var scalProd = p.scalProd(itemSize, vars);
 		p.post(scalProd, "<=", knapsackSize);
@@ -68,7 +68,7 @@ public class Knapsack {
 
 	// === Problem Resolution
 	public void solve() {
-		// --- Get the Solver
+		// --- Get the SolverClass
 		Solver solver = p.getSolver();
 
 		// --- Find the Solution

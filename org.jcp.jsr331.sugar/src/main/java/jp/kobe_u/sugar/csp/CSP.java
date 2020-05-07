@@ -15,7 +15,7 @@ import jp.kobe_u.sugar.converter.Converter;
 import jp.kobe_u.sugar.expression.Expression;
 
 /**
- * A class for CSP (Constraint Satisfaction Problems).
+ * A class for CSP (ConstraintClass Satisfaction Problems).
  * A CSP consists of IntegerVariables, BooleanVariables, Clauses, and
  * an optional objective IntegerVariable with specific objective (MINIMIZE or MAXIMIZE).
  * @author Naoyuki Tamura (tamura@kobe-u.ac.jp)

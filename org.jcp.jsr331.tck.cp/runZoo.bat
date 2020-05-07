@@ -1,5 +1,5 @@
 set CLASS_NAME=org.jcp.jsr331.samples.Zoo
-set SOLVER=Constrainer
+ set SOLVER=Constrainer
 rem set SOLVER=Choco
 rem set SOLVER=JSetL
 @echo off

@@ -4,7 +4,7 @@ package org.jcp.jsr331.hakan;
   *
   * Global constraint circuit (decomposition) in JSR-331.
   *
-  * See Global Constraint Catalog
+  * See Global ConstraintClass Catalog
   * http://www.emn.fr/z-info/sdemasse/gccat/Ccircuit.html
   *
   * This model was created by Hakan Kjellerstrand (hakank@bonetmail.com)

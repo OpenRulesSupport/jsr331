@@ -27,7 +27,7 @@ public class Linear extends Constraint {
 	OPER_LT = 3, OPER_LEQ = 4, OPER_GT = 5, OPER_GEQ = 6;
 
 	/**
-	 * Build a new ConstraintClass that constrain the variable
+	 * Build a new ConstraintClass that constrains the variable
 	 * <code>var1</code> to the integer variable <code>var2</code> with the 
 	 * operator <code>oper</code>.
 	 * 
@@ -95,32 +95,32 @@ public class Linear extends Constraint {
 		super(var.getProblem());
 		IntLVar v = ((Var) var).getIntLVar();
 		switch(getOperator(oper)) {
-		case 1: {
+		case OPER_EQ: {
 			// Case = "equals".
 			ConstraintClass constraint = v.eq(value);
 			setImpl(constraint);
 		} break;
-		case 2: {
+		case OPER_NEQ: {
 			// Case != "not equals".
 			ConstraintClass constraint = v.neq(value);
 			setImpl(constraint);
 		} break;
-		case 3: {
+		case OPER_LT: {
 			// Case < "less".
 			ConstraintClass constraint = v.lt(value);
 			setImpl(constraint);
 		} break;
-		case 4: {
+		case OPER_LEQ: {
 			// Case <= "less equals".
 			ConstraintClass constraint = v.le(value);
 			setImpl(constraint);
 		} break;
-		case 5: {
+		case OPER_GT: {
 			// Case > "greater".
 			ConstraintClass constraint = v.gt(value);
 			setImpl(constraint);
 		} break;
-		case 6: {
+		case OPER_GEQ: {
 			// Case >= "greater equals".
 			ConstraintClass constraint = v.ge(value);
 			setImpl(constraint);
@@ -169,32 +169,32 @@ public class Linear extends Constraint {
 		}
 		IntLVar v = intVars[vars.length-1];
 		switch(getOperator(oper)) {
-		case 1: {
+		case OPER_EQ: {
 			// Case = "equals".
 			ConstraintClass constraint = v.eq(value);
 			setImpl(constraint);
 		} break;
-		case 2: {
+		case OPER_NEQ: {
 			// Case != "not equals".
 			ConstraintClass constraint = v.neq(value);
 			setImpl(constraint);
 		} break;
-		case 3: {
+		case OPER_LT: {
 			// Case < "less".
 			ConstraintClass constraint = v.lt(value);
 			setImpl(constraint);
 		} break;
-		case 4: {
+		case OPER_LEQ: {
 			// Case <= "less equals".
 			ConstraintClass constraint = v.le(value);
 			setImpl(constraint);
 		} break;
-		case 5: {
+		case OPER_GT: {
 			// Case > "greater".
 			ConstraintClass constraint = v.gt(value);
 			setImpl(constraint);
 		} break;
-		case 6: {
+		case OPER_GEQ: {
 			// Case >= "greater equals".
 			ConstraintClass constraint = v.ge(value);
 			setImpl(constraint);

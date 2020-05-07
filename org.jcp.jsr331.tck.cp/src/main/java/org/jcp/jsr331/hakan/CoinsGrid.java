@@ -31,7 +31,7 @@ package org.jcp.jsr331.hakan;
  * - ECLiPSE: http://www.hakank.org/eclipse/coins_grid.ecl
  * - Gecode: http://www.hakank.org/gecode/coins_grid.cpp
  * - Gecode/R: http://www.hakank.org/gecode_r/coins_grid.rb
- * - Google CP Solver: http://www.hakank.org/google_or_tools/coins_grid.py
+ * - Google CP SolverClass: http://www.hakank.org/google_or_tools/coins_grid.py
  * - JaCoP: http://www.hakank.org/JaCoP/CoinsGrid.java
  * - MiniZinc: http://www.hakank.org/minizinc/coins_grid.mzn
  * - SICStus: http://www.hakank.org/sicstus/coins_grid.pl

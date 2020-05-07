@@ -8,7 +8,7 @@ import javax.constraints.impl.Constraint;
 import jp.kobe_u.sugar.expression.Expression;
 
 /**
- * An implementation of the Constraint "Element"
+ * An implementation of the ConstraintClass "Element"
  */
 public class Element extends Constraint {
     private static final String name = "Element";

@@ -35,7 +35,7 @@ public class Test0 {
 		
 	public void solve() {	// PROBLEM RESOLUTION
 		p.log("=== Find One solution:");
-		Solver solver = p.getSolver(); //new Solver(partition);
+		Solver solver = p.getSolver(); //new SolverClass(partition);
 		Solution solution = solver.findSolution(); 
 		if (solution != null)
 			solution.log();

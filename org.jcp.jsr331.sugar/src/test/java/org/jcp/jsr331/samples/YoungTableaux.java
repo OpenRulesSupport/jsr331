@@ -37,7 +37,7 @@ package org.jcp.jsr331.samples;
  * - Comet: http://www.hakank.org/comet/young_tableaux.co
  * - ECLiPSE: http://www.hakank.org/eclipse/young_tableaux.ecl
  * - Gecode: http://www.hakank.org/gecode/young_tableaux.cpp
- * - Google CP Solver: http://www.hakank.org/google_or_tools/young_tableaux.py
+ * - Google CP SolverClass: http://www.hakank.org/google_or_tools/young_tableaux.py
  * - JaCoP: http://www.hakank.org/JaCoP/YoungTableaux.java
  * - MiniZinc: http://www.hakank.org/minizinc/young_tableaux.mzn
  * - SICStus: http://www.hakank.org/sicstus/young_tableaux.pl

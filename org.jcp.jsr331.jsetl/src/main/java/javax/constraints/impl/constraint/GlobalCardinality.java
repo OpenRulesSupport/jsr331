@@ -82,7 +82,7 @@ public class GlobalCardinality extends Constraint {
 		ConstraintClass r = new ConstraintClass();
 		for (int i = 0; i < values.length; i++) {
 			results[i] = new Cardinality(vars, values[i], "=", card[i]);
-			r.and((ConstraintClass) results[i].getImpl());
+			r = r.and((ConstraintClass) results[i].getImpl());
 		}
 		Constraint result = new Constraint(p,r);
 		setImpl(result.getImpl());

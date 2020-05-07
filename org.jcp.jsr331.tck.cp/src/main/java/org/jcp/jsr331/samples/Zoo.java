@@ -28,7 +28,7 @@ public class Zoo {
 	public void define() {
 
 		Var numberOf30Buses = csp.variable("Number Of 30 seats buses", 0, 30);
-		Var numberOf40Buses = csp.variable("Number Of 40 seats buses", 0, 30);
+		Var numberOf40Buses = csp.variable("Number Of 40 seats buses", 0, 40);
 		int[] seats = new int[] { 30, 40 };
 		Var[] vars = new Var[] { numberOf30Buses, numberOf40Buses };
 		Var totalNumberOfSeats = csp.scalProd("Total number of seats", seats, vars);
@@ -41,7 +41,8 @@ public class Zoo {
 	public void solve() { 
         csp.log("=== SOLVE:");
         Solver solver = csp.getSolver(); 
-        Solution solution = solver.findOptimalSolution(Objective.MINIMIZE, csp.getVar("Total cost")); 
+        Solution solution = solver.findOptimalSolution(Objective.MINIMIZE, csp.getVar("Total cost"));
+        //Solution solution = solver.findSolution();
         if (solution != null)
             solution.log();
         else

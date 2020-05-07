@@ -35,7 +35,7 @@ package org.jcp.jsr331.hakan;
  * - Essence : http://www.hakank.org/tailor/send_more_money_any_base.eprime
  * - Gecode  : http://www.hakank.org/gecode/send_more_money_any_base.cpp
  * - Gecode/R: http://www.hakank.org/gecode_r/send_more_money_any_base.rb
- * - Google CP Solver: http://hakank.org/google_or_tools/send_more_money_any_base.py
+ * - Google CP SolverClass: http://hakank.org/google_or_tools/send_more_money_any_base.py
  * - MiniZinc: http://www.hakank.org/minizinc/send_more_money_any_base.mzn
  * - SICStus: http://www.hakank.org/sicstus/send_more_money_any_base.pl
  * - Zinc: http://www.hakank.org/minizinc/send_more_money_any_base.zinc

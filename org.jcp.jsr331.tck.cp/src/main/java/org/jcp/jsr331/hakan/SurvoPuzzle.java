@@ -36,7 +36,7 @@ package org.jcp.jsr331.hakan;
  *  - ECLiPSE: http://www.hakank.org/eclipse/survo_puzzle.ecl
  *  - Gecode: http://www.hakank.org/gecode/survo_puzzle.cpp
  *  - Gecode/R: http://www.hakank.org/gecode_r/survo_puzzle.rb
- *  - Google CP Solver: http://www.hakank.org/google_or_tools/survo_puzzle.py
+ *  - Google CP SolverClass: http://www.hakank.org/google_or_tools/survo_puzzle.py
  *  - JaCoP: http://www.hakank.org/JaCoP/SurvoPuzzle.java
  *  - MiniZinc: http://www.hakank.org/minizinc/survo_puzzle.mzn
  *  - SICStus: http://www.hakank.org/sicstus/survo_puzzle.pl

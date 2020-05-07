@@ -28,7 +28,7 @@ package org.jcp.jsr331.hakan;
  * - Gecode: http://hakank.org/gecode/set_partition.cpp
  * - ECLiPSe: http://hakank.org/eclipse/set_partition.ecl
  * - SICStus: http://hakank.org/sicstus/set_partition.pl
- * - Google CP Solver: http://hakank.org/google_or_tools/set_partition.py
+ * - Google CP SolverClass: http://hakank.org/google_or_tools/set_partition.py
  *
  * Model by Hakan Kjellerstrand (hakank@bonetmail.com)
  * Also see http://www.hakank.org/jsr_331/

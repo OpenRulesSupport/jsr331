@@ -18,7 +18,7 @@ public class GlobalConstraints extends jsetl.NewConstraints {
     }
 
     protected void user_code(ConstraintClass c) throws NotDefConstraintException {
-        if (c.getName() == "occurrence") {
+        if (c.getName().equals("occurrence")) {
             this.occurrence(c);
         } else {
             throw new NotDefConstraintException();

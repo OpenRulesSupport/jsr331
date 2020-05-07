@@ -68,7 +68,7 @@ public class TestSum extends TestCase {
 //	public void testAll() {
 //		defineProblem();
 //		problem.log("TestSum: findAllSolution");
-//		Solver solver = problem.getSolver();
+//		SolverClass solver = problem.getSolver();
 //		int N = 10;
 //		solver.setMaxNumberOfSolutions(N);
 //		Solution[] solutions = solver.findAllSolutions();

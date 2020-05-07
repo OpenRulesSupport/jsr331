@@ -47,7 +47,7 @@ public class MapColoringWithViolations {
 			};
 			// Optimization objective
 			totalViolations = p.sum(weightVars);
-			totalViolations.setName("Total Constraint Violations");
+			totalViolations.setName("Total ConstraintClass Violations");
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

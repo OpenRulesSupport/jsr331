@@ -12,7 +12,7 @@ package org.jcp.jsr331.samples;
 //import javax.constraints.Problem;
 //import javax.constraints.ProblemFactory;
 //import javax.constraints.Solution;
-//import javax.constraints.Solver;
+//import javax.constraints.SolverClass;
 //import javax.constraints.Var;
 import javax.constraints.*;
 

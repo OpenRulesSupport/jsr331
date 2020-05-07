@@ -8,7 +8,7 @@ import javax.constraints.impl.Constraint;
 import jp.kobe_u.sugar.expression.Expression;
 
 /**
- * An implementation of the Constraint "Cardinality"
+ * An implementation of the ConstraintClass "Cardinality"
  */
 public class Cardinality extends Constraint {
     private static final String name = "Cardinality";

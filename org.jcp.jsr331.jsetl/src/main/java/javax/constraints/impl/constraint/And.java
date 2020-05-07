@@ -22,8 +22,6 @@ public class And extends Constraint {
 	 */
 	public And(Constraint c1, Constraint c2) {
 		super(c1.getProblem());
-//		ConstraintClass result = (ConstraintClass)
-//			((c1.negation()).or(c2.negation())).negation();
 		Constraint result = c1.and(c2);
 		setImpl(result.getImpl());
 	}

@@ -49,7 +49,7 @@ public class Problem extends AbstractProblem {
 	/**
 	 * Auxiliary vars.
 	 */
-	ArrayList<jsetl.IntLVar> auxIntLVar;
+	ArrayList<IntLVar> auxIntLVar;
 	
 	/**
 	 * Constants for Relationship Operator.
@@ -88,7 +88,7 @@ public class Problem extends AbstractProblem {
 	
 	/**
 	 * Build a new Problem with an auto-generated name.
-	 * 
+	 *
 	 */
 	public Problem() {
 		super("_P"+(counter++));
@@ -390,8 +390,7 @@ public class Problem extends AbstractProblem {
 			javax.constraints.Var var1, 
 			String oper, 
 			javax.constraints.Var var2) {
-		Constraint result = new Constraint(this);
-		result = linear(var1, oper, var2);
+		Constraint result = linear(var1, oper, var2);
 		post(result);
 		add(result);
 		addAuxVariable(var1);
@@ -530,6 +529,7 @@ public class Problem extends AbstractProblem {
 			}
 			else intVars[i] = intVars[i-1];
 			intVars[i].setName("_coef-" +i);
+			this.post(new Constraint(this, intVars[i].getConstraint()));
 		}
 		intVars[arrayOfVariables.length-1].setName(getFreshName());
 		Var result = new Var(this, intVars[arrayOfVariables.length-1]);
@@ -732,7 +732,7 @@ public class Problem extends AbstractProblem {
 	/**
 	 * Build a new constrained integer variable with the name 
 	 * <code>name</code> and 
-	 * domain <code>[min,max]</code>, than add it to the problem.
+	 * domain <code>[min,max]</code>, then add it to the problem.
 	 * 
 	 * @param name the name of the new variable
 	 * @param min the lower bound
@@ -753,7 +753,7 @@ public class Problem extends AbstractProblem {
 	/**
 	 * Build a new constrained boolean variable with the name 
 	 * <code>name</code> and 
-	 * domain <code>[0,1]</code>, than add it to the problem.
+	 * domain <code>[0,1]</code>, then add it to the problem.
 	 * 
 	 * @param name the name of the new variable.
 	 * 

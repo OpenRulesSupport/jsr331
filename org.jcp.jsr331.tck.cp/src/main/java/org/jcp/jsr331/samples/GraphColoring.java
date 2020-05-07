@@ -72,11 +72,11 @@ public class GraphColoring {
 				p.postAllDifferent(cliques[i]);
 			}
 
-			// Redundant Constraint: every color is used at least n/2 times
+			// Redundant ConstraintClass: every color is used at least n/2 times
 			int[] colAr = new int[nbColors];
 			for (int k = 0; k < nbColors; k++)
 				colAr[k] = k;
-			p.log("Post Redundant Constraint (GCC)");
+			p.log("Post Redundant ConstraintClass (GCC)");
 			cards = p.variableArray("cards", 0, nbColors-1, nbColors);
 			p.postGlobalCardinality(vars,colAr,cards); 
 			if (redundant_constraint) {

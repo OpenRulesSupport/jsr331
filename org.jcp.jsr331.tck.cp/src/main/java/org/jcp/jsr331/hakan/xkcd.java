@@ -13,7 +13,7 @@ package org.jcp.jsr331.hakan;
  * - ECLiPSE: http://www.hakank.org/eclipse/xkcd.ecl
  * - Gecode: http://www.hakank.org/gecode/xkcd.cpp
  * - Gecode/R: http://www.hakank.org/gecode_r/xkcd.rb
- * - Google CP Solver: http://www.hakank.org/google_or_tools/xkcd.py
+ * - Google CP SolverClass: http://www.hakank.org/google_or_tools/xkcd.py
  * - MiniZinc: http://www.hakank.org/minizinc/xkcd.mzn
  * - SICStus: http://www.hakank.org/sicstus/xkcd.pl
  * - Tailor/Essence': http://www.hakank.org/tailor/xkcd.eprime

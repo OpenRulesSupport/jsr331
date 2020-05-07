@@ -80,7 +80,7 @@ public class TestGlobalCardinality extends TestCase {
 //			problem.log(valueVars);
 //			problem.log(cardinalityVars);
 //			
-//			Solver solver = problem.getSolver();
+//			SolverClass solver = problem.getSolver();
 //			Goal goal1 = new GoalAssignValues(valueVars); //,new ValueSelectorMax());
 //			Goal goal2 = new GoalAssignValues(vars);
 //			solver.setGoal(goal1.and(goal2));

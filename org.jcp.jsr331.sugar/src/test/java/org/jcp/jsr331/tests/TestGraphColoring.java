@@ -91,11 +91,11 @@ public class TestGraphColoring extends TestCase {
 				problem.postAllDifferent(cliques[i]);
 			}
 
-			// Redundant Constraint: every color is used at least n/2 times
+			// Redundant ConstraintClass: every color is used at least n/2 times
 			int[] colAr = new int[nbColors];
 			for (int k = 0; k < nbColors; k++)
 				colAr[k] = k;
-			problem.log("Post Redundant Constraint (GCC)");
+			problem.log("Post Redundant ConstraintClass (GCC)");
 			Var[] cards = problem.variableArray("cards", 0, nbColors-1, nbColors);
 			problem.postGlobalCardinality(vars,colAr,cards); 
 			if (redundant_constraint) {

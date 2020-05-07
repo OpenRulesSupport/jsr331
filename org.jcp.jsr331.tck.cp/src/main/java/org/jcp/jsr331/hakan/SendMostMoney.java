@@ -14,7 +14,7 @@ package org.jcp.jsr331.hakan;
  * - Comet: http://www.hakank.org/comet/send_most_money2.co
  * - ECLiPSE: http://www.hakank.org/eclipse/send_most_money.ecl
  * - Gecode/R: http://www.hakank.org/gecode_r/send_most_money2.rb
- * - Google CP Solver: http://www.hakank.org/google_or_tools/send_most_money.py
+ * - Google CP SolverClass: http://www.hakank.org/google_or_tools/send_most_money.py
  * - MiniZinc: http://www.hakank.org/minizinc/send_most_money.mzn
  * - SICStus: http://www.hakank.org/sicstus/send_most_money.pl
  * - Tailor/Essence': http://www.hakank.org/tailor/send_most_money.eprime

@@ -81,7 +81,7 @@ public class SetCoveringDeployment {
     // 
 
     //
-    //  Constraint 1: There is always an army in a city
+    //  ConstraintClass 1: There is always an army in a city
     //                (+ maybe a backup)
     //                Or rather: Is there a backup, there
     //                must be an an army
@@ -91,7 +91,7 @@ public class SetCoveringDeployment {
     }
 
     //
-    // Constraint 2: There should always be an backup
+    // ConstraintClass 2: There should always be an backup
     //               army near every city
     //
     Var zero = p.variable("zero", 0, 0);

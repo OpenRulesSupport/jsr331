@@ -5,7 +5,7 @@ package org.jcp.jsr331.hakan;
   * Global constraint alldifferent_except_0 (decomposition) in JSR-331.
   *
   *
-  * From Global Constraint Catalog
+  * From Global ConstraintClass Catalog
   * http://www.emn.fr/x-info/sdemasse/gccat/Calldifferent_except_0.html
   * """
   * Enforce all variables of the collection VARIABLES to take distinct values, 
@@ -18,7 +18,7 @@ package org.jcp.jsr331.hakan;
   * - ECLiPSE: http://www.hakank.org/eclipse/alldifferent_except_0.ecl
   * - Gecode: http://www.hakank.org/gecode/alldifferent_except_0.cpp
   * - Gecode/R: http://www.hakank.org/gecode_r/all_different_except_0.rb
-  * - Google CP Solver: http://www.hakank.org/google_or_tools/alldifferent_except_0.py
+  * - Google CP SolverClass: http://www.hakank.org/google_or_tools/alldifferent_except_0.py
   * - MiniZinc: http://www.hakank.org/minizinc/alldifferent_except_0.mzn
   * - SICStus: http://www.hakank.org/sicstus/alldifferent_except_0.pl
   * - Tailor/Essence': http://www.hakank.org/tailor/alldifferent_except_0.eprime

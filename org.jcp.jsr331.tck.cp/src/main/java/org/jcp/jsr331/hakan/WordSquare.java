@@ -16,7 +16,7 @@ package org.jcp.jsr331.hakan;
  * - Choco: http://www.hakank.org/choco/WordSquare.java
  * - Comet: http://www.hakank.org/comet/word_square.co
  * - Gecode: http://www.hakank.org/gecode/word_square.cpp
- * - Google CP Solver: http://www.hakank.org/google_or_tools/word_square.py
+ * - Google CP SolverClass: http://www.hakank.org/google_or_tools/word_square.py
  * - JaCoP: http://www.hakank.org/JaCoP/WordSquare.java
  * - MiniZinc: http://www.hakank.org/minizinc/word_square.mzn
  * - Zinc: http://www.hakank.org/minizinc/word_square.zinc

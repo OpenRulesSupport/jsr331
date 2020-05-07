@@ -4,7 +4,7 @@ import javax.constraints.*;
 
 /**
  * Title: FamilyRiddle <br>
- * Description: (was taken from ILOG Solver User Guide)<br>
+ * Description: (was taken from ILOG SolverClass User Guide)<br>
  * Let's assume that Rene and Leo are both heads of household, and--what a
  * coincidence---both families include three girls and three boys. The youngest
  * child in Leo's family is a girl, and in Rene's family, a little girl has just

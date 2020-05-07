@@ -8,7 +8,7 @@ import javax.constraints.impl.Constraint;
 import jp.kobe_u.sugar.expression.Expression;
 
 /**
- * An implementation of the Constraint "Linear"
+ * An implementation of the ConstraintClass "Linear"
  */
 public class Linear extends Constraint {
     private static final String name = "Linear";

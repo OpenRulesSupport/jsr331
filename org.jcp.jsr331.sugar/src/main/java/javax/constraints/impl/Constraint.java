@@ -10,9 +10,9 @@ import jp.kobe_u.sugar.csp.IntegerVariable;
 import jp.kobe_u.sugar.expression.Expression;
 
 /**
- * An implementation of the interface "Constraint"
+ * An implementation of the interface "ConstraintClass"
  * 
- * The interface Constraint defines a generic interface for all
+ * The interface ConstraintClass defines a generic interface for all
  * constraints that could be created and posted within the Problem.
  * Concrete constraints can be defined in two ways:
  * <ul>
@@ -24,8 +24,8 @@ import jp.kobe_u.sugar.expression.Expression;
  * The interface Problem includes only commonly used and de-facto standardized
  * global constraints in their most popular forms. This API assumes that every API
  * implementation will provide a library of global constraints
- * that implements the interface Constraint and follows the
- * guidelines of the Global Constraint Catalog - see http://www.emn.fr/x-info/sdemasse/gccat/index.html.
+ * that implements the interface ConstraintClass and follows the
+ * guidelines of the Global ConstraintClass Catalog - see http://www.emn.fr/x-info/sdemasse/gccat/index.html.
  * 
  */
 public class Constraint extends AbstractConstraint { 
@@ -91,11 +91,11 @@ public class Constraint extends AbstractConstraint {
     }   
     
     /**
-     * Returns an "AND" Constraint. The Constraint "AND" is satisfied if both of the
-     *         Constraints "this" and "c" are satisfied. The Constraint "AND" is not satisfied
+     * Returns an "AND" ConstraintClass. The ConstraintClass "AND" is satisfied if both of the
+     *         Constraints "this" and "c" are satisfied. The ConstraintClass "AND" is not satisfied
      *         if at least one of the Constraints "this" or "c" is not satisfied.
-     * @param c the Constraint which is part of the new "AND" Constraint
-     * @return a Constraint "AND" between the Constraints "this" and "c2".
+     * @param c the ConstraintClass which is part of the new "AND" ConstraintClass
+     * @return a ConstraintClass "AND" between the Constraints "this" and "c2".
      */
     @Override
     public javax.constraints.Constraint and(javax.constraints.Constraint c) {
@@ -103,11 +103,11 @@ public class Constraint extends AbstractConstraint {
     }
 
     /**
-     * Returns an "OR" Constraint. The Constraint "OR" is satisfied if either of the
-     *         Constraints "this" and "c" is satisfied. The Constraint "OR" is not satisfied
+     * Returns an "OR" ConstraintClass. The ConstraintClass "OR" is satisfied if either of the
+     *         Constraints "this" and "c" is satisfied. The ConstraintClass "OR" is not satisfied
      *         if both of the Constraints "this" and "c" are not satisfied.
-     * @param c the Constraint which is part of the new "OR" Constraint
-     * @return a Constraint "OR" between the Constraints "this" and "c".
+     * @param c the ConstraintClass which is part of the new "OR" ConstraintClass
+     * @return a ConstraintClass "OR" between the Constraints "this" and "c".
      */
     @Override
     public javax.constraints.Constraint or(javax.constraints.Constraint c) {
@@ -115,8 +115,8 @@ public class Constraint extends AbstractConstraint {
     }
 
     /**
-     * Returns a Constraint that is satisfied if and only if this constraint is not satisfied.
-     * @return a Constraint that is satisfied if and only if this constraint is not satisfied.
+     * Returns a ConstraintClass that is satisfied if and only if this constraint is not satisfied.
+     * @return a ConstraintClass that is satisfied if and only if this constraint is not satisfied.
      */
     @Override
     public javax.constraints.Constraint negation() {
@@ -124,12 +124,12 @@ public class Constraint extends AbstractConstraint {
     }
     
     /**
-     * Returns a Constraint that states the implication: this more or equals to c.
+     * Returns a ConstraintClass that states the implication: this more or equals to c.
      * In other words, if this constraint is satisfied, then constraint "c"
      * should also be satisfied.
      *
-     * @param c the Constraint in the implication.
-     * @return a Constraint that means this more or equals to c (if this then c).
+     * @param c the ConstraintClass in the implication.
+     * @return a ConstraintClass that means this more or equals to c (if this then c).
      *
      */
     @Override

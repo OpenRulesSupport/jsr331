@@ -17,7 +17,7 @@ import jp.kobe_u.sugar.csp.IntegerVariable;
 import jp.kobe_u.sugar.expression.Expression;
 
 /**
- * An implementation of the interface "Solver" by extending the common class AbstractSolver
+ * An implementation of the interface "SolverClass" by extending the common class AbstractSolver
  */
 public class Solver extends AbstractSolver {
     public Sat4jSolver sat4jSolver;

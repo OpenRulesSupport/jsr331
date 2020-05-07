@@ -17,7 +17,7 @@ public class Test1 {
 		 
 		Var cost = x.multiply(3).multiply(y).minus(z.multiply(4)); // Cost = 3XY-4Z
 		p.add("cost", cost);
-		p.log("Before Constraint Posting");
+		p.log("Before ConstraintClass Posting");
 		p.log(p.getVars());
 
 		// ======= Define and post constraints
@@ -31,13 +31,13 @@ public class Test1 {
 			p.log("Error posting constraints: " + e.getMessage());
 			System.exit(-1);
 		}
-		p.log("After Constraint Posting");
+		p.log("After ConstraintClass Posting");
 		p.log(p.getVars());
 	}
 
 	public void solve() { // PROBLEM RESOLUTION
 		p.log("=== Find One solution:");
-		Solver solver = p.getSolver(); // new Solver(problem);
+		Solver solver = p.getSolver(); // new SolverClass(problem);
 		SearchStrategy strategy = solver.getSearchStrategy();
 		strategy.setVars(vars);
 		strategy.setVarSelectorType(VarSelectorType.MAX_VALUE);

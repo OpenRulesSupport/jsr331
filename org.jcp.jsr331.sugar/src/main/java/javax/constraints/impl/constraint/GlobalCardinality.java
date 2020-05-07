@@ -12,7 +12,7 @@ import jp.kobe_u.sugar.csp.IntegerVariable;
 import jp.kobe_u.sugar.expression.Expression;
 
 /**
- * An implementation of the Constraint "GlobalCardinality"
+ * An implementation of the ConstraintClass "GlobalCardinality"
  */
 public class GlobalCardinality extends Constraint {
     private static final String name = "GlobalCardinality";

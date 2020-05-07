@@ -29,7 +29,7 @@ package org.jcp.jsr331.hakan;
  * Gecode  : http://www.hakank.org/gecode/calculs_d_enfer.cpp
  * MiniZinc: http://www.hakank.org/minizinc/calculs_d_enfer.mzn
  * SICStus: http://hakank.org/sicstus/calculs_d_enfer.pl
- * Google CP Solver:  http://hakank.org/google_or_tools/calculs_d_enfer.py
+ * Google CP SolverClass:  http://hakank.org/google_or_tools/calculs_d_enfer.py
  *
  *
  * Model by Hakan Kjellerstrand (hakank@bonetmail.com)
@@ -100,7 +100,7 @@ public class CalculsDEnfer {
             A_abs[ii] = A[ii].abs();
         }
 
-        problem.log("Before Constraint Posting" + problem.getVars());
+        problem.log("Before ConstraintClass Posting" + problem.getVars());
 
         problem.postMax(A_abs,"=", A_max);
         problem.postAllDifferent(A);
@@ -119,7 +119,7 @@ public class CalculsDEnfer {
         problem.post(e.plus(l).plus(e).plus(v).plus(e).plus(n) , "=",  11);
         problem.post(t.plus(w).plus(e).plus(l).plus(f) , "=",  12);
 
-        problem.log("After Constraint Posting" + problem.getVars());
+        problem.log("After ConstraintClass Posting" + problem.getVars());
     }
     
     

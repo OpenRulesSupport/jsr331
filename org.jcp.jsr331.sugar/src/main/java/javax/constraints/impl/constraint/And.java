@@ -6,7 +6,7 @@ import javax.constraints.impl.Constraint;
 import jp.kobe_u.sugar.expression.Expression;
 
 /**
- * An implementation of the Constraint "And"
+ * An implementation of the ConstraintClass "And"
  */
 public class And extends Constraint {
     public And(javax.constraints.Constraint c1, javax.constraints.Constraint c2) {

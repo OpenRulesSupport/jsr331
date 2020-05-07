@@ -6,7 +6,7 @@ import javax.constraints.impl.Constraint;
 import jp.kobe_u.sugar.expression.Expression;
 
 /**
- * An implementation of the Constraint "Neg"
+ * An implementation of the ConstraintClass "Neg"
  */
 public class Neg extends Constraint {
 

@@ -29,7 +29,7 @@ package org.jcp.jsr331.hakan;
  * - ECLiPSE: http://www.hakank.org/eclipse/quasigroup_completion.ecl
  * - Gecode: http://www.hakank.org/gecode/quasigroup_completion.cpp
  * - Gecode/R: http://www.hakank.org/gecode_r/quasigroup_completion.rb
- * - Google CP Solver: http://www.hakank.org/google_or_tools/quasigroup_completion.py
+ * - Google CP SolverClass: http://www.hakank.org/google_or_tools/quasigroup_completion.py
  * - JaCoP: http://www.hakank.org/JaCoP/QuasigroupCompletion.java
  * - MiniZinc: http://www.hakank.org/minizinc/quasigroup_completion.mzn
  * - SICStus: http://www.hakank.org/sicstus/quasigroup_completion.pl

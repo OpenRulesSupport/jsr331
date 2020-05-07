@@ -50,7 +50,7 @@ public class KnapsackReal {
 		Var B = p.variable("B", 0, 40);
 		Var[] vars = new Var[] { G, S, B };
 
-		// === Post Constraint(s)
+		// === Post ConstraintClass(s)
 		// 1G + 2S + 3B <= 25
 		int itemSize[] = { 1, 2, 3 };
 		int knapsackSize = 25;

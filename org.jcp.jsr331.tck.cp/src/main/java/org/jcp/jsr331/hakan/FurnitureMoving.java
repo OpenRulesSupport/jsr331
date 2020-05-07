@@ -16,7 +16,7 @@ package org.jcp.jsr331.hakan;
  * - Comet: http://www.hakank.org/comet/furniture_moving.co
  * - ECLiPSE: http://www.hakank.org/eclipse/furniture_moving.ecl
  * - Gecode: http://www.hakank.org/gecode/furniture_moving.cpp
- * - Google CP Solver: http://www.hakank.org/google_or_tools/furniture_moving.py
+ * - Google CP SolverClass: http://www.hakank.org/google_or_tools/furniture_moving.py
  * - JaCoP: http://www.hakank.org/JaCoP/FurnitureMoving.java
  * - MiniZinc: http://www.hakank.org/minizinc/furniture_moving.mzn
  * - SICStus: http://www.hakank.org/sicstus/furniture_moving.pl

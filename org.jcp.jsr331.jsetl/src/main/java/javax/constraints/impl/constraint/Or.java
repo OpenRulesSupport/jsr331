@@ -4,7 +4,7 @@ import javax.constraints.impl.Constraint;
 import javax.constraints.impl.Problem;
 
 /**
- * Implement a constraint thet represent the disjunction between two given
+ * Implement a constraint that represents the disjunction between two given
  * constraints.
  * 
  * @author Fabio Biselli

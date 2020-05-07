@@ -29,7 +29,7 @@ package org.jcp.jsr331.hakan;
  * - Gecode/R: http://www.hakank.org/gecode_r/crossword.rb
  * - Gecode: http://www.hakank.org/gecode/crossword.cpp
  * - Gecode: http://www.hakank.org/gecode/crossword2.cpp
- * - Google CP Solver: http://www.hakank.org/google_or_tools/crossword2.py
+ * - Google CP SolverClass: http://www.hakank.org/google_or_tools/crossword2.py
  * - JaCoP: http://www.hakank.org/JaCoP/CrossWord.java
  * - MiniZinc: http://www.hakank.org/minizinc/crossword.mzn
  * - MiniZinc: http://www.hakank.org/minizinc/crossword2.mzn
