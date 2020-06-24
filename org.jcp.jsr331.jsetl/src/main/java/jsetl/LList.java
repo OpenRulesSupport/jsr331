@@ -474,7 +474,7 @@ public class LList extends LCollection
       * except for the first element (which is missing).
       */
     @Override
-    protected @NotNull LList removeOne() {
+    public @NotNull LList removeOne() { //TODO changed
         LList removedOne = (LList)super.removeOne();
 
         assert removedOne != null;

@@ -483,7 +483,7 @@ public abstract class LCollection extends LObject implements Cloneable, Iterable
      *
      * @return the first element of this collection.
      */
-    protected @NotNull Object getOne() {
+    public @NotNull Object getOne() { //todo changed
         assert this.countAllElements() > 0;
 
         Object one = this.iterator().next();

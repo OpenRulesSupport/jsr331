@@ -211,19 +211,34 @@ public class LListOps extends NewConstraints {
             solver.add(n.eq(0));
             return;
         }
-        switch(c.getAlternative())  {
-            case 0: solver.addChoicePoint(c);
-                    LList r1 = new LList();
+        if(l.isClosed() && n.isBound() && l.getSize() < n.getValue()) {
+            c.fail();
+            return; // never reached
+        }
+
+        int alternative = c.getAlternative();
+        if(alternative == 0 && (v.isGround() && LObject.isGround(l.getOne()) && !LObject.equals(v,l.getOne())))
+            alternative = 1;
+
+        switch(alternative)  {
+            case 0:
+                    if(!v.equals(l.getOne()))
+                        solver.addChoicePoint(c);
+                    LList r1 = l.removeOne();
                     IntLVar m = new IntLVar();
-//                    solver.add(n.neq(0));
-                    solver.add(l.eq(r1.ins(v)));
+
+                    solver.add(n.neq(0));
+                    solver.add(v.eq(l.getOne()));
                     solver.add(occurrence(r1,v,m));
-                    solver.add(n.eq(m.sum(1)));
+                    if(n.isBound())
+                        m.setValue(n.getValue()-1);
+                    else
+                        solver.add(n.eq(m.sum(1)));
                     break;
-            case 1: LList r2 = new LList();
-                    LVar x = new LVar();
-//                    solver.add(n.neq(0));
-                    solver.add(l.eq(r2.ins(x)).and(x.neq(v)));
+            case 1: LList r2 = l.removeOne();
+                    //LVar x = new LVar();
+                    //solver.add(n.neq(0));
+                    solver.add(v.neq(l.getOne()));
                     solver.add(occurrence(r2,v,n));
                     break;
         }

@@ -145,7 +145,7 @@ public class Solver extends AbstractSolver {
 						numberOfSolutions++);
 			} catch (Failure e) {
 				solution = null;
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 		return solution;

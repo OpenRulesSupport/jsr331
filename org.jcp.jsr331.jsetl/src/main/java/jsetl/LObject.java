@@ -112,7 +112,7 @@ public abstract class LObject {
      * @param second second object.
      * @return {@code true} if {@code first} and {@code second} are equal, {@code false} otherwise.
      */
-    protected static boolean equals(@Nullable Object first, @Nullable Object second){
+    public static boolean equals(@Nullable Object first, @Nullable Object second){ //todo changed
         return Objects.equals(first,second) || Objects.equals(second,first);
     }
 

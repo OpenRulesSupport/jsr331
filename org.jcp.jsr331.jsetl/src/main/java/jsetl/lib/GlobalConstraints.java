@@ -14,11 +14,15 @@ public class GlobalConstraints extends jsetl.NewConstraints {
 
     //Public Methods
     public ConstraintClass occurrence(Vector<IntLVar> l, IntLVar v, IntLVar n) {
-        return new ConstraintClass("occurrence", l, v, n);
+        LList lList = new LList(l);
+        IntLVar[] intLVars = new IntLVar[l.size()];
+        for(int i = 0; i < l.size(); ++i)
+            intLVars[i] = l.get(i);
+        return new LArrayOps(solver).occurrence(intLVars,v,n);
     }
 
     protected void user_code(ConstraintClass c) throws NotDefConstraintException {
-        if (c.getName().equals("occurrence")) {
+        if (c.getName().equals("occurrencegc")) {
             this.occurrence(c);
         } else {
             throw new NotDefConstraintException();
@@ -29,17 +33,20 @@ public class GlobalConstraints extends jsetl.NewConstraints {
         Vector<IntLVar> intLVars = (Vector) constraint.getArg(1);
         IntLVar v = (IntLVar) constraint.getArg(2);
         IntLVar n = (IntLVar) constraint.getArg(3);
+
         if (intLVars.isEmpty()) {
             this.solver.add(n.eq(0));
-        } else {
+        }
+        else {
             int l_dim = intLVars.size();
-            int n_val;
+            int n_val = 0;
             int i;
             if (n.isBound()) {
                 n_val = n.getValue();
                 if (n_val < 0) {
                     constraint.fail();
-                } else {
+                }
+                else {
                     if (n_val == 0) {
                         for(i = 0; i < l_dim; ++i) {
                             this.solver.add(((IntLVar)intLVars.get(i)).neq(v));
@@ -50,7 +57,8 @@ public class GlobalConstraints extends jsetl.NewConstraints {
 
                     if (n_val > l_dim) {
                         constraint.fail();
-                    } else if (n_val == l_dim) {
+                    }
+                    else if (n_val == l_dim) {
                         for(i = 0; i < l_dim; ++i) {
                             this.solver.add((intLVars.get(i)).eq(v));
                         }
@@ -60,7 +68,7 @@ public class GlobalConstraints extends jsetl.NewConstraints {
                 }
             }
 
-            n_val = 0;
+            //n_val = 0;
             i = 0;
             MultiInterval dom_v = v.getDomain();
             MultiInterval dom_n = n.getDomain();

@@ -54,7 +54,7 @@ public class Cardinality extends Constraint {
 		switch(p.getOperator(oper)) {
 		case 1: {
 			// Case = "equals". 
-			linear = cardinality.and(k.eq(value));
+			linear = listOps.occurrence(varsList,v, value);
 		} break;
 		case 2: {
 			// Case != "not equals".
@@ -88,9 +88,9 @@ public class Cardinality extends Constraint {
 	}
 
 	/**
-	 * Build a new ConstraintClass that bind the cardinality of the variables
+	 * Build a new ConstraintClass that binds the cardinality of the variables
 	 * of the given array of variables <code>vars</code> that satisfy the 
-	 * constraint "oper <code>var</code>" to be equal the given
+	 * constraint "oper <code>var</code>" to be equal to the given
 	 * integer <code>cardValue</code>. Where <code>oper</code> is a string 
 	 * representing the commons constraint operator.
 	 * 
@@ -117,7 +117,7 @@ public class Cardinality extends Constraint {
 		switch(p.getOperator(oper)) {
 		case 1: {
 			// Case = "equals".
-			linear = cardinality.and(k.eq(value));
+			linear = listOps.occurrence(varsList,v,value);
 		} break;
 		case 2: {
 			// Case != "not equals".
@@ -180,7 +180,7 @@ public class Cardinality extends Constraint {
 		switch(p.getOperator(oper)) {
 		case 1: {
 			// Case = "equals".
-			linear = cardinality.and(k.eq(value));
+			linear = listOps.occurrence(varsList,v,new IntLVar(value));
 		} break;
 		case 2: {
 			// Case != "not equals".
@@ -241,7 +241,7 @@ public class Cardinality extends Constraint {
 		switch(p.getOperator(oper)) {
 		case 1: {
 			// Case = "equals".
-			linear  = cardinality.and(k.eq(value));
+			linear  = listOps.occurrence(varsList,v,new IntLVar(value));
 		} break;
 		case 2: {
 			// Case != "not equals".
