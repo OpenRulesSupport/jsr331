@@ -1,5 +1,7 @@
 package javax.constraints.impl.constraint;
 
+import jsetl.ConstraintClass;
+
 import javax.constraints.Var;
 import javax.constraints.impl.Constraint;
 import javax.constraints.impl.Problem;
@@ -58,7 +60,7 @@ public class GlobalCardinality extends Constraint {
 	}
 	
 	/**
-	 * Build a new Constraint such as for each index i the number of time
+	 * Build a new ConstraintClass such as for each index i the number of time
 	 * the values <code>value[i]</code> occurs in the array of variables
 	 * <code>vars</code> is exactly <code>cardinalityVars</code>.
 	 * 
@@ -77,10 +79,10 @@ public class GlobalCardinality extends Constraint {
 		}
 		Problem p = (Problem) vars[0].getProblem();
 		Constraint[] results = new Constraint[values.length];
-		JSetL.Constraint r = new JSetL.Constraint();
+		ConstraintClass r = new ConstraintClass();
 		for (int i = 0; i < values.length; i++) {
 			results[i] = new Cardinality(vars, values[i], "=", card[i]);
-			r.and((JSetL.Constraint) results[i].getImpl());
+			r = r.and((ConstraintClass) results[i].getImpl());
 		}
 		Constraint result = new Constraint(p,r);
 		setImpl(result.getImpl());

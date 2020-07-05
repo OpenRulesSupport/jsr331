@@ -7,19 +7,19 @@ import javax.constraints.impl.VarSet;
 import javax.constraints.impl.search.SearchStrategy;
 import javax.constraints.impl.search.Solver;
 
-import JSetL.Failure;
-import JSetL.SetLVar;
+import jsetl.exception.Failure;
+import jsetl.SetLVar;
 
 /**
  * Implements the JSR331 solution extending the common 
  * implementation BasicSolution. The implementation is base on the solver 
- * JSetL. 
+ * jsetl. 
  * 
- * <p>To support the implementation of set variables a new array of
+ * To support the implementation of set variables a new array of
  * ResultSet as result was added to the class, like the BasicSolution do for
  * integer and real variables.
  * 
- * <p>ResultSet is a new class that represent the set result of the
+ * ResultSet is a new class that represent the set result of the
  * solution.
  * 
  * @author Fabio Biselli

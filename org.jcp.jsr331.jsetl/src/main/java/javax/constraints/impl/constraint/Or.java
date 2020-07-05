@@ -4,7 +4,7 @@ import javax.constraints.impl.Constraint;
 import javax.constraints.impl.Problem;
 
 /**
- * Implement a constraint thet represent the disjunction between two given
+ * Implement a constraint that represents the disjunction between two given
  * constraints.
  * 
  * @author Fabio Biselli
@@ -13,13 +13,13 @@ import javax.constraints.impl.Problem;
 public class Or extends Constraint {
 
 	/**
-	 * Build a Constraint that is satisfied if either 
-	 * of the Constraints "c1" and "c2" is satisfied. The Constraint is 
+	 * Build a ConstraintClass that is satisfied if either
+	 * of the Constraints "c1" and "c2" is satisfied. The ConstraintClass is
 	 * not satisfied if both of the Constraints "c1" and "c2" are not 
 	 * satisfied.
 	 * 
-	 * @param c1 the first Constraint which is part of the new "OR" Constraint
-	 * @param c2 the first Constraint which is part of the new "OR" Constraint
+	 * @param c1 the first ConstraintClass which is part of the new "OR" ConstraintClass
+	 * @param c2 the first ConstraintClass which is part of the new "OR" ConstraintClass
 	 */
 	public Or(Constraint c1, Constraint c2) {
 		super(c1.getProblem());

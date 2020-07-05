@@ -6,7 +6,8 @@ import javax.constraints.impl.Constraint;
 import javax.constraints.impl.Problem;
 import javax.constraints.impl.Var;
 
-import JSetL.IntLVar;
+import jsetl.ConstraintClass;
+import jsetl.IntLVar;
 
 /**
  * Represents a classic set of constraints over integer logical variables, the 
@@ -20,13 +21,13 @@ public class Linear extends Constraint {
 	/**
 	 * Auxiliary vars.
 	 */
-	ArrayList<JSetL.IntLVar> variables;
+	ArrayList<jsetl.IntLVar> variables;
 	
 	private static final int OPER_EQ = 1, OPER_UNKNOWN = 0, OPER_NEQ = 2, 
 	OPER_LT = 3, OPER_LEQ = 4, OPER_GT = 5, OPER_GEQ = 6;
 
 	/**
-	 * Build a new Constraint that constrain the variable 
+	 * Build a new ConstraintClass that constrains the variable
 	 * <code>var1</code> to the integer variable <code>var2</code> with the 
 	 * operator <code>oper</code>.
 	 * 
@@ -44,43 +45,43 @@ public class Linear extends Constraint {
 		switch(getOperator(oper)) {
 		case 1: {
 			// Case = "equals".
-			JSetL.Constraint constraint = v.eq(value);
+			ConstraintClass constraint = v.eq(value);
 			setImpl(constraint);
 		} break;
 		case 2: {
 			// Case != "not equals".
-			JSetL.Constraint constraint = v.neq(value);
+			ConstraintClass constraint = v.neq(value);
 			setImpl(constraint);
 		} break;
 		case 3: {
 			// Case < "less".
-			JSetL.Constraint constraint = v.lt(value);
+			ConstraintClass constraint = v.lt(value);
 			setImpl(constraint);
 		} break;
 		case 4: {
 			// Case <= "less equals".
-			JSetL.Constraint constraint = v.le(value);
+			ConstraintClass constraint = v.le(value);
 			setImpl(constraint);
 		} break;
 		case 5: {
 			// Case > "greater".
-			JSetL.Constraint constraint = v.gt(value);
+			ConstraintClass constraint = v.gt(value);
 			setImpl(constraint);
 		} break;
 		case 6: {
 			// Case >= "greater equals".
-			JSetL.Constraint constraint = v.ge(value);
+			ConstraintClass constraint = v.ge(value);
 			setImpl(constraint);
 		} break;
 		default: throw new UnsupportedOperationException();
 		}
-		variables = new ArrayList<JSetL.IntLVar>();
+		variables = new ArrayList<jsetl.IntLVar>();
 		variables.add(v);
 		variables.add(value);
 	}
 	
 	/**
-	 * Build a new Constraint that constrain the variable given to
+	 * Build a new ConstraintClass that constrain the variable given to
 	 * the integer <code>value</code> with the operator <code>oper</code>.
 	 * 
 	 * @param var the integer variable
@@ -94,44 +95,44 @@ public class Linear extends Constraint {
 		super(var.getProblem());
 		IntLVar v = ((Var) var).getIntLVar();
 		switch(getOperator(oper)) {
-		case 1: {
+		case OPER_EQ: {
 			// Case = "equals".
-			JSetL.Constraint constraint = v.eq(value);
+			ConstraintClass constraint = v.eq(value);
 			setImpl(constraint);
 		} break;
-		case 2: {
+		case OPER_NEQ: {
 			// Case != "not equals".
-			JSetL.Constraint constraint = v.neq(value);
+			ConstraintClass constraint = v.neq(value);
 			setImpl(constraint);
 		} break;
-		case 3: {
+		case OPER_LT: {
 			// Case < "less".
-			JSetL.Constraint constraint = v.lt(value);
+			ConstraintClass constraint = v.lt(value);
 			setImpl(constraint);
 		} break;
-		case 4: {
+		case OPER_LEQ: {
 			// Case <= "less equals".
-			JSetL.Constraint constraint = v.le(value);
+			ConstraintClass constraint = v.le(value);
 			setImpl(constraint);
 		} break;
-		case 5: {
+		case OPER_GT: {
 			// Case > "greater".
-			JSetL.Constraint constraint = v.gt(value);
+			ConstraintClass constraint = v.gt(value);
 			setImpl(constraint);
 		} break;
-		case 6: {
+		case OPER_GEQ: {
 			// Case >= "greater equals".
-			JSetL.Constraint constraint = v.ge(value);
+			ConstraintClass constraint = v.ge(value);
 			setImpl(constraint);
 		} break;
 		default: throw new UnsupportedOperationException();
 		}
-		variables = new ArrayList<JSetL.IntLVar>();
+		variables = new ArrayList<jsetl.IntLVar>();
 		variables.add(v);
 	}
 	
 	/**
-	 * Build a new Constraint based on the linear expression that is the 
+	 * Build a new ConstraintClass based on the linear expression that is the
 	 * sum of the constrained variables <code>vars[i]</code> multiplied for 
 	 * the integer coefficient <code>array[i]</code>, constrained to the given 
 	 * <code>value</code> with the operator <code>oper</code>.
@@ -168,46 +169,46 @@ public class Linear extends Constraint {
 		}
 		IntLVar v = intVars[vars.length-1];
 		switch(getOperator(oper)) {
-		case 1: {
+		case OPER_EQ: {
 			// Case = "equals".
-			JSetL.Constraint constraint = v.eq(value);
+			ConstraintClass constraint = v.eq(value);
 			setImpl(constraint);
 		} break;
-		case 2: {
+		case OPER_NEQ: {
 			// Case != "not equals".
-			JSetL.Constraint constraint = v.neq(value);
+			ConstraintClass constraint = v.neq(value);
 			setImpl(constraint);
 		} break;
-		case 3: {
+		case OPER_LT: {
 			// Case < "less".
-			JSetL.Constraint constraint = v.lt(value);
+			ConstraintClass constraint = v.lt(value);
 			setImpl(constraint);
 		} break;
-		case 4: {
+		case OPER_LEQ: {
 			// Case <= "less equals".
-			JSetL.Constraint constraint = v.le(value);
+			ConstraintClass constraint = v.le(value);
 			setImpl(constraint);
 		} break;
-		case 5: {
+		case OPER_GT: {
 			// Case > "greater".
-			JSetL.Constraint constraint = v.gt(value);
+			ConstraintClass constraint = v.gt(value);
 			setImpl(constraint);
 		} break;
-		case 6: {
+		case OPER_GEQ: {
 			// Case >= "greater equals".
-			JSetL.Constraint constraint = v.ge(value);
+			ConstraintClass constraint = v.ge(value);
 			setImpl(constraint);
 		} break;
 		default: throw new UnsupportedOperationException();
 		}
-		variables = new ArrayList<JSetL.IntLVar>();
+		variables = new ArrayList<jsetl.IntLVar>();
 		variables.add(v);
 		for (javax.constraints.Var var : vars)
 			variables.add((IntLVar) var.getImpl());	
 	}
 	
 	/**
-	 * Build a new Constraint based on the linear expression that is the 
+	 * Build a new ConstraintClass based on the linear expression that is the
 	 * sum of the constrained variables <code>vars[i]</code> multiplied for 
 	 * the integer coefficient <code>array[i]</code>, constrained to the given
 	 * integer variable <code>var</code> with the operator <code>oper</code>.
@@ -246,37 +247,37 @@ public class Linear extends Constraint {
 		switch(getOperator(oper)) {
 		case 1: {
 			// Case = "equals".
-			JSetL.Constraint constraint = v.eq(value);
+			ConstraintClass constraint = v.eq(value);
 			setImpl(constraint);
 		} break;
 		case 2: {
 			// Case != "not equals".
-			JSetL.Constraint constraint = v.neq(value);
+			ConstraintClass constraint = v.neq(value);
 			setImpl(constraint);
 		} break;
 		case 3: {
 			// Case < "less".
-			JSetL.Constraint constraint = v.lt(value);
+			ConstraintClass constraint = v.lt(value);
 			setImpl(constraint);
 		} break;
 		case 4: {
 			// Case <= "less equals".
-			JSetL.Constraint constraint = v.le(value);
+			ConstraintClass constraint = v.le(value);
 			setImpl(constraint);
 		} break;
 		case 5: {
 			// Case > "greater".
-			JSetL.Constraint constraint = v.gt(value);
+			ConstraintClass constraint = v.gt(value);
 			setImpl(constraint);
 		} break;
 		case 6: {
 			// Case >= "greater equals".
-			JSetL.Constraint constraint = v.ge(value);
+			ConstraintClass constraint = v.ge(value);
 			setImpl(constraint);
 		} break;
 		default: throw new UnsupportedOperationException();
 		}
-		variables = new ArrayList<JSetL.IntLVar>();
+		variables = new ArrayList<jsetl.IntLVar>();
 		variables.add(v);
 		variables.add(value);
 		for (javax.constraints.Var x : vars)
@@ -285,11 +286,11 @@ public class Linear extends Constraint {
 	
 	public void post() {
 		if (variables.size() != 0) {
-			JSetL.IntLVar[] array = new JSetL.IntLVar[variables.size()];
+			jsetl.IntLVar[] array = new jsetl.IntLVar[variables.size()];
 			for (int i = 0; i < array.length; i++) {
 				array[i] = variables.get(i);
 			}
-			for (JSetL.IntLVar var : array) 
+			for (jsetl.IntLVar var : array) 
 				((Problem) getProblem()).addAuxVariable(var);
 			((Problem) getProblem()).post(this);
 		}

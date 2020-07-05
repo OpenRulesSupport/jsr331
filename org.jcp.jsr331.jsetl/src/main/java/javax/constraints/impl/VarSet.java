@@ -6,16 +6,16 @@ import javax.constraints.impl.Problem;
 import javax.constraints.impl.Var;
 import javax.constraints.impl.search.Solver;
 
-import JSetL.IntLVar;
-import JSetL.MultiInterval;
-import JSetL.SetLVar;
+import jsetl.IntLVar;
+import jsetl.MultiInterval;
+import jsetl.SetLVar;
 
 
 
 /**
  * This class implement the JSR331 constrained set variable "VarSet",
  * extending the common implementation. The implementation is
- * based on the solver JSetL. The domain of a constrained set variable 
+ * based on the solver jsetl. The domain of a constrained set variable 
  * is a set of Sets that consist of regular integers.
  * 
  * @author Fabio Biselli
@@ -89,7 +89,7 @@ public class VarSet extends AbstractConstrainedVariable
 	}
 
 	/**
-	 * Build a new set variable from a given JSetL.SetLVar.
+	 * Build a new set variable from a given jsetl.SetLVar.
 	 * 
 	 * @param problem the problem which the variable is related
 	 * @param s a SetLVar that represent the optional values.

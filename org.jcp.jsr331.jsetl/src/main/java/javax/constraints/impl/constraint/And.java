@@ -13,17 +13,15 @@ import javax.constraints.impl.Problem;
 public class And extends Constraint {
 
 	/**
-	 * Build a new Constraint <code>c</code> from two given Constraint(s) 
+	 * Build a new ConstraintClass <code>c</code> from two given ConstraintClass(s)
 	 * c1 and c2 such as:
 	 * c = c1 and c2
 	 * 
-	 * @param c1 first Constraint
-	 * @param c2 second Constraint.
+	 * @param c1 first ConstraintClass
+	 * @param c2 second ConstraintClass.
 	 */
 	public And(Constraint c1, Constraint c2) {
 		super(c1.getProblem());
-//		Constraint result = (Constraint) 
-//			((c1.negation()).or(c2.negation())).negation();
 		Constraint result = c1.and(c2);
 		setImpl(result.getImpl());
 	}

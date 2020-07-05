@@ -1,23 +1,17 @@
 package javax.constraints.impl.search;
 
-import javax.constraints.impl.search.Solver;
 import javax.constraints.ValueSelector;
 import javax.constraints.ValueSelectorType;
 import javax.constraints.VarSelector;
 import javax.constraints.VarSelectorType;
 import javax.constraints.impl.Problem;
 
-import JSetL.IntLVar;
-import JSetL.LabelingOptions;
-import JSetL.SetLVar;
-import JSetL.SolverClass;
-import JSetL.ValHeuristic;
-import JSetL.VarHeuristic;
+import jsetl.*;
 
 /**
  * Implements the JSR331 search strategy extending the common 
  * implementation AbstractSearchStrategy. The implementation is base on the
- * solver JSetL.
+ * solver jsetl.
  * 
  * <p>To support the implementation of set variables a new array of VarSets
  * was added to the class, like AbstractSearchStrategy do for Var and
@@ -38,9 +32,9 @@ public class SearchStrategy extends AbstractSearchStrategy {
 	 * Build a new SearchStrategy. Adding the set variables of the
 	 * problem to <code>this.varSets</code>.
 	 * 
-	 * @param solver the Solver which the search strategy is related.
+	 * @param solver the SolverClass which the search strategy is related.
 	 */
-	public SearchStrategy(Solver solver) {
+	public SearchStrategy(javax.constraints.impl.search.Solver solver) {
 		super(solver);
 		varSets = ((Problem) getProblem()).getSetVars();
 	}
@@ -72,57 +66,57 @@ public class SearchStrategy extends AbstractSearchStrategy {
 			VarSelectorType varType = varSelector.getType();
 			switch(varType) {
 			case INPUT_ORDER: 
-				lop.var = VarHeuristic.LEFT_MOST;
+				lop.variableChosenInAList = VarHeuristic.LEFT_MOST;
 				break;
 			case MIN_VALUE:
-				lop.var = VarHeuristic.MIN;
+				lop.variableChosenInAList = VarHeuristic.MIN;
 				break;
 			case MAX_VALUE:
-				lop.var = VarHeuristic.MAX;
+				lop.variableChosenInAList = VarHeuristic.MAX;
 				break;
 			case RANDOM:
-				lop.var = VarHeuristic.RANDOM;
+				lop.variableChosenInAList = VarHeuristic.RANDOM;
 				break;
 			case MIN_DOMAIN:
-				lop.var = VarHeuristic.FIRST_FAIL;
+				lop.variableChosenInAList = VarHeuristic.FIRST_FAIL;
 				break;
 			default:
-				lop.var = VarHeuristic.LEFT_MOST;
+				lop.variableChosenInAList = VarHeuristic.LEFT_MOST;
 				break;
 			}
 		}
-		else lop.var = VarHeuristic.LEFT_MOST;
+		else lop.variableChosenInAList = VarHeuristic.LEFT_MOST;
 		ValueSelector valueSelector = getValueSelector();
 		if (valueSelector != null) {
 			ValueSelectorType valueType = valueSelector.getType();
 			switch(valueType) {
 			case MIN:
-				lop.val = ValHeuristic.GLB;
+				lop.valueForIntLVar = ValHeuristic.GLB;
 				break;
 			case MAX:
-				lop.val = ValHeuristic.LUB;
+				lop.valueForIntLVar = ValHeuristic.LUB;
 				break;
 			case MIDDLE:
-				lop.val = ValHeuristic.MID_MOST;
+				lop.valueForIntLVar = ValHeuristic.MID_MOST;
 				break;
 			case MEDIAN:
-				lop.val = ValHeuristic.MEDIAN;
+				lop.valueForIntLVar = ValHeuristic.MEDIAN;
 				break;
 			case RANDOM:
-				lop.val = ValHeuristic.EQUI_RANDOM;
+				lop.valueForIntLVar = ValHeuristic.EQUI_RANDOM;
 				break;
 			default:
-				lop.val = ValHeuristic.GLB;
+				lop.valueForIntLVar = ValHeuristic.GLB;
 				break;
 			}
 		}
-		else lop.val = ValHeuristic.GLB;
+		else lop.valueForIntLVar = ValHeuristic.GLB;
 		return lop;
 	}
 	
 	/**
 	 * Auxiliary method that apply a label to the integer variables
-	 * implementation (JSetL.IntLVar) identified in the strategy.
+	 * implementation (jsetl.IntLVar) identified in the strategy.
 	 */
 	protected void label() {
 		if (vars == null || vars.length == 0) {
@@ -133,12 +127,12 @@ public class SearchStrategy extends AbstractSearchStrategy {
 		for (int i = 0; i < vars.length; i++) {
 			vec[i] = (IntLVar) vars[i].getImpl();
 		}
-		sc.add(IntLVar.label(vec, getHeuristic()));
+		sc.add(IntLVar.label(getHeuristic(),vec ));
 	}
 	
 	/**
 	 * Auxiliary method that apply a label to the set variables
-	 * implementation (JSetL.SetLVar) identified in the strategy.
+	 * implementation (jsetl.SetLVar) identified in the strategy.
 	 */
 	protected void labelSets() {
 		if (varSets == null || varSets.length == 0)
@@ -147,7 +141,7 @@ public class SearchStrategy extends AbstractSearchStrategy {
 		SetLVar[] vec = new SetLVar[varSets.length];
 		for (int k = 0; k < varSets.length; k++) 
 			vec[k] = (SetLVar) varSets[k].getImpl();
-		sc.add(SetLVar.label(vec, getHeuristic()));
+		sc.add(SetLVar.label(getHeuristic(), vec));
 	}
 
 	/**

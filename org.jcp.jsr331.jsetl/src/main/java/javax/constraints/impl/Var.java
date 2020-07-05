@@ -3,8 +3,8 @@ package javax.constraints.impl;
 import javax.constraints.extra.PropagationEvent;
 import javax.constraints.extra.Propagator;
 
-import JSetL.IntLVar;
-import JSetL.MultiInterval;
+import jsetl.IntLVar;
+import jsetl.MultiInterval;
 
 /**
  * This class implement the JSR331 constrained integer variable "Var",
@@ -30,7 +30,7 @@ public class Var extends AbstractVar  {
 	/**
 	 * Builds an unbound integer variable with an auto-generated name.
 	 * 
-	 * @param problem the problem which the variable is related,
+	 * @param problem the problem which the variable is related to,
 	 * @param min the integer representing the lower bound,
 	 * @param max the integer representing the upper bound.
 	 * 
@@ -57,6 +57,7 @@ public class Var extends AbstractVar  {
 		super(problem, x.getName());
 		setImpl(x);
 	}
+
 	/**
 	 * Copy constructor.
 	 * 
@@ -124,8 +125,7 @@ public class Var extends AbstractVar  {
 		x.setImpl(((IntLVar) getImpl()).sum(value));
 		((IntLVar)x.getImpl()).setName(x.getName());
 		// To constraint the new variable.
-		Constraint c = new Constraint(p,
-				((IntLVar) x.getImpl()).eq(((IntLVar) getImpl()).sum(value)));
+		Constraint c = new Constraint(p,((IntLVar) x.getImpl()).getConstraint().clone());
 		p.post(c);
 		p.addAuxVariable(x);
 		return x;
@@ -142,8 +142,7 @@ public class Var extends AbstractVar  {
 		x.setImpl(((IntLVar) getImpl()).sub(value));
 		((IntLVar)x.getImpl()).setName(x.getName());
 		// To constraint the new variable.
-		Constraint c = new Constraint(p,
-				((IntLVar) x.getImpl()).eq(((IntLVar) getImpl()).sub(value)));
+		Constraint c = new Constraint(p,((IntLVar) x.getImpl()).getConstraint().clone());
 		p.post(c);
 		p.addAuxVariable(x);
 		return x;
@@ -160,9 +159,8 @@ public class Var extends AbstractVar  {
 		a.setImpl(((IntLVar) getImpl()).sum(((Var) x).getIntLVar()));
 		((IntLVar)a.getImpl()).setName(a.getName());	
 		// To constraint the new variable.
-		Constraint c = new Constraint(p,
-				((IntLVar) a.getImpl()).eq(
-						((IntLVar) getImpl()).sum((IntLVar) x.getImpl())));
+		Constraint c = new Constraint(p,((IntLVar) a.getImpl()).getConstraint().clone());
+
 		p.post(c);
 		p.addAuxVariable(a);
 		return a;
@@ -179,9 +177,8 @@ public class Var extends AbstractVar  {
 		a.setImpl(((IntLVar) getImpl()).sub(((Var) x).getIntLVar()));
 		((IntLVar)a.getImpl()).setName(a.getName());
 		// To constraint the new variable.
-		Constraint c = new Constraint(p,
-				((IntLVar) a.getImpl()).eq(
-						((IntLVar) getImpl()).sub((IntLVar) x.getImpl())));
+		Constraint c = new Constraint(p,((IntLVar) a.getImpl()).getConstraint().clone());
+
 		p.post(c);
 		p.addAuxVariable(a);
 		return a;
@@ -198,8 +195,8 @@ public class Var extends AbstractVar  {
 		x.setImpl(((IntLVar) getImpl()).mul(value));
 		((IntLVar)x.getImpl()).setName(x.getName());
 		// To constraint the new variable.
-		Constraint c = new Constraint(p,
-				((IntLVar) x.getImpl()).eq(((IntLVar) getImpl()).mul(value)));
+		Constraint c = new Constraint(p,((IntLVar) x.getImpl()).getConstraint().clone());
+
 		p.post(c);
 		p.addAuxVariable(x);
 		return x;
@@ -216,9 +213,8 @@ public class Var extends AbstractVar  {
 		a.setImpl(((IntLVar) getImpl()).mul(((Var) x).getIntLVar()));
 		((IntLVar)a.getImpl()).setName(a.getName());
 		// To constraint the new variable.
-		Constraint c = new Constraint(p,
-				((IntLVar) a.getImpl()).eq(
-						((IntLVar) getImpl()).mul((IntLVar) x.getImpl())));
+		Constraint c = new Constraint(p,((IntLVar) a.getImpl()).getConstraint().clone());
+
 		p.post(c);
 		p.addAuxVariable(a);
 		return a;
@@ -235,8 +231,8 @@ public class Var extends AbstractVar  {
 		x.setImpl(((IntLVar) getImpl()).div(value));
 		((IntLVar)x.getImpl()).setName(x.getName());
 		// To constraint the new variable.
-		Constraint c = new Constraint(p,
-				((IntLVar) x.getImpl()).eq(((IntLVar) getImpl()).div(value)));
+		Constraint c = new Constraint(p,((IntLVar) x.getImpl()).getConstraint().clone());
+
 		p.post(c);
 		p.addAuxVariable(x);
 		return x;
@@ -253,9 +249,8 @@ public class Var extends AbstractVar  {
 		a.setImpl(((IntLVar) getImpl()).div(((Var) x).getIntLVar()));
 		((IntLVar)a.getImpl()).setName(a.getName());	
 		// To constraint the new variable.
-		Constraint c = new Constraint(p,
-				((IntLVar) a.getImpl()).eq(
-						((IntLVar) getImpl()).div((IntLVar) x.getImpl())));
+		Constraint c = new Constraint(p,((IntLVar) a.getImpl()).getConstraint().clone());
+
 		p.post(c);
 		p.addAuxVariable(a);
 		return a;
@@ -272,8 +267,8 @@ public class Var extends AbstractVar  {
 		x.setImpl(((IntLVar) getImpl()).mod(value));
 		((IntLVar)x.getImpl()).setName(x.getName());
 		// To constraint the new variable.
-		Constraint c = new Constraint(p,
-				((IntLVar) x.getImpl()).eq(((IntLVar) getImpl()).mod(value)));
+		Constraint c = new Constraint(p,((IntLVar) x.getImpl()).getConstraint().clone());
+
 		p.post(c);
 		p.addAuxVariable(x);
 		return x;
@@ -289,8 +284,7 @@ public class Var extends AbstractVar  {
 		x.setName(p.getFreshName());
 		Var result = new Var(p, x);
 		// To constraint the new variable.
-		Constraint c = new Constraint(p,
-				((IntLVar) result.getImpl()).eq(((IntLVar) getImpl()).abs()));
+		Constraint c = new Constraint(p,x.getConstraint().clone());
 		p.post(c);
 		p.addAuxVariable(x);
 		return result;

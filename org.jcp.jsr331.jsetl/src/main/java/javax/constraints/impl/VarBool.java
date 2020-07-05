@@ -2,13 +2,13 @@ package javax.constraints.impl;
 
 import javax.constraints.impl.Var;
 
-import JSetL.IntLVar;
+import jsetl.IntLVar;
 
 
 /**
  * This class implement the JSR331 constrained boolean variable "VarBool",
  * extending the JSetL implementation Var. The implementation is
- * based on the solver JSetL.
+ * based on the solver jsetl.
  * 
  * <p>The construction of the variable is simply based on the narrowing of 
  * the domain of Var to [0,1]. If a built-in implementation of boolean 

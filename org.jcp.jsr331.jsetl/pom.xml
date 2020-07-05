@@ -12,7 +12,7 @@
 	<artifactId>jsr331-jsetl</artifactId>
 
 	<name>JSR331 JSetL</name>
-	<description>This is a JSR331 implementation based on the Java constraint programming library "JSetl" v. 2.3</description>
+	<description>This is a JSR331 implementation based on the Java constraint programming library "JSetl" v. 3.0</description>
 	<url>http://www.clpset.unipr.it/jsetl/</url>
 
 	<licenses>
@@ -28,6 +28,12 @@
 		<developer>
 			<name>Gianfranco Rossi</name>
 			<email>gianfranco.rossi56@gmail.com</email>
+			<organization>Department of Mathematics, Physics and Computer Science of the University of Parma</organization>
+			<organizationUrl>https://en.unipr.it/</organizationUrl>
+		</developer>
+		<developer>
+			<name>Andrea Fois</name>
+			<email>andrea.fois@studenti.unipr.it</email>
 			<organization>Department of Mathematics, Physics and Computer Science of the University of Parma</organization>
 			<organizationUrl>https://en.unipr.it/</organizationUrl>
 		</developer>

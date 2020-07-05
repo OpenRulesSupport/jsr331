@@ -5,24 +5,22 @@ import java.util.Vector;
 
 import javax.constraints.impl.Problem;
 import javax.constraints.impl.Constraint;
-import javax.constraints.impl.search.SearchStrategy;
-import javax.constraints.impl.search.Solution;
-import javax.constraints.impl.search.SolutionIterator;
 
 import javax.constraints.Objective;
 import javax.constraints.ProblemState;
 import javax.constraints.SearchStrategy.SearchStrategyType;
 
-import JSetL.Failure;
-import JSetL.IntLVar;
-import JSetL.LabelingOptions;
-import JSetL.SolverClass;
+import jsetl.ConstraintClass;
+import jsetl.SolverClass;
+import jsetl.exception.Failure;
+import jsetl.IntLVar;
+import jsetl.LabelingOptions;
 
 /**
  * Implement the JSR331 solver extending the abstract class 
  * AbstractSolver of the common implementation. 
  * 
- * <p>The class contains an instance of the JSetL SolverClass that implement
+ * The class contains an instance of the JSetL SolverClass that implement
  * the solver, a boolean variable for checking variable labeling, and an
  * integer variable for numbering solutions. 
  * 
@@ -44,13 +42,13 @@ public class Solver extends AbstractSolver {
 	 * Auxiliary array of JSetL constraints. Represents all constraints
 	 * of the problem.
 	 */
-	protected JSetL.Constraint[] jsetlConstraints;
+	protected ConstraintClass[] jsetlConstraints;
 	
 	/**
 	 * Auxiliary array of JSetL integer variables. Represent all auxiliary
 	 * variables used in the problem definition.
 	 */
-	JSetL.IntLVar[] auxIntLVar;
+	jsetl.IntLVar[] auxIntLVar;
 	
 	/**
 	 * True if the problem has no constraints.
@@ -58,7 +56,7 @@ public class Solver extends AbstractSolver {
 	Boolean emptyConstraints = true;
 
 	/**
-	 * Build a new Solver.
+	 * Build a new SolverClass.
 	 * 
 	 * @param problem the Problem which the solver is bound.
 	 */
@@ -81,12 +79,12 @@ public class Solver extends AbstractSolver {
 
 	/**
 	 * Auxiliary method that add to the JSetL solver all constraints
-	 * saved in the problem bound to <code>this</code> Solver.
+	 * saved in the problem bound to <code>this</code> SolverClass.
 	 */
 	private void setProblemConstraints() {
 		if (emptyConstraints) 
 			return;
-		for (JSetL.Constraint constraint : jsetlConstraints)
+		for (ConstraintClass constraint : jsetlConstraints)
 			jsetlSolver.add(constraint);
 	}
 
@@ -147,7 +145,7 @@ public class Solver extends AbstractSolver {
 						numberOfSolutions++);
 			} catch (Failure e) {
 				solution = null;
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
 		}
 		return solution;
@@ -183,7 +181,7 @@ public class Solver extends AbstractSolver {
 		if (auxIntLVar == null || auxIntLVar.length == 0)
 			return;
 		LabelingOptions lop = new LabelingOptions();
-		jsetlSolver.add(IntLVar.label(auxIntLVar, lop));
+		jsetlSolver.add(IntLVar.label(lop,auxIntLVar));
 	}
 
 	/**
@@ -271,64 +269,22 @@ public class Solver extends AbstractSolver {
 		if(getProblem().getVar(objectiveVar.getName()) == null) {
 			getProblem().add(objectiveVar);
 		}
-		javax.constraints.Var obj = objectiveVar;
-		IntLVar target = (IntLVar) obj.getImpl();
-		Boolean maximize = false;
-		int bestValue = Integer.MAX_VALUE /2;
-		JSetL.Constraint c;
-		if(objective.equals(Objective.MAXIMIZE)) {
-			maximize = true;
-			//bestValue = Integer.MIN_VALUE;
-			bestValue = - Integer.MAX_VALUE /2;
-			c = new JSetL.Constraint(target.gt(bestValue));
-		} else c = new JSetL.Constraint(target.lt(bestValue));
-		Solution solution = null;
-		while(jsetlSolver.check(c)) {
-			if(getMaxNumberOfSolutions() > 0 && 
-					numberOfSolutions >= getMaxNumberOfSolutions())
-				break;
-			if(getTimeLimit() > 0) {
-				if (System.currentTimeMillis() - startTime > getTimeLimit())
-					break;				
-			}
-			numberOfSolutions++;
-			try {
-				solution = new Solution(this, 
-						numberOfSolutions);
-			} catch (Failure e) {
-				e.printStackTrace();
-				return null;
-			}
-			if(isTraceExecution())
-				solution.log();
-			int newValue;
-			if(maximize) {
-				newValue = solution.getMin(obj.getName());
-				if(bestValue < newValue)
-					bestValue = newValue;
-				JSetL.Constraint tmp = new JSetL.Constraint(c);
-				c = new JSetL.Constraint(tmp.and(target.gt(bestValue)));
-				//c.and(target.gt(bestValue));
-			}
-			else {	
-				newValue = solution.getMax(obj.getName());
-				if(bestValue > newValue)
-					bestValue = newValue;
-				JSetL.Constraint tmp = new JSetL.Constraint(c);
-				c = new JSetL.Constraint(tmp.and(target.lt(bestValue)));
-				//c.and(target.lt(bestValue));
-			}
-		}
+		Solution solution;
 		applyHeuristic();
-		jsetlSolver.add(c);
 		try {
-			jsetlSolver.solve();
-			solution = new Solution(this, 
+			IntLVar target = (IntLVar) objectiveVar.getImpl();
+			if(objective.equals(Objective.MAXIMIZE))
+				jsetlSolver.maximize(target);
+			else
+				jsetlSolver.minimize(target);
+
+			solution = new Solution(this,
 					numberOfSolutions);
 		} catch (Failure e) {
 			e.printStackTrace();
 			return null;
 		}
+
 		if (solution != null)
 			log("Optimal solution is found. Objective: "
 					+solution.getValue(objectiveVar.getName()));
@@ -336,12 +292,12 @@ public class Solver extends AbstractSolver {
 	}
 	
 	/**
-	 * Auxiliary method that add to the JSetL solver the given Constraint
+	 * Auxiliary method that add to the JSetL solver the given ConstraintClass
 	 * <code>c</code>.
 	 * 
-	 * @param c the Constraint.
+	 * @param c the ConstraintClass.
 	 */
-	public void addJSetLConstraint(JSetL.Constraint c) {
+	public void addJSetLConstraint(ConstraintClass c) {
 		jsetlSolver.add(c);
 	}
 
