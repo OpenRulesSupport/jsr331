@@ -3,6 +3,9 @@ package javax.constraints.linear;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -18,7 +21,7 @@ abstract public class LinearSolver extends Solver {
 	
 	public static String LP_SOLVER_EXE = "LP_SOLVER_EXE";
 	public static String LP_SOLVER_OPTIONS = "LP_SOLVER_OPTIONS";
-	public static String OUTPUT_FOLDER = "results/";
+	public static String OUTPUT_FOLDER = "LP";
 	
 	private String correlationID = UUID.randomUUID().toString();
 	
@@ -85,8 +88,17 @@ abstract public class LinearSolver extends Solver {
 	}
 	
 	public String uniqueName(String ext) {
-	    File file = new File("/tmp");
-        File outFolder = new File(file,OUTPUT_FOLDER);
+//	    Path outFolder;
+//        try {
+//            outFolder = Files.createTempDirectory(OUTPUT_FOLDER);
+//            return outFolder.resolve(getProblem().getName()+"_"+correlationID + ext).toAbsolutePath().toString();
+//        } catch (IOException e) {
+//            throw new RuntimeException("Cannot create a temporary folder for intermediate LP files: " + OUTPUT_FOLDER, e);
+//        }
+        
+        //File file = new File("/tmp");
+	    File file = new File("./");
+        File outFolder = new File(file,OUTPUT_FOLDER+"/");
         if ( !outFolder.exists() ) {
             outFolder.mkdirs();
         }
