@@ -155,6 +155,10 @@ To use LP solvers, you also need to add these profiles:
 		<profile>
 			<id>Scip</id>
 			<activation>
+			<property>
+				<name>solver</name>
+					<value>Scip</value>
+				</property>
 	            <activeByDefault>true</activeByDefault>
 	        </activation>
 			<dependencies>
@@ -167,6 +171,12 @@ To use LP solvers, you also need to add these profiles:
 		</profile>
 		<profile>
 			<id>GLPK</id>
+			<activation>
+				<property>
+					<name>solver</name>
+					<value>GLPK</value>
+				</property>
+	        </activation>
 			<dependencies>
 				<dependency>
 					<groupId>com.javasolver</groupId>
@@ -177,6 +187,12 @@ To use LP solvers, you also need to add these profiles:
 		</profile>
 		<profile>
 			<id>Coin</id>
+			<activation>
+				<property>
+					<name>solver</name>
+					<value>Coin</value>
+				</property>
+	        </activation>
 			<dependencies>
 				<dependency>
 					<groupId>com.javasolver</groupId>
