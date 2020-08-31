@@ -73,69 +73,85 @@ public class InsideOutsideProduction {
 //			int FLOUR = 0, EGGS = 1;
 			//consumption matrix: consumption[i][j] is a consumption of resources[i] for products[j]
 			double[][] consumption = {
-					{0.5, 0.4, 0.3},
-			        {0.2, 0.4, 0.6}
+//					{0.5, 0.4, 0.3},
+//			        {0.2, 0.4, 0.6}
+			        {0.5, 0.4, 1.3},
+			        {0.2, 0.4, 1.8}
 			};
 			// insideCost[i] is a production cost of product[i]
 			double[] insideCosts = {0.6, 0.8, 0.3};
 			// outsideCost[i] is a cost of unit of product[i] being produced outside the company
 			double[] outsideCosts = {0.8, 0.9, 0.4};
 			// customers demands for product[i]
-			double[] demand = {100, 200, 300};
+			double[] demand = {100, 200, 120};
 
 			//amount of resources available
 			int[] capacity = {20, 40};
 			
-			Problem p = ProblemFactory.newProblem("InsideOutsideProduction");
+			Problem csp = ProblemFactory.newProblem("InsideOutsideProduction");
 
 			VarReal[] insideVars = new VarReal[] {
-					p.variableReal(products[0] + "Inside", 0, demand[0]),
-					p.variableReal(products[1] + "Inside", 0, demand[1]),
-					p.variableReal(products[2] + "Inside", 0, demand[2])
+					csp.variableReal(products[0] + "Inside", 0, demand[0]),
+					csp.variableReal(products[1] + "Inside", 0, demand[1]),
+					csp.variableReal(products[2] + "Inside", 0, demand[2])
 			};
 
 			VarReal[] outsideVars = new VarReal[] {
-					p.variableReal(products[0] + "Outside", 0, demand[0]),
-					p.variableReal(products[1] + "Outside", 0, demand[1]),
-					p.variableReal(products[2] + "Outside", 0, demand[2])
+					csp.variableReal(products[0] + "Outside", 0, demand[0]),
+					csp.variableReal(products[1] + "Outside", 0, demand[1]),
+					csp.variableReal(products[2] + "Outside", 0, demand[2])
 			};
 
 			//an objective function - the total cost of production
-			VarReal insideCost = p.scalProd(insideCosts, insideVars); 
+			VarReal insideCost = csp.scalProd(insideCosts, insideVars); 
 			insideCost.setName("inCost");
-		    p.add(insideCost);
-		    VarReal outsideCost = p.scalProd(outsideCosts, outsideVars);
+		    csp.add(insideCost);
+		    VarReal outsideCost = csp.scalProd(outsideCosts, outsideVars); 
 			outsideCost.setName("outCost");
-		    p.add(outsideCost);
-		    VarReal totalCost = p.sum(insideCost,outsideCost);
+		    csp.add(outsideCost);
+		    VarReal totalCost = csp.sum(insideCost,outsideCost);
 		    totalCost.setName("TotalCost");
-		    p.add(totalCost); 
+		    csp.add(totalCost); 
 
-		    //capacity constraints
-			for (int r=0; r < resources.length; r++){
-			      p.post(consumption[r],insideVars,"<=",capacity[r]);
-			}
+//		    //capacity constraints
+//			for (int r=0; r < resources.length; r++){
+//			      p.post(consumption[r],insideVars,"<=",capacity[r]);
+//			}
+			
+	        //capacity constraints
+            for (int r=0; r < resources.length; r++) {
+                VarReal[] consumedResourceCapacities = new VarReal[products.length];
+                for(int p = 0; p < products.length; p++) {
+                    consumedResourceCapacities[p] = insideVars[p].multiply(consumption[r][p]);
+                    consumedResourceCapacities[p].setName("consumedResourceCapacities["+r+"]["+p+"]");
+                    csp.add(consumedResourceCapacities[p]);
+                }
+                VarReal resourceConsumption = csp.sum(consumedResourceCapacities);
+                resourceConsumption.setName("resourceConsumption["+r+"]");
+                csp.add(resourceConsumption);
+                csp.post(resourceConsumption, "<=", capacity[r]);
+            }
 
 			//meeting customers demand constraints
 			for (int d = 0; d < products.length; d++){
-				VarReal sum = p.sum(insideVars[d],outsideVars[d]);
+				VarReal sum = csp.sum(insideVars[d],outsideVars[d]);
 				sum.setName("demand"+(d+1));
-				p.add(sum);
-			    p.post(sum,">=",demand[d]); 
+				csp.add(sum);
+			    csp.post(sum,">=",demand[d]); 
 			}
 
-			// Solution solution = prob.maximize();
-			p.log(p.getVars());
-			p.log(p.getVarReals());
-			Solver solver = p.getSolver(); 
+			csp.log(csp.getVars());
+			csp.log(csp.getVarReals());
+			Solver solver = csp.getSolver(); 
 			Solution solution = solver.findOptimalSolution(Objective.MINIMIZE,totalCost);
 			if (solution == null) {
 				System.out.println("The problem has no solution!");
 				return;
 			}
-			p.log("Optimized cost function value: "
-					+ solution.getValueReal("TotalCost"));
+			
 			solution.log(6);
+			csp.log("Optimized cost function value: "
+					+ solution.getValueReal("TotalCost"));			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

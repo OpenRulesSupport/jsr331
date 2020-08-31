@@ -81,7 +81,7 @@ public class Knapsack {
 			p.log("Gold   = " + s.getValue("G"));
 			p.log("Silver = " + s.getValue("S"));
 			p.log("Bronze = " + s.getValue("B"));
-			p.log("Maximum Profit = " + s.getValue("cost"));
+			p.log("Maximum cost = " + s.getValue("cost"));
 		}
 		solver.logStats();
 

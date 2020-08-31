@@ -29,13 +29,15 @@ public class LinearSolver extends javax.constraints.linear.LinearSolver {
 	
 	@Override
 	public String getOutputFilename() {
-		return OUTPUT_FOLDER + "/" + getProblem().getName() + ".xml";
+		//return OUTPUT_FOLDER + "/" + getProblem().getName() + ".xml";
+	    return uniqueName(".xml");
 	}
 	
 	@Override
 	protected String preProcess() {
 		// create Cplex cmd-file
-		String name = OUTPUT_FOLDER + "/" + getProblem().getName() + ".cmd";
+		//String name = OUTPUT_FOLDER + "/" + getProblem().getName() + ".cmd";
+	    String name = uniqueName(".cmd");
 		try {
 			PrintStream out = new PrintStream(name);
 //			System.out.println("Cplex commands:");

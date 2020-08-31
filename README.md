@@ -47,7 +47,7 @@ To add JSR331 dependencies and selected constraint and/or linear solvers to your
 <parent>   
 &nbsp;&nbsp;&nbsp;&nbsp;<groupId>com.javasolver</groupId>
 &nbsp;&nbsp;&nbsp;&nbsp;<artifactId>jsr331-parent</artifactId>
-&nbsp;&nbsp;&nbsp;&nbsp;<version>2.0.3</version>
+&nbsp;&nbsp;&nbsp;&nbsp;<version>2.0.4</version>
 </parent>
 
 You also need to add these dependencies and profiles:

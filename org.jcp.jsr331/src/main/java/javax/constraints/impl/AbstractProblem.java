@@ -603,6 +603,14 @@ abstract public class AbstractProblem implements Problem {
 		return array;
 	}
 	
+	public ArrayList<Var> getVarArray() {
+	    return vars;
+	}
+	
+	public ArrayList<VarReal> getVarRealArray() {
+        return varReals;
+    }
+	
 	/**
 	 * Returns an array containing the VarBool variables previously added to the problem.
 	 * @return an array containing the VarBool variables previously added to the problem.
