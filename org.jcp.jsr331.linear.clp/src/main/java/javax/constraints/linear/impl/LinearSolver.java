@@ -1,17 +1,15 @@
 package javax.constraints.linear.impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.constraints.ConstrainedVariable;
 import javax.constraints.Constraint;
 import javax.constraints.Objective;
+import javax.constraints.Problem;
 import javax.constraints.Solution;
 import javax.constraints.Var;
 import javax.constraints.VarReal;
-import javax.constraints.impl.AbstractConstrainedVariable;
-import javax.constraints.Problem;
 
 import com.quantego.clp.CLP;
 import com.quantego.clp.CLP.STATUS;
@@ -21,23 +19,19 @@ import com.quantego.clp.CLPVariable;
 
 public class LinearSolver extends javax.constraints.linear.LinearSolver {
 
-	static public final String JSR331_LINEAR_SOLVER_VERSION = "CLP v.1.16.10";
-	
-	Problem problem;
-	CLP model; 
+    static public final String JSR331_LINEAR_SOLVER_VERSION = "CLP v.1.16.10 using clp-java";
 
-	public LinearSolver() {
-	}
-	
-	public void init() {
-	    problem = getProblem();
-	    
-	  //model = new CLP().buffer(10).presolve(false).maxIterations(1);
-        model = new CLP().verbose(1);
-        
-        System.out.println("ProblemGenerator for CLP: " + problem.getName());
+    Problem problem;
+    CLP model;
 
-        //setIntegerVariablesOnly(false);
+    public LinearSolver() {
+    }
+
+    public void init() {
+        problem = getProblem();
+
+        // model = new CLP().buffer(10).presolve(false).maxIterations(1);
+        model = new CLP(); // .verbose(1);
 
         // Add CLPVariables (int + real)
         Var[] vars = problem.getVars();
@@ -46,9 +40,9 @@ public class LinearSolver extends javax.constraints.linear.LinearSolver {
             intSize = vars.length;
         VarReal[] varReals = problem.getVarReals();
         int realSize = 0;
-        if (varReals != null) 
+        if (varReals != null)
             realSize = varReals.length;
-        CLPVariable[] clpVars = new CLPVariable[intSize+realSize];
+        CLPVariable[] clpVars = new CLPVariable[intSize + realSize];
         int n = 0;
         if (intSize > 0) {
             for (Var var : vars) {
@@ -64,7 +58,7 @@ public class LinearSolver extends javax.constraints.linear.LinearSolver {
                 clpVars[n++] = clpVar;
             }
         }
-        
+
         // Add constraints
         double precision = 1e-7;
 //      if (isIntegerVariablesOnly())
@@ -76,111 +70,102 @@ public class LinearSolver extends javax.constraints.linear.LinearSolver {
             ConstrainedVariable[] constraintVars = c.getVars();
             String oper = c.getOper();
             double rhs = c.getValue();
-            log("Constraint: ");
-            for(ConstrainedVariable v : constraintVars)
-                log(" " + v);
-            for(double d : constraintCoefficients)
-                log("  " + d);
-            log(oper + " " + rhs);
+//            log("Constraint: ");
+//            for (ConstrainedVariable v : constraintVars)
+//                log(" " + v);
+//            for (double d : constraintCoefficients)
+//                log("  " + d);
+//            log(oper + " " + rhs);
             Map<CLPVariable, Double> lhs = new HashMap<CLPVariable, Double>();
             for (int i = 0; i < constraintVars.length; i++) {
                 ConstrainedVariable var = constraintVars[i];
-                CLPVariable clpVar = (CLPVariable)var.getObject();
+                CLPVariable clpVar = (CLPVariable) var.getObject();
                 if (clpVar == null) {
-                    throw new RuntimeException("The variable "+ var.getName() + " does not have an associated CLP variable");
+                    throw new RuntimeException(
+                            "The variable " + var.getName() + " does not have an associated CLP variable");
                 }
                 Double coef = constraintCoefficients[i];
-                lhs.put(clpVar,coef);
+                lhs.put(clpVar, coef);
             }
-            TYPE type =  CLPConstraint.TYPE.EQ;
+            TYPE type = CLPConstraint.TYPE.EQ;
             if ("=".equals(oper))
-                type =  CLPConstraint.TYPE.EQ;
-            else
-            if (">=".equals(oper))
-                type =  CLPConstraint.TYPE.GEQ;
-            else
-            if (">".equals(oper)) {
-                type =  CLPConstraint.TYPE.GEQ;
+                type = CLPConstraint.TYPE.EQ;
+            else if (">=".equals(oper))
+                type = CLPConstraint.TYPE.GEQ;
+            else if (">".equals(oper)) {
+                type = CLPConstraint.TYPE.GEQ;
                 rhs += precision;
-            }
-            else
-            if ("<".equals(oper)) {
-                type =  CLPConstraint.TYPE.LEQ;
+            } else if ("<".equals(oper)) {
+                type = CLPConstraint.TYPE.LEQ;
                 rhs -= precision;
-            }
-            else
-            if ("<=".equals(oper))
-                type =  CLPConstraint.TYPE.LEQ;
-            else
-            if ("!=".equals(oper))
-                type =  CLPConstraint.TYPE.NEQ;
+            } else if ("<=".equals(oper))
+                type = CLPConstraint.TYPE.LEQ;
+            else if ("!=".equals(oper))
+                type = CLPConstraint.TYPE.NEQ;
             else {
                 throw new RuntimeException("Uknown linear operator: " + oper);
             }
-            
+
             model.addConstraint(lhs, type, rhs);
         }
-	}
-	
-	public Solution optimize(Objective objectiveDirection, ConstrainedVariable objectiveVar) {
+    }
+
+    public Solution optimize(Objective objectiveDirection, ConstrainedVariable objectiveVar) {
         // Set Objective
         CLPVariable clpObjective = (CLPVariable) objectiveVar.getObject();
         model.createExpression().add(clpObjective).asObjective();
-        
+
         STATUS status;
         if (Objective.MAXIMIZE.equals(objectiveDirection)) {
             status = model.maximize();
-        }
-        else
-        if (Objective.MINIMIZE.equals(objectiveDirection)) {
+        } else if (Objective.MINIMIZE.equals(objectiveDirection)) {
             status = model.minimize();
-        }
-        else {
+        } else {
             throw new RuntimeException("Uknown optimization direction: " + objectiveDirection);
         }
-        
+
         if (!status.equals(STATUS.OPTIMAL)) {
             System.out.println("CLP cannot find an optimal solution");
             return null;
         }
-        
-        //double obj = model.getObjectiveValue();
-        
+
+        // double obj = model.getObjectiveValue();
+
         return createSolution();
     }
-	
-	public Solution createSolution() {
-	        
+
+    public Solution createSolution() {
+
         Var[] vars = problem.getVars();
         if (vars != null) {
             for (Var v : vars) {
-                javax.constraints.impl.Var var = (javax.constraints.impl.Var)v;
-                CLPVariable clpVar = (CLPVariable)var.getObject();
+                javax.constraints.impl.Var var = (javax.constraints.impl.Var) v;
+                CLPVariable clpVar = (CLPVariable) var.getObject();
                 double doubleValue = clpVar.getSolution();
-                log(var.getName() + " = " + doubleValue);
-                int value = (int)Math.floor(doubleValue);
-                log("rounded to " + value);
+                int value = (int) Math.floor(doubleValue);
+                if (doubleValue != value)
+                    log(var.getName() + " = " + doubleValue + " rounded to " + value);
                 var.setValue(value);
             }
         }
         VarReal[] realVars = problem.getVarReals();
         if (realVars != null) {
             for (VarReal v : realVars) {
-                javax.constraints.impl.VarReal var = (javax.constraints.impl.VarReal)v;
-                CLPVariable clpVar = (CLPVariable)var.getObject();
+                javax.constraints.impl.VarReal var = (javax.constraints.impl.VarReal) v;
+                CLPVariable clpVar = (CLPVariable) var.getObject();
                 double value = clpVar.getSolution();
-                log(var.getName() + " = " + value);
+                //log(var.getName() + " = " + value);
                 var.setValue(value);
             }
         }
         return new javax.constraints.impl.search.Solution(this, 1);
-	}
+    }
 
-	@Override
+    @Override
     public Solution findOptimalSolution(Objective objectiveDirection, Var objectiveVar) {
-	    init();
-	    problem.add(objectiveVar);
-	    return optimize(objectiveDirection, objectiveVar);
+        init();
+        problem.add(objectiveVar);
+        return optimize(objectiveDirection, objectiveVar);
     }
 
     @Override
@@ -192,21 +177,20 @@ public class LinearSolver extends javax.constraints.linear.LinearSolver {
 
     public String getCommanLine() {
         throw new RuntimeException("getCommanLine() should not be used for CLP");
-	}
+    }
 
-	public String getVersion() {
-		return JSR331_LINEAR_SOLVER_VERSION;
-	}
+    public String getVersion() {
+        return JSR331_LINEAR_SOLVER_VERSION;
+    }
 
-	/**
-	 * CLP minimizes by default
-	 */
-	public Objective getDefaultOptimizationObjective() {
-		return Objective.MINIMIZE;
-	}
+    /**
+     * CLP minimizes by default
+     */
+    public Objective getDefaultOptimizationObjective() {
+        return Objective.MINIMIZE;
+    }
 
-
-	public HashMap<String, String> readResults() {
-	    throw new RuntimeException("readResults() should not be used for CLP");
-	}
+    public HashMap<String, String> readResults() {
+        throw new RuntimeException("readResults() should not be used for CLP");
+    }
 }

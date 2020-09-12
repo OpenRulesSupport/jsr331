@@ -15,7 +15,7 @@
 	<url>https://github.com/OpenRulesSupport/jsr331</url>
 
 	<properties>
-		<log4j.version>2.7</log4j.version>
+		<log4j.version>2.13.3</log4j.version>
 	</properties>
 
 	<dependencies>
@@ -75,6 +75,16 @@
 				<dependency>
 					<groupId>com.javasolver</groupId>
 					<artifactId>jsr331-glpk</artifactId>
+					<version>${jsr331.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>CLP</id>
+			<dependencies>
+				<dependency>
+					<groupId>com.javasolver</groupId>
+					<artifactId>jsr331-clp</artifactId>
 					<version>${jsr331.version}</version>
 				</dependency>
 			</dependencies>
