@@ -99,9 +99,7 @@ public class Solution implements javax.constraints.Solution {
 
 	public int getValue(String name) {
 		int i = getIndexOfInt(name);
-		//if (intResults[i].bound)
-			return intResults[i].value;
-		//throw new RuntimeException("variable " + name + " is not bound");
+		return intResults[i].value;
 	}
 	
 	public void setValue(String name, int value) {
@@ -128,9 +126,7 @@ public class Solution implements javax.constraints.Solution {
 
 	public double getValueReal(String name) {
 		int i = getIndexOfReal(name);
-		//if (realResults[i].bound)
-			return ((realResults[i].min + realResults[i].max) / 2);
-		//throw new RuntimeException("real variable " + name + " is not bound");
+		return ((realResults[i].min + realResults[i].max) / 2);
 	}
 	
 	public void setValueReal(String name, double value) {

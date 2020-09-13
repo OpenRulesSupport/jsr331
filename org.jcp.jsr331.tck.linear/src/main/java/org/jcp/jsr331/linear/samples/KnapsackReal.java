@@ -43,26 +43,30 @@ public class KnapsackReal {
 	
 	Problem p = ProblemFactory.newProblem("KnapsackReal");
 	
-	public void define() {
+	double itemSize[] = { 1, 2, 3 };
+    double itemValue[] = { 15, 10, 5 };
+    double itemCount[] = { 20, 30, 40 };
+    final int knapsackSize = 25;
+	    
+    public void define() {
 
-		Var G = p.variable("G", 0, 20);
-		Var S = p.variable("S", 0, 30);
-		Var B = p.variable("B", 0, 40);
-		Var[] vars = new Var[] { G, S, B };
+        // === Define Variable(s)
+        VarReal G = p.variableReal("G",0,itemCount[0]);
+        VarReal S = p.variableReal("S", 0, itemCount[1]);
+        VarReal B = p.variableReal("B", 0, itemCount[2]);
+        VarReal[] vars = new VarReal[] { G, S, B };
 
-		// === Post Constraint(s)
-		// 1G + 2S + 3B <= 25
-		int itemSize[] = { 1, 2, 3 };
-		int knapsackSize = 25;
-		p.post(itemSize, vars, "<=", knapsackSize);
+        // === Post Constraint(s)
+        // 1. 1G + 2S + 3B <= 25
+        VarReal scalProd = p.scalProd(itemSize, vars);
+        p.add("ScalProd",scalProd);
+        p.post(scalProd, "<=", knapsackSize);
 
-		// Cost: 15G + 10S + 5B
-		double itemValue[] = { 15.2, 10.75, 5.5 };
-		VarReal cost = p.scalProd(itemValue, vars); 
-		cost.setName("cost");
-		p.add(cost);
+        // 2. Cost: 15G + 10S + 5B
+        VarReal cost = p.scalProd(itemValue, vars);
+        p.add("cost",cost);
 
-	}
+    }
 
 	// === Problem Resolution
 	public void solve() {
@@ -72,9 +76,9 @@ public class KnapsackReal {
 			p.log("Unable to derive a solution.");
 		else {
 			p.log("*** Optimal Solution ***");
-			p.log("Gold   = " + s.getValue("G"));
-			p.log("Silver = " + s.getValue("S"));
-			p.log("Bronze = " + s.getValue("B"));
+			p.log("Gold   = " + s.getValueReal("G")); 
+			p.log("Silver = " + s.getValueReal("S"));
+			p.log("Bronze = " + s.getValueReal("B"));
 			p.log("Maximum Profit = " + s.getValueReal("cost"));
 		}
 		solver.logStats();
