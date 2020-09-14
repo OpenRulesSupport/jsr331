@@ -45,7 +45,7 @@ import javax.constraints.impl.BasicVarString;
 
 public interface Problem {
 
-	static final String JSR331_VERSION = "JSR-331 \"Constraint Programming API\" Release 2.0.3";
+	static final String JSR331_VERSION = "JSR-331 \"Constraint Programming API\" Release 2.1.0";
 	
 	/**
 	 * Returns JSR331 API version number
