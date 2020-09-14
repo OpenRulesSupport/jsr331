@@ -38,7 +38,8 @@ Open Source LP Solvers:
 -	[GLPK](http://www.gnu.org/software/glpk/)
 -	[COIN](https://projects.coin-or.org/Clp/)
 -	[LP_SOLVE](http://lpsolve.sourceforge.net/5.0/)
--	[OJALGO](http://ojalgo.org/).
+-	[OJALGO](http://ojalgo.org/)
+-   [CLP](https://github.com/coin-or/Clp) with (https://github.com/quantego/clp-java)
 
 More implementations will be included in the standard installation as they become available.
 
@@ -47,7 +48,7 @@ To add JSR331 dependencies and selected constraint and/or linear solvers to your
 <parent>   
 &nbsp;&nbsp;&nbsp;&nbsp;<groupId>com.javasolver</groupId>
 &nbsp;&nbsp;&nbsp;&nbsp;<artifactId>jsr331-parent</artifactId>
-&nbsp;&nbsp;&nbsp;&nbsp;<version>2.0.4</version>
+&nbsp;&nbsp;&nbsp;&nbsp;<version>2.1.0</version>
 </parent>
 
 You also need to add these dependencies and profiles:
