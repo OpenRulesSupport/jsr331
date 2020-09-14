@@ -23,8 +23,10 @@ public class LinearSolver extends javax.constraints.linear.LinearSolver {
 
     Problem problem;
     CLP model;
+    int numberOfRoundings;
 
     public LinearSolver() {
+        numberOfRoundings = 0;
     }
 
     public void init() {
@@ -131,9 +133,22 @@ public class LinearSolver extends javax.constraints.linear.LinearSolver {
 
         // double obj = model.getObjectiveValue();
 
-        return createSolution();
+        Solution solution = createSolution();
+        if (numberOfRoundings > 0) {
+            log("\n===============================================================");
+            log("ATTENTION: CLP does not support MIP with integer variables!");
+            log("The following solution is probably infeasible!");
+            log("The number of rounded variables: " + numberOfRoundings);
+            log("You have the following options:");
+            log("1) Switch to a diffrent solver;");
+            log("2) Replace all integer variables with real variables;");
+            log("3) Adjust this 'solution' manually or apply a 'feasibility pump'.");
+            log("=================================================================\n");
+        }
+        
+        return solution;
     }
-
+    
     public Solution createSolution() {
 
         Var[] vars = problem.getVars();
@@ -143,8 +158,10 @@ public class LinearSolver extends javax.constraints.linear.LinearSolver {
                 CLPVariable clpVar = (CLPVariable) var.getObject();
                 double doubleValue = clpVar.getSolution();
                 int value = (int) Math.floor(doubleValue);
-                if (doubleValue != value)
-                    log(var.getName() + " = " + doubleValue + " rounded to " + value);
+                if (doubleValue != value) {
+                    log("WARNINGF: " + var.getName() + " = " + doubleValue + " rounded to " + value);
+                    numberOfRoundings++;
+                }
                 var.setValue(value);
             }
         }
