@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.javasolver</groupId>
 		<artifactId>jsr331-parent</artifactId>
-		<version>2.1.0</version>
+		<version>2.2.0</version>
 	</parent>
 	
 	<artifactId>jsr331-constrainer</artifactId>
@@ -34,7 +34,7 @@
 	</developers>
 	
 	<properties>
-		<log4j.version>2.13.3</log4j.version>
+		<log4j.version>2.16.0</log4j.version>
 	</properties>
 
 	<dependencies>
@@ -110,6 +110,10 @@ The modified source code of this version keeps all Exigen Copyright notices.
 All modifications in the source code are marked by "== Changed". 
 
 Major Changes and Bug Fixes:
+
+December, 2021
+==============
+Switch to log4J release 2.16.0 to avoid its security vulnerability
 
 April, 2020
 ===========

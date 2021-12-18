@@ -3,20 +3,27 @@ package javax.constraints.linear.impl;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.math.BigDecimal;
 import java.util.HashMap;
 
 import javax.constraints.Objective;
-import javax.constraints.Solution;
+//import javax.constraints.Solution;
 import javax.constraints.Var;
 import javax.constraints.VarReal;
 import javax.constraints.linear.ComparableVariable;
+import javax.constraints.impl.search.Solution;
 
-import org.ojalgo.concurrent.ConcurrentUtils;
+//import org.ojalgo.TestUtils;
+//import org.ojalgo.concurrent.ConcurrentUtils;
 import org.ojalgo.matrix.BasicMatrix;
-import org.ojalgo.optimisation.OptimisationSolver;
-import org.ojalgo.optimisation.OptimisationSolver.Result;
-import org.ojalgo.optimisation.State;
-import org.ojalgo.optimisation.linear.mps.MathProgSysModel;
+import org.ojalgo.optimisation.ExpressionsBasedModel;
+import org.ojalgo.optimisation.MathProgSysModel;
+import org.ojalgo.optimisation.Variable;
+import org.ojalgo.optimisation.Optimisation.Result;
+//import org.ojalgo.optimisation.OptimisationSolver;
+//import org.ojalgo.optimisation.OptimisationSolver.Result;
+//import org.ojalgo.optimisation.State;
+//import org.ojalgo.optimisation.linear.mps.MathProgSysModel;
 
 
 public class LinearSolver extends javax.constraints.linear.LinearSolver {
@@ -36,6 +43,25 @@ public class LinearSolver extends javax.constraints.linear.LinearSolver {
 		return Objective.MINIMIZE;
 	}
 	
+	public Solution findOptimalSolution(Objective objectiveDirection, Var objectiveVar) {
+        File file = generateMpsFile(objectiveDirection,objectiveVar);
+        int timeoutMilliSeconds = getTimeLimitGlobal();
+        if (timeoutMilliSeconds > 0)
+            return solve(file,timeoutMilliSeconds);
+        else
+            return solve(file);
+    }
+    
+    public Solution findOptimalSolution(Objective objectiveDirection, VarReal objectiveVar) {
+        File file = generateMpsFile(objectiveDirection,objectiveVar);
+        int timeoutMilliSeconds = getTimeLimitGlobal();
+        if (timeoutMilliSeconds > 0)
+            return solve(file,timeoutMilliSeconds);
+        else
+            return solve(file);
+    }
+    
+	
 	/**
 	 * 
 	 * @param file
@@ -46,65 +72,52 @@ public class LinearSolver extends javax.constraints.linear.LinearSolver {
 		javax.constraints.impl.Problem problem = 
 				(javax.constraints.impl.Problem)getProblem();
 				
-		MathProgSysModel mps = MathProgSysModel.makeFromFile(file);
+		//MathProgSysModel mps = MathProgSysModel.makeFromFile(file);
+		//MathProgSysModel mps = MathProgSysModel.make(file);
 		//solve  
-		OptimisationSolver os = mps.getDefaultSolver();
-		Result rs = os.solve();
+		//OptimisationSolver os = mps.getDefaultSolver();
+		//Result rs = os.solve();
+		//Result rs = mps.solve();
 		
-		if( rs.getState() == State.INFEASIBLE )
-		{
-			//log("Linear Solver Found No Solutions");
-			return null; //no solution
-		}
+		//if( rs.getState() == State.INFEASIBLE ) {
+		
+		
+		
+		final ExpressionsBasedModel model = MathProgSysModel.make(file).getExpressionsBasedModel();
+		if (!model.validate()) {
+		    log("ExpressionsBasedModel failed to be validated");
+            return null;
+        }
+		
+		model.relax(true);
+		 
+		Result rs = model.minimise();
+		if( !rs.getState().isFeasible() ) {
+            log("Linear Solver Found No Solutions");
+            return null; //no solution
+        }
 
-		BasicMatrix basicMatrix = rs.getSolution(); 
-		
-		//ojAlgo orders result variables lexicographically
-		int numberOfVars = 0;
-		Var[] vars = problem.getVars();
-		if (vars != null) {
-			numberOfVars = vars.length;
-		}
-		int numberOfVarReals = 0;
-		VarReal[] varReals = problem.getVarReals();
-		if (varReals != null) {
-			numberOfVarReals = varReals.length;
-		}
-		ComparableVariable[] varsArray = new ComparableVariable[numberOfVars + numberOfVarReals];
-		int n = 0;
-		for (int i = 0; i < numberOfVars; i++) {
-			javax.constraints.impl.Var var = (javax.constraints.impl.Var) vars[i];
-			varsArray[n++] = new ComparableVariable(var);
-		}
-		for (int i = 0; i < numberOfVarReals; i++) {
-			javax.constraints.impl.VarReal varReal = (javax.constraints.impl.VarReal) varReals[i];
-			varsArray[n++] = new ComparableVariable(varReal);
-		}
-		java.util.Arrays.sort(varsArray);
-	
-		//assign the values from the solution to the variables
-		for(int i = 0; i < varsArray.length; i++) {
-			double value = basicMatrix.doubleValue(i, 0);
-			ComparableVariable var = varsArray[i];
-			if (var.isInteger()) {
-				javax.constraints.impl.Var intVar = var.getVar();
-				intVar.setValue((int)value);
-			}
-			if (var.isReal()) {
-				javax.constraints.impl.VarReal realVar = var.getVarReal();
-				realVar.setValue((int)value);
-			}
-		}
-		Solution solution = new javax.constraints.linear.impl.search.Solution(this, 1);
-		
-		ConcurrentUtils.EXECUTOR.setCorePoolSize(0); // stop ojAlgo maintaining its default 1 thread
+        Solution solution = new Solution(this, 1);
+        
+        rs.g
+
+        for (Variable ojVar : model.getVariables()) {
+                ojVar.relax();
+                String name = ojVar.getName();
+                BigDecimal decValue = ojVar.getValue();
+                if (decValue == null)
+                    continue;
+                if (ojVar.isInteger()) {
+                    solution.setValue(name, decValue.intValue());
+                }
+                else { // real?
+                    solution.setValueReal(name, decValue.doubleValue());
+                }
+        }
 		
 		return solution;
 	}
 	
-//	public int[] readResultValues() {
-//		return null; // no intermediate files are used
-//	}
 	
 	public HashMap<String, String> readResults() {
 		return null;

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.jcp.jsr331.linear.ojAlgo</name>
-	<comment></comment>
+	<name>org.jcp.jsr331.linear.ojalgo</name>
+	<comment>This is a JSR331 interface for the open source linear programming library &quot;ojAlgo&quot;. NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
 	<projects>
+		<project>org.jcp.jsr331</project>
+		<project>org.jcp.jsr331.linear</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
