@@ -305,9 +305,9 @@ public class Solver extends AbstractSolver {
 		log("*** Execution Profile ***");
 		ChocoLogging.flushLogs(); // ??
 
-		long occupied_memory = Runtime.getRuntime().totalMemory()
-				- Runtime.getRuntime().freeMemory();
-		log("Occupied memory: " + occupied_memory);
+//		long occupied_memory = Runtime.getRuntime().totalMemory()
+//				- Runtime.getRuntime().freeMemory();
+//		log("Occupied memory: " + occupied_memory);
 		long executionTime = System.currentTimeMillis() - getSolverStartTime();
 		log("Execution time: " + executionTime + " msec");
 	}
