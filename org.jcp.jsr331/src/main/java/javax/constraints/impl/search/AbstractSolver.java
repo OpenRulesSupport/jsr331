@@ -1010,9 +1010,9 @@ abstract public class AbstractSolver implements Solver {
 		long executionTime = System.currentTimeMillis() - solverStartTime;
 		log("Execution time: " + executionTime + " msec");
 
-		long occupied_memory = Runtime.getRuntime().totalMemory()
-				- Runtime.getRuntime().freeMemory();
-		log("Occupied memory: " + occupied_memory);
+//		long occupied_memory = Runtime.getRuntime().totalMemory()
+//				- Runtime.getRuntime().freeMemory();
+//		log("Occupied memory: " + occupied_memory);
 
 	}
 	

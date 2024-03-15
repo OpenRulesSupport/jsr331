@@ -272,9 +272,9 @@ public class Solver extends AbstractSolver {
     @Override
     public void logStats() {
         log("*** Execution Profile ***");
-        long occupied_memory = Runtime.getRuntime().totalMemory()
-                - Runtime.getRuntime().freeMemory();
-        log("Occupied memory: " + occupied_memory);
+//        long occupied_memory = Runtime.getRuntime().totalMemory()
+//                - Runtime.getRuntime().freeMemory();
+//        log("Occupied memory: " + occupied_memory);
         long executionTime = System.currentTimeMillis() - getSolverStartTime();
         log("Execution time: " + executionTime + " msec");
     }

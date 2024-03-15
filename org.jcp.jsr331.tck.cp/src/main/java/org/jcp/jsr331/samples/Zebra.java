@@ -1,5 +1,7 @@
 package org.jcp.jsr331.samples;
 
+import java.util.Iterator;
+
 import javax.constraints.*;
 
 /*
@@ -120,9 +122,33 @@ public class Zebra {
 		solver.logStats();
 	}
 	
+	public void solveAll() {
+        Solver solver = p.getSolver();
+        Solution[] solutions = solver.findAllSolutions();
+        if (solutions != null) {
+            for (int s = 0; s < solutions.length; s++) {
+                Solution solution = solutions[s];
+                p.log("==== Solution #:" + (s+1) + " ====");
+                Var[] vars = p.getVars();
+                for(int house = 0; house < 5; house++) {
+                    StringBuffer buf = new StringBuffer();
+                    buf.append("House #"+(house+1)+":");
+                    for(int i=0; i<vars.length; i++) {
+                        String name = vars[i].getName();
+                        int value = solution.getValue(name);
+                        if (value == house)
+                            buf.append("  " + name);
+                    }
+                    p.log(buf.toString());
+                }
+            }
+        }
+        solver.logStats();
+    }
+	
 	public static void main(String[] args) {
 		Zebra t = new Zebra();
 		t.define();
-		t.solve();
+		t.solveAll();
 	}
 }

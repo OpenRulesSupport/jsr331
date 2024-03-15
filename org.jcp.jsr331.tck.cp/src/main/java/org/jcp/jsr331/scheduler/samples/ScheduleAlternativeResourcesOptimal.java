@@ -122,9 +122,9 @@ public class ScheduleAlternativeResourcesOptimal {
 		solver.setSearchStrategy(s.strategyScheduleActivities());
 		solver.addSearchStrategy(s.strategyAssignResources());
 		solver.addSearchStrategy(s.strategyScheduleVars());
-		int max = 3;
+		int max = 5;
 		solver.setMaxNumberOfSolutions(max);
-		int limit = 150000;
+		int limit = 60000;
 		solver.setTimeLimit(limit);
 		solver.setTimeLimitGlobal(limit*max);
 		solver.traceSolutions(true);

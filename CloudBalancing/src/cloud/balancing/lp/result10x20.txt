@@ -1,0 +1,37 @@
+Read Cloud Computers from <./data/cb-0010comp-0020proc.xml> (root CloudBalance)
+-----------------------
+Read Cloud Processes from <./data/cb-0010comp-0020proc.xml> (root CloudBalance)
+-----------------------
+computers: 10
+processes: 20
+JSR-331 Standard v.1.1.1 Beta (release 8/18/2012)
+JSR-331 Implementation based on Constrainer 5.4 (light)
+Create 10 constrained computers
+Created 200 decision variables with domain [0;1]
+Post constraints 'a process uses one and only one computer'
+Problem is defined in 174 msec
+Find a solution
+Found a solution with TotalCost[23970]. Mon Sep 17 20:53:18 EDT 2012
+Time limit for one solution search 60000 mills has been exceeded
+P16C5
+P19C8
+P10C0
+P18C5
+P3C5
+P0C9
+P11C0
+P5C3
+P7C5
+P12C7
+P15C8
+P1C8
+P17C6
+P2C7
+P4C4
+P6C4
+P8C2
+P9C2
+P13C2
+P14C2
+Total Cost: 23970
+Total Execution time: 60200 msec

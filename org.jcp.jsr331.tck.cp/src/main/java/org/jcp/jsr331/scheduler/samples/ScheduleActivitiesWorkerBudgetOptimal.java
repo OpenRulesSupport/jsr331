@@ -81,7 +81,7 @@ public final class ScheduleActivitiesWorkerBudgetOptimal {
 		solver.addSearchStrategy(s.strategyAssignResources());
 		//Solution solution = solver.findSolution();
 		solver.setMaxNumberOfSolutions(3);
-		solver.setTimeLimitGlobal(15000);
+		solver.setTimeLimitGlobal(150000); // milliseconds
 		//solver.traceSolutions(true);
 		Solution solution = solver.findOptimalSolution(Objective.MINIMIZE,objective);
 		if (solution == null)

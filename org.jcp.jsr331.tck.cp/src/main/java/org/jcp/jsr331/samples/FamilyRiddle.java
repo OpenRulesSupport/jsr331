@@ -109,13 +109,23 @@ public class FamilyRiddle {
 		SearchStrategy search1 = solver.getSearchStrategy();
 		search1.setVars(ReneFamily.getChildrenVars());
 		solver.addSearchStrategy(LeoFamily.getChildrenVars());
-		Solution solution = solver.findSolution();
-		if (solution == null)
-			P.log("No Solutions");
-		else{
-			P.log(solution.toString());
-			P.log(LeoFamily.getChildrenVars());
-			P.log(ReneFamily.getChildrenVars());
-		}
+//		Solution solution = solver.findSolution();
+//		if (solution == null)
+//			P.log("No Solutions");
+//		else{
+//			P.log(solution.toString());
+//			P.log(LeoFamily.getChildrenVars());
+//			P.log(ReneFamily.getChildrenVars());
+//		}
+		Solution[] solutions = solver.findAllSolutions();
+        if (solutions == null)
+            P.log("No Solutions");
+        else{
+            for(int i=0;i<solutions.length;i++) {
+                P.log(solutions[i].toString());
+//                P.log(LeoFamily.getChildrenVars());
+//                P.log(ReneFamily.getChildrenVars());
+            }
+        }
 	}
 }

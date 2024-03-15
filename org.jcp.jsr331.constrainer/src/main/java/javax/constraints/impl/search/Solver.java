@@ -378,9 +378,9 @@ public class Solver extends SolverWithGoals {
 		if (nf >= 0)
 			log("Number of Failures: " + nf);
 		
-		long occupied_memory = Runtime.getRuntime().totalMemory()
-		- Runtime.getRuntime().freeMemory();
-		log("Occupied memory: " + occupied_memory);
+//		long occupied_memory = Runtime.getRuntime().totalMemory()
+//		- Runtime.getRuntime().freeMemory();
+//		log("Occupied memory: " + occupied_memory);
 		long executionTime = System.currentTimeMillis() - getSolverStartTime();
 		log("Execution time: " + executionTime + " msec");
 	}
