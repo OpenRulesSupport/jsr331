@@ -48,6 +48,7 @@ abstract public class LinearSolver extends Solver {
 	}
 	
 	public Solution findOptimalSolution(Objective objective, Var objectiveVar, OptimizationStrategy optStrategy) {
+	    setOptimizationStrategy(optStrategy);
 		return findOptimalSolution(objective, objectiveVar);
 	} 
 	

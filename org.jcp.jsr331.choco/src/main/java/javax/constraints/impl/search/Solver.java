@@ -27,7 +27,7 @@
 //*    Copyright (C) F. Laburthe,                 *
 //*                  N. Jussien    1999-2009      *
 //* * * * * * * * * * * * * * * * * * * * * * * * *
-package javax.constraints.impl.search;
+package javax.constraints.impl.search; 
 
 /**
  * An implementation of the interface "Solver" by extending 
@@ -53,6 +53,7 @@ public class Solver extends AbstractSolver {
 	final CPSolver chocoSolver;
 	boolean modelRead;
 	boolean propagated;
+	private long _max_occupied_memory;
 
 	public Solver(Problem problem) {
 		super(problem);
@@ -207,6 +208,12 @@ public class Solver extends AbstractSolver {
 	 *         null if there are no solutions.
 	 */
 	public Solution findOptimalSolution(Objective objective, Var objectiveVar) {
+	    OptimizationStrategy optimizationStrategy = getOptimizationStrategy();
+        if (optimizationStrategy.equals(OptimizationStrategy.DICHOTOMIZE))
+            return findOptimalSolutionDichotomize(objective, objectiveVar); 
+        if (optimizationStrategy.equals(OptimizationStrategy.BASIC))
+            return findOptimalSolutionBasic(objective, objectiveVar);
+        // OptimizationStrategy.NATIVE
 		IntDomainVar chocoObjective = ((javax.constraints.impl.Var)objectiveVar).getChocoDomainVar();
 		getChocoSolver().setObjective(chocoObjective);
 		addObjective(objectiveVar);
