@@ -176,6 +176,7 @@ public class GoalFastMinimize extends GoalImpl
   public Goal execute() throws Failure
   {
     if(_number_of_solutions > 0 
+       || constrainer().isMaxNumberOfSolutionsReached(_number_of_solutions) // added in Mar-2024
        || constrainer().isTimeLimitExceeded())
       return new AnalyzeAndSet(constrainer());
 
