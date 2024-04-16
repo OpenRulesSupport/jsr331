@@ -130,6 +130,7 @@ public final class Constrainer implements Serializable {
 	private int _number_of_failures = 0;
 	private int _number_of_undos = 0;
 	private long _time_limit = 0; // in milliseconds (0-no limit)
+	private int _max_number_of_solutions = 0;
 	private boolean _time_limit_exceeded = false; // == Changed: added by OR
 	private long _failures_limit = 0; // in failures (0-no limit)
 	static private double _precision = 1e-6;
@@ -154,7 +155,7 @@ public final class Constrainer implements Serializable {
 	private boolean _show_variable_names;
 
 	private long _initial_memory;
-	private long _max_occupied_memory;
+//	private long _max_occupied_memory;
 	private long _number_of_notifications;
 
 	private boolean _print_information;
@@ -184,7 +185,7 @@ public final class Constrainer implements Serializable {
 		// Debug.print("Constrainer "+s);
 		_initial_memory = Runtime.getRuntime().totalMemory()
 				- Runtime.getRuntime().freeMemory();
-		_max_occupied_memory = _initial_memory;
+//		_max_occupied_memory = _initial_memory;
 		_name = new String(s);
 
 		_active_undoable_once = new FastStack();
@@ -966,6 +967,20 @@ public final class Constrainer implements Serializable {
 	public void setTimeLimitExceeded(boolean _time_limit_exceeded) {
 		this._time_limit_exceeded = _time_limit_exceeded;
 	}
+	
+	public int getMaxNumberOfSolutions() {
+	    return _max_number_of_solutions;
+	}
+	
+	public void setMaxNumberOfSolutions(int max_number_of_solutions) {
+        _max_number_of_solutions = max_number_of_solutions;
+    }
+	
+	public boolean isMaxNumberOfSolutionsReached(int number_of_solutions) {
+	    if (_max_number_of_solutions <= 0)
+	        return false;
+	    return number_of_solutions == _max_number_of_solutions;
+	}
 
 	/**
 	 * Sets the limit for the number of failures during a goal execution. 0
@@ -1666,7 +1681,7 @@ public final class Constrainer implements Serializable {
 	/**
 	 * Executes the search goal provided by the first parameter. In most cases,
 	 * the goal is expected to find a solution: to instantiate all constrained
-	 * objects and satisfied all constraints. Return true if the solution is
+	 * objects and satisfied all constraints. Returns true if the solution is
 	 * found. Returns false otherwise. The second parameter allows a user to
 	 * restore the state of the constrainer after the succesful execution of the
 	 * main_goal.
@@ -1679,12 +1694,10 @@ public final class Constrainer implements Serializable {
 	 */
 	synchronized public boolean execute(Goal main_goal, boolean restore_flag) {
 		long execution_start = System.currentTimeMillis();
-		//setTimeLimitExceeded(false);
-
+		setTimeLimitExceeded(false);
 		boolean success = true;
-
-		// long start_seconds = System.currentTimeMillis()/1000; == changed by
-		// OR to milliseconds
+		
+		// long start_seconds = System.currentTimeMillis()/1000; == changed by OR to milliseconds
 		long start_milliseconds = System.currentTimeMillis();
 
 		// save current _goal_stack
@@ -1694,6 +1707,8 @@ public final class Constrainer implements Serializable {
 
 		allowUndos();
 
+		boolean timeLimitExceeded = false;
+		ChoicePointLabel label = null;
 		while (!_goal_stack.empty()) {
 			try {
 				Goal goal = _goal_stack.popGoal();
@@ -1704,13 +1719,6 @@ public final class Constrainer implements Serializable {
 
 				goal = goal.execute();
 				propagate();
-
-				if (_print_information) {
-					long occupied_memory = Runtime.getRuntime().totalMemory()
-							- Runtime.getRuntime().freeMemory();
-					if (_max_occupied_memory < occupied_memory)
-						_max_occupied_memory = occupied_memory;
-				}
 
 				if (goal != null) {
 					_goal_stack.pushGoal(goal);
@@ -1723,32 +1731,25 @@ public final class Constrainer implements Serializable {
 					f.printStackTrace(_out);
 				}
 
-				if (_print_information) {
-					long occupied_memory = Runtime.getRuntime().totalMemory()
-							- Runtime.getRuntime().freeMemory();
-					if (_max_occupied_memory < occupied_memory)
-						_max_occupied_memory = occupied_memory;
-				}
-
 				clearPropagationQueue();
 
-				// here was checking out the time limit
-				// check time limit
+				// checking out the time limit
 				if (_time_limit > 0) {
-					// long now_seconds = System.currentTimeMillis()/1000; ====
-					// ===== Changed by OR
+					// long now_seconds = System.currentTimeMillis()/1000;  Changed by OR
 					long now_milliseconds = System.currentTimeMillis();
 					if (now_milliseconds - start_milliseconds > _time_limit) {
-						String msg = "Time limit for one solution search " + _time_limit + " mills has been exceeded";
+						String msg = "Constrainer: Time limit for solution search " + _time_limit + " mills has been exceeded";
 						setTimeLimitExceeded(true);
 						_out.println(msg);
 						_out.println("Number of Failures: " + numberOfFailures()); // Added by JF
 						success = false;
-						throw new TimeLimitException(msg, f.label());
-						//break;
+						timeLimitExceeded = true;
+						label = f.label();
+						//throw new TimeLimitException(msg, f.label());
+						break;
 					}
 				}
-
+				
 				// check failures limit
 				if (_failures_limit > 0) {
 					if (_number_of_failures > _failures_limit) {
@@ -1785,7 +1786,7 @@ public final class Constrainer implements Serializable {
 		}
 
 		_goal_stack = old_goal_stack;
-
+		
 		return success;
 	}
 
@@ -1825,13 +1826,13 @@ public final class Constrainer implements Serializable {
 					goal = goal.execute();
 					propagate();
 
-					if (_print_information) {
-						long occupied_memory = Runtime.getRuntime()
-								.totalMemory()
-								- Runtime.getRuntime().freeMemory();
-						if (_max_occupied_memory < occupied_memory)
-							_max_occupied_memory = occupied_memory;
-					}
+//					if (_print_information) {
+//						long occupied_memory = Runtime.getRuntime()
+//								.totalMemory()
+//								- Runtime.getRuntime().freeMemory();
+//						if (_max_occupied_memory < occupied_memory)
+//							_max_occupied_memory = occupied_memory;
+//					}
 
 					if (goal != null) {
 						_goal_stack.pushGoal(goal);
@@ -1844,13 +1845,13 @@ public final class Constrainer implements Serializable {
 						f.printStackTrace(_out);
 					}
 
-					if (_print_information) {
-						long occupied_memory = Runtime.getRuntime()
-								.totalMemory()
-								- Runtime.getRuntime().freeMemory();
-						if (_max_occupied_memory < occupied_memory)
-							_max_occupied_memory = occupied_memory;
-					}
+//					if (_print_information) {
+//						long occupied_memory = Runtime.getRuntime()
+//								.totalMemory()
+//								- Runtime.getRuntime().freeMemory();
+//						if (_max_occupied_memory < occupied_memory)
+//							_max_occupied_memory = occupied_memory;
+//					}
 
 					clearPropagationQueue();
 
@@ -2156,9 +2157,9 @@ public final class Constrainer implements Serializable {
 		_out.println("\nChoice Points: " + _number_of_choice_points
 				+ "  Failures: " + _number_of_failures + "  Undos: "
 				+ _number_of_undos + "  Notifications: "
-				+ _number_of_notifications + "  Memory: "
-				+ (_max_occupied_memory - _initial_memory) + "  Time: "
-				+ _execution_time + "msec");
+				+ _number_of_notifications 
+//				+ "  Memory: " + (_max_occupied_memory - _initial_memory) 
+				+ "  Time: " + _execution_time + "msec");
 	}
 
 	/**
