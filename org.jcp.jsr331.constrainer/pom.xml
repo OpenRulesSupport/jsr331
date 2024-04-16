@@ -5,14 +5,14 @@
 	
 	<parent>
 		<groupId>com.javasolver</groupId>
-		<artifactId>jsr331-parent</artifactId>
-		<version>2.2.0</version>
+		<artifactId>jsr331-parent</artifactId> 
+		<version>2.3.0</version>
 	</parent>
 	
 	<artifactId>jsr331-constrainer</artifactId>
 	
 	<name>JSR331 Constrainer</name>
-	<description>This is a JSR331 implementation based on the Java constraint programming library "Constrainer" copyrighted by Exigen Properties, Inc. and/or affiliates and available under the terms of the open source GNU LGPL license.</description>
+	<description>This is a JSR331 implementation based on the Java constraint programming library "Constrainer" available under the terms of the open source GNU LGPL license.</description>
 	<url>https://github.com/OpenRulesSupport/jsr331</url>
 
 	<licenses>
@@ -110,6 +110,11 @@ The modified source code of this version keeps all Exigen Copyright notices.
 All modifications in the source code are marked by "== Changed". 
 
 Major Changes and Bug Fixes:
+
+April,2024
+==========
+
+Fixed the error in Constrainer's method "execute" related to TimeLimit.
 
 December, 2021
 ==============
