@@ -54,6 +54,7 @@ abstract public class AbstractSolver implements Solver {
 	long 	solverStartTime;
 	boolean traceExecution;
 	boolean traceSolutions;
+	OptimizationStrategy optimizationStrategy;
 	
 //	/**
 //	 * This method executes the searchStrategy passed as the first parameter. 
@@ -86,6 +87,7 @@ abstract public class AbstractSolver implements Solver {
 			problem.setSolver(this);
 		searchStrategies = new Vector<SearchStrategy>();
 		solverStartTime = System.currentTimeMillis();
+		optimizationStrategy = OptimizationStrategy.BASIC;
 		maxNumberOfSolutions = -1;
 		timeLimit = UNLIMITED; 
 		globalTimeLimit = UNLIMITED; 
@@ -638,8 +640,42 @@ abstract public class AbstractSolver implements Solver {
 		return new BasicSolutionIterator(this);
 	}
 
-	
 	/**
+	 * 
+	 * @return an OptimizationStrategy used by the method "findOptimalSolution"
+	 */
+	public OptimizationStrategy getOptimizationStrategy() {
+        return optimizationStrategy;
+    }
+
+	/**
+     * Sets an OptimizationStrategy used by the method "findOptimalSolution"
+     */
+    public void setOptimizationStrategy(OptimizationStrategy optimizationStrategy) {
+        this.optimizationStrategy = optimizationStrategy;
+    }
+    
+    /**
+     * Sets an OptimizationStrategy by its name used by the method "findOptimalSolution"
+     */
+    public void setOptimizationStrategy(String optimizationStrategyName) {
+        switch(optimizationStrategyName.toUpperCase()) {
+            case "BASIC": setOptimizationStrategy(OptimizationStrategy.BASIC); break;
+            case "DICHOTOMIZE": setOptimizationStrategy(OptimizationStrategy.DICHOTOMIZE); break;
+            default: 
+                log("Unknown OptimizationStrategy '" + optimizationStrategyName +"'. Use OptimizationStrategy.BASIC");
+                setOptimizationStrategy(OptimizationStrategy.BASIC); break;
+        }
+    }
+    
+    /**
+     * Logs the OptimizationStrategy used by the method "findOptimalSolution"
+     */
+    public void logOptimizationStrategy() {
+        log("OptimizationStrategy: " + optimizationStrategy.name());
+    }
+
+    /**
 	 * This method attempts to find a solution of the problem, for which the solver was defined. 
 	 * It uses the search strategy defined by the method setSearchStrategy(). 
 	 * It returns the found solution (if any) or null. It also saves the solution and makes it 
@@ -667,58 +703,56 @@ abstract public class AbstractSolver implements Solver {
 	}
 	
 
-	/**
-	 * This method attempts to find the solution that minimizes/maximizes the objective variable.
-	 * It uses the search strategy defined by the method setSearchStrategy(strategy). 
-	 * The optimization process can be also controlled by:
-	 * <ul>
-	 * <li> OptimizationTolarance that is a difference between optimal solutions - see setOptimizationTolarance()
-	 * <li> MaxNumberOfSolutions that is the total number of considered solutions - may be limited by the method
-	 * setMaxNumberOfSolutions()
-	 * <li> TotalTimeLimit that is the number of seconds allocated for the entire optimization process.
-	 * </ul>
-	 * <br> At the same time the time for one iteration inside
-	 * optimization loop (a search of one solution) can be also limited by the use of the
-	 * special type of search strategy. 
-	 * <br> The problem state after the execution of this method is always restored. All variables
-	 * that were added to the problems (plus the objectiveVar) will have their assigned values 
-	 * saved inside the optimal solution. 
-	 * 
-	 * @param objective Objective.MINIMIZE or Objective.MAXIMIZE
-	 * @param objectiveVar the variable that is being minimized/maximized
-	 * @param optStrategy OptimizationStrategy 
-	 * @return Solution if a solution is found,
-	 *         null if there are no solutions.
-	 */
-	public Solution findOptimalSolution(Objective objective, Var objectiveVar, OptimizationStrategy optStrategy) {
-		if (optStrategy.equals(OptimizationStrategy.DICHOTOMIZE))
-			return findOptimalSolutionDichotomize(objective, objectiveVar);	
-		if (optStrategy.equals(OptimizationStrategy.BASIC))
-			return findOptimalSolutionBasic(objective, objectiveVar);
-		// NATIVE
-		return findOptimalSolution(objective, objectiveVar);
-	}
+//	/**
+//	 * This method attempts to find the solution that minimizes/maximizes the objective variable.
+//	 * It uses the search strategy defined by the method setSearchStrategy(strategy). 
+//	 * The optimization process can be also controlled by:
+//	 * <ul>
+//	 * <li> OptimizationTolarance that is a difference between optimal solutions - see setOptimizationTolarance()
+//	 * <li> MaxNumberOfSolutions that is the total number of considered solutions - may be limited by the method
+//	 * setMaxNumberOfSolutions()
+//	 * <li> TotalTimeLimit that is the number of seconds allocated for the entire optimization process.
+//	 * </ul>
+//	 * <br> At the same time the time for one iteration inside
+//	 * optimization loop (a search of one solution) can be also limited by the use of the
+//	 * special type of search strategy. 
+//	 * <br> The problem state after the execution of this method is always restored. All variables
+//	 * that were added to the problems (plus the objectiveVar) will have their assigned values 
+//	 * saved inside the optimal solution. 
+//	 * 
+//	 * @param objective Objective.MINIMIZE or Objective.MAXIMIZE
+//	 * @param objectiveVar the variable that is being minimized/maximized
+//	 * @param optStrategy OptimizationStrategy 
+//	 * @return Solution if a solution is found,
+//	 *         null if there are no solutions.
+//	 */
+//	public Solution findOptimalSolution(Objective objective, Var objectiveVar, OptimizationStrategy optStrategy) {
+//		if (optStrategy.equals(OptimizationStrategy.DICHOTOMIZE))
+//			return findOptimalSolutionDichotomize(objective, objectiveVar);	
+//		if (optStrategy.equals(OptimizationStrategy.BASIC))
+//			return findOptimalSolutionBasic(objective, objectiveVar);
+//		// NATIVE
+//		return findOptimalSolution(objective, objectiveVar);
+//	}
+//	
+//	public Solution findOptimalSolution(Objective objective, VarReal objectiveVar, OptimizationStrategy optStrategy) {
+//		throw new RuntimeException("There is no implementation for findOptimalSolution(Objective objective, VarReal objectiveVar, OptimizationStrategy optStrategy)");
+//	}
 	
-	public Solution findOptimalSolution(Objective objective, VarReal objectiveVar, OptimizationStrategy optStrategy) {
-		throw new RuntimeException("There is no implementation for findOptimalSolution(Objective objective, VarReal objectiveVar, OptimizationStrategy optStrategy)");
-	}
-	
 	/**
-	 * This method is equivalent to 
-	 * findOptimalSolution(Objective.MINIMIZE,objectiveVar,OptimizationStrategy.NATIVE)
-	 * It is usually overridden by an implementation. If not, this implementation uses
-	 * findOptimalSolution(objective, objectiveVar, OptimizationStrategy.BASIC);
+	 * This method is usually overridden by an implementation. If not, this implementation uses
+	 * OptimizationStrategy.BASIC.
 	 * @param objectiveVar
 	 * @return Solution if a solution is found,
 	 *         null if there are no solutions.
 	 */
 	public Solution findOptimalSolution(Objective objective, Var objectiveVar) {
-		return findOptimalSolution(objective, objectiveVar, OptimizationStrategy.BASIC);
+		return findOptimalSolutionBasic(objective, objectiveVar);
 	}
 	
 	public Solution findOptimalSolution(Objective objective, VarReal objectiveVar) {
-		return findOptimalSolution(objective, objectiveVar, OptimizationStrategy.BASIC);
-	}
+	    throw new RuntimeException("There is no implementation for findOptimalSolutionBasic(Objective objective, VarReal objectiveVar)");
+    }
 	
 	/**
 	 * This method is equivalent to findOptimalSolution(Objective.MINIMIZE,objectiveVar)
@@ -735,17 +769,29 @@ abstract public class AbstractSolver implements Solver {
 	}
 	
 	/**
-	 * This method is similar to findOptimalSolution(Objective objective, Var objectiveVar)
-	 * but uses the common (no solver-specific) implementation 
-	 * 
-	 * @param objective Objective.MINIMIZE or Objective.MAXIMIZE
-	 * @param objectiveVar the variable that is being minimized/maximized
-	 * @return Solution if a solution is found,
-	 *         null if there are no solutions.
-	 */
+     * This method attempts to find the solution that minimizes/maximizes the objective variable.
+     * It uses the search strategy defined by the method setSearchStrategy(strategy). 
+     * The optimization process can be also controlled by:
+     * <ul>
+     * <li> OptimizationTolerance that is a difference between optimal solutions - see setOptimizationTolerance()
+     * <li> MaxNumberOfSolutions that is the total number of considered solutions - may be limited by the method
+     * setMaxNumberOfSolutions()
+     * <li> TotalTimeLimit that is the number of seconds allocated for the entire optimization process.
+     * </ul>
+     * <br> At the same time the time for one iteration inside
+     * optimization loop (a search of one solution) can be also limited by the use of the
+     * special type of search strategy. 
+     * <br> The problem state after the execution of this method is always restored. All variables
+     * that were added to the problems (plus the objectiveVar) will have their assigned values 
+     * saved inside the optimal solution. 
+     * 
+     * @param objective Objective.MINIMIZE or Objective.MAXIMIZE
+     * @param objectiveVar the variable that is being minimized/maximized
+     * @return Solution if a solution is found,
+     *         null if there are no solutions.
+     */
 	public Solution findOptimalSolutionBasic(Objective objective, Var objectiveVar) {
-		addObjective(objectiveVar);
-		SolutionIterator iter = solutionIterator();
+	    addObjective(objectiveVar);
 		long startTime = System.currentTimeMillis();
 		if (objectiveVar.getName().isEmpty())
 			objectiveVar.setName("Objective"); 
@@ -758,15 +804,26 @@ abstract public class AbstractSolver implements Solver {
 			obj.setName("-"+objectiveVar.getName());
 			getProblem().add(obj);
 		}
+		addObjective(obj);
 		int bestValue = Integer.MAX_VALUE;
 		Solution solution = null;
 		int n = 0;
+		SolutionIterator iter = solutionIterator();
 		while(iter.hasNext()) {
 			solution = iter.next();
+			int newValue = solution.getValue(obj.getName()); // RS
+            if (isTraceSolutions()) {
+                log("Found a solution #" + solution.getSolutionNumber() 
+                        + " with objective " + newValue 
+                        + ". " + Calendar.getInstance().getTime() );
+            }
 			n++;
 			if (getMaxNumberOfSolutions() > 0 && 
-					n == getMaxNumberOfSolutions())
+					n == getMaxNumberOfSolutions()) {
+			    log("The search is interrupted: MaxNumberOfSolutions " + n + " has been reached.");
+			    //backtrack();
 				break;
+			}
 			if (getTimeLimitGlobal() > 0) {
 				if (System.currentTimeMillis() - startTime > getTimeLimitGlobal()) {
 					log("Global time limit " + getTimeLimitGlobal() + " mills has been exceeded.");
@@ -776,11 +833,6 @@ abstract public class AbstractSolver implements Solver {
 			try {
 				if (isTraceExecution())
 					solution.log();
-				int newValue = solution.getValue(obj.getName()); // RS
-				if (isTraceSolutions())
-				    log("Found a solution #" + solution.getSolutionNumber() 
-				    		+ " with objective " + newValue 
-				    		+ ". " + Calendar.getInstance().getTime() );
 				if (bestValue > newValue)
 					bestValue = newValue;
 				getProblem().post(obj,"<",newValue); // may fail
