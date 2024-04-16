@@ -82,15 +82,15 @@ public class GoalAssignValuesTimeLimit extends Goal {
 		int index = varSelector.select();
 		if (index == -1)
 			return null;
-		boolean timeLimitViolated = getSolver().checkTimeLimit();
-		if (timeLimitViolated) {
-			String msg = "Time limit " + solver.getTimeLimit() + 
-					" has been exceeded while instantiating an array of " + vars.length + " variables " +
-					vars[0].getName() + " ... "+ vars[vars.length - 1].getName();
-			solver.getProblem().log(msg);
-			return null;
-			//return checkGoal; // if time limit is violated some vars would not be bound
-		}
+//		boolean timeLimitViolated = getSolver().checkTimeLimit();
+//		if (timeLimitViolated) {
+//			String msg = "Time limit " + solver.getTimeLimit() + 
+//					" has been exceeded while instantiating an array of " + vars.length + " variables " +
+//					vars[0].getName() + " ... "+ vars[vars.length - 1].getName();
+//			solver.getProblem().log(msg);
+//			return null;
+//			//return checkGoal; // if time limit is violated some vars would not be bound
+//		}
 		//return goals[index].and(checkGoal).and(this);
 		return goals[index].and(this);
 	}

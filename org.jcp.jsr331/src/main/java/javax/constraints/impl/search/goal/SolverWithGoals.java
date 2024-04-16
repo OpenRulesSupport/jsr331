@@ -34,10 +34,11 @@ abstract public class SolverWithGoals extends AbstractSolver {
 	 * @return a new default search strategy
 	 */
 	public SearchStrategy newSearchStrategy() {
-		if (getTimeLimit() <= 0)
-			return new GoalAssignValues(this);
-		else
-			return new GoalAssignValuesTimeLimit(this);
+	    return new GoalAssignValues(this);
+//		if (getTimeLimit() <= 0)
+//			return new GoalAssignValues(this);
+//		else
+//			return new GoalAssignValuesTimeLimit(this);
 	}
 	
 //	/**

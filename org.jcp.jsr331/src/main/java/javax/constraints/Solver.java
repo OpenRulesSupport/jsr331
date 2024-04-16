@@ -235,7 +235,7 @@ public interface Solver {
 	 * This methods returns a new default search strategy 
 	 * @return a new default search strategy
 	 */
-	abstract public SearchStrategy newSearchStrategy();
+	public SearchStrategy newSearchStrategy();
 	
 	/**
 	 * This methods adds this strategy 
@@ -376,42 +376,75 @@ public interface Solver {
 	public Solution findSolution();
 
 	
+//	/**
+//	 * This method attempts to find the solution that minimizes/maximizes the objective variable.
+//	 * It uses the search strategy defined by the method setSearchStrategy(strategy). 
+//	 * The optimization process can be also controlled by:
+//	 * <ul>
+//	 * <li> OptimizationTolerance that is a difference between optimal solutions - see setOptimizationTolarance()
+//	 * <li> MaxNumberOfSolutions that is the total number of considered solutions - may be limited by the method
+//	 * setMaxNumberOfSolutions()
+//	 * <li> TimeLimitGlobal that is the number of seconds allocated for the entire optimization process.
+//	 * </ul>
+//	 * <br> At the same time the time for one iteration inside
+//	 * optimization loop (a search of one solution) can be also limited by the Solver's attribute TimeLimit
+//	 * or by the use of a special search strategy specified by a particular implementation. 
+//	 * <br> The problem state after the execution of this method is always restored. All variables
+//	 * that were added to the problems (plus the objectiveVar) will have their assigned values 
+//	 * saved inside the optimal solution. 
+//	 * 
+//	 * @param objective Objective.MINIMIZE or Objective.MAXIMIZE
+//	 * @param objectiveVar the variable that is being minimized/maximized
+//	 * @param optStrategy OptimizationStrategy (BASIC, DICHOTOMIZE, or NATIVE)
+//	 * @return Solution if a solution is found,
+//	 *         null if there are no solutions.
+//	 */
+//	public Solution findOptimalSolution(Objective objective, Var objectiveVar, OptimizationStrategy optStrategy);
+//	
+//	public Solution findOptimalSolution(Objective objective, VarReal objectiveVar, OptimizationStrategy optStrategy);
+	
 	/**
-	 * This method attempts to find the solution that minimizes/maximizes the objective variable.
-	 * It uses the search strategy defined by the method setSearchStrategy(strategy). 
-	 * The optimization process can be also controlled by:
-	 * <ul>
-	 * <li> OptimizationTolerance that is a difference between optimal solutions - see setOptimizationTolarance()
-	 * <li> MaxNumberOfSolutions that is the total number of considered solutions - may be limited by the method
-	 * setMaxNumberOfSolutions()
-	 * <li> TimeLimitGlobal that is the number of seconds allocated for the entire optimization process.
-	 * </ul>
-	 * <br> At the same time the time for one iteration inside
-	 * optimization loop (a search of one solution) can be also limited by the Solver's attribute TimeLimit
-	 * or by the use of a special search strategy specified by a particular implementation. 
-	 * <br> The problem state after the execution of this method is always restored. All variables
-	 * that were added to the problems (plus the objectiveVar) will have their assigned values 
-	 * saved inside the optimal solution. 
-	 * 
-	 * @param objective Objective.MINIMIZE or Objective.MAXIMIZE
-	 * @param objectiveVar the variable that is being minimized/maximized
-	 * @param optStrategy OptimizationStrategy (BASIC, DICHOTOMIZE, or NATIVE)
-	 * @return Solution if a solution is found,
-	 *         null if there are no solutions.
-	 */
-	public Solution findOptimalSolution(Objective objective, Var objectiveVar, OptimizationStrategy optStrategy);
+     * @return an OptimizationStrategy used by the method "findOptimalSolution"
+     */
+    public OptimizationStrategy getOptimizationStrategy();
+
+    /**
+     * Sets an OptimizationStrategy used by the method "findOptimalSolution"
+     */
+    public void setOptimizationStrategy(OptimizationStrategy optimizationStrategy);
+    
+    /**
+     * Sets an OptimizationStrategy by its name 
+     */
+    public void setOptimizationStrategy(String optimizationStrategyName);
+    
+    /**
+     * Logs the OptimizationStrategy used by the method "findOptimalSolution"
+     */
+    public void logOptimizationStrategy();
 	
-	public Solution findOptimalSolution(Objective objective, VarReal objectiveVar, OptimizationStrategy optStrategy);
-	
-	
-	/**
-	 * This method is equivalent to 
-	 * findOptimalSolution(Objective.MINIMIZE,objectiveVar,OptimizationStrategy.NATIVE)
-	 * It is usually overridden by an implementation
-	 * @param objectiveVar
-	 * @return Solution if a solution is found,
-	 *         null if there are no solutions.
-	 */
+    /**
+     * This method attempts to find the solution that minimizes/maximizes the objective variable.
+     * It uses the search strategy defined by the method setSearchStrategy(strategy). 
+     * The optimization process can be also controlled by:
+     * <ul>
+     * <li> OptimizationTolerance that is a difference between optimal solutions - see setOptimizationTolerance()
+     * <li> MaxNumberOfSolutions that is the total number of considered solutions - may be limited by the method
+     * setMaxNumberOfSolutions()
+     * <li> TotalTimeLimit that is the number of seconds allocated for the entire optimization process.
+     * </ul>
+     * <br> At the same time the time for one iteration inside
+     * optimization loop (a search of one solution) can be also limited by the use of the
+     * special type of search strategy. 
+     * <br> The problem state after the execution of this method is always restored. All variables
+     * that were added to the problems (plus the objectiveVar) will have their assigned values 
+     * saved inside the optimal solution. 
+     * 
+     * @param objective Objective.MINIMIZE or Objective.MAXIMIZE
+     * @param objectiveVar the variable that is being minimized/maximized
+     * @return Solution if a solution is found,
+     *         null if there are no solutions.
+     */
 	public Solution findOptimalSolution(Objective objective, Var objectiveVar);
 	
 	/**

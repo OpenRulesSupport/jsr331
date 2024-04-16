@@ -26,13 +26,16 @@ public class GoalCheckMaxNumberOfSolutions extends Goal {
 		trace();
 		SolverWithGoals solver = getSolver();
 		int max = solver.getMaxNumberOfSolutions();
-		if (max <= 0)
-			solver.backtrack();
+		if (max <= 0) {
+			//solver.backtrack();
+			return null;
+		}
 		if (solver.getSolutions() == null || solver.getNumberOfSolutions() == max) {
 			solver.log("Search interrupted by the MaxNumberOfSolutions: " + max);
+			solver.backtrack();
 			return null; // finish search
 		}
-		solver.backtrack();
+		//solver.backtrack();
 		return null;
 	}
 }
