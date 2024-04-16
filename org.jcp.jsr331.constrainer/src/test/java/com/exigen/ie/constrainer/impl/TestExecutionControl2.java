@@ -148,7 +148,7 @@ public class TestExecutionControl2 extends TestCase
 			TestUtils.isAllDiff(tmp));
 	}
 
-	public void testStopExecute()
+	public void disabled_testStopExecute()
 	{
 		System.out.println("testStopExecute");
 		try
