@@ -55,26 +55,27 @@ public class BasicSolutionIterator implements SolutionIterator {
 			return false;
 		solver.setTimeLimitStart(); // reset TimeLimit for one solution search
 		solution = null;
+		long solutionTimeLimit = solver.getTimeLimit();
+        long globalTimeLimit = solver.getTimeLimitGlobal();
 		try {
-			long oneTimeLimit = solver.getTimeLimit();
-			long globalTimeLimit = solver.getTimeLimitGlobal();
+			
 			if ( globalTimeLimit > 0) {
 				long spentTime = System.currentTimeMillis() - startTime;
 				if (spentTime > globalTimeLimit) {
 					solver.log("Global time limit " + globalTimeLimit + " millis has been exceeded.");
 					return false;		
 				}
-				if (spentTime+oneTimeLimit>globalTimeLimit) 
+				if (spentTime+solutionTimeLimit>globalTimeLimit) 
 					solver.setTimeLimit((int)(globalTimeLimit-spentTime));
 			}
 			solution = solver.findSolution(ProblemState.RESTORE);			
 		} catch (Exception e) {
-			if (solver.isTimeLimitExceeded()) {
-				solver.log("Time limit " + solver.getTimeLimit() + " mills for one solution search has been exceeded");
+			if (solutionTimeLimit > 0) {
+				solver.log("Time limit " + solutionTimeLimit + " mills for one solution search has been exceeded");
 			}
-			else {
-				solver.log("ERROR: Unexpected search interruption!");
-			}
+//			else {
+//				solver.log("ERROR: Unexpected search interruption!");
+//			}
 		}
 		
 		if (solution == null)
