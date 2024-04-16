@@ -727,6 +727,14 @@ public abstract class ScheduleDelegator implements	Schedule {
 		public Var[] getConstraintCapacites(Resource resource) {
 			return schedule.getConstraintCapacites(resource);
 		}
+		
+		public Var[] getResourceOccupancies(Resource resource) {
+	        return schedule.getResourceOccupancies(resource);
+	    }
+	    
+	    public Var[] getResourceOccupancies() {
+	        return schedule.getResourceOccupancies();
+	    }
 
 		public Vector<Var> getScheduleVars() {
 			return schedule.getScheduleVars();

@@ -65,8 +65,8 @@ public class CloudBalancer {
 //		Solution solution = solver.findSolution();
 		solver.traceSolutions(true);
 		solver.setTimeLimit(100000); // milliseconds for one solution search
-		Solution solution = solver.findOptimalSolution(Objective.MINIMIZE,totalCostVar,
-				            OptimizationStrategy.BASIC);
+		Solution solution = solver.findOptimalSolution(Objective.MINIMIZE,totalCostVar);
+				            //OptimizationStrategy.BASIC);
 							//OptimizationStrategy.DICHOTOMIZE);
 							//OptimizationStrategy.NATIVE);
 		if (solution != null)

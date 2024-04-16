@@ -464,7 +464,7 @@ public final class MILP implements FormatTypeInput {
 					for(MilpManager lp_curent:scarti_to_separe) {
 						MilpManager.populateArrayListBySeparation(listMangerMilpToRun,lp_curent);
 					}
-					//gestione a più thread
+					//gestione a pi thread
 					if(threadNumber!=MILPThreadsNumber.N_1) {
 
 						//Gestione Thread

@@ -124,9 +124,11 @@ public class ScheduleAlternativeResourcesOptimal {
 		solver.addSearchStrategy(s.strategyScheduleVars());
 		int max = 5;
 		solver.setMaxNumberOfSolutions(max);
-		int limit = 60000;
-		solver.setTimeLimit(limit);
-		solver.setTimeLimitGlobal(limit*max);
+		int timeLimit = 20; //seconds
+		solver.setTimeLimit(timeLimit*1000);
+		solver.setTimeLimitGlobal(5*timeLimit*1000);
+		//solver.setOptimizationStrategy("Dichotomize");
+		solver.setOptimizationStrategy("Basic");
 		solver.traceSolutions(true);
 		Solution solution = solver.findOptimalSolution(Objective.MINIMIZE,totalCost);
 		//Solution solution = solver.findOptimalSolution(Objective.MAXIMIZE,totalCost);

@@ -14,7 +14,7 @@ import it.ssc.step.exception.InvalidDichiarationOptions;
 /**
  * Questa classe e' adibita alla scrittura dei metadati per le tabelle native. 
  * Questi metdati sono relativi a parecchie  le proprieta' presenti nel PDVKeep, 
- * nel quale vi è ad esempio anche il tipo sql. 
+ * nel quale vi  ad esempio anche il tipo sql. 
  * @author infoedge
  *
  */

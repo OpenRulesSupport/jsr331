@@ -110,7 +110,7 @@ final class Var implements Cloneable, Variable, Serializable {
 				if(!Double.isNaN(lower) && lower > upper) {
 					throw new LPException(RB.format("it.ssc.pl.milp.Var.msg1", lower,upper));
 				}
-				//Modificato per considerare non più i lower come un vincolo ma sostituiti da una nuova variabile X =Xi -lower
+				//Modificato per considerare non pi i lower come un vincolo ma sostituiti da una nuova variabile X =Xi -lower
 				if(!Double.isNaN(lower)) this.is_free=false;
 			}
 		}

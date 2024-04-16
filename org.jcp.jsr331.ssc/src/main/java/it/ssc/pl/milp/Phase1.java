@@ -46,7 +46,7 @@ final class Phase1 extends Phase {
 		
 		basis = new int[m];
 		//questo vettore dovra' determinare se nella riga iesima esiste gia una variabile 
-		//che può essere utilizzata per far diventare il sistema in forma canonica ( cij =1)
+		//che pu essere utilizzata per far diventare il sistema in forma canonica ( cij =1)
 		//se non le trova, vengono create con valore tupla a false
 		Tuple2<Integer,Boolean>[] var_canonical=new Tuple2[m];
 		
@@ -191,7 +191,7 @@ final class Phase1 extends Phase {
 
    
 
-   //a fronte dell'indice della riga i dove la variabile ausiliaria e' in base, vedo se c'è qualche Aij =! 0 
+   //a fronte dell'indice della riga i dove la variabile ausiliaria e' in base, vedo se c' qualche Aij =! 0 
    private int existVarOrigOutBase(int index_aux) {
 	   for (int j = 0; j < n ; j++) {
 		   if ( Math.abs(TBEX[index_aux][j]) > epsilon )  {
@@ -260,7 +260,7 @@ final class Phase1 extends Phase {
 	    private boolean ifAllCoeffZeroAux(int index) {
 	 	   for (int j = 0; j < n ; j++) {
 	 		   if( Math.abs(TBEX[index][j]) > epsilon  ) {
-	 			  logger.log(SscLevel.WARNING,"Esiste alla fine di Fase 1, una variabile artificiale in base che non è stata eliminata !");
+	 			  logger.log(SscLevel.WARNING,"Esiste alla fine di Fase 1, una variabile artificiale in base che non stata eliminata !");
 	 			  return false;
 	 		   }
 	 	   }
@@ -270,7 +270,7 @@ final class Phase1 extends Phase {
 	    //non tocca numero righe o colonne
 	    private void exitAuxFromBase() {
 	 	   int index_aux_out = 0, index_orig_in = 0;
-	 	   //se esiste una variabile ausiliaria in base e se sulla riga di questa c'è un Aij =! 0 , faccio pivoting per farla uscire
+	 	   //se esiste una variabile ausiliaria in base e se sulla riga di questa c' un Aij =! 0 , faccio pivoting per farla uscire
 	 	   //finche non escono tutte. 
 	 	   while (((index_aux_out = existAuxBase()) != -1) && ((index_orig_in = existVarOrigOutBase(index_aux_out)) != -1)) {
 	 		   //printTable2();

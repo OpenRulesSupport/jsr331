@@ -7,6 +7,7 @@ import javax.constraints.impl.Problem;
 import javax.constraints.impl.Constraint;
 
 import javax.constraints.Objective;
+import javax.constraints.OptimizationStrategy;
 import javax.constraints.ProblemState;
 import javax.constraints.SearchStrategy.SearchStrategyType;
 
@@ -262,6 +263,10 @@ public class Solver extends AbstractSolver {
 	 */
 	public Solution findOptimalSolution(Objective objective, 
 			javax.constraints.Var objectiveVar) {
+//	    OptimizationStrategy optimizationStrategy = getOptimizationStrategy();
+//        if (optimizationStrategy.equals(OptimizationStrategy.BASIC))
+//            return findOptimalSolutionBasic(objective, objectiveVar);
+        // OptimizationStrategy.NATIVE
 		addObjective(objectiveVar);
 		long startTime = System.currentTimeMillis();
 		if(objectiveVar.getName().isEmpty())

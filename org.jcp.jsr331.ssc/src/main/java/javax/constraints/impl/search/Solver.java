@@ -61,9 +61,9 @@ public class Solver extends AbstractSolver {
         return null;
     }
     
-    public Solution findOptimalSolution(Objective objective, Var objectiveVar, OptimizationStrategy optStrategy) {
-        return findOptimalSolution(objective, objectiveVar);
-    } 
+//    public Solution findOptimalSolution(Objective objective, Var objectiveVar, OptimizationStrategy optStrategy) {
+//        return findOptimalSolution(objective, objectiveVar);
+//    } 
 	
 
 //	@Override

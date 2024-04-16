@@ -537,6 +537,25 @@ public class ScheduleImpl extends ProblemDelegator implements Schedule {
 		return capacities;
 	}
 	
+	public Var[] getResourceOccupancies(Resource resource) {
+        return getConstraintCapacites(resource);
+    }
+	
+	public Var[] getResourceOccupancies() {
+	    Var[] occupanciesOfAllResources = new Var[resources.size()];
+	    for (int i = 0; i < resources.size(); i++) {
+            Resource r = (Resource) resources.elementAt(i);
+            Var[] occupanciesOfOneResource = getResourceOccupancies(r);
+            if (occupanciesOfOneResource != null) {
+                occupanciesOfAllResources[i] = sum(occupanciesOfOneResource);
+            }
+            else {
+                occupanciesOfAllResources[i] = variable(0,0);
+            }
+        }
+	    return occupanciesOfAllResources;
+	}
+	
 	/**
 	 * Adds a Var variable "var" to the problem, and returns the newly added Var.
 	 *

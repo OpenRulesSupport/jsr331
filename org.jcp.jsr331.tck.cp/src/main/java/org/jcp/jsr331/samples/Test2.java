@@ -31,11 +31,13 @@ public class Test2 {
 		p.log("=== SOLVE:");
 		Solver solver = p.getSolver(); 
 		solver.setTimeLimit(1000);
+		solver.setMaxNumberOfSolutions(2);
 		//solver.traceExecution(true);
 		solver.traceSolutions(true);
 		//solver.addStrategyLogVariables(); 
 		Solution solution = 
-			solver.findOptimalSolution(Objective.MAXIMIZE, p.getVar("cost")); 
+			solver.findOptimalSolution(Objective.MAXIMIZE, p.getVar("cost"));
+		    //solver.findOptimalSolution(Objective.MAXIMIZE, p.getVar("cost"),OptimizationStrategy.DICHOTOMIZE); 
 		if (solution != null)
 			solution.log();
 		else

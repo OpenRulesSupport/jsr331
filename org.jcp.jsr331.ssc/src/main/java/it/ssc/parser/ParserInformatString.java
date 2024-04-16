@@ -89,7 +89,7 @@ import java.util.regex.Pattern;
  * <br> 
  *  
  *  
- * Il formato gestisce i salti record o salto campi o leggere lo stesso record logico presente su piu‘ righe :  
+ * Il formato gestisce i salti record o salto campi o leggere lo stesso record logico presente su piu righe :  
  *  <br>a) @@  fa leggere sullo stesso pdv i dati della righa successiva del file.  Naturalmente 
  *             non ha senso metterlo alla fine dell'istruzioni di importazione. In quanto non ci sarebbero piu' 
  *             campi da leggere.  

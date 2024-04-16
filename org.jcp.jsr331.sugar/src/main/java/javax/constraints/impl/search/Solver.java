@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.constraints.Objective;
+import javax.constraints.OptimizationStrategy;
 import javax.constraints.Problem;
 import javax.constraints.ProblemState;
 import javax.constraints.Solution;
@@ -161,6 +162,10 @@ public class Solver extends AbstractSolver {
      */
     @Override
     public Solution findOptimalSolution(Objective objective, Var objectiveVar) {
+        OptimizationStrategy optimizationStrategy = getOptimizationStrategy();
+        if (optimizationStrategy.equals(OptimizationStrategy.BASIC))
+            return findOptimalSolutionBasic(objective, objectiveVar);
+        // OptimizationStrategy.NATIVE
         try {
             // addStrategyLogVariables();
             getProblem().add(objectiveVar);

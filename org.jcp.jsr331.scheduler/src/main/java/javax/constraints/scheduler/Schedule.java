@@ -315,5 +315,18 @@ public interface Schedule extends Problem {
 	 * in which this resource participates
 	 */
 	public Var[] getConstraintCapacites(Resource resource);
+	
+	/**
+     * 
+     * @param resource
+     * @return an array of constrained variables that represent occupancies of all constraints
+     * in which this resource participates
+     */
+    public Var[] getResourceOccupancies(Resource resource);
+	
+    /**
+     * @return an array of constrained variables that represent occupancies of all resources
+     */
+	public Var[] getResourceOccupancies();
 
 }

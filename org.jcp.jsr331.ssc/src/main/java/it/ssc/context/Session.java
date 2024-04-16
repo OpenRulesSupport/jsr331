@@ -80,7 +80,7 @@ public interface Session {
 	
 	/**
 	 * Permette di recuperare un oggetto che implementa l'interfaccia FactorySteps.<br>
-	 * Questo oggetto consente di accedere alle funzionalità per le creazione e gestione 
+	 * Questo oggetto consente di accedere alle funzionalit per le creazione e gestione 
 	 * dei passi di STEP per l'elaborazione dei dati  (DATASTEP,FILESTEP,etc)
 	 * 
 	 * @return un oggetto che impelemta FactorySteps

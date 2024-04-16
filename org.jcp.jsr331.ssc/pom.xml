@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.javasolver</groupId>
 		<artifactId>jsr331-parent</artifactId>
-		<version>2.2.0</version>
+		<version>2.3.0</version>
 	</parent>
 
 	<artifactId>jsr331-ssc</artifactId>
@@ -31,7 +31,7 @@
 			<comments>Open source license that allows unresticted use by the commercial and open source applications</comments>
 		</license>
 	</licenses>
-	
+	 
 	<developers>
 		<developer>
 			<name>Stefano Scarioli</name>

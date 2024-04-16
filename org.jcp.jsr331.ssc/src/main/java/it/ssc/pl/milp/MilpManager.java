@@ -92,7 +92,7 @@ import it.ssc.vector_spaces.MatrixException;
 	SolutionType resolve() throws Exception {
 		
 		PLProblem lp_standard=pl_current.clone();
-		if(pl_original_zero==null) pl_original_zero=pl_current.clone();    //	QUI FORSE SI PUò LASCIARE L'ORIGINALE ... senza fare clone
+		if(pl_original_zero==null) pl_original_zero=pl_current.clone();    //	QUI FORSE SI PU LASCIARE L'ORIGINALE ... senza fare clone
 		
 		/*
 		 * Nella fase di standardizzazione : 
