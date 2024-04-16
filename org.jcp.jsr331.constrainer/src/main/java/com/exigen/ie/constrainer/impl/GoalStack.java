@@ -206,7 +206,7 @@ public final class GoalStack implements Serializable
   {
     return "GoalStack: "
            +"\n\tExecutionStack: " + _exeStack
-           +"\n\tChiocePointStack: " + _choicePointStack
+           +"\n\tChoicePointStack: " + _choicePointStack
            ;
   }
 
