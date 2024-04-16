@@ -17,6 +17,7 @@ import javax.constraints.SearchStrategy;
 import javax.constraints.Solution;
 import javax.constraints.Var;
 import javax.constraints.Objective;
+import javax.constraints.OptimizationStrategy;
 import javax.constraints.VarReal;
 import javax.constraints.extra.PropagationEvent;
 import javax.constraints.extra.ReversibleAction;
@@ -25,6 +26,7 @@ import javax.constraints.impl.search.StrategyLogVar;
 import javax.constraints.impl.search.StrategyLogVarReal;
 //import javax.constraints.impl.goal.SolverDichotomize;
 import javax.constraints.impl.search.goal.Goal;
+import javax.constraints.impl.search.goal.GoalCheckMaxNumberOfSolutions;
 import javax.constraints.impl.search.goal.ReversibleActionGoal;
 import javax.constraints.impl.search.goal.SolverWithGoals;
 
@@ -248,6 +250,12 @@ public class Solver extends SolverWithGoals {
 	 *         null if there are no solutions.
 	 */
 	public Solution findOptimalSolution(Objective objective, Var objectiveVar) {
+	    OptimizationStrategy optimizationStrategy = getOptimizationStrategy();
+	    if (optimizationStrategy.equals(OptimizationStrategy.DICHOTOMIZE))
+            return findOptimalSolutionDichotomize(objective, objectiveVar); 
+        if (optimizationStrategy.equals(OptimizationStrategy.BASIC))
+            return findOptimalSolutionBasic(objective, objectiveVar);
+        // OptimizationStrategy.NATIVE
 		addObjective(objectiveVar);
 		javax.constraints.impl.Problem p = (javax.constraints.impl.Problem)getProblem();
 		Constrainer constrainer = p.getConstrainer();
@@ -268,6 +276,13 @@ public class Solver extends SolverWithGoals {
 		//clearSolutions();
 		com.exigen.ie.constrainer.Goal saveGoal = new GoalSaveSolution(this);
 		com.exigen.ie.constrainer.Goal totalGoal = new GoalAnd(goal,saveGoal);
+//		if (constrainer.getMaxNumberOfSolutions() > 0) {
+//		    com.exigen.ie.constrainer.Goal checkMaxSolutions = new GoalFailWhenReachMaxNumberOfSolutions(this); 
+//		    totalGoal = new GoalAnd(saveGoal,checkMaxSolutions);
+//        }
+//		else {
+//		    totalGoal = new GoalAnd(goal,saveGoal);
+//		}
 		
 		IntExp cObj = (IntExp)objectiveVar.getImpl();
 		if ( objective.equals(Objective.MAXIMIZE) ) {
@@ -287,6 +302,12 @@ public class Solver extends SolverWithGoals {
 				solution = this.getSolution();
 				solution.setSolutionNumber(optimizationGoal.numberOfSolutions());
 			}
+			// Check MaxNumberOfSolutions
+            int max = getMaxNumberOfSolutions();
+            if (max > 0 && solution.getSolutionNumber() == max) {
+                p.log("The search is interrupted: MaxNumberOfSolutions " + max + " has been reached");
+                return solution; // THE END !!!
+            }
 		} catch (Exception e) {
 			// TODO: handle exception TimeLimitException
 			if (e instanceof TimeLimitException) {
@@ -299,6 +320,19 @@ public class Solver extends SolverWithGoals {
 		}
 		return solution;
 	}
+	
+//	/**
+//     * The actual minimization algorithm executes a dichotomized search. During
+//     * the search it modifies an interval [objectiveMin; objectiveMax]. First it
+//     * is trying to find a solution in the [objectiveMin; objectiveMid]. If it
+//     * fails, it is looking at [objectiveMid+1; objectiveMax]. During this
+//     * process it switches the search target: one time in looks at in the upper
+//     * half of the selected interval, another time - to the lower half.
+//     * Successful search stops when (objectiveMax - objectiveMin) is less or equal to tolerance.
+//     */
+//    public Solution findOptimalSolutionDichotomize(Objective objective, Var objectiveVar) {
+//        return super.findOptimalSolutionDichotomize(objective, objectiveVar);
+//    }
 	
 	public Solution findOptimalSolution(Objective objective, VarReal objectiveVar) {
 		addObjective(objectiveVar);
@@ -412,5 +446,14 @@ public class Solver extends SolverWithGoals {
 		p.getConstrainer().setTimeLimit(milliseconds);
 	}
 
+	public void setMaxNumberOfSolutions(int maxNumberOfSolutions) {
+	    javax.constraints.impl.Problem p = (javax.constraints.impl.Problem)getProblem();
+        p.getConstrainer().setMaxNumberOfSolutions(maxNumberOfSolutions);
+    }
+	
+	public int getMaxNumberOfSolutions() {
+        javax.constraints.impl.Problem p = (javax.constraints.impl.Problem)getProblem();
+        return p.getConstrainer().getMaxNumberOfSolutions();
+    }
 
 }
