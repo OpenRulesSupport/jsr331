@@ -13,7 +13,6 @@
 package javax.constraints.impl.search;
 
 import javax.constraints.Solution;
-import javax.constraints.impl.search.BasicSolution;
 
 import com.exigen.ie.constrainer.Failure;
 import com.exigen.ie.constrainer.Goal;
