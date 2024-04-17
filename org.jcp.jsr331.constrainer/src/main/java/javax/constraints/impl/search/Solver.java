@@ -447,6 +447,7 @@ public class Solver extends SolverWithGoals {
 	}
 
 	public void setMaxNumberOfSolutions(int maxNumberOfSolutions) {
+	    super.setMaxNumberOfSolutions(maxNumberOfSolutions);
 	    javax.constraints.impl.Problem p = (javax.constraints.impl.Problem)getProblem();
         p.getConstrainer().setMaxNumberOfSolutions(maxNumberOfSolutions);
     }
