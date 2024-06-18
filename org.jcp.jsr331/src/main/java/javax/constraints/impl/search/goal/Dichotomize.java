@@ -86,7 +86,7 @@ public class Dichotomize {
 	public Solution execute() {
 	    long currentTime = System.currentTimeMillis();
 	    // Check Total Time Limit
-        if (currentTime - startTime > timeLimitGlobal) {
+        if (timeLimitGlobal > 0 && currentTime - startTime > timeLimitGlobal) {
             p.log("The search is interrupted by Time Limit Global " + timeLimitGlobal + " milliseconds");
             return solution; // THE END !!!
         }
