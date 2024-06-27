@@ -1,0 +1,49 @@
+[
+vars:27, constraints:15
+vars:
+{kluski_0_out[0.0..1.7976931348623157E308]=0, kluski_1_in[0.0..1.7976931348623157E308]=1, fettucine_2_out[0.0..1.7976931348623157E308]=4, capellini_2_in[0.0..1.7976931348623157E308]=3, fettucine_2_in[0.0..1.7976931348623157E308]=2, kluski_0_inv[0.0..1.7976931348623157E308]=6, fettucine_2_inv[0.0..1.7976931348623157E308]=5, fettucine_0_in[0.0..1.7976931348623157E308]=7, capellini_1_inv[0.0..1.7976931348623157E308]=9, kluski_2_out[0.0..1.7976931348623157E308]=8, capellini_2_inv[0.0..1.7976931348623157E308]=10, capellini_0_inv[0.0..1.7976931348623157E308]=11, fettucine_1_inv[0.0..1.7976931348623157E308]=12, kluski_2_in[0.0..1.7976931348623157E308]=13, fettucine_1_in[0.0..1.7976931348623157E308]=14, fettucine_1_out[0.0..1.7976931348623157E308]=15, fettucine_0_inv[0.0..1.7976931348623157E308]=16, capellini_2_out[0.0..1.7976931348623157E308]=17, kluski_2_inv[0.0..1.7976931348623157E308]=18, kluski_1_out[0.0..1.7976931348623157E308]=19, capellini_1_out[0.0..1.7976931348623157E308]=20, kluski_1_inv[0.0..1.7976931348623157E308]=21, kluski_0_in[0.0..1.7976931348623157E308]=22, fettucine_0_out[0.0..1.7976931348623157E308]=23, capellini_0_in[0.0..1.7976931348623157E308]=24, capellini_1_in[0.0..1.7976931348623157E308]=26, capellini_0_out[0.0..1.7976931348623157E308]=25}
+cost_function:
+[0.8, 0.4, 0.1, 0.6, 0.4, 0.1, 0.1, 0.1, 0.8, 0.2, 0.2, 0.2, 0.1, 0.4, 0.1, 0.4, 0.1, 0.9, 0.1, 0.8, 0.9, 0.1, 0.4, 0.4, 0.6, 0.9, 0.6] free term:0.0
+constraints:
+0. [{Type=BoundedBelow lb=-20.0},{(24,-0.4)(7,-0.3)(22,-0.5)}]
+1. [{Type=BoundedBelow lb=-40.0},{(24,-0.4)(7,-0.6)(22,-0.2)}]
+2. [{Type=BoundedBelow lb=-20.0},{(1,-0.5)(26,-0.4)(14,-0.3)}]
+3. [{Type=BoundedBelow lb=-40.0},{(1,-0.2)(26,-0.4)(14,-0.6)}]
+4. [{Type=BoundedBelow lb=-20.0},{(2,-0.3)(3,-0.4)(13,-0.5)}]
+5. [{Type=BoundedBelow lb=-40.0},{(2,-0.6)(3,-0.4)(13,-0.2)}]
+6. [{Type=Fixed ub=-100.0 lb=-100.0},{(1,-1.0)(6,-1.0)(19,-1.0)(21,1.0)}]
+7. [{Type=Fixed ub=-200.0 lb=-200.0},{(26,-1.0)(11,-1.0)(20,-1.0)(9,1.0)}]
+8. [{Type=Fixed ub=-100.0 lb=-100.0},{(16,-1.0)(12,1.0)(14,-1.0)(15,-1.0)}]
+9. [{Type=Fixed ub=-50.0 lb=-50.0},{(18,1.0)(13,-1.0)(21,-1.0)(8,-1.0)}]
+10. [{Type=Fixed ub=-100.0 lb=-100.0},{(10,1.0)(17,-1.0)(3,-1.0)(9,-1.0)}]
+11. [{Type=Fixed ub=-100.0 lb=-100.0},{(12,-1.0)(4,-1.0)(2,-1.0)(5,1.0)}]
+12. [{Type=Fixed ub=-10.0 lb=-10.0},{(0,-1.0)(6,1.0)(22,-1.0)}]
+13. [{Type=Fixed ub=-20.0 lb=-20.0},{(24,-1.0)(25,-1.0)(11,1.0)}]
+14. [{Type=Fixed ub=-50.0 lb=-50.0},{(23,-1.0)(16,1.0)(7,-1.0)}]
+];"kluski_0_out",
+"kluski_1_in",
+"fettucine_2_in",
+"capellini_2_in",
+"fettucine_2_out",
+"fettucine_2_inv",
+"kluski_0_inv",
+"fettucine_0_in",
+"kluski_2_out",
+"capellini_1_inv",
+"capellini_2_inv",
+"capellini_0_inv",
+"fettucine_1_inv",
+"kluski_2_in",
+"fettucine_1_in",
+"fettucine_1_out",
+"fettucine_0_inv",
+"capellini_2_out",
+"kluski_2_inv",
+"kluski_1_out",
+"capellini_1_out",
+"kluski_1_inv",
+"kluski_0_in",
+"fettucine_0_out",
+"capellini_0_in",
+"capellini_0_out",
+"capellini_1_in",

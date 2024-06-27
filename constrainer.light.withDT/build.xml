@@ -1,0 +1,27 @@
+<project default="jar">
+
+	<target name="jar">
+		<jar file="lib/constrainer.light.jar">
+			<fileset dir="bin"> 
+				<include name="**/com/exigen/ie/constrainer/*.*" />
+				<include name="**/com/exigen/ie/constrainer/impl/**/*.*" />
+				<include name="**/com/exigen/ie/tools/**/*.*" />
+			</fileset>
+		</jar>
+	</target>
+	<target name="jarsrc">
+		<jar file="lib/constrainer.light.src.jar">
+			<fileset dir="src"> 
+				<include name="**/com/exigen/ie/constrainer/*.*" />
+				<include name="**/com/exigen/ie/constrainer/impl/**/*.*" />
+				<include name="**/com/exigen/ie/tools/**/*.*" />
+			</fileset>
+			<fileset dir="bin"> 
+				<include name="**/com/exigen/ie/constrainer/*.*" />
+				<include name="**/com/exigen/ie/constrainer/impl/**/*.*" />
+				<include name="**/com/exigen/ie/tools/**/*.*" />
+			</fileset>
+		</jar>
+	</target>
+
+</project>

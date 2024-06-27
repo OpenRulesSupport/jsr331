@@ -1,0 +1,472 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE flatzinc SYSTEM "flatzinc-draft.dtd">
+
+<flatzinc model="golfers">
+  <predicates num="0"/>
+  <parameters num="0"/>
+  <variables num="8">
+    <variable name="INT____1">
+      <var-int-range lo="1" hi="16"/>
+      <annotation name="is_defined_var" arity="0"/>
+      <annotation name="var_is_introduced" arity="0"/>
+    </variable>
+    <variable name="INT____11">
+      <var-int-range lo="1" hi="16"/>
+      <annotation name="is_defined_var" arity="0"/>
+      <annotation name="var_is_introduced" arity="0"/>
+    </variable>
+    <variable name="INT____3">
+      <var-int-range lo="1" hi="16"/>
+      <annotation name="is_defined_var" arity="0"/>
+      <annotation name="var_is_introduced" arity="0"/>
+    </variable>
+    <variable name="INT____5">
+      <var-int-range lo="1" hi="16"/>
+      <annotation name="is_defined_var" arity="0"/>
+      <annotation name="var_is_introduced" arity="0"/>
+    </variable>
+    <variable name="INT____7">
+      <var-int-range lo="1" hi="16"/>
+      <annotation name="is_defined_var" arity="0"/>
+      <annotation name="var_is_introduced" arity="0"/>
+    </variable>
+    <variable name="INT____9">
+      <var-int-range lo="1" hi="16"/>
+      <annotation name="is_defined_var" arity="0"/>
+      <annotation name="var_is_introduced" arity="0"/>
+    </variable>
+    <variable name="golfer_golfer_round">
+      <array-var-int-range size="16" lo="0" hi="3"/>
+      <annotation name="output_array" arity="1">
+        <expr>
+          <array-expr size="2">
+            <int-range-expr lo="1" hi="4"/>
+            <int-range-expr lo="1" hi="4"/>
+          </array-expr>
+        </expr> 
+      </annotation>
+    </variable>
+    <variable name="round_place_golfer">
+      <array-var-int-range size="12" lo="1" hi="4"/>
+      <annotation name="output_array" arity="1">
+        <expr>
+          <array-expr size="2">
+            <int-range-expr lo="1" hi="3"/>
+            <int-range-expr lo="1" hi="4"/>
+          </array-expr>
+        </expr>
+      </annotation>
+    </variable>
+  </variables>
+  <constraints num="36">
+    <constraint name="array_var_int_elem" arity="3">
+      <expr>
+        <id name="INT____1"/>
+      </expr>
+      <expr>
+        <id name="golfer_golfer_round"/>
+      </expr>
+      <expr>
+        <int-literal value="1"/>
+      </expr>
+    </constraint>
+    <constraint name="array_var_int_elem" arity="3">
+      <expr>
+        <id name="INT____11"/>
+      </expr>
+      <expr>
+        <id name="golfer_golfer_round"/>
+      </expr>
+      <expr>
+        <int-literal value="3"/>
+      </expr>
+    </constraint>
+    <constraint name="array_var_int_elem" arity="3">
+      <expr>
+        <id name="INT____3"/>
+      </expr>
+      <expr>
+        <id name="golfer_golfer_round"/>
+      </expr>
+      <expr>
+        <int-literal value="1"/>
+      </expr>
+    </constraint>
+    <constraint name="array_var_int_elem" arity="3">
+      <expr>
+        <id name="INT____5"/>
+      </expr>
+      <expr>
+        <id name="golfer_golfer_round"/>
+      </expr>
+      <expr>
+        <int-literal value="2"/>
+      </expr>
+    </constraint>
+    <constraint name="array_var_int_elem" arity="3">
+      <expr>
+        <id name="INT____5"/>
+      </expr>
+      <expr>
+        <id name="golfer_golfer_round"/>
+      </expr>
+      <expr>
+        <int-literal value="2"/>
+      </expr>
+    </constraint>
+    <constraint name="array_var_int_elem" arity="3">
+      <expr>
+        <id name="INT____9"/>
+      </expr>
+      <expr>
+        <id name="golfer_golfer_round"/>
+      </expr>
+      <expr>
+        <int-literal value="3"/>
+      </expr>
+    </constraint>
+    <constraint name="int_lin_eq" arity="3">
+      <expr>
+        <array-int-literal size="3">-1 4 1</array-int-literal>
+      </expr>
+      <expr>
+        <array-expr size="3">
+          <id name="INT____1"/>
+          <array-access-expr name="round_place_golfer" index="1"/>
+          <array-access-expr name="round_place_golfer" index="2"/>
+        </array-expr>
+      </expr>
+      <expr>
+        <int-literal value="3"/>
+      </expr>
+      <annotation name="defines_var" arity="1">
+        <expr>
+          <id name="INT____1"/>
+        </expr>
+      </annotation>
+      <annotation name="domain" arity="0"/>
+    </constraint>
+    <constraint name="int_lin_eq" arity="3">
+      <expr>
+        <array-int-literal size="3">-1 4 1</array-int-literal>
+      </expr>
+      <expr>
+        <array-expr size="3">
+          <id name="INT____11"/>
+          <array-access-expr name="round_place_golfer" index="11"/>
+          <array-access-expr name="round_place_golfer" index="12"/>
+        </array-expr>
+      </expr>
+      <expr>
+        <int-literal value="4"/>
+      </expr>
+      <annotation name="defines_var" arity="1">
+        <expr>
+          <id name="INT____11"/>
+        </expr>
+      </annotation>
+      <annotation name="domain" arity="0"/>
+    </constraint>
+    <constraint name="int_lin_eq" arity="3">
+      <expr>
+        <array-int-literal size="3">-1 4 1</array-int-literal>
+      </expr>
+      <expr>
+        <array-expr size="3">
+          <id name="INT____3"/>
+          <array-access-expr name="round_place_golfer" index="3"/>
+          <array-access-expr name="round_place_golfer" index="4"/>
+        </array-expr>
+      </expr>
+      <expr>
+        <int-literal value="4"/>
+      </expr>
+      <annotation name="defines_var" arity="1">
+        <expr>
+          <id name="INT____3"/>
+        </expr>
+      </annotation>
+      <annotation name="domain" arity="0"/>
+    </constraint>
+    <constraint name="int_lin_eq" arity="3">
+      <expr>
+        <array-int-literal size="3">-1 4 1</array-int-literal>
+      </expr>
+      <expr>
+        <array-expr size="3">
+          <id name="INT____5"/>
+          <array-access-expr name="round_place_golfer" index="5"/>
+          <array-access-expr name="round_place_golfer" index="6"/>
+        </array-expr>
+      </expr>
+      <expr>
+        <int-literal value="4"/>
+      </expr>
+      <annotation name="defines_var" arity="1">
+        <expr>
+          <id name="INT____5"/>
+        </expr>
+      </annotation>
+      <annotation name="domain" arity="0"/>
+    </constraint>
+    <constraint name="int_lin_eq" arity="3">
+      <expr>
+        <array-int-literal size="3">-1 4 1</array-int-literal>
+      </expr>
+      <expr>
+        <array-expr size="3">
+          <id name="INT____7"/>
+          <array-access-expr name="round_place_golfer" index="7"/>
+          <array-access-expr name="round_place_golfer" index="8"/>
+        </array-expr>
+      </expr>
+      <expr>
+        <int-literal value="4"/>
+      </expr>
+      <annotation name="defines_var" arity="1">
+        <expr>
+          <id name="INT____7"/>
+        </expr>
+      </annotation>
+      <annotation name="domain" arity="0"/>
+    </constraint>
+    <constraint name="int_lin_eq" arity="3">
+      <expr>
+        <array-int-literal size="3">-1 4 1</array-int-literal>
+      </expr>
+      <expr>
+        <array-expr size="3">
+          <id name="INT____9"/>
+          <array-access-expr name="round_place_golfer" index="9"/>
+          <array-access-expr name="round_place_golfer" index="10"/>
+        </array-expr>
+      </expr>
+      <expr>
+        <int-literal value="4"/>
+      </expr>
+      <annotation name="defines_var" arity="1">
+        <expr>
+          <id name="INT____9"/>
+        </expr>
+      </annotation>
+      <annotation name="domain" arity="0"/>
+    </constraint>
+    <constraint name="int_lt" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="1"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="2"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_lt" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="3"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="4"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_lt" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="5"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="6"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_lt" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="7"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="8"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_lt" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="9"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="10"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_lt" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="11"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="12"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="1"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="2"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="1"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="3"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="1"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="4"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="2"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="3"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="2"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="4"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="3"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="4"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="5"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="6"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="5"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="7"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="5"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="8"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="6"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="7"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="6"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="8"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="7"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="8"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="9"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="10"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="9"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="11"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="9"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="12"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="10"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="11"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="10"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="12"/>
+      </expr>
+    </constraint>     
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="round_place_golfer" index="11"/>
+      </expr>
+      <expr>
+        <array-access-expr name="round_place_golfer" index="12"/>
+      </expr>
+    </constraint>     
+  </constraints>
+  <solve>
+    <satisfy/>
+    <annotation name="int_search" arity="4">
+      <expr>
+        <array-expr size="12">
+          <array-access-expr name="round_place_golfer" index="1"/>
+          <array-access-expr name="round_place_golfer" index="2"/>
+          <array-access-expr name="round_place_golfer" index="3"/>
+          <array-access-expr name="round_place_golfer" index="4"/>
+          <array-access-expr name="round_place_golfer" index="5"/>
+          <array-access-expr name="round_place_golfer" index="6"/>
+          <array-access-expr name="round_place_golfer" index="7"/>
+          <array-access-expr name="round_place_golfer" index="8"/>
+          <array-access-expr name="round_place_golfer" index="9"/>
+          <array-access-expr name="round_place_golfer" index="10"/>
+          <array-access-expr name="round_place_golfer" index="11"/>
+          <array-access-expr name="round_place_golfer" index="12"/>
+        </array-expr> 
+      </expr>
+      <annotation name="input_order" arity="0"/>
+      <annotation name="indomain" arity="0"/>
+      <annotation name="complete" arity="0"/>
+    </annotation>
+  </solve>
+</flatzinc>

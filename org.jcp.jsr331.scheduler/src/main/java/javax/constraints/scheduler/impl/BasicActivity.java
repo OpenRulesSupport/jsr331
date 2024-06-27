@@ -20,6 +20,7 @@ import javax.constraints.scheduler.Resource;
 import javax.constraints.scheduler.ResourceDisjunctive;
 import javax.constraints.scheduler.ResourceDisjunctivePool;
 import javax.constraints.scheduler.ResourcePool;
+import javax.constraints.scheduler.ResourceType;
 import javax.constraints.scheduler.Schedule;
 
 /**
@@ -183,8 +184,10 @@ public class BasicActivity extends SchedulingObject implements Activity {
 		// ConstraintActivityResource c =
 		// getSchedule().addConstraintRequire(this, resource,
 		// capacity);
-		ConstraintActivityResource rc = new ConstraintRequire(this, resource,
-				capacity);
+		ConstraintActivityResource rc = new ConstraintRequire(this, resource,capacity);
+		if (resource.getType().equals(ResourceType.CONSUMABLE)) {
+		    rc = new ConstraintConsume(this, resource,capacity);
+		}
 		this.getResourceConstraints().add(rc);
 		resource.getActivityConstraints().add(rc);
 		getSchedule().add(rc);
@@ -199,6 +202,9 @@ public class BasicActivity extends SchedulingObject implements Activity {
 		// capacityVar);
 		ConstraintActivityResource rc = new ConstraintRequire(this, resource,
 				capacityVar);
+		if (resource.getType().equals(ResourceType.CONSUMABLE)) {
+            rc = new ConstraintConsume(this, resource,capacityVar);
+        }
 		this.getResourceConstraints().add(rc);
 		resource.getActivityConstraints().add(rc);
 		getSchedule().add(rc);

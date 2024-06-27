@@ -1,0 +1,94 @@
+<project name="org.jcp.jsr331.jars" default="all">
+
+	<target name="constrainer.jar">
+		<jar file="lib/constrainer/constrainer.light.jar">
+			<fileset dir="../constrainer.light/bin">
+				<include name="com/exigen/ie/**/*.*" />
+			</fileset>
+			<fileset dir="../constrainer.light/src">
+				<include name="com/exigen/ie/**/*.java" />
+			</fileset>
+		</jar>
+		
+		<jar file="lib/constrainer/jsr331.constrainer.jar">
+			<fileset dir="../org.jcp.jsr331.constrainer/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+			<fileset dir="../org.jcp.jsr331.constrainer/src">
+				<include name="javax/constraints/**/*.java" />
+			</fileset>
+		</jar>
+	</target>
+
+    <target name="choco.jar">
+    	<jar file="lib/choco/jsr331.choco.jar">
+    		<fileset dir="../org.jcp.jsr331.choco/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+			<fileset dir="../org.jcp.jsr331.choco/src">
+				<include name="javax/constraints/**/*.java" />
+			</fileset>
+		</jar>
+		<copy todir="lib/choco" preservelastmodified="true">
+			<fileset dir="../org.jcp.jsr331.choco/lib">
+				<include name="choco-solver-2.1.1-20100709.142532-2.jar" />
+			</fileset>
+		</copy>
+    </target>
+	
+	<target name="jacop.jar">
+    	<jar file="lib/jacop/jsr331.jacop.jar">
+    		<fileset dir="../org.jcp.jsr331.jacop/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+			<fileset dir="../org.jcp.jsr331.jacop/src">
+				<include name="javax/constraints/**/*.java" />
+			</fileset>
+		</jar>
+		<copy todir="lib/jacop" preservelastmodified="true">
+			<fileset dir="../org.jcp.jsr331.jacop/lib">
+				<include name="jacop-3.0.jar" />
+			</fileset>
+		</copy>
+    </target>
+	
+	<target name="jsetl.jar">
+    	<jar file="lib/jsetl/jsr331.jsetl.jar">
+    		<fileset dir="../org.jcp.jsr331.jsetl/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+			<fileset dir="../org.jcp.jsr331.jsetl/src">
+				<include name="javax/constraints/**/*.java" />
+			</fileset>
+		</jar>
+		<copy todir="lib/jsetl" preservelastmodified="true">
+			<fileset dir="../org.jcp.jsr331.jsetl/lib">
+				<include name="jsetl.jar" />
+			</fileset>
+		</copy>
+    </target>
+	
+	
+	<target name="jsr331.jar">
+		<jar file="lib/jsr331.jar">
+			<fileset dir="../org.jcp.jsr331/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+			<fileset dir="../org.jcp.jsr331/src">
+				<include name="javax/constraints/**/*.java" />
+			</fileset>
+		</jar>
+		
+		<copy todir="lib/logging" preservelastmodified="true">
+			<fileset dir="../org.jcp.jsr331/lib">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+	</target>
+	
+
+	<target name="all" depends="choco.jar,constrainer.jar,jacop.jar,jsr331.jar,jsetl.jar">
+	</target>
+	
+	
+</project>

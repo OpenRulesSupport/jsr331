@@ -1,0 +1,4 @@
+org.jcp.jsr94.tck
+org.jcp.jsr94.tck.admin
+org.jcp.jsr94.tck.model
+org.jcp.jsr94.tck.util

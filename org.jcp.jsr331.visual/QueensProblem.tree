@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tree version="1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="tree.xsd">
+<root id="0"/>
+<try id="1" parent="0" name="x-0" size="4" value="1"/>
+<fail id="2" parent="1" name="x-2" size="2" value="2"/>
+<try id="3" parent="1" name="" size="2" choice="x-2!=2"/>
+<try id="4" parent="0" name="x-0" size="3" value="2"/>
+<succ id="4"/>
+</tree>

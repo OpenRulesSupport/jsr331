@@ -1,0 +1,437 @@
+ 
+/* ************************************************************
+*    JavaCC Options
+************************************************************ */
+
+options {
+  STATIC = false;                                                                   
+    }
+
+ 
+/* ************************************************************
+*    Parser Properties
+************************************************************ */
+
+PARSER_BEGIN(Parser)  
+public class Parser {}
+PARSER_END(Parser)
+
+
+
+/* WHITE SPACE (Always Skipped) */
+SKIP :
+{
+  " "
+| "\t"
+| "\n"
+| "\r"
+| "\f"
+}
+
+/* COMMENTS (Default is Skip) */
+SPECIAL_TOKEN :
+{
+  <SINGLE_LINE_COMMENT: "%" (~["\n","\r"])* ("\n"|"\r"|"\r\n")>
+}
+
+/* LITERALS */
+// string_literal  \"[^"\n]*\"
+TOKEN :
+{
+    < STRING_LITERAL : "\"" (~["\n", "\r", "\f"])* "\"">
+}
+
+// int_literal     -?[0-9]+|-?0x[0-9A-Fa-f]+|-?0o[0-7]+
+TOKEN :
+{
+    < INT_LITERAL : (["-"])? (["0"-"9"])+ | (["-"])? "0x" (["0"-"9", "A"-"F", "a"-"f"])+ |
+	(["-"])? "0o" (["0"-"7"])+ >
+}
+
+//float_literal   -?[0-9]+\.[0-9]+|-?[0-9]+\.[0-9]+[Ee][-+]?[0-9]+|-?[0-9]+[Ee][-+]?[0-9]+
+TOKEN :
+{
+    < FLOAT_LITERAL : ("-")? (["0"-"9"])+ "." (["0"-"9"])+ |
+	("-")? (["0"-"9"])+ "." (["0"-"9"])+ ("E" | "e") ("-" | "+")? (["0"-"9"])+ |
+	("-")? (["0"-"9"])+ ("E" | "e") ("-" | "+")? (["0"-"9"])+ >
+}
+
+/* SEPARATORS */
+TOKEN :
+{
+      < SC: ";" >
+|     < COLON: ":" >
+|     < COMMA: "," >
+}
+
+/* DELIMETERS */
+TOKEN :
+{
+      < LP: "(" >
+|     < RP: ")" >
+|     < LBOX: "[" >
+|     < RBOX: "]" >
+|     < LB: "{" >
+|     < RB: "}" >
+}
+
+/* OPERATORS */
+TOKEN :
+{
+      < ASGN: "=" >
+}
+
+
+/* Reserved words */
+TOKEN :
+{
+          < ARRAY: "array" >
+	| < BOOL: "bool" >
+	| < CONSTRAINT: "constraint" >
+	| < FALSE: "false" >
+	| < FLOAT: "float" >
+	| < INT: "int" >
+	| < MINIMIZE: "minimize" >
+	| < MAXIMIZE: "maximize" >
+	| < OF: "of" >
+	| < OUTPUT: "output" >
+	| < PREDICATE: "predicate" >
+	| < SATISFY: "satisfy" >
+	| < SET: "set" >
+	| < SHOW: "show" >
+	| < SHOW_COND: "show_cond" >
+	| < SOLVE: "solve" >
+	| < TRUE: "true" >
+	| < VAR: "var" >
+	| < DOTDOT: ".." >
+	| < COLONCOLON: "::">
+}
+
+/* IDENTIFIER */
+// ident           [A-Za-z][A-Za-z0-9_]*
+TOKEN :
+{
+    < IDENT: ["a"-"z", "A"-"Z"] (["a"-"z", "A"-"Z", "0"-"9", "_"])* >
+}
+
+void model() :
+{}
+{
+    pred_decl_items()
+    var_decl_items() 
+    constraint_items()
+    model_end()
+    <EOF>
+}
+
+void pred_decl_items() :
+{}
+{
+    ( pred_decl_item() <SC> )*
+}
+
+void var_decl_items() :
+{}
+{
+    ( var_decl_item() <SC> )*
+}
+ 
+void constraint_items() :
+{}
+{
+    ( constraint_item() <SC> )*
+}
+ 
+void model_end() :
+{}
+{
+    solve_item() <SC> [ output_item() <SC> ]
+}
+    
+    
+void pred_decl_item() :
+{}
+{
+    <PREDICATE> <IDENT> <LP> pred_decl_args() <RP>
+}
+
+void var_decl_item() :
+{}
+{
+    <VAR> non_array_ti_expr_tail() <COLON> ident_anns() [ <ASGN> non_array_flat_expr() ] //var_decl_item2() 
+   | non_array_ti_expr_tail() <COLON> ident_anns() <ASGN> non_array_flat_expr()
+   | <ARRAY> <LBOX> <INT_LITERAL> <DOTDOT> <INT_LITERAL> <RBOX> <OF> array_decl_tail()
+}
+
+void array_decl_tail() :
+{}
+{
+    non_array_ti_expr_tail() <COLON> ident_anns() <ASGN> array_literal()
+	| <VAR> non_array_ti_expr_tail() <COLON> ident_anns() [ <ASGN> array_literal() ] //array_decl_tail2()
+}
+
+void ident_anns() :
+{}
+{
+    <IDENT> annotations()
+}
+
+void constraint_item() :
+{}
+{
+    <CONSTRAINT> constraint_elem() annotations()
+}
+
+void constraint_elem() :
+{}
+{
+    LOOKAHEAD(2)
+    <IDENT> <LP> flat_exprs() <RP>
+    |   variable_expr()
+}
+
+void solve_item() :
+{}
+{
+    <SOLVE> annotations() solve_kind()
+}
+
+void solve_kind() :
+{}
+{
+    <SATISFY>
+	| <MINIMIZE> solve_expr()
+	| <MAXIMIZE> solve_expr()
+}
+
+void output_item() :
+{}
+{
+    <OUTPUT> <LBOX> output_elems() <RBOX>
+}
+
+void output_elems() :
+{}
+{
+    output_elem() ( <COMMA> output_elem() )*
+}
+
+void output_elem() :
+{}
+{
+    <SHOW> <LP> flat_expr() <RP>
+	| <SHOW_COND> <LP> flat_expr() <COMMA> flat_expr() <COMMA> flat_expr() <RP>
+	| <STRING_LITERAL>
+}
+
+void pred_decl_args() :
+{}
+{
+    pred_decl_arg() ( <COMMA> pred_decl_arg() )*
+}
+
+void pred_decl_arg() :
+{}
+{
+    non_array_ti_expr_tail() <COLON> <IDENT>
+	| <VAR> non_array_ti_expr_tail() <COLON> <IDENT>
+	| <ARRAY> <LBOX> pred_arg_array_index() <RBOX> <OF>  pred_arg_array_tail() <COLON> <IDENT>
+}
+
+void pred_arg_array_index() :
+{}
+{
+    <INT> | <INT_LITERAL> <DOTDOT> <INT_LITERAL>
+}
+
+void pred_arg_array_tail() :
+{}
+{
+    non_array_ti_expr_tail()
+	| <VAR> non_array_ti_expr_tail()
+}
+
+void non_array_ti_expr_tail() :
+{}
+{
+    scalar_ti_expr_tail()
+	| set_ti_expr_tail()
+}
+
+void scalar_ti_expr_tail() :
+{}
+{
+    bool_ti_expr_tail()
+	| int_ti_expr_tail()
+	| float_ti_expr_tail()
+}
+
+void bool_ti_expr_tail() :
+{}
+{
+    <BOOL>
+}
+
+void int_ti_expr_tail() :
+{}
+{
+    <INT>
+	| <INT_LITERAL> <DOTDOT> <INT_LITERAL>
+	| <LB> int_literals() <RB>
+}
+
+void float_ti_expr_tail() :
+{}
+{
+    <FLOAT>
+   | <FLOAT_LITERAL> <DOTDOT> <FLOAT_LITERAL>
+}
+
+void set_ti_expr_tail() :
+{}
+{
+    <SET> <OF> scalar_ti_expr_tail()
+}
+
+void ann_exprs() :
+{}
+{
+    ann_expr() ( <COMMA> ann_expr() )*
+}
+
+void ann_expr() :
+{}
+{
+
+ LOOKAHEAD(2)
+ <IDENT> <LP> ann_exprs() <RP> | flat_expr() 
+
+}
+
+void flat_exprs() :
+{}
+{
+    flat_expr() (<COMMA>  flat_expr())*
+}
+
+void flat_expr() :
+{}
+{
+     non_array_flat_expr()
+	 | array_literal()
+}
+
+void non_array_flat_exprs() :
+{}
+{
+    non_array_flat_expr() ( <COMMA> non_array_flat_expr() )*
+}
+
+void non_array_flat_expr() :
+{}
+{
+
+    LOOKAHEAD(3)
+	set_literal()
+	| scalar_flat_expr()
+}
+
+void scalar_flat_exprs() :
+{}
+{
+    scalar_flat_expr() ( <COMMA> scalar_flat_expr())*
+}
+
+void scalar_flat_expr() :
+{}
+{
+
+     LOOKAHEAD(2)
+	 array_access_expr()
+	 | <IDENT> 
+	 | bool_literal() 
+	 | <INT_LITERAL> 
+	 | <FLOAT_LITERAL>
+	 | <STRING_LITERAL>
+}
+
+void int_flat_expr() :
+{}
+{
+ LOOKAHEAD(2)
+     <IDENT>
+     | array_access_expr()
+     | <INT_LITERAL>
+}
+
+void variable_expr() :
+{}
+{
+ LOOKAHEAD(2)
+     <IDENT>
+     | array_access_expr()
+}
+
+void solve_expr() :
+{}
+{
+    LOOKAHEAD(2)
+	array_access_expr()
+	| LOOKAHEAD(2) <IDENT> <LP> flat_exprs() <RP> 
+	| <IDENT>
+}
+
+void array_access_expr() :
+{}
+{
+    <IDENT> <LBOX> int_index_expr() <RBOX>
+}
+
+void int_index_expr() :
+{}
+{
+    <IDENT> | <INT_LITERAL>
+}
+
+void bool_literal() :
+{}
+{
+    <FALSE> | <TRUE>
+}
+
+void int_literals() :
+{}
+{
+    <INT_LITERAL> ( <COMMA> <INT_LITERAL>)*
+}
+
+void set_literal() :
+{}
+{
+    <LB> [ scalar_flat_exprs() ] <RB>
+	| int_flat_expr() <DOTDOT> int_flat_expr() 
+}
+
+void array_literal() :
+{}
+{
+    <LBOX> [ non_array_flat_exprs() ] <RBOX>
+}
+
+void annotations() :
+{}
+{
+    ( <COLONCOLON> annotation() )*
+}
+
+void annotation() :
+{}
+{
+	LOOKAHEAD(5) 
+	t=<IDENT> <LP> ann_exprs() <RP>
+       | 
+	 LOOKAHEAD(2) 
+     	 t=<IDENT> <LP> <LBOX> annotation() (<COMMA> annotation() )* <RBOX> <RP> 
+	|
+	 t=<IDENT>
+}

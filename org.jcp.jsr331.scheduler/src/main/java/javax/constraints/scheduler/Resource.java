@@ -172,6 +172,13 @@ public interface Resource {
 	public Constraint[] capacityMinConstraints(int time1, int time2, int capacity);
 	
 	/**
+     * Returns resource maximal capacity at any moment of time (theoretical capacity)
+     * 
+     * @return theoretical capacity
+     */
+    public int getCapacityMax();
+	
+	/**
 	 * Returns resource maximal capacity at the specified moment of time
 	 * 
 	 * @param time

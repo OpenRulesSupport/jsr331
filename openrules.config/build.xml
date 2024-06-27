@@ -1,0 +1,76 @@
+<project name="openrules.config" default="run.java">
+
+	<dirname property="openrules.config.dir" file="${ant.file.openrules.config}" />
+	<property file="${openrules.config.dir}/build.properties" />
+	
+	<path id="openrules.config.classpath">
+		<fileset dir="${openrules.config.dir}" includes="**/*.jar" />
+	</path>
+	
+	<target name="run.openl">
+		<property name="org.openl.main.OpenlMain" value="org.openl.main.OpenlMain" />
+		<antcall target="run.java">
+			<param name="classname" value="${org.openl.main.OpenlMain}" />
+		</antcall>
+	</target>
+	
+	<target name="run.java">
+		<property name="classpath" value="${default.classpath}" />
+		<property name="arg.line" value="${default.arg.line}" />
+		<property name="jvmarg.line" value="${default.jvmarg.line}" />
+		<property name="dir" value="" />
+		<!--
+		<echo message="classpath: ${classpath}" /> 
+		<echo message="classname: ${classname}" /> 
+		-->
+		<java classname="${classname}" fork="true" dir="${dir}">
+			<arg line="${arg.line}" />
+			<jvmarg line="${jvmarg.line}" />
+			<classpath>
+				<path refid="openrules.config.classpath" />
+				<pathelement path="${classpath}" /> 
+			</classpath>
+		</java>
+	</target>
+	
+	<target name="compile.java">
+		<property name="classpath" value="${default.classpath}" />
+		<javac destdir="${destdir}" target="1.2" source="1.3" srcdir="${srcdir}" >
+			<classpath>
+				<path refid="openrules.config.classpath" />
+				<pathelement path="${classpath}" />
+			</classpath>
+		</javac>
+		<copy todir="${destdir}">
+			<fileset dir="${srcdir}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<taskdef name="eval" classname="com.openrules.java.ant.EvalXlsTask"
+		classpath="${openrules.config.dir}/lib/openrules.all.jar">
+	</taskdef>
+	
+	
+	<target name="compile.xls">
+		<eval source="${main.xls.file}">
+			<classpath>
+				<pathelement path="${project.dir}/bin"/>
+				<path refid="openrules.config.classpath" />
+			</classpath>
+		</eval>
+	</target>
+	
+	<target name="compile" depends="compile.java,compile.xls" />
+	
+	<target name="compile.old">
+		<mkdir dir="classes" />
+		<ant antfile="build.xml" target="compile.java">
+			<property name="srcdir" value="src" />
+			<property name="destdir" value="classes" />
+		</ant>
+	</target>
+	
+	
+</project>

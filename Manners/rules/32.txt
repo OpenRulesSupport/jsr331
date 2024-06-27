@@ -1,0 +1,32 @@
+dave ,m , skiing, biking, swimming
+doug ,m , biking, skiing, swimming
+jane ,f , swimming, skiing
+kate ,f , biking, skiing
+scott ,m , swimming, biking
+sue ,f , biking, swimming
+ann ,f , swimming, skiing, biking
+john ,m , skiing, swimming
+chuck ,m , skiing, biking
+hope ,f , swimming, skiing, biking
+jill ,f , skiing, swimming
+dan ,m , swimming, biking
+carol ,f , swimming, skiing, biking
+alex ,m , skiing, biking
+pam ,f , skiing, biking
+tim ,m , biking, skiing
+d ,m , skiing, biking, swimming
+e ,m , biking, skiing, swimming
+f ,f , swimming, skiing
+g ,f , biking, skiing
+h ,m , swimming, biking
+i ,f , biking, swimming
+j ,f , swimming, skiing, biking
+k ,m , skiing, swimming
+l ,m , skiing, biking
+m ,f , swimming, skiing, biking
+n ,f , skiing, swimming
+o ,m , swimming, biking
+p ,f , swimming, skiing, biking
+q ,m , skiing, biking
+r ,f , skiing, biking
+s ,m , biking, skiing

@@ -1,0 +1,879 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE flatzinc SYSTEM "flatzinc.dtd">
+
+<flatzinc model="golfers">
+
+<var_decl>
+  <type>
+    <var>
+      <int_range lo="1" hi="16"/>
+    </var>
+  </type>
+  <id name="INT____1"/>
+  <annotation name="is_defined_var"/>
+  <annotation name="var_is_introduced"/>
+</var_decl>
+
+<var_decl>
+  <type>
+    <var>
+      <int_range lo="1" hi="16"/>
+    </var>
+  </type>
+  <id name="INT____11"/>
+  <annotation name="is_defined_var"/>
+  <annotation name="var_is_introduced"/>
+</var_decl>
+
+<var_decl>
+  <type>
+    <var>
+      <int_range lo="1" hi="16"/>
+    </var>
+  </type>
+  <id name="INT____3"/>
+  <annotation name="is_defined_var"/>
+  <annotation name="var_is_introduced"/>
+</var_decl>
+
+<var_decl>
+  <type>
+    <var>
+      <int_range lo="1" hi="16"/>
+    </var>
+  </type>
+  <id name="INT____5"/>
+  <annotation name="is_defined_var"/>
+  <annotation name="var_is_introduced"/>
+</var_decl>
+
+<var_decl>
+  <type>
+    <var>
+      <int_range lo="1" hi="16"/>
+    </var>
+  </type>
+  <id name="INT____7"/>
+  <annotation name="is_defined_var"/>
+  <annotation name="var_is_introduced"/>
+</var_decl>
+
+<var_decl>
+  <type>
+    <var>
+      <int_range lo="1" hi="16"/>
+    </var>
+  </type>
+  <id name="INT____9"/>
+  <annotation name="is_defined_var"/>
+  <annotation name="var_is_introduced"/>
+</var_decl>
+
+<var_decl>
+  <type>
+    <array>
+      <int_lit value="16"/>
+      <var>
+        <int_range lo="0" hi="3"/>
+      </var>
+    </array>
+  </type>
+  <id name="golfer_golfer_round"/>
+  <annotation name="output_array">
+    <expr>
+      <array_lit size="2">
+        <set_lit>
+          <int_range lo="1" hi="4"/>
+        </set_lit>
+        <set_lit>
+          <int_range lo="1" hi="4"/>
+        </set_lit>
+      </array_lit>
+    </expr>
+  </annotation>
+</var_decl>
+
+<var_decl>
+  <type>
+    <array>
+      <int_lit value="12"/>
+      <var>
+        <int_range lo="1" hi="4"/>
+      </var>
+    </array>
+  </type>
+  <id name="round_place_golfer"/>
+  <annotation name="output_array">
+    <expr>
+      <array_lit size="2">
+        <set_lit>
+          <int_range lo="1" hi="3"/>
+        </set_lit>
+        <set_lit>
+          <int_range lo="1" hi="4"/>
+        </set_lit>
+      </array_lit>
+    </expr>
+  </annotation>
+</var_decl>
+
+<constraint>
+  <pred name="array_var_int_element">
+    <expr>
+      <id name="INT____1"/>
+    </expr>
+    <expr>
+      <id name="golfer_golfer_round"/>
+    </expr>
+    <expr>
+      <int_lit value="1"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="array_var_int_element">
+    <expr>
+      <id name="INT____11"/>
+    </expr>
+    <expr>
+      <id name="golfer_golfer_round"/>
+    </expr>
+    <expr>
+      <int_lit value="3"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="array_var_int_element">
+    <expr>
+      <id name="INT____3"/>
+    </expr>
+    <expr>
+      <id name="golfer_golfer_round"/>
+    </expr>
+    <expr>
+      <int_lit value="1"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="array_var_int_element">
+    <expr>
+      <id name="INT____5"/>
+    </expr>
+    <expr>
+      <id name="golfer_golfer_round"/>
+    </expr>
+    <expr>
+      <int_lit value="2"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="array_var_int_element">
+    <expr>
+      <id name="INT____7"/>
+    </expr>
+    <expr>
+      <id name="golfer_golfer_round"/>
+    </expr>
+    <expr>
+      <int_lit value="2"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="array_var_int_element">
+    <expr>
+      <id name="INT____9"/>
+    </expr>
+    <expr>
+      <id name="golfer_golfer_round"/>
+    </expr>
+    <expr>
+      <int_lit value="3"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_lin_eq">
+    <expr>
+      <array_lit size="3">
+        <int_lit value="-1"/>
+        <int_lit value="4"/>
+        <int_lit value="1"/>
+      </array_lit>
+    </expr>
+    <expr>
+      <array_lit size="3">
+        <id name="INT____1"/>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="1"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="2"/>
+        </array_access>
+      </array_lit>
+    </expr>
+    <expr>
+      <int_lit value="4"/>
+    </expr>
+  </pred>
+  <annotation name="defines_var">
+    <expr>
+      <id name="INT____1"/>
+    </expr>
+  </annotation>
+  <annotation name="domain"/>
+</constraint>
+
+<constraint>
+  <pred name="int_lin_eq">
+    <expr>
+      <array_lit size="3">
+        <int_lit value="-1"/>
+        <int_lit value="4"/>
+        <int_lit value="1"/>
+      </array_lit>
+    </expr>
+    <expr>
+      <array_lit size="3">
+        <id name="INT____11"/>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="11"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="12"/>
+        </array_access>
+      </array_lit>
+    </expr>
+    <expr>
+      <int_lit value="4"/>
+    </expr>
+  </pred>
+  <annotation name="defines_var">
+    <expr>
+      <id name="INT____11"/>
+    </expr>
+  </annotation>
+  <annotation name="domain"/>
+</constraint>
+
+<constraint>
+  <pred name="int_lin_eq">
+    <expr>
+      <array_lit size="3">
+        <int_lit value="-1"/>
+        <int_lit value="4"/>
+        <int_lit value="1"/>
+      </array_lit>
+    </expr>
+    <expr>
+      <array_lit size="3">
+        <id name="INT____3"/>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="3"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="4"/>
+        </array_access>
+      </array_lit>
+    </expr>
+    <expr>
+      <int_lit value="4"/>
+    </expr>
+  </pred>
+  <annotation name="defines_var">
+    <expr>
+      <id name="INT____3"/>
+    </expr>
+  </annotation>
+  <annotation name="domain"/>
+</constraint>
+
+<constraint>
+  <pred name="int_lin_eq">
+    <expr>
+      <array_lit size="3">
+        <int_lit value="-1"/>
+        <int_lit value="4"/>
+        <int_lit value="1"/>
+      </array_lit>
+    </expr>
+    <expr>
+      <array_lit size="3">
+        <id name="INT____5"/>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="5"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="6"/>
+        </array_access>
+      </array_lit>
+    </expr>
+    <expr>
+      <int_lit value="4"/>
+    </expr>
+  </pred>
+  <annotation name="defines_var">
+    <expr>
+      <id name="INT____5"/>
+    </expr>
+  </annotation>
+  <annotation name="domain"/>
+</constraint>
+
+<constraint>
+  <pred name="int_lin_eq">
+    <expr>
+      <array_lit size="3">
+        <int_lit value="-1"/>
+        <int_lit value="4"/>
+        <int_lit value="1"/>
+      </array_lit>
+    </expr>
+    <expr>
+      <array_lit size="3">
+        <id name="INT____7"/>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="7"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="8"/>
+        </array_access>
+      </array_lit>
+    </expr>
+    <expr>
+      <int_lit value="4"/>
+    </expr>
+  </pred>
+  <annotation name="defines_var">
+    <expr>
+      <id name="INT____7"/>
+    </expr>
+  </annotation>
+  <annotation name="domain"/>
+</constraint>
+
+<constraint>
+  <pred name="int_lin_eq">
+    <expr>
+      <array_lit size="3">
+        <int_lit value="-1"/>
+        <int_lit value="4"/>
+        <int_lit value="1"/>
+      </array_lit>
+    </expr>
+    <expr>
+      <array_lit size="3">
+        <id name="INT____9"/>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="9"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="10"/>
+        </array_access>
+      </array_lit>
+    </expr>
+    <expr>
+      <int_lit value="4"/>
+    </expr>
+  </pred>
+  <annotation name="defines_var">
+    <expr>
+      <id name="INT____9"/>
+    </expr>
+  </annotation>
+  <annotation name="domain"/>
+</constraint>
+
+<constraint>
+  <pred name="int_lt">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="1"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="2"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_lt">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="3"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="4"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_lt">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="5"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="6"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_lt">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="7"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="8"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_lt">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="9"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="10"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_lt">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="11"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="12"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="1"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="2"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="1"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="3"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="1"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="4"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="2"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="3"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="2"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="4"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="3"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="4"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="5"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="6"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="5"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="7"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="5"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="8"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="6"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="7"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="6"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="8"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="7"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="8"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="9"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="10"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="9"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="11"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="9"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="12"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="10"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="11"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="10"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="12"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="11"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="round_place_golfer"/>
+        <int_lit value="12"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<solve>
+  <annotation name="int_search">
+    <expr>
+      <array_lit size="12">
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="1"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="2"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="3"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="4"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="5"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="6"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="7"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="8"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="9"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="10"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="11"/>
+        </array_access>
+        <array_access>
+          <id name="round_place_golfer"/>
+          <int_lit value="12"/>
+        </array_access>
+      </array_lit>
+    </expr>
+    <annotation name="first_fail"/>
+    <annotation name="indomain_min"/>
+    <annotation name="complete"/>
+  </annotation>
+  <satisfy/>
+</solve>
+
+</flatzinc>
+

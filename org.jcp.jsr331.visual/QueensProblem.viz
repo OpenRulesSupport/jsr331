@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<visualization version="1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="visualization.xsd">
+<state id="1" treeNode="-1">
+<visualizer_state id="0">
+<dvar index="0" domain="1 2 3 4"/>
+<dvar index="1" domain="1 2 3 4"/>
+<dvar index="2" domain="1 2 3 4"/>
+<dvar index="3" domain="1 2 3 4"/>
+</visualizer_state>
+<visualizer_state id="1">
+<dvar index="0" domain="1 2 3 4"/>
+<dvar index="1" domain="1 2 3 4"/>
+<dvar index="2" domain="1 2 3 4"/>
+<dvar index="3" domain="1 2 3 4"/>
+</visualizer_state>
+</state>
+<state id="2" treeNode="0">
+<visualizer_state id="0">
+<dvar index="0" domain="1 2 3 4"/>
+<dvar index="1" domain="1 2 3 4"/>
+<dvar index="2" domain="1 2 3 4"/>
+<dvar index="3" domain="1 2 3 4"/>
+</visualizer_state>
+<visualizer_state id="1">
+<dvar index="0" domain="1 2 3 4"/>
+<dvar index="1" domain="1 2 3 4"/>
+<dvar index="2" domain="1 2 3 4"/>
+<dvar index="3" domain="1 2 3 4"/>
+</visualizer_state>
+</state>
+<state id="3" treeNode="1">
+<visualizer_state id="0">
+<dvar index="0" domain="1"/>
+<dvar index="1" domain="3 4"/>
+<dvar index="2" domain="2 4"/>
+<dvar index="3" domain="2 3"/>
+</visualizer_state>
+<visualizer_state id="1">
+<dvar index="0" domain="1"/>
+<dvar index="1" domain="3 4"/>
+<dvar index="2" domain="2 4"/>
+<dvar index="3" domain="2 3"/>
+</visualizer_state>
+</state>
+<state id="4" treeNode="2">
+<visualizer_state id="0">
+<dvar index="0" domain="1"/>
+<dvar index="1" domain="3 4"/>
+<dvar index="2" domain="2 4"/>
+<dvar index="3" domain="2 3"/>
+</visualizer_state>
+<visualizer_state id="1">
+<dvar index="0" domain="1"/>
+<dvar index="1" domain="3 4"/>
+<dvar index="2" domain="2 4"/>
+<dvar index="3" domain="2 3"/>
+</visualizer_state>
+</state>
+<state id="5" treeNode="3">
+<visualizer_state id="0">
+<dvar index="0" domain="1"/>
+<dvar index="1" domain="3 4"/>
+<dvar index="2" domain="2 4"/>
+<dvar index="3" domain="2 3"/>
+</visualizer_state>
+<visualizer_state id="1">
+<dvar index="0" domain="1"/>
+<dvar index="1" domain="3 4"/>
+<dvar index="2" domain="2 4"/>
+<dvar index="3" domain="2 3"/>
+</visualizer_state>
+</state>
+<state id="6" treeNode="4">
+<visualizer_state id="0">
+<dvar index="0" domain="2"/>
+<dvar index="1" domain="4"/>
+<dvar index="2" domain="1"/>
+<dvar index="3" domain="3"/>
+</visualizer_state>
+<visualizer_state id="1">
+<dvar index="0" domain="2"/>
+<dvar index="1" domain="4"/>
+<dvar index="2" domain="1"/>
+<dvar index="3" domain="3"/>
+</visualizer_state>
+</state>
+<state id="7" treeNode="4">
+<visualizer_state id="0">
+<dvar index="0" domain="2"/>
+<dvar index="1" domain="4"/>
+<dvar index="2" domain="1"/>
+<dvar index="3" domain="3"/>
+</visualizer_state>
+<visualizer_state id="1">
+<dvar index="0" domain="2"/>
+<dvar index="1" domain="4"/>
+<dvar index="2" domain="1"/>
+<dvar index="3" domain="3"/>
+</visualizer_state>
+</state>
+</visualization>

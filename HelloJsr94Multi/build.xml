@@ -1,0 +1,24 @@
+<project default="run">
+	
+	<echo>ant.file: ${ant.file}</echo>
+
+	<dirname property="project.dir" file="${ant.file}" />
+	<property file="${project.dir}/build.properties" />
+	<import file="${project.dir}/../openrules.config/build.xml" />
+
+	<target name="run">
+		<ant antfile="../openrules.config/build.xml" target="run.java">
+			<property name="classname" value="${main.java.class}" />
+			<property name="arg.line" value="${main.xls.file} ${main.xls.method}" />
+			<property name="classpath" value="${basedir}/bin;${jsr94.classpath}" />
+		</ant>
+	</target>
+
+	<target name="compile.java">
+		<ant antfile="../openrules.config/build.xml" target="compile.java">
+			<property name="srcdir" value="${project.dir}/src" />
+			<property name="destdir" value="${project.dir}/bin" />
+		</ant>
+	</target>
+
+</project>

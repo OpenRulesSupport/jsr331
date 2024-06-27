@@ -1,0 +1,249 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE flatzinc SYSTEM "flatzinc-draft.dtd">
+
+<flatzinc model="queens">
+  <predicates num="0"/>
+  <parameters num="0"/>
+  <variables num="1">
+    <variable name="q">
+      <array-var-int-range size="4" lo="1" hi="4"/>
+      <annotation name="output_array" arity="1">
+        <expr>
+          <array-expr size="1">
+            <int-range-expr lo="1" hi="4"/>
+          </array-expr>
+        </expr>
+      </annotation>
+    </variable>
+  </variables>
+  <constraints num="17">
+    <constraint name="int_lin_ne" arity="3">
+      <expr>
+        <array-int-literal size="2">1 -1</array-int-literal>
+      </expr>
+      <expr> 
+        <array-expr size="2">
+          <array-access-expr name="q" index="1"/>
+          <array-access-expr name="q" index="2"/>
+        </array-expr>
+      </expr>
+      <expr> 
+        <int-literal value="-1"/>
+      </expr> 
+    </constraint>
+    <constraint name="int_lin_ne" arity="3">
+      <expr>
+        <array-int-literal size="2">1 -1</array-int-literal>
+      </expr>
+      <expr> 
+        <array-expr size="2">
+          <array-access-expr name="q" index="1"/>
+          <array-access-expr name="q" index="2"/>
+        </array-expr>
+      </expr>
+      <expr> 
+        <int-literal value="1"/>
+      </expr> 
+    </constraint>
+    <constraint name="int_lin_ne" arity="3">
+      <expr>
+        <array-int-literal size="2">1 -1</array-int-literal>
+      </expr>
+      <expr> 
+        <array-expr size="2">
+          <array-access-expr name="q" index="1"/>
+          <array-access-expr name="q" index="3"/>
+        </array-expr>
+      </expr>
+      <expr> 
+        <int-literal value="-2"/>
+      </expr> 
+    </constraint>
+    <constraint name="int_lin_ne" arity="3">
+      <expr>
+        <array-int-literal size="2">1 -1</array-int-literal>
+      </expr>
+      <expr> 
+        <array-expr size="2">
+          <array-access-expr name="q" index="1"/>
+          <array-access-expr name="q" index="3"/>
+        </array-expr>
+      </expr>
+      <expr> 
+        <int-literal value="2"/>
+      </expr> 
+    </constraint>
+    <constraint name="int_lin_ne" arity="3">
+      <expr>
+        <array-int-literal size="2">1 -1</array-int-literal>
+      </expr>
+      <expr> 
+        <array-expr size="2">
+          <array-access-expr name="q" index="1"/>
+          <array-access-expr name="q" index="4"/>
+        </array-expr>
+      </expr>
+      <expr> 
+        <int-literal value="-3"/>
+      </expr> 
+    </constraint>
+    <constraint name="int_lin_ne" arity="3">
+      <expr>
+        <array-int-literal size="2">1 -1</array-int-literal>
+      </expr>
+      <expr> 
+        <array-expr size="2">
+          <array-access-expr name="q" index="1"/>
+          <array-access-expr name="q" index="4"/>
+        </array-expr>
+      </expr>
+      <expr> 
+        <int-literal value="3"/>
+      </expr> 
+    </constraint>
+    <constraint name="int_lin_ne" arity="3">
+      <expr>
+        <array-int-literal size="2">1 -1</array-int-literal>
+      </expr>
+      <expr> 
+        <array-expr size="2">
+          <array-access-expr name="q" index="2"/>
+          <array-access-expr name="q" index="3"/>
+        </array-expr>
+      </expr>
+      <expr> 
+        <int-literal value="-1"/>
+      </expr> 
+    </constraint>
+    <constraint name="int_lin_ne" arity="3">
+      <expr>
+        <array-int-literal size="2">1 -1</array-int-literal>
+      </expr>
+      <expr> 
+        <array-expr size="2">
+          <array-access-expr name="q" index="2"/>
+          <array-access-expr name="q" index="3"/>
+        </array-expr>
+      </expr>
+      <expr> 
+        <int-literal value="1"/>
+      </expr> 
+    </constraint>
+    <constraint name="int_lin_ne" arity="3">
+      <expr>
+        <array-int-literal size="2">1 -1</array-int-literal>
+      </expr>
+      <expr> 
+        <array-expr size="2">
+          <array-access-expr name="q" index="2"/>
+          <array-access-expr name="q" index="4"/>
+        </array-expr>
+      </expr>
+      <expr> 
+        <int-literal value="-2"/>
+      </expr> 
+    </constraint>
+    <constraint name="int_lin_ne" arity="3">
+      <expr>
+        <array-int-literal size="2">1 -1</array-int-literal>
+      </expr>
+      <expr> 
+        <array-expr size="2">
+          <array-access-expr name="q" index="2"/>
+          <array-access-expr name="q" index="4"/>
+        </array-expr>
+      </expr>
+      <expr> 
+        <int-literal value="2"/>
+      </expr> 
+    </constraint>
+    <constraint name="int_lin_ne" arity="3">
+      <expr>
+        <array-int-literal size="2">1 -1</array-int-literal>
+      </expr>
+      <expr> 
+        <array-expr size="2">
+          <array-access-expr name="q" index="3"/>
+          <array-access-expr name="q" index="4"/>
+        </array-expr>
+      </expr>
+      <expr> 
+        <int-literal value="-1"/>
+      </expr> 
+    </constraint>
+    <constraint name="int_lin_ne" arity="3">
+      <expr>
+        <array-int-literal size="2">1 -1</array-int-literal>
+      </expr>
+      <expr> 
+        <array-expr size="2">
+          <array-access-expr name="q" index="3"/>
+          <array-access-expr name="q" index="4"/>
+        </array-expr>
+      </expr>
+      <expr> 
+        <int-literal value="1"/>
+      </expr> 
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="q" index="1"/>
+      </expr>
+      <expr>
+        <array-access-expr name="q" index="2"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="q" index="1"/>
+      </expr>
+      <expr>
+        <array-access-expr name="q" index="3"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="q" index="1"/>
+      </expr>
+      <expr>
+        <array-access-expr name="q" index="4"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="q" index="2"/>
+      </expr>
+      <expr>
+        <array-access-expr name="q" index="3"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="q" index="2"/>
+      </expr>
+      <expr>
+        <array-access-expr name="q" index="4"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <array-access-expr name="q" index="3"/>
+      </expr>
+      <expr>
+        <array-access-expr name="q" index="4"/>
+      </expr>
+    </constraint>
+  </constraints>
+  <solve>
+    <satisfy/>
+    <annotation name="int_search" arity="4"> 
+      <expr>
+        <id name="q"/>
+      </expr>
+      <annotation name="first_fail" arity="0"/>
+      <annotation name="indomain_min" arity="0"/>
+      <annotation name="complete" arity="0"/>
+    </annotation> 
+  </solve>
+</flatzinc>

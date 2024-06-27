@@ -1,0 +1,1876 @@
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:02 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:02 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 140 msec
+No solutions
+Problem not solved in 152 ms
+
+total price = 5845
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:02 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:02 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 147 msec
+No solutions
+Problem not solved in 158 ms
+
+total price = 5850
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:02 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:02 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 142 msec
+No solutions
+Problem not solved in 153 ms
+
+total price = 5855
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:02 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:02 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 147 msec
+No solutions
+Problem not solved in 158 ms
+
+total price = 5860
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:02 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:03 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 138 msec
+No solutions
+Problem not solved in 150 ms
+
+total price = 5865
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:03 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:03 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 139 msec
+No solutions
+Problem not solved in 150 ms
+
+total price = 5870
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:03 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:03 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 140 msec
+No solutions
+Problem not solved in 150 ms
+
+total price = 5875
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 5 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:03 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:03 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 138 msec
+No solutions
+Problem not solved in 148 ms
+
+total price = 5880
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:03 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:03 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 139 msec
+No solutions
+Problem not solved in 150 ms
+
+total price = 5885
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:03 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:03 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 146 msec
+No solutions
+Problem not solved in 156 ms
+
+total price = 5890
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:03 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:03 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 140 msec
+No solutions
+Problem not solved in 150 ms
+
+total price = 5895
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:03 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:04 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 140 msec
+No solutions
+Problem not solved in 151 ms
+
+total price = 5900
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:04 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:04 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 147 msec
+No solutions
+Problem not solved in 160 ms
+
+total price = 5905
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:04 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:04 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 141 msec
+No solutions
+Problem not solved in 152 ms
+
+total price = 5910
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:04 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:04 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 138 msec
+No solutions
+Problem not solved in 150 ms
+
+total price = 5915
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 5 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 12 msec
+Start time: Thu Feb 18 19:04:04 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:04 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 147 msec
+No solutions
+Problem not solved in 162 ms
+
+total price = 5920
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:04 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:04 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 142 msec
+No solutions
+Problem not solved in 155 ms
+
+total price = 5925
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 5 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 11 msec
+Start time: Thu Feb 18 19:04:04 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:05 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 140 msec
+No solutions
+Problem not solved in 153 ms
+
+total price = 5930
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:05 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:05 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 141 msec
+No solutions
+Problem not solved in 152 ms
+
+total price = 5935
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:05 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:05 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 139 msec
+No solutions
+Problem not solved in 150 ms
+
+total price = 5940
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:05 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:05 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 139 msec
+No solutions
+Problem not solved in 150 ms
+
+total price = 5945
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:05 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:05 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 141 msec
+No solutions
+Problem not solved in 153 ms
+
+total price = 5950
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 6 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 13 msec
+Start time: Thu Feb 18 19:04:05 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:05 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 149 msec
+No solutions
+Problem not solved in 163 ms
+
+total price = 5955
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:05 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:06 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 141 msec
+No solutions
+Problem not solved in 152 ms
+
+total price = 5960
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:06 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:06 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 140 msec
+No solutions
+Problem not solved in 151 ms
+
+total price = 5965
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:06 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:06 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 138 msec
+No solutions
+Problem not solved in 149 ms
+
+total price = 5970
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:06 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:06 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 141 msec
+No solutions
+Problem not solved in 151 ms
+
+total price = 5975
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:06 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:06 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 151 msec
+No solutions
+Problem not solved in 162 ms
+
+total price = 5980
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:06 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:06 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 146 msec
+No solutions
+Problem not solved in 156 ms
+
+total price = 5985
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:06 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:06 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 141 msec
+No solutions
+Problem not solved in 152 ms
+
+total price = 5990
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:06 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:07 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 139 msec
+No solutions
+Problem not solved in 149 ms
+
+total price = 5995
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:07 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:07 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 140 msec
+No solutions
+Problem not solved in 150 ms
+
+total price = 6000
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:07 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:07 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 148 msec
+No solutions
+Problem not solved in 158 ms
+
+total price = 6005
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:07 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:07 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 140 msec
+No solutions
+Problem not solved in 150 ms
+
+total price = 6010
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:07 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:07 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 139 msec
+No solutions
+Problem not solved in 149 ms
+
+total price = 6015
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 5 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 10 msec
+Start time: Thu Feb 18 19:04:07 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:07 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 141 msec
+No solutions
+Problem not solved in 154 ms
+
+total price = 6020
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:07 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:08 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 144 msec
+No solutions
+Problem not solved in 155 ms
+
+total price = 6025
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:08 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:08 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 142 msec
+No solutions
+Problem not solved in 153 ms
+
+total price = 6030
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:08 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:08 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 141 msec
+No solutions
+Problem not solved in 152 ms
+
+total price = 6035
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:08 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:08 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 139 msec
+No solutions
+Problem not solved in 150 ms
+
+total price = 6040
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 5 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:08 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:08 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 144 msec
+No solutions
+Problem not solved in 155 ms
+
+total price = 6045
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:08 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:08 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 145 msec
+No solutions
+Problem not solved in 156 ms
+
+total price = 6050
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:08 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:08 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 142 msec
+No solutions
+Problem not solved in 151 ms
+
+total price = 6055
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:09 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:09 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 138 msec
+No solutions
+Problem not solved in 149 ms
+
+total price = 6060
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 5 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:09 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:09 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 141 msec
+No solutions
+Problem not solved in 151 ms
+
+total price = 6065
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 6 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 10 msec
+Start time: Thu Feb 18 19:04:09 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:09 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 141 msec
+No solutions
+Problem not solved in 153 ms
+
+total price = 6070
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 6 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 10 msec
+Start time: Thu Feb 18 19:04:09 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:09 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 140 msec
+No solutions
+Problem not solved in 153 ms
+
+total price = 6075
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 5 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:09 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:09 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 147 msec
+No solutions
+Problem not solved in 157 ms
+
+total price = 6080
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:09 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:09 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 156 msec
+No solutions
+Problem not solved in 167 ms
+
+total price = 6085
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:09 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:10 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 142 msec
+No solutions
+Problem not solved in 153 ms
+
+total price = 6090
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:10 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:10 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 140 msec
+No solutions
+Problem not solved in 149 ms
+
+total price = 6095
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:10 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:10 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 139 msec
+No solutions
+Problem not solved in 149 ms
+
+total price = 6100
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:10 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:10 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 140 msec
+No solutions
+Problem not solved in 149 ms
+
+total price = 6105
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:10 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:10 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 142 msec
+Item 0 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 1 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 14 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 27 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+	Total Price=6105 calcTotalPrice=6105 Total Revenue=24420
+Problem solved in 158 ms
+
+total price = 6110
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:10 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:11 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 438 msec
+Item 0 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 1 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 14 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 27 selectedPrice=190 qty=4 revenue=760 selectedPriceIndex=1
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+	Total Price=6110 calcTotalPrice=6110 Total Revenue=24440
+Problem solved in 452 ms
+
+total price = 6115
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:11 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:11 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 433 msec
+Item 0 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 1 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 14 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 27 selectedPrice=190 qty=4 revenue=760 selectedPriceIndex=1
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=190 qty=4 revenue=760 selectedPriceIndex=1
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+	Total Price=6115 calcTotalPrice=6115 Total Revenue=24460
+Problem solved in 444 ms
+
+total price = 6120
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 6 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:11 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:12 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 468 msec
+Item 0 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 1 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 14 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=190 qty=4 revenue=760 selectedPriceIndex=1
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 27 selectedPrice=190 qty=4 revenue=760 selectedPriceIndex=1
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=190 qty=4 revenue=760 selectedPriceIndex=1
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+	Total Price=6120 calcTotalPrice=6120 Total Revenue=24480
+Problem solved in 482 ms
+
+total price = 6125
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 5 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:12 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:12 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 423 msec
+Item 0 selectedPrice=205 qty=4 revenue=820 selectedPriceIndex=4
+Item 1 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 14 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 27 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+	Total Price=6125 calcTotalPrice=6125 Total Revenue=24500
+Problem solved in 435 ms
+
+total price = 6130
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:12 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:12 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 140 msec
+Item 0 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 1 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 14 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 27 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+	Total Price=6130 calcTotalPrice=6130 Total Revenue=24730
+Problem solved in 153 ms
+
+total price = 6135
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 5 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:12 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:13 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 581 msec
+Item 0 selectedPrice=190 qty=4 revenue=760 selectedPriceIndex=1
+Item 1 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 14 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 27 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+	Total Price=6135 calcTotalPrice=6135 Total Revenue=24750
+Problem solved in 593 ms
+
+total price = 6140
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 10 msec
+Start time: Thu Feb 18 19:04:13 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:14 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 982 msec
+Item 0 selectedPrice=190 qty=4 revenue=760 selectedPriceIndex=1
+== Not priced PricingItem [number=1, prices=[185, 190, 195, 200, 205, 210, 220, 225, 230, 235, 240, 245, 250, 255, 260, 265, 270, 275, 280, 285], quantities=[4, 4, 1, 4, 4, 5, 4, 4, 4, 2, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3], selectedPriceIndex=-1, sumOfSelectedPriceVars=Sum1[1], revenueVar=Rev1[759]], selectedPriceVars=[1p0[0], 1p1[0], 1p2[0], 1p3[0], 1p4[0], 1p5[0], 1p6[0], 1p7[0], 1p8[0], 1p9[0], 1p10[0], 1p11[0], 1p12[0], 1p13[0], 1p14[0], 1p15[0], 1p16[0], 1p17[0], 1p18[0], 1p19[0]]
+Item 1 - no price selected
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 14 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 27 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Not all items are priced. Solution ignored.
+
+total price = 6145
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:14 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:20 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 5815 msec
+== Not priced PricingItem [number=0, prices=[185, 190, 195, 200, 205, 210, 220, 225, 230, 235, 240, 245, 250, 255, 260, 265, 270, 275, 280, 285], quantities=[4, 4, 1, 4, 4, 5, 4, 4, 4, 2, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3], selectedPriceIndex=-1, sumOfSelectedPriceVars=Sum0[1], revenueVar=Rev0[800]], selectedPriceVars=[0p0[0], 0p1[0], 0p2[0], 0p3[0], 0p4[0], 0p5[0], 0p6[0], 0p7[0], 0p8[0], 0p9[0], 0p10[0], 0p11[0], 0p12[0], 0p13[0], 0p14[0], 0p15[0], 0p16[0], 0p17[0], 0p18[0], 0p19[0]]
+Item 0 - no price selected
+Item 1 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 14 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 27 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Not all items are priced. Solution ignored.
+
+total price = 6150
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:20 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:29 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 9575 msec
+Item 0 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 1 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=190 qty=4 revenue=760 selectedPriceIndex=1
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 14 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 15 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 27 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 32 selectedPrice=200 qty=4 revenue=800 selectedPriceIndex=3
+	Total Price=6150 calcTotalPrice=6150 Total Revenue=24810
+Problem solved in 9588 ms
+
+total price = 6155
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 6 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 13 msec
+Start time: Thu Feb 18 19:04:29 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:29 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 145 msec
+Item 0 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 1 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 14 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 27 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+	Total Price=6155 calcTotalPrice=6155 Total Revenue=25040
+Problem solved in 161 ms
+
+total price = 6160
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:29 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:33 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 3329 msec
+Item 0 selectedPrice=190 qty=4 revenue=760 selectedPriceIndex=1
+Item 1 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 14 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 27 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 28 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+	Total Price=6160 calcTotalPrice=6160 Total Revenue=25060
+Problem solved in 3341 ms
+
+total price = 6165
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 8 msec
+Start time: Thu Feb 18 19:04:33 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:04:43 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 9748 msec
+Item 0 selectedPrice=190 qty=4 revenue=760 selectedPriceIndex=1
+== Not priced PricingItem [number=1, prices=[185, 190, 195, 200, 205, 210, 220, 225, 230, 235, 240, 245, 250, 255, 260, 265, 270, 275, 280, 285], quantities=[4, 4, 1, 4, 4, 5, 4, 4, 4, 2, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3], selectedPriceIndex=-1, sumOfSelectedPriceVars=Sum1[1], revenueVar=Rev1[759]], selectedPriceVars=[1p0[0], 1p1[0], 1p2[0], 1p3[0], 1p4[0], 1p5[0], 1p6[0], 1p7[0], 1p8[0], 1p9[0], 1p10[0], 1p11[0], 1p12[0], 1p13[0], 1p14[0], 1p15[0], 1p16[0], 1p17[0], 1p18[0], 1p19[0]]
+Item 1 - no price selected
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 14 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 27 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Not all items are priced. Solution ignored.
+
+total price = 6170
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:04:43 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:06:03 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 80268 msec
+== Not priced PricingItem [number=0, prices=[185, 190, 195, 200, 205, 210, 220, 225, 230, 235, 240, 245, 250, 255, 260, 265, 270, 275, 280, 285], quantities=[4, 4, 1, 4, 4, 5, 4, 4, 4, 2, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3], selectedPriceIndex=-1, sumOfSelectedPriceVars=Sum0[1], revenueVar=Rev0[800]], selectedPriceVars=[0p0[0], 0p1[0], 0p2[0], 0p3[0], 0p4[0], 0p5[0], 0p6[0], 0p7[0], 0p8[0], 0p9[0], 0p10[0], 0p11[0], 0p12[0], 0p13[0], 0p14[0], 0p15[0], 0p16[0], 0p17[0], 0p18[0], 0p19[0]]
+Item 0 - no price selected
+Item 1 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 14 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 26 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 27 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Not all items are priced. Solution ignored.
+
+total price = 6175
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 10 msec
+Start time: Thu Feb 18 19:06:03 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:08:55 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 172478 msec
+Item 0 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 1 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 14 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 27 selectedPrice=205 qty=4 revenue=820 selectedPriceIndex=4
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+	Total Price=6175 calcTotalPrice=6175 Total Revenue=25120
+Problem solved in 172490 ms
+
+total price = 6180
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:08:55 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:08:55 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 143 msec
+Item 0 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 1 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 14 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 27 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+	Total Price=6180 calcTotalPrice=6180 Total Revenue=25350
+Problem solved in 156 ms
+
+total price = 6185
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:08:55 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:09:20 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 24720 msec
+Item 0 selectedPrice=190 qty=4 revenue=760 selectedPriceIndex=1
+Item 1 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 14 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 27 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+	Total Price=6185 calcTotalPrice=6185 Total Revenue=25370
+Problem solved in 24731 ms
+
+total price = 6190
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 4 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 10 msec
+Start time: Thu Feb 18 19:09:20 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"
+Exit value: 0
+End time: Thu Feb 18 19:10:42 EST 2016
+Output is redirected to: results/PricingProblem.sol.log
+Execution time: 81471 msec
+Item 0 selectedPrice=190 qty=4 revenue=760 selectedPriceIndex=1
+== Not priced PricingItem [number=1, prices=[185, 190, 195, 200, 205, 210, 220, 225, 230, 235, 240, 245, 250, 255, 260, 265, 270, 275, 280, 285], quantities=[4, 4, 1, 4, 4, 5, 4, 4, 4, 2, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3], selectedPriceIndex=-1, sumOfSelectedPriceVars=Sum1[1], revenueVar=Rev1[759]], selectedPriceVars=[1p0[0], 1p1[0], 1p2[0], 1p3[0], 1p4[0], 1p5[0], 1p6[0], 1p7[0], 1p8[0], 1p9[0], 1p10[0], 1p11[0], 1p12[0], 1p13[0], 1p14[0], 1p15[0], 1p16[0], 1p17[0], 1p18[0], 1p19[0]]
+Item 1 - no price selected
+Item 2 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 3 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 4 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 5 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 6 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 7 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 8 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 9 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 10 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 11 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 12 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 13 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 14 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 15 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 16 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 17 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 18 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 19 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 20 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 21 selectedPrice=210 qty=5 revenue=1050 selectedPriceIndex=5
+Item 22 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 23 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 24 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 25 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 26 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 27 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 28 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 29 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 30 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 31 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Item 32 selectedPrice=185 qty=4 revenue=740 selectedPriceIndex=0
+Not all items are priced. Solution ignored.
+
+total price = 6195
+** OpenRules Pricing Solver version 1.5.0 (build 02/17/2016) **
+JSR-331 "Constraint Programming API" Release 1.2.2
+JSR-331 Common Implementation for Linear Solvers
+Problem defined in 3 ms
+Solve problem using SCIP v.3.0.0 with SoPlex 1.7.0
+Maximize TotalRev[0..499620]
+Replacing variable TotalRev[0..499620] with TotalRev[0..499620] using the name TotalRev
+MPS file generated in 9 msec
+Start time: Thu Feb 18 19:10:42 EST 2016
+Execute command: scip -c "read results/PricingProblem.mps  optimize write solution results/PricingProblem.sol quit"

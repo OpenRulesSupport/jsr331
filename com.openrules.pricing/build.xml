@@ -1,0 +1,11 @@
+<project name="build" default="jar">
+
+	
+	<target name="jar">
+		<jar file="./lib/com.openrules.pricing.jar">
+			<fileset dir="bin" />
+		</jar>
+	</target>
+	
+	
+</project>

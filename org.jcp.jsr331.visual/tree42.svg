@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="700px"
+   height="700px"
+   viewBox="-100 0 2200 700">
+<!-- from 2 to 3 -->
+<line x1="250.0" y1="300" x2="0.0" y2="400" style="stroke:#000000;stroke-width:2;"/>
+<text x="130.0" y="365.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+5
+</text>
+<!-- from 4 to 5 -->
+<line x1="100.0" y1="400" x2="50.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="80.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+2
+</text>
+<!-- from 4 to 6 -->
+<line x1="100.0" y1="400" x2="150.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="130.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+8
+</text>
+<!-- from 2 to 4 -->
+<line x1="250.0" y1="300" x2="100.0" y2="400" style="stroke:#000000;stroke-width:2;"/>
+<text x="180.0" y="365.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+6
+</text>
+<!-- from 7 to 8 -->
+<line x1="300.0" y1="400" x2="250.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="280.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+4
+</text>
+<!-- from 7 to 9 -->
+<line x1="300.0" y1="400" x2="350.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="330.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+8
+</text>
+<!-- from 2 to 7 -->
+<line x1="250.0" y1="300" x2="300.0" y2="400" style="stroke:#000000;stroke-width:2;"/>
+<text x="280.0" y="365.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+7
+</text>
+<!-- from 10 to 11 -->
+<line x1="500.0" y1="400" x2="450.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="480.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+2
+</text>
+<!-- from 10 to 12 -->
+<line x1="500.0" y1="400" x2="550.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="530.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+6
+</text>
+<!-- from 2 to 10 -->
+<line x1="250.0" y1="300" x2="500.0" y2="400" style="stroke:#000000;stroke-width:2;"/>
+<text x="380.0" y="365.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+8
+</text>
+<!-- from 1 to 2 -->
+<line x1="1025.0" y1="200" x2="250.0" y2="300" style="stroke:#000000;stroke-width:2;"/>
+<text x="642.5" y="265.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+3
+</text>
+<!-- from 14 to 15 -->
+<line x1="750.0" y1="400" x2="650.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="705.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+5
+</text>
+<!-- from 14 to 16 -->
+<line x1="750.0" y1="400" x2="750.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="755.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+7
+</text>
+<!-- from 14 to 17 -->
+<line x1="750.0" y1="400" x2="850.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="805.0000000000001" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+8
+</text>
+<!-- from 13 to 14 -->
+<line x1="1075.0" y1="300" x2="750.0" y2="400" style="stroke:#000000;stroke-width:2;"/>
+<text x="917.5000000000001" y="365.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+2
+</text>
+<!-- from 18 to 19 -->
+<line x1="1000.0" y1="400" x2="950.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="980.0000000000001" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+3
+</text>
+<!-- from 18 to 20 -->
+<line x1="1000.0" y1="400" x2="1050.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="1030.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+8
+</text>
+<!-- from 13 to 18 -->
+<line x1="1075.0" y1="300" x2="1000.0" y2="400" style="stroke:#000000;stroke-width:2;"/>
+<text x="1042.5" y="365.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+6
+</text>
+<!-- from 22 to 23 -->
+<line x1="1150.0" y1="500" x2="1100.0" y2="600" style="stroke:#000000;stroke-width:2;"/>
+<text x="1130.0" y="565.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+6
+</text>
+<!-- from 22 to 24 -->
+<line x1="1150.0" y1="500" x2="1200.0" y2="600" style="stroke:#000000;stroke-width:2;"/>
+<text x="1180.0" y="565.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+8
+</text>
+<!-- from 21 to 22 -->
+<line x1="1200.0" y1="400" x2="1150.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="1180.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+3
+</text>
+<!-- from 21 to 25 -->
+<line x1="1200.0" y1="400" x2="1250.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="1230.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+5
+</text>
+<!-- from 13 to 21 -->
+<line x1="1075.0" y1="300" x2="1200.0" y2="400" style="stroke:#000000;stroke-width:2;"/>
+<text x="1142.5" y="365.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+7
+</text>
+<!-- from 26 to 27 -->
+<line x1="1400.0" y1="400" x2="1350.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="1380.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+3
+</text>
+<!-- from 26 to 28 -->
+<line x1="1400.0" y1="400" x2="1450.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="1430.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+5
+</text>
+<!-- from 13 to 26 -->
+<line x1="1075.0" y1="300" x2="1400.0" y2="400" style="stroke:#000000;stroke-width:2;"/>
+<text x="1242.5" y="365.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+8
+</text>
+<!-- from 1 to 13 -->
+<line x1="1025.0" y1="200" x2="1075.0" y2="300" style="stroke:#000000;stroke-width:2;"/>
+<text x="1055.0" y="265.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+4
+</text>
+<!-- from 30 to 31 -->
+<line x1="1600.0" y1="400" x2="1550.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="1580.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+6
+</text>
+<!-- from 32 to 33 -->
+<line x1="1650.0" y1="500" x2="1600.0" y2="600" style="stroke:#000000;stroke-width:2;"/>
+<text x="1630.0" y="565.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+3
+</text>
+<!-- from 32 to 34 -->
+<line x1="1650.0" y1="500" x2="1700.0" y2="600" style="stroke:#000000;stroke-width:2;"/>
+<text x="1680.0" y="565.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+6
+</text>
+<!-- from 30 to 32 -->
+<line x1="1600.0" y1="400" x2="1650.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="1630.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+8
+</text>
+<!-- from 29 to 30 -->
+<line x1="1800.0" y1="300" x2="1600.0" y2="400" style="stroke:#000000;stroke-width:2;"/>
+<text x="1705.0" y="365.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+2
+</text>
+<!-- from 35 to 36 -->
+<line x1="1800.0" y1="400" x2="1750.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="1780.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+4
+</text>
+<!-- from 35 to 37 -->
+<line x1="1800.0" y1="400" x2="1850.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="1830.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+6
+</text>
+<!-- from 29 to 35 -->
+<line x1="1800.0" y1="300" x2="1800.0" y2="400" style="stroke:#000000;stroke-width:2;"/>
+<text x="1805.0" y="365.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+7
+</text>
+<!-- from 39 to 40 -->
+<line x1="1950.0" y1="500" x2="1900.0" y2="600" style="stroke:#000000;stroke-width:2;"/>
+<text x="1930.0" y="565.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+4
+</text>
+<!-- from 39 to 41 -->
+<line x1="1950.0" y1="500" x2="2000.0" y2="600" style="stroke:#000000;stroke-width:2;"/>
+<text x="1980.0" y="565.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+7
+</text>
+<!-- from 38 to 39 -->
+<line x1="2000.0" y1="400" x2="1950.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="1980.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+2
+</text>
+<!-- from 38 to 42 -->
+<line x1="2000.0" y1="400" x2="2050.0" y2="500" style="stroke:#000000;stroke-width:2;"/>
+<text x="2030.0" y="465.00000000000006" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+6
+</text>
+<!-- from 29 to 38 -->
+<line x1="1800.0" y1="300" x2="2000.0" y2="400" style="stroke:#000000;stroke-width:2;"/>
+<text x="1905.0" y="365.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+8
+</text>
+<!-- from 1 to 29 -->
+<line x1="1025.0" y1="200" x2="1800.0" y2="300" style="stroke:#000000;stroke-width:2;"/>
+<text x="1417.5" y="265.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+5
+</text>
+<!-- from 0 to 1 -->
+<line x1="1025.0" y1="100" x2="1025.0" y2="200" style="stroke:#000000;stroke-width:2;"/>
+<text x="1030.0" y="165.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:30px;text-anchor:start;">
+1
+</text>
+<circle cx="0.0" cy="400.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="250.0" y="320" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+3
+</text>
+<text x="290.0" y="300.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+4
+</text>
+<circle cx="50.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="100.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="140.0" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<circle cx="150.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="100.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="140.0" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<text x="250.0" y="320" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+3
+</text>
+<text x="290.0" y="300.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+4
+</text>
+<circle cx="250.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="300.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+5
+</text>
+<text x="340.0" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<circle cx="350.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="300.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+5
+</text>
+<text x="340.0" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<text x="250.0" y="320" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+3
+</text>
+<text x="290.0" y="300.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+4
+</text>
+<circle cx="450.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="500.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="540.0" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<circle cx="550.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="500.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="540.0" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<text x="250.0" y="320" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+3
+</text>
+<text x="290.0" y="300.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+4
+</text>
+<text x="1025.0" y="220" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+2
+</text>
+<text x="1065.0" y="200.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+6
+</text>
+<circle cx="650.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="750.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="790.0" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+3
+</text>
+<circle cx="750.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="750.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="790.0" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+3
+</text>
+<circle cx="850.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="750.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="790.0" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+3
+</text>
+<text x="1075.0" y="320" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+3
+</text>
+<text x="1115.0" y="300.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+4
+</text>
+<circle cx="950.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="1000.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="1040.0" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<circle cx="1050.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="1000.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="1040.0" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<text x="1075.0" y="320" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+3
+</text>
+<text x="1115.0" y="300.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+4
+</text>
+<circle cx="1100.0" cy="600.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="1150.0" y="520" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+5
+</text>
+<text x="1190.0" y="500.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<circle cx="1200.0" cy="600.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="1150.0" y="520" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+5
+</text>
+<text x="1190.0" y="500.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<text x="1200.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="1240.0" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<circle cx="1250.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="1200.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="1240.0" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<text x="1075.0" y="320" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+3
+</text>
+<text x="1115.0" y="300.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+4
+</text>
+<circle cx="1350.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="1400.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="1440.0" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<circle cx="1450.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="1400.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="1440.0" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<text x="1075.0" y="320" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+3
+</text>
+<text x="1115.0" y="300.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+4
+</text>
+<text x="1025.0" y="220" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+2
+</text>
+<text x="1065.0" y="200.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+6
+</text>
+<circle cx="1550.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="1600.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="1639.9999999999998" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<circle cx="1600.0" cy="600.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="1650.0" y="520" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+5
+</text>
+<text x="1689.9999999999998" y="500.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<circle cx="1700.0" cy="600.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="1650.0" y="520" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+5
+</text>
+<text x="1689.9999999999998" y="500.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<text x="1600.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="1639.9999999999998" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<text x="1800.0" y="320" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+3
+</text>
+<text x="1839.9999999999998" y="300.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+3
+</text>
+<circle cx="1750.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="1800.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+5
+</text>
+<text x="1839.9999999999998" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<circle cx="1850.0" cy="500.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="1800.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+5
+</text>
+<text x="1839.9999999999998" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<text x="1800.0" y="320" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+3
+</text>
+<text x="1839.9999999999998" y="300.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+3
+</text>
+<circle cx="1900.0" cy="600.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="1950.0" y="520" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+5
+</text>
+<text x="1989.9999999999998" y="500.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<circle cx="2000.0" cy="600.0" r="10.0" style="stroke:#000000;stroke-width:1;fill:#FF0000;"/>
+<text x="1950.0" y="520" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+5
+</text>
+<text x="1989.9999999999998" y="500.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<text x="2000.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="2039.9999999999998" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<circle cx="2050.0" cy="500.0" r="15.0" style="stroke:#000000;stroke-width:1;fill:#00FF00;"/>
+<text x="2000.0" y="420" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+4
+</text>
+<text x="2039.9999999999998" y="400.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+2
+</text>
+<text x="1800.0" y="320" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+3
+</text>
+<text x="1839.9999999999998" y="300.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+3
+</text>
+<text x="1025.0" y="220" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+2
+</text>
+<text x="1065.0" y="200.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+6
+</text>
+<text x="1025.0" y="120" style="stroke:none;fill:#0000FF;font-family:Arial,sans-serif;font-size:40px;text-anchor:middle;">
+1
+</text>
+<text x="1065.0" y="100.0" style="stroke:none;fill:#000000;font-family:Arial,sans-serif;font-size:20.0px;text-anchor:middle;">
+8
+</text>
+</svg>

@@ -1,0 +1,76 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (X11; U; SunOS 5.7 sun4u) [Netscape]">
+   <title>Java Specification Request 94 Readme</title>
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000FF" vlink="#000077" alink="#FF0000">
+&nbsp;
+<table BORDER=0 WIDTH="100%" >
+<tr>
+<td WIDTH="40"><img SRC="javalogo52x88.gif" ALT="Java" BORDER=0 height=88 width=52></td>
+
+<td ALIGN=CENTER><b><font size=+2>Java Specification Request 94</font></b>
+<br><b><font size=+2>Documentation</font></b>
+<p><b><font size=-1>Version 1.0</font></b></td>
+
+<td ALIGN=RIGHT VALIGN=TOP><font size=-1>Contents</font></td>
+</tr>
+</table>
+
+<blockquote><font size=-1>Your feedback is important to the JSR-94 Expert Group. Please send
+comments to: <a
+href="mailto:jsr-94-comments@jcp.org">jsr-94-comments@jcp.org</a>.</font>
+<p>
+<b>Introduction</b><br>
+This is a distribution of JSR-94 intended for <i>Final Release</i>. 
+<br>See <a href="jsr94_spec.pdf">Specification License</a> for license information for this specification.
+<p/>
+<b>Reference Implementation</b><br>
+The Reference Implementation (RI) for JSR-94 is implemented as a wrapper over the Jess rule engine. You will need to download 
+a copy (free for evaluation) from the Sandia website (link below).
+<br> See <a href="jsr94_ri_license.pdf">License Reference Implementation</a> for license information on the reference implementation.
+<p>
+<b>Technology Compatibility Kit</b><br>
+To help implementers to build compatible implementations, and evaluators to test implementations, we are providing the 
+Technology Compatibility Kit (TCK) free of charge (with full source code). The TCK is built using the 
+<a href="http://www.junit.org">JUnit</a> test framework.
+<br>See <a href="jsr94_tck_license.pdf">Technology Compatibility Kit</a> for license information on the technology compatibility kit.
+<p>
+<b>Installation</b><br>
+The downloaded distribution contains everything you need to review the specification, read the API JavaDoc, run the TCK
+and run the RI against a simple J2SE example. The Expert Group hopes to add more samples over time.
+<p>
+The top-level directory structure of the distribution is:
+<li>\ant: Jakarta ANT 1.5, used to build the specification, generate documentation and deploy samples.</li>
+<li>\doc: Specification text and API documentation.</li>
+<li>\lib: Compiled JARs of the specification API, reference implementation and samples.</li>
+<li>\reports: Output reports from running the TCK against the RI.</li>
+<li>\src: Java code for the TCK.</li>
+<p>
+<b>Running the Samples</b><br>
+To run the samples based on the RI you will need to download an evaluation copy of Jess 
+from <a href="http://herzberg.ca.sandia.gov/jess/">Sandia National Laboratories</a>. You should copy your 
+downloaded <code>jess.jar</code> into the <code>/lib</code> directory.
+<p>
+<b>To run</b><br>
+Goto the "lib" directory.<br>
+<code>cd lib</code><br>
+Type the following command:<br>
+<code>java -jar jsr94-example.jar</code><br>
+<p>
+<b>To view the source</b><br>
+You can view the source in the src directory or click on the following link:<br>
+<a href="../src/org/jcp/jsr94/samples/Example.java">org.jcp.jsr94.samples.Example.java</a>
+<p>
+<b>Open Source Contributions</b><br>
+The Expert Group would like to acknowledge and thank the Open Source community 
+for the use of the following tools:
+<li>Apache, Apache Ant <a href="http://ant.apache.org/">(here)</a></li>
+<li>Apache, Xerces J<a href="http://xml.apache.org/xerces-j/">(here)</a></li>
+<li>JUnit <a href="http://www.junit.org">(here)</a></li>
+<li>Apache, Xalan <a href="http://xml.apache.org/xalan-j/index.html">(here)</a></li>
+<li>Apache, Jakarta Tomcat <a href="http://jakarta.apache.org/tomcat/index.html">(here)</a></li>
+</body>
+</html>

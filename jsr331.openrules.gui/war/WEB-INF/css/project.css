@@ -1,0 +1,49 @@
+	
+
+<STYLE TYPE="text/css">
+
+h1,h2,h3
+{
+font-family: arial, 'sans serif'; 
+}
+
+table{
+/*	width: 100%; */
+	border: 0;
+	cellspacing: 4;
+	cellpadding: 6;
+	border-width: 2;
+	/* background-color: lightgray; */
+}
+
+p,li,address
+{
+font-family: arial, 'sans serif'; 
+margin-left: 15pt;
+}
+
+p,li,th,td
+{
+font-size: 100%;
+}
+
+th {background-color:#FAEBD7}
+
+body
+{
+background-color: #ffffff;
+}
+
+h1,h2,h3,hr 
+{
+color:saddlebrown; 
+}
+
+a:link    {color:darkred}
+a:visited {color:darkred}
+a:active  {color:red}
+a:hover   {color:red}
+
+
+		 
+</STYLE>

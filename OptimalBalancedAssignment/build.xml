@@ -1,0 +1,63 @@
+<project default="run">
+
+	<dirname property="project.dir" file="${ant.file}" />
+	<property environment="env"/>
+	<!-- <property file="build.properties" /> -->
+	<property name="openrules.config" value="${project.dir}/../openrules.config" />
+	
+	<path id="lib.classpath">
+		<!-- <fileset dir="${project.dir}/lib" includes="**/*.jar" /> -->
+		<fileset dir="${openrules.config}/lib" includes="*.jar"/> 
+	</path>
+	<!--
+	<echo message="project.dir=${project.dir}"/>
+	<echo message="openrules.config=${openrules.config}"/>
+	-->
+	<target name="run">
+		<!-- <echo>CLASS_NAME="${env.CLASS_NAME}"</echo> -->
+		<property name="classname" value="${env.CLASS_NAME}" />
+		<property name="arg.line" value="file:${project.dir}/${env.FILE_NAME} ${env.DECISION_NAME}" />
+		<property name="classpath" value="${project.dir}/bin" />
+		<property name="jvmarg.line" value="" />
+		<property name="dir" value="." />
+
+		<java classname="${classname}" fork="true" dir="${dir}">
+			<arg line="${arg.line}" />
+			<jvmarg line="${jvmarg.line}" />
+			<classpath>
+				<path refid="lib.classpath" />
+				<pathelement path="${classpath}" />
+			</classpath>
+		</java>
+	</target>
+
+	<target name="compile.java">
+		<property name="srcdir" value="${project.dir}/src" />
+		<property name="destdir" value="${project.dir}/bin" />
+
+		<javac destdir="${destdir}" srcdir="${srcdir}">
+			<classpath>
+				<path refid="lib.classpath" />
+				<pathelement path="${classpath}" />
+			</classpath>
+		</javac>
+	</target>
+	
+	<taskdef name="eval" classname="com.openrules.java.ant.EvalXlsTask"
+		classpath="${openrules.config}/lib/openrules.all.jar">
+	</taskdef>
+	
+	<target name="compile.xls">
+		<echo>dir=${project.dir}</echo>
+		<eval source="file:${project.dir}/${env.FILE_NAME}">
+			<classpath>
+				<pathelement path="${project.dir}/bin"/>
+				<path refid="lib.classpath" />
+			</classpath>
+		</eval>
+	</target>
+	
+	<target name="compile" depends="compile.java,compile.xls">
+	</target>
+
+</project>

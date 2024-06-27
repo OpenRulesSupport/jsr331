@@ -1,0 +1,101 @@
+INITIALIZE OPENRULES ENGINE 5.3.1 (build 06162009) for [file:rules/Manners.xls]
+Registering data source handler {file : com.openrules.datasource.FileDataSourceFactoryHandler}
+Registering data source handler {classpath : com.openrules.datasource.ClasspathDataSourceFactoryHandler}
+Set default data source handler {com.openrules.datasource.URLDataSourceFactoryHandler}
+Create DataSource from file:rules/Manners.xls
+[file:rules/Manners.xls] has been resolved to [file:rules/Manners.xls]
+LANG: com.openrules.lang.xls
+Registering data source handler {file : com.openrules.datasource.FileDataSourceFactoryHandler}
+Registering data source handler {classpath : com.openrules.datasource.ClasspathDataSourceFactoryHandler}
+Set default data source handler {com.openrules.datasource.URLDataSourceFactoryHandler}
+IMPORT.JAVA=openrules.manners.*
+LANG: openrules.java
+Registering data source handler {file : com.openrules.datasource.FileDataSourceFactoryHandler}
+Registering data source handler {classpath : com.openrules.datasource.ClasspathDataSourceFactoryHandler}
+Set default data source handler {com.openrules.datasource.URLDataSourceFactoryHandler}
+Creating Classpath DataSource from classpath:/com/openrules/java/openrules.system.xml
+Creating Classpath DataSource from classpath:/openrules.user.xml
+Successfully processed configuration: URLDataSource:jar:file:/C:/_SVN/4C/Manners/lib/openrules.all.jar!/com/openrules/java/openrules.system.xml
+LANG: file:rules/Manners.xls
+Execute getGuests16
+CP-INSIDE, Release 1.6.0 - www.4c.ucc.ie
+Underlying CP solver: Constrainer
+=== MannersSolverSoft ===
+1-GuestGroup:  1 4 5 6 9 10
+2-GuestGroup:  2 7 11 12 15
+3-GuestGroup:  3 13 16
+Dichotomize with objective[0;16]
+solve with goal: goalAnd(goalAnd(,goalAnd(generate,generate)),addSolution)
+
+Choice Points: 14  Failures: 0  Undos: 14533  Notifications: 3427  Memory: 1330792  Time: 109msec
+Constrainer succeeded
+Found solution #1 objective=10
+Solution #1: guest-1[0] guest-2[1] guest-3[2] guest-4[3] guest-5[4] guest-6[5] guest-7[6] guest-8[7] guest-9[8] guest-10[9] guest-11[10]
+	 guest-12[11] guest-13[12] guest-14[13] guest-15[14] guest-16[15] Seats-0[0] Seats-1[1] Seats-2[2] Seats-3[3] Seats-4[4]
+	 Seats-5[5] Seats-6[6] Seats-7[7] Seats-8[8] Seats-9[9] Seats-10[10] Seats-11[11] Seats-12[12] Seats-13[13] Seats-14[14]
+	 Seats-15[15]
+	 VarSet hobbies-1[3]: [1] [2] [3] VarSet hobbies-2[3]: [1] [2] [3] VarSet hobbies-3[2]: 1 [2] [3] VarSet hobbies-4[3]: [1] [2] [3] VarSet hobbies-5[3]: [1] [2] [3]
+	 VarSet hobbies-6[3]: [1] [2] [3] VarSet hobbies-7[3]: [1] [2] [3] VarSet hobbies-8[2]: [1] 2 [3] VarSet hobbies-9[3]: [1] [2] [3] VarSet hobbies-10[3]: [1] [2] [3]
+	 VarSet hobbies-11[3]: [1] [2] [3] VarSet hobbies-12[3]: [1] [2] [3] VarSet hobbies-13[2]: 1 [2] [3] VarSet hobbies-14[2]: [1] [2] 3 VarSet hobbies-15[3]: [1] [2] [3]
+	 VarSet hobbies-16[2]: 1 [2] [3]
+[0;16]
+Try objective [0;4]
+Dichotomize with objective[0;4]
+solve with goal: goalAnd(goalAnd(,goalAnd(generate,generate)),addSolution)
+
+Choice Points: 1986  Failures: 1958  Undos: 682032  Notifications: 401829  Memory: 1839656  Time: 1734msec
+Constrainer succeeded
+Found solution #2 objective=4
+Solution #2: guest-1[0] guest-2[1] guest-3[2] guest-4[3] guest-5[4] guest-6[6] guest-7[5] guest-8[10] guest-9[7] guest-10[11] guest-11[8]
+	 guest-12[12] guest-13[9] guest-14[13] guest-15[14] guest-16[15] Seats-0[0] Seats-1[1] Seats-2[2] Seats-3[3] Seats-4[4]
+	 Seats-5[6] Seats-6[5] Seats-7[8] Seats-8[10] Seats-9[12] Seats-10[7] Seats-11[9] Seats-12[11] Seats-13[13] Seats-14[14]
+	 Seats-15[15]
+	 VarSet hobbies-1[3]: [1] [2] [3] VarSet hobbies-2[3]: [1] [2] [3] VarSet hobbies-3[2]: 1 [2] [3] VarSet hobbies-4[3]: [1] [2] [3] VarSet hobbies-5[3]: [1] [2] [3]
+	 VarSet hobbies-6[3]: [1] [2] [3] VarSet hobbies-7[3]: [1] [2] [3] VarSet hobbies-8[3]: [1] [2] [3] VarSet hobbies-9[2]: [1] 2 [3] VarSet hobbies-10[3]: [1] [2] [3]
+	 VarSet hobbies-11[3]: [1] [2] [3] VarSet hobbies-12[2]: 1 [2] [3] VarSet hobbies-13[3]: [1] [2] [3] VarSet hobbies-14[2]: [1] [2] 3 VarSet hobbies-15[3]: [1] [2] [3]
+	 VarSet hobbies-16[2]: 1 [2] [3]
+[0;16]
+Try objective [0;1]
+Dichotomize with objective[0;1]
+solve with goal: goalAnd(goalAnd(,goalAnd(generate,generate)),addSolution)
+
+Choice Points: 150952  Failures: 150925  Undos: 49087200  Notifications: 29503915  Memory: 2106616  Time: 102968msec
+Constrainer failed
+Failure!
+Try objective [2;3]
+Dichotomize with objective[2;3]
+solve with goal: goalAnd(goalAnd(,goalAnd(generate,generate)),addSolution)
+
+Choice Points: 156467  Failures: 156426  Undos: 50779821  Notifications: 30515379  Memory: 2124624  Time: 106531msec
+Constrainer succeeded
+Found solution #3 objective=2
+Solution #3: guest-1[0] guest-2[1] guest-3[2] guest-4[3] guest-5[6] guest-6[4] guest-7[10] guest-8[5] guest-9[11] guest-10[7] guest-11[12]
+	 guest-12[8] guest-13[13] guest-14[9] guest-15[14] guest-16[15] Seats-0[0] Seats-1[1] Seats-2[2] Seats-3[3] Seats-4[5]
+	 Seats-5[7] Seats-6[4] Seats-7[9] Seats-8[11] Seats-9[13] Seats-10[6] Seats-11[8] Seats-12[10] Seats-13[12] Seats-14[14]
+	 Seats-15[15]
+	 VarSet hobbies-1[3]: [1] [2] [3] VarSet hobbies-2[3]: [1] [2] [3] VarSet hobbies-3[2]: 1 [2] [3] VarSet hobbies-4[3]: [1] [2] [3] VarSet hobbies-5[3]: [1] [2] [3]
+	 VarSet hobbies-6[3]: [1] [2] [3] VarSet hobbies-7[3]: [1] [2] [3] VarSet hobbies-8[3]: [1] [2] [3] VarSet hobbies-9[3]: [1] [2] [3] VarSet hobbies-10[2]: [1] 2 [3]
+	 VarSet hobbies-11[2]: 1 [2] [3] VarSet hobbies-12[3]: [1] [2] [3] VarSet hobbies-13[2]: [1] [2] 3 VarSet hobbies-14[3]: [1] [2] [3] VarSet hobbies-15[3]: [1] [2] [3]
+	 VarSet hobbies-16[2]: 1 [2] [3]
+This solution is optimal!
+*** Execution Profile ***
+Execution time: 106532 msec
+Occupied memory: 3857456
+SOLUTION 3 Total Violation=[2]
+Seat 1:  Guest 1	Gender=m Hobbies: 2 1 3
+Seat 2:  Guest 2	Gender=f Hobbies: 2 1 3
+Seat 3:  Guest 3	Gender=f Hobbies: 3 2
+Seat 4:  Guest 4	Gender=m Hobbies: 3 2 1
+Seat 5:  Guest 7	Gender=f Hobbies: 1 2 3
+Seat 6:  Guest 5	Gender=m Hobbies: 2 1 3
+Seat 7:  Guest 11	Gender=f Hobbies: 1 3 2
+Seat 8:  Guest 6	Gender=m Hobbies: 2 3 1
+Seat 9:  Guest 12	Gender=f Hobbies: 3 1 2
+Seat 10:  Guest 8	Gender=m Hobbies: 3 1
+Seat 11:  Guest 13	Gender=f Hobbies: 2 3
+Seat 12:  Guest 9	Gender=m Hobbies: 2 3 1
+Seat 13:  Guest 14	Gender=f Hobbies: 1 2
+Seat 14:  Guest 10	Gender=m Hobbies: 3 2 1
+Seat 15:  Guest 15	Gender=f Hobbies: 2 3 1
+Seat 16:  Guest 16	Gender=f Hobbies: 2 3
+Total elapsed time: 107016 ms

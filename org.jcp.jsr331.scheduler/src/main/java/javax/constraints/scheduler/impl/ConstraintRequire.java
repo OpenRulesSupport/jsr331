@@ -12,6 +12,7 @@ import javax.constraints.Constraint;
 //import javax.constraints.impl.Problem;
 import javax.constraints.Var;
 import javax.constraints.scheduler.Activity;
+import javax.constraints.scheduler.ConstraintActivityResource;
 import javax.constraints.scheduler.Resource;
 
 public class ConstraintRequire extends AbstractConstraintActivityResource {
@@ -53,31 +54,30 @@ public class ConstraintRequire extends AbstractConstraintActivityResource {
 			//p.log("i="+i);
 			VectorVar vars = new VectorVar();
 			// loop by resource constraints related to i-th interval
-			for (int j = 0; j < resource.getActivityConstraints().size(); ++j) {
-				ConstraintRequire requireConstraint =
-					(ConstraintRequire)resource.getActivityConstraints().elementAt(j);
+			for(Constraint constraint : resource.getActivityConstraints()) {
+			    ConstraintActivityResource requireConstraint = (ConstraintActivityResource)constraint;
 				Activity activity = requireConstraint.getActivity();
 				Var startVar = activity.getStart();
 				Var endVar = activity.getEnd();
-				if (startVar.getMin() <= i && i < endVar.getMax()) { // activity j may cover the i-th interval
-					Var jWithin = p.createVariable("noname",0,1);
+				if (startVar.getMin() <= i && i < endVar.getMax()) { // activity may cover the i-th interval
+					Var activityWithin = p.createVariable("noname",0,1);
 					//p.remove("noname");
 					Constraint 	activityIsInsideInterval = 
 						p.linear(startVar,"<=",i).and(p.linear(endVar,">",i));
-					p.postIfThen(activityIsInsideInterval, p.linear(jWithin,"=",1));
-					if (jWithin.getMax() > 0) {
+					p.postIfThen(activityIsInsideInterval, p.linear(activityWithin,"=",1));
+					if (activityWithin.getMax() > 0) {
 						Var requiredCapacity;
 						if (requireConstraint.getCapacityVar() != null) {
-							requiredCapacity = jWithin.multiply(requireConstraint.getCapacityVar());
+							requiredCapacity = activityWithin.multiply(requireConstraint.getCapacityVar());
 						} else {
-							requiredCapacity = jWithin.multiply(requireConstraint.getCapacity());
+							requiredCapacity = activityWithin.multiply(requireConstraint.getCapacity());
 						}
-						//p.log(""+activity + " jWithin="+jWithin);
+						//p.log(""+activity + " activityWithin="+activityWithin);
 						requiredCapacity.setName(activity.getName());
 						vars.addElement(requiredCapacity);
 					}
 				}
-			} // end of j loop
+			} // end of loop by resource's Activity Constraints
 
 			if (vars.size() > 0) {
 				Var requiredCapacitySum = getProblem().sum(vars.toArray());

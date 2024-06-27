@@ -1,0 +1,47 @@
+Read Cloud Computers from <./data/cb-0010comp-0020proc.xml> (root CloudBalance)
+-----------------------
+Read Cloud Processes from <./data/cb-0010comp-0020proc.xml> (root CloudBalance)
+-----------------------
+computers: 10
+processes: 20
+JSR-331 Standard v.1.1.1 Beta (release 8/18/2012)
+JSR-331 Implementation based on Constrainer 5.4 (light)
+Created 20 decision variables with domain [0;9]
+Problem is defined in 252 msec
+Find a solution: Mon Sep 17 21:01:19 EDT 2012
+Found a solution with TotalCost[40810]. Mon Sep 17 21:01:19 EDT 2012
+Found a solution with TotalCost[40290]. Mon Sep 17 21:01:19 EDT 2012
+Found a solution with TotalCost[39770]. Mon Sep 17 21:01:19 EDT 2012
+Found a solution with TotalCost[39250]. Mon Sep 17 21:01:19 EDT 2012
+Found a solution with TotalCost[38730]. Mon Sep 17 21:01:19 EDT 2012
+Found a solution with TotalCost[38400]. Mon Sep 17 21:01:20 EDT 2012
+Found a solution with TotalCost[37610]. Mon Sep 17 21:01:46 EDT 2012
+Found a solution with TotalCost[37090]. Mon Sep 17 21:01:46 EDT 2012
+Found a solution with TotalCost[36570]. Mon Sep 17 21:01:46 EDT 2012
+Found a solution with TotalCost[36050]. Mon Sep 17 21:01:46 EDT 2012
+Found a solution with TotalCost[35530]. Mon Sep 17 21:01:46 EDT 2012
+Found a solution with TotalCost[35200]. Mon Sep 17 21:01:47 EDT 2012
+Found a solution with TotalCost[34870]. Mon Sep 17 21:02:01 EDT 2012
+Time limit for one solution search 60000 mills has been exceeded
+P-0 uses computer 0
+P-1 uses computer 0
+P-2 uses computer 0
+P-3 uses computer 0
+P-4 uses computer 0
+P-5 uses computer 1
+P-6 uses computer 8
+P-7 uses computer 3
+P-8 uses computer 1
+P-9 uses computer 4
+P-10 uses computer 8
+P-11 uses computer 8
+P-12 uses computer 2
+P-13 uses computer 4
+P-14 uses computer 6
+P-15 uses computer 6
+P-16 uses computer 7
+P-17 uses computer 7
+P-18 uses computer 9
+P-19 uses computer 9
+Total Cost: 34870
+Total Execution time: 60320 msec

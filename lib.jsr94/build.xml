@@ -1,0 +1,9 @@
+<project name="lib.jsr94" default="jsr94.to.openrules.config">
+
+	<target name="jsr94.to.openrules.config">
+		<copy file="jsr94-1.0/lib/jsr94.jar" 
+			  todir="../openrules.config/lib" 
+		/>
+	</target>
+	
+</project>

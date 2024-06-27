@@ -1,0 +1,151 @@
+<project name="org.jcp.jsr331.jars" default="all">
+
+	<target name="constrainer">
+		<jar file="lib/constrainer/constrainer.light.jar">
+			<fileset dir="../constrainer.light/bin">
+				<include name="com/exigen/ie/**/*.*" />
+			</fileset>
+			<fileset dir="../constrainer.light/src">
+				<include name="com/exigen/ie/**/*.java" />
+			</fileset>
+		</jar>
+		
+		<jar file="lib/constrainer/jsr331.constrainer.jar">
+			<fileset dir="../org.jcp.jsr331.constrainer/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+			<fileset dir="../org.jcp.jsr331.constrainer/src">
+				<include name="javax/constraints/**/*.java" />
+			</fileset>
+		</jar>
+	</target>
+
+    <target name="choco">
+    	<jar file="lib/choco/jsr331.choco.jar">
+    		<fileset dir="../org.jcp.jsr331.choco/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+			<fileset dir="../org.jcp.jsr331.choco/src">
+				<include name="javax/constraints/**/*.java" />
+			</fileset>
+		</jar>
+		<copy todir="lib/choco" preservelastmodified="true">
+			<fileset dir="../org.jcp.jsr331.choco/lib">
+				<include name="choco-solver-2.1.5-20120603-with-sources.jar" />
+			</fileset>
+		</copy>
+    </target>
+
+	<!-- 
+	<target name="jacop">
+    	<jar file="lib/jacop/jsr331.jacop.jar">
+    		<fileset dir="../org.jcp.jsr331.jacop/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+			<fileset dir="../org.jcp.jsr331.jacop/src">
+				<include name="javax/constraints/**/*.java" />
+			</fileset>
+		</jar>
+		<copy todir="lib/jacop" preservelastmodified="true">
+			<fileset dir="../org.jcp.jsr331.jacop/lib">
+				<include name="jacop-3.0.jar" />
+			</fileset>
+		</copy>
+    </target>
+	-->
+	
+	
+	<target name="jsetl">
+    	<jar file="lib/jsetl/jsr331.jsetl.jar">
+    		<fileset dir="../org.jcp.jsr331.jsetl/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+			<fileset dir="../org.jcp.jsr331.jsetl/src">
+				<include name="javax/constraints/**/*.java" />
+			</fileset>
+		</jar>
+		<copy todir="lib/jsetl" preservelastmodified="true">
+			<fileset dir="../org.jcp.jsr331.jsetl/lib">
+				<include name="jsetl.jar" />
+			</fileset>
+		</copy>
+    </target>
+	
+	
+	<target name="jsr331">
+		<jar file="lib/jsr331.jar">
+			<fileset dir="../org.jcp.jsr331/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+			<fileset dir="../org.jcp.jsr331/src">
+				<include name="javax/constraints/**/*.java" />
+			</fileset>
+		</jar>
+		
+		<copy todir="lib/logging" preservelastmodified="true">
+			<fileset dir="../org.jcp.jsr331/lib">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="linear">
+		<jar file="lib/linear/jsr331.linear.jar">
+			<fileset dir="../org.jcp.jsr331.linear/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+		</jar>
+	</target>
+	
+	<target name="coin">
+		<jar file="lib/linear/jsr331.coin.jar">
+			<fileset dir="../org.jcp.jsr331.linear.coin/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="cplex">
+		<jar file="lib/linear/jsr331.cplex.jar">
+			<fileset dir="../org.jcp.jsr331.linear.cplex/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="scip">
+		<jar file="lib/linear/jsr331.scip.jar">
+			<fileset dir="../org.jcp.jsr331.linear.scip/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+		</jar>
+	</target>
+	
+	<target name="glpk">
+		<jar file="lib/linear/jsr331.glpk.jar">
+			<fileset dir="../org.jcp.jsr331.linear.glpk/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+		</jar>
+	</target>
+	
+	<target name="gurobi">
+		<jar file="lib/linear/jsr331.gurobi.jar">
+			<fileset dir="../org.jcp.jsr331.linear.gurobi/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+		</jar>
+	</target>
+
+	<target name="lpsolve">
+		<jar file="lib/linear/jsr331.lpsolve.jar">
+			<fileset dir="../org.jcp.jsr331.linear.lpsolve/bin">
+				<include name="javax/constraints/**/*.*" />
+			</fileset>
+		</jar>
+	</target>
+	<target name="all" depends="jsr331,choco,constrainer,jsetl,linear,coin,cplex,scip,glpk,gurobi,lpsolve">
+	</target>
+	
+	
+</project>

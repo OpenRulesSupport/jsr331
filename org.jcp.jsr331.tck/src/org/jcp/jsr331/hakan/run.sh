@@ -1,0 +1,1 @@
+./runProgram.sh Bins

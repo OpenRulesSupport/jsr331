@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<project name="build.and.deploy" basedir="." default="usage">
+    <property file="build.properties"/>
+
+    <property name="src.dir" value="src"/>
+	<property name="rules.dir" value="rules" />
+    <property name="web.dir" value="war"/>
+    <property name="build.dir" value="${web.dir}/WEB-INF/classes"/>
+    <property name="name" value="${war.name}"/>
+	<property name="openrules.jars" value="../openrules.config/lib"/>
+
+    <path id="master-classpath">
+	    
+        <fileset dir="${web.dir}/WEB-INF/lib">
+            <include name="*.jar"/>
+        </fileset>
+ 
+        <fileset dir="${appserver.home}/lib">
+            <include name="servlet*.jar"/>
+        </fileset>
+        <pathelement path="${build.dir}"/>
+    </path>
+
+    <target name="usage">
+        <echo message=""/>
+        <echo message="${name} build file"/>
+        <echo message="-----------------------------------"/>
+        <echo message=""/>
+        <echo message="Available targets are:"/>
+        <echo message=""/>
+        <echo message="build     --> Build the application as a WAR"/>
+        <echo message="deploy    --> Deploy application as a WAR file"/>
+        <echo message="install   --> Install application in Tomcat"/>
+        <echo message="reload    --> Reload application in Tomcat"/>
+        <echo message="start     --> Start Tomcat application"/>
+        <echo message="stop      --> Stop Tomcat application"/>
+        <echo message="list      --> List Tomcat applications"/>
+        <echo message=""/>
+    </target>
+
+    <target name="build" description="Compile main source tree java files and create a WAR file">
+        <mkdir dir="${build.dir}"/>
+    	<!--
+        <javac destdir="${build.dir}" target="1.2" source="1.3" debug="true"
+               deprecation="false" optimize="false" failonerror="true">
+            <src path="${src.dir}"/>
+            <classpath refid="master-classpath"/>
+        </javac>
+		-->
+    	<war destfile="${name}.war" webxml="${web.dir}/WEB-INF/web.xml">
+            <fileset dir="${web.dir}">
+                <include name="**/*.*"/>
+            	<exclude name="**/web.xml"/>
+            </fileset>
+    		<lib dir="${openrules.jars}" />
+        </war>
+	
+    </target>
+
+    <target name="deploy" depends="build" description="Deploy application as a WAR file">
+        <copy todir="${deploy.path}" preservelastmodified="true">
+            <fileset dir=".">
+                <include name="*.war"/>
+            </fileset>
+        </copy>
+    </target>
+	
+
+</project>

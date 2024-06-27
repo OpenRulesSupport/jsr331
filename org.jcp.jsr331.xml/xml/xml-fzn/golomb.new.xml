@@ -1,0 +1,351 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE flatzinc SYSTEM "flatzinc-draft.dtd">
+
+<flatzinc model="golomb">
+  <predicates num="0"/>
+  <parameters num="0"/>
+  <variables num="8">
+    <variable name="INT____1">
+      <var-int-range lo="0" hi="16"/> 
+      <annotation name="is_defined_var" arity="0"/>
+      <annotation name="var_is_introduced" arity="0"/>
+    </variable>
+    <variable name="INT____2">
+      <var-int-range lo="0" hi="16"/> 
+      <annotation name="is_defined_var" arity="0"/>
+      <annotation name="var_is_introduced" arity="0"/>
+    </variable>
+    <variable name="INT____3">
+      <var-int-range lo="0" hi="16"/> 
+      <annotation name="is_defined_var" arity="0"/>
+      <annotation name="var_is_introduced" arity="0"/>
+    </variable>
+    <variable name="INT____4">
+      <var-int-range lo="0" hi="15"/> 
+      <annotation name="is_defined_var" arity="0"/>
+      <annotation name="var_is_introduced" arity="0"/>
+    </variable>
+    <variable name="INT____5">
+      <var-int-range lo="0" hi="16"/> 
+      <annotation name="is_defined_var" arity="0"/>
+      <annotation name="var_is_introduced" arity="0"/>
+    </variable>
+    <variable name="INT____6">
+      <var-int-range lo="1" hi="16"/> 
+      <annotation name="is_defined_var" arity="0"/>
+      <annotation name="var_is_introduced" arity="0"/>
+    </variable>
+    <variable name="differences">
+      <array-var-int-range size="6" lo="0" hi="16"/>
+      <expr>
+        <array-id-expr size="6">INT____1 INT____2 INT____3 INT____4 INT____5 INT_____6</array-id-expr>
+      </expr>
+    </variable>
+    <variable name="mark">
+      <array-var-int-range size="6" lo="0" hi="16"/>
+        <annotation name="output_array" arity="1">
+          <expr>
+            <array-expr size="1">
+              <int-range-expr lo="1" hi="4"/>
+            </array-expr>
+          </expr>
+        </annotation>
+    </variable>         
+  </variables>
+  <constraints num="26">
+    <constraint name="int_eq" arity="2">
+      <expr>
+        <array-access-expr name="mark" index="1"/>
+      </expr>
+      <expr>
+        <int-literal value="0"/>
+      </expr>
+    </constraint>
+    <constraint name="int_lin_eq" arity="3">
+      <expr>
+        <array-int-literal size="3">-1 -1 1</array-int-literal>
+      </expr>
+      <expr>
+        <array-expr size="3">
+          <id name="INT____1"/>
+          <array-access-expr name="mark" index="1"/>
+          <array-access-expr name="mark" index="2"/>
+        </array-expr>
+      </expr>
+      <expr>
+        <int-literal value="0"/>
+      </expr>
+      <annotation name="defines_var" arity="0">
+        <expr>
+          <id name="INT____1"/>
+        </expr>
+      </annotation>
+    </constraint>
+    <constraint name="int_lin_eq" arity="3">
+      <expr>
+        <array-int-literal size="3">-1 -1 1</array-int-literal>
+      </expr>
+      <expr>
+        <array-expr size="3">
+          <id name="INT____2"/>
+          <array-access-expr name="mark" index="1"/>
+          <array-access-expr name="mark" index="3"/>
+        </array-expr>
+      </expr>
+      <expr>
+        <int-literal value="0"/>
+      </expr>
+      <annotation name="defines_var" arity="0">
+        <expr>
+          <id name="INT____2"/>
+        </expr>
+      </annotation>
+    </constraint>
+    <constraint name="int_lin_eq" arity="3">
+      <expr>
+        <array-int-literal size="3">-1 -1 1</array-int-literal>
+      </expr>
+      <expr>
+        <array-expr size="3">
+          <id name="INT____3"/>
+          <array-access-expr name="mark" index="1"/>
+          <array-access-expr name="mark" index="4"/>
+        </array-expr>
+      </expr>
+      <expr>
+        <int-literal value="0"/>
+      </expr>
+      <annotation name="defines_var" arity="0">
+        <expr>
+          <id name="INT____3"/>
+        </expr>
+      </annotation>
+    </constraint>
+    <constraint name="int_lin_eq" arity="3">
+      <expr>
+        <array-int-literal size="3">-1 -1 1</array-int-literal>
+      </expr>
+      <expr>
+        <array-expr size="3">
+          <id name="INT____4"/>
+          <array-access-expr name="mark" index="2"/>
+          <array-access-expr name="mark" index="3"/>
+        </array-expr>
+      </expr>
+      <expr>
+        <int-literal value="0"/>
+      </expr>
+      <annotation name="defines_var" arity="0">
+        <expr>
+          <id name="INT____4"/>
+        </expr>
+      </annotation>
+    </constraint>
+    <constraint name="int_lin_eq" arity="3">
+      <expr>
+        <array-int-literal size="3">-1 -1 1</array-int-literal>
+      </expr>
+      <expr>
+        <array-expr size="3">
+          <id name="INT____5"/>
+          <array-access-expr name="mark" index="2"/>
+          <array-access-expr name="mark" index="4"/>
+        </array-expr>
+      </expr>
+      <expr>
+        <int-literal value="0"/>
+      </expr>
+      <annotation name="defines_var" arity="0">
+        <expr>
+          <id name="INT____5"/>
+        </expr>
+      </annotation>
+    </constraint>
+    <constraint name="int_lin_eq" arity="3">
+      <expr>
+        <array-int-literal size="3">-1 -1 1</array-int-literal>
+      </expr>
+      <expr>
+        <array-expr size="3">
+          <id name="INT____6"/>
+          <array-access-expr name="mark" index="3"/>
+          <array-access-expr name="mark" index="4"/>
+        </array-expr>
+      </expr>
+      <expr>
+        <int-literal value="0"/>
+      </expr>
+      <annotation name="defines_var" arity="0">
+        <expr>
+          <id name="INT____6"/>
+        </expr>
+      </annotation>
+    </constraint>
+    <constraint name="int_lt" arity="2">
+      <expr>
+        <id name="INT____1"/>
+      </expr>
+      <expr>
+        <id name="INT___6"/>
+      </expr>
+    </constraint>
+    <constraint name="int_lt" arity="2">
+      <expr>
+        <array-access-expr name="mark" index="1"/>
+      </expr>  
+      <expr>
+        <array-access-expr name="mark" index="2"/>
+      </expr>
+    </constraint>
+    <constraint name="int_lt" arity="2">
+      <expr>
+        <array-access-expr name="mark" index="2"/>
+      </expr>  
+      <expr>
+        <array-access-expr name="mark" index="3"/>
+      </expr>
+    </constraint>
+    <constraint name="int_lt" arity="2">
+      <expr>
+        <array-access-expr name="mark" index="3"/>
+      </expr>  
+      <expr>
+        <array-access-expr name="mark" index="4"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <id name="INT____1"/>
+      </expr>
+      <expr>
+        <id name="INT____2"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <id name="INT____1"/>
+      </expr>
+      <expr>
+        <id name="INT____3"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <id name="INT____1"/>
+      </expr>
+      <expr>
+        <id name="INT____4"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <id name="INT____1"/>
+      </expr>
+      <expr>
+        <id name="INT____5"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <id name="INT____1"/>
+      </expr>
+      <expr>
+        <id name="INT____6"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <id name="INT____2"/>
+      </expr>
+      <expr>
+        <id name="INT____3"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <id name="INT____2"/>
+      </expr>
+      <expr>
+        <id name="INT____4"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <id name="INT____2"/>
+      </expr>
+      <expr>
+        <id name="INT____5"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <id name="INT____2"/>
+      </expr>
+      <expr>
+        <id name="INT____6"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <id name="INT____3"/>
+      </expr>
+      <expr>
+        <id name="INT____4"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <id name="INT____3"/>
+      </expr>
+      <expr>
+        <id name="INT____5"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <id name="INT____3"/>
+      </expr>
+      <expr>
+        <id name="INT____6"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <id name="INT____4"/>
+      </expr>
+      <expr>
+        <id name="INT____5"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <id name="INT____4"/>
+      </expr>
+      <expr>
+        <id name="INT____6"/>
+      </expr>
+    </constraint>
+    <constraint name="int_ne" arity="2">
+      <expr>
+        <id name="INT____5"/>
+      </expr>
+      <expr>
+        <id name="INT____6"/>
+      </expr>
+    </constraint>
+  </constraints>
+  <solve>
+    <minimize>
+      <array-access-expr name="mark" index="4"/>
+    </minimize>
+    <annotation name="int_search" arity="4">
+      <expr>
+        <id name="mark"/>
+      </expr>
+      <annotation name="input_order" arity="0"/>
+      <annotation name="indomain" arity="0"/>
+      <annotation name="complete" arity="0"/>
+    </annotation>
+  </solve>
+</flatzinc>

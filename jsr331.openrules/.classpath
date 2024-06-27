@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="rules/main"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="lib" path="/openrules.config/lib/openrules.all.jar"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/openrules.config"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="/cpinside.jars/cp/cpinside.jar"/>
+	<classpathentry exported="true" kind="lib" path="/cpinside.jars/constrainer/constrainer.jar" sourcepath="/constrainer54/src"/>
+	<classpathentry exported="true" kind="lib" path="/cpinside.jars/cp/cpinside.constrainer.jar"/>
+	<classpathentry exported="true" kind="lib" path="/cpinside.jars/cp/javax.constraints.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

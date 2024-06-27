@@ -1,0 +1,64 @@
+<project name="OpenRules" basedir="." default="deploy">
+
+	<property file="build.properties" />
+	<property name="web.dir" value="war" />
+	<property name="name" value="${war.name}" />
+	
+	<property name="openrules.jars" value="../openrules.config/lib"/>
+	<property name="cpinside.jars" value="../cpinside.jars"/>
+
+    <path id="classpath">
+    	<fileset dir="${openrules.jars}">
+            <include name="*.jar"/>
+        </fileset>
+    	<fileset dir="${cpinside.jars}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+	
+	<target name="build">
+		<mkdir dir="lib"/>
+		<javac destdir="bin" target="1.5" source="1.5" debug="true"
+               deprecation="false" optimize="false" failonerror="true">
+            <src path="src"/>
+			<classpath refid="classpath"/>
+        </javac>
+		<jar file="./lib/${name}.jar">
+			<fileset dir="bin" />
+		</jar>
+	</target>
+
+	<target name="deploy" depends="build" description="Deploy application to the Tomcat webapps">
+		<copy todir="${deploy.path}/${name}/WEB-INF/lib" preservelastmodified="true" flatten="true">
+			<fileset dir="lib">
+				<include name="*.jar" />
+			</fileset>
+			<fileset dir="${openrules.jars}">
+				<include name="*.jar" />
+			</fileset>
+			<fileset dir="${cpinside.jars}">
+	            <include name="**/*.jar"/>
+	        </fileset>
+		</copy>
+		<copy todir="${deploy.path}/${name}" preservelastmodified="true">
+			<fileset dir="war/">
+				<include name="**/*.xls" />
+				<include name="**/*.xml" />
+				<include name="**/*.png" />
+				<include name="**/*.jpg" />
+				<include name="**/*.gif" />
+				<include name="**/*.css" />
+				<include name="**/*.properties" />
+				<include name="**/*.html" />
+			</fileset>	
+			<fileset dir=".">
+				<include name="*index.jsp" />
+			</fileset>
+		</copy>
+
+	</target>
+
+
+
+
+</project>

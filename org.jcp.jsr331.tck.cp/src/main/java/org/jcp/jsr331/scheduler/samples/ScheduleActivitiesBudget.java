@@ -5,7 +5,7 @@ import javax.constraints.scheduler.*;
 
 public final class ScheduleActivitiesBudget {
 	
-	Schedule s = ScheduleFactory.newSchedule("ScheduleActivitiesBudget",0,40);
+	Schedule s = ScheduleFactory.newSchedule("ScheduleActivitiesBudget",0,100);
 	
 	public void define() throws Exception {
 
@@ -52,7 +52,7 @@ public final class ScheduleActivitiesBudget {
 		Resource budget = s.resource("Budget",totalBudget,ResourceType.CONSUMABLE);
 		budget.setCapacityMax(0,15,initialBudget);
 		s.log(budget.toString());
-		// Post buder requirement constraints
+		// Post budget requirement constraints
 		int consumptionPerDay = 1000;
 		for (int i = 0; i < activities.length; i++) {
 			Activity activity = activities[i];

@@ -1,0 +1,62 @@
+INITIALIZE OPENRULES ENGINE 5.3.1 (build 06162009) for [file:rules/Manners.xls]
+Registering data source handler {file : com.openrules.datasource.FileDataSourceFactoryHandler}
+Registering data source handler {classpath : com.openrules.datasource.ClasspathDataSourceFactoryHandler}
+Set default data source handler {com.openrules.datasource.URLDataSourceFactoryHandler}
+Create DataSource from file:rules/Manners.xls
+[file:rules/Manners.xls] has been resolved to [file:rules/Manners.xls]
+LANG: com.openrules.lang.xls
+Registering data source handler {file : com.openrules.datasource.FileDataSourceFactoryHandler}
+Registering data source handler {classpath : com.openrules.datasource.ClasspathDataSourceFactoryHandler}
+Set default data source handler {com.openrules.datasource.URLDataSourceFactoryHandler}
+IMPORT.JAVA=openrules.manners.*
+LANG: openrules.java
+Registering data source handler {file : com.openrules.datasource.FileDataSourceFactoryHandler}
+Registering data source handler {classpath : com.openrules.datasource.ClasspathDataSourceFactoryHandler}
+Set default data source handler {com.openrules.datasource.URLDataSourceFactoryHandler}
+Creating Classpath DataSource from classpath:/com/openrules/java/openrules.system.xml
+Creating Classpath DataSource from classpath:/openrules.user.xml
+Successfully processed configuration: URLDataSource:jar:file:/C:/_SVN/4C/Manners/lib/openrules.all.jar!/com/openrules/java/openrules.system.xml
+LANG: file:rules/Manners.xls
+Execute getGuests32
+CP-INSIDE, Release 1.6.0 - www.4c.ucc.ie
+Underlying CP solver: Constrainer
+solve with goal: goalAnd(goalAnd(generate,generate),addSolution)
+
+Choice Points: 44  Failures: 15  Undos: 15694  Notifications: 3698  Memory: 1774368  Time: 141msec
+Constrainer solveNative succeeded
+Seat 1:  Guest dave	Gender=m Hobbies: 1 3 2
+Seat 2:  Guest jane	Gender=f Hobbies: 2 1
+Seat 3:  Guest doug	Gender=m Hobbies: 3 1 2
+Seat 4:  Guest kate	Gender=f Hobbies: 3 1
+Seat 5:  Guest scott	Gender=m Hobbies: 2 3
+Seat 6:  Guest sue	Gender=f Hobbies: 3 2
+Seat 7:  Guest john	Gender=m Hobbies: 1 2
+Seat 8:  Guest ann	Gender=f Hobbies: 2 1 3
+Seat 9:  Guest chuck	Gender=m Hobbies: 1 3
+Seat 10:  Guest hope	Gender=f Hobbies: 2 1 3
+Seat 11:  Guest dan	Gender=m Hobbies: 2 3
+Seat 12:  Guest jill	Gender=f Hobbies: 1 2
+Seat 13:  Guest alex	Gender=m Hobbies: 1 3
+Seat 14:  Guest carol	Gender=f Hobbies: 2 1 3
+Seat 15:  Guest tim	Gender=m Hobbies: 3 1
+Seat 16:  Guest pam	Gender=f Hobbies: 1 3
+Seat 17:  Guest d	Gender=m Hobbies: 1 3 2
+Seat 18:  Guest f	Gender=f Hobbies: 2 1
+Seat 19:  Guest e	Gender=m Hobbies: 3 1 2
+Seat 20:  Guest g	Gender=f Hobbies: 3 1
+Seat 21:  Guest h	Gender=m Hobbies: 2 3
+Seat 22:  Guest i	Gender=f Hobbies: 3 2
+Seat 23:  Guest k	Gender=m Hobbies: 1 2
+Seat 24:  Guest j	Gender=f Hobbies: 2 1 3
+Seat 25:  Guest l	Gender=m Hobbies: 1 3
+Seat 26:  Guest m	Gender=f Hobbies: 2 1 3
+Seat 27:  Guest o	Gender=m Hobbies: 2 3
+Seat 28:  Guest n	Gender=f Hobbies: 1 2
+Seat 29:  Guest q	Gender=m Hobbies: 1 3
+Seat 30:  Guest p	Gender=f Hobbies: 2 1 3
+Seat 31:  Guest s	Gender=m Hobbies: 3 1
+Seat 32:  Guest r	Gender=f Hobbies: 1 3
+*** Execution Profile ***
+Execution time: 125 msec
+Occupied memory: 2891368
+Total elapsed time: 578 ms

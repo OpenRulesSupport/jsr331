@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tree version="1.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="../../../documentation/tree.xsd">
+<root id="0"/>
+<try id="1" parent="0" name="1" size="8" value="1" />
+<try id="2" parent="1" name="2" size="6" value="3" />
+<fail id="3" parent="2" name="3" size="4" value="5" />
+<try id="4" parent="2" name="3" size="4" value="6" />
+<fail id="5" parent="4" name="4" size="2" value="2" />
+<fail id="6" parent="4" name="4" size="2" value="8" />
+<try id="7" parent="2" name="3" size="4" value="7" />
+<fail id="8" parent="7" name="5" size="2" value="4" />
+<fail id="9" parent="7" name="5" size="2" value="8" />
+<try id="10" parent="2" name="3" size="4" value="8" />
+<fail id="11" parent="10" name="4" size="2" value="2" />
+<fail id="12" parent="10" name="4" size="2" value="6" />
+<try id="13" parent="1" name="2" size="6" value="4" />
+<try id="14" parent="13" name="3" size="4" value="2" />
+<fail id="15" parent="14" name="4" size="3" value="5" />
+<fail id="16" parent="14" name="4" size="3" value="7" />
+<fail id="17" parent="14" name="4" size="3" value="8" />
+<try id="18" parent="13" name="3" size="4" value="6" />
+<fail id="19" parent="18" name="4" size="2" value="3" />
+<fail id="20" parent="18" name="4" size="2" value="8" />
+<try id="21" parent="13" name="3" size="4" value="7" />
+<try id="22" parent="21" name="4" size="2" value="3" />
+<fail id="23" parent="22" name="5" size="2" value="6" />
+<fail id="24" parent="22" name="5" size="2" value="8" />
+<fail id="25" parent="21" name="4" size="2" value="5" />
+<try id="26" parent="13" name="3" size="4" value="8" />
+<fail id="27" parent="26" name="4" size="2" value="3" />
+<fail id="28" parent="26" name="4" size="2" value="5" />
+<try id="29" parent="1" name="2" size="6" value="5" />
+<try id="30" parent="29" name="3" size="3" value="2" />
+<fail id="31" parent="30" name="4" size="2" value="6" />
+<try id="32" parent="30" name="4" size="2" value="8" />
+<fail id="33" parent="32" name="5" size="2" value="3" />
+<fail id="34" parent="32" name="5" size="2" value="6" />
+<try id="35" parent="29" name="3" size="3" value="7" />
+<fail id="36" parent="35" name="5" size="2" value="4" />
+<fail id="37" parent="35" name="5" size="2" value="6" />
+<try id="38" parent="29" name="3" size="3" value="8" />
+<try id="39" parent="38" name="4" size="2" value="2" />
+<fail id="40" parent="39" name="5" size="2" value="4" />
+<fail id="41" parent="39" name="5" size="2" value="7" />
+<try id="42" parent="38" name="4" size="2" value="6" />
+<succ id="42"/>
+</tree>

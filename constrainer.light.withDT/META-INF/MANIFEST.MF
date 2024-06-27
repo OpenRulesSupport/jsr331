@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Constrainer
+Bundle-SymbolicName: com.exigen.rules.constrainer
+Bundle-Version: 1.0.0
+Bundle-Localization: plugin

@@ -32,6 +32,8 @@ public class BasicResource extends SchedulingObject implements Resource {
 	private final int timeMax; // availability end time (not including)
 	
 	private int cost; 
+	
+	private final int capacityMax; // theoretical capacity
 
 	private final Var[] capacities; // capacities for each time between timeMin
 									// and timeMax
@@ -47,14 +49,17 @@ public class BasicResource extends SchedulingObject implements Resource {
 		if (timeMin >= timeMax)
 			throw new RuntimeException("Resourse " + name + ": invalid [timeMin;timemax)");
 		cost = -1;
+		this.capacityMax = capacityMax;
 		capacities = new Var[getDuration()];
 		for (int t = timeMin; t < timeMax; t++) {
 			capacities[t] = schedule.createVariable(name+".t" + t, 0, capacityMax);
 			//problem.remove("t"+t);
 		}
-		// for consumable resources sum of all daily capacities 
+		// for consumable resources sum of all daily capacities ???
 		if (type.equals(ResourceType.CONSUMABLE)) {
-			schedule.post(capacities,"=",capacityMax);
+		    //schedule.post(capacities,"=",capacityMax);
+		    Var sum = schedule.sum(capacities);
+		    schedule.post(sum,"=",capacityMax); 
 		}
 		setName(name);
 		activityConstraints = new Vector<Constraint>();
@@ -257,6 +262,14 @@ public class BasicResource extends SchedulingObject implements Resource {
 		return constraints;
 	}
 
+	/**
+     * Returns resource maximal capacity at any moment of time (theoretical capacity)
+     * 
+     * @return theoretical capacity
+     */
+    public int getCapacityMax() {
+        return capacityMax;
+    }
 	/**
 	 * Returns resource maximum capacity at the specified moment of time
 	 *

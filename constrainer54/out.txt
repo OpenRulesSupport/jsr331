@@ -1,0 +1,27 @@
+Variables: 
+0:adv[Super]
+1:Crude3->Regular
+2:Crude1->Regular
+3:Crude3->Diesel
+4:Crude1->Diesel
+5:Crude3->Super
+6:Crude2->Diesel
+7:Crude2->Regular
+8:Crude2->Super
+9:adv[Regular]
+10:Crude1->Super
+11:adv[Diesel]
+Constraints: 
+[{Type=Fixed ub=-3000.0 lb=-3000.0},{(0,10.0)(5,-1.0)(8,-1.0)(10,-1.0)}]
+[{Type=Fixed ub=-2000.0 lb=-2000.0},{(1,-1.0)(2,-1.0)(7,-1.0)(9,10.0)}]
+[{Type=Fixed ub=-1000.0 lb=-1000.0},{(3,-1.0)(4,-1.0)(6,-1.0)(11,10.0)}]
+[{Type=BoundedBelow lb=-5000.0},{(2,-1.0)(4,-1.0)(10,-1.0)}]
+[{Type=BoundedBelow lb=-5000.0},{(6,-1.0)(7,-1.0)(8,-1.0)}]
+[{Type=BoundedBelow lb=-5000.0},{(1,-1.0)(3,-1.0)(5,-1.0)}]
+[{Type=BoundedBelow lb=-0.0},{(5,-2.0)(8,-4.0)(10,2.0)}]
+[{Type=BoundedBelow lb=-0.0},{(5,-2.0)(8,-1.0)(10,0.5)}]
+[{Type=BoundedBelow lb=-0.0},{(2,4.0)(7,-2.0)}]
+[{Type=BoundedBelow lb=-0.0},{(1,-1.0)(2,1.5)}]
+[{Type=BoundedBelow lb=-0.0},{(3,2.0)(4,6.0)}]
+[{Type=BoundedBelow lb=-0.0},{(3,-2.0)(4,0.5)(6,-1.0)}]
+[{Type=BoundedBelow lb=-14000.0},{(1,-1.0)(2,-1.0)(3,-1.0)(4,-1.0)(5,-1.0)(6,-1.0)(7,-1.0)(8,-1.0)(10,-1.0)}]

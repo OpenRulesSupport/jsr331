@@ -1,0 +1,573 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE flatzinc SYSTEM "flatzinc.dtd">
+
+<flatzinc model="golomb">
+
+<var_decl>
+  <type>
+    <var>
+      <int_range lo="0" hi="15"/>
+    </var>
+  </type>
+  <id name="INT____1"/>
+  <annotation name="is_defined_var"/>
+  <annotation name="var_is_introduced"/>
+</var_decl>
+
+<var_decl>
+  <type>
+    <var>
+      <int_range lo="0" hi="16"/>
+    </var>
+  </type>
+  <id name="INT____2"/>
+  <annotation name="is_defined_var"/>
+  <annotation name="var_is_introduced"/>
+</var_decl>
+
+<var_decl>
+  <type>
+    <var>
+      <int_range lo="0" hi="16"/>
+    </var>
+  </type>
+  <id name="INT____3"/>
+  <annotation name="is_defined_var"/>
+  <annotation name="var_is_introduced"/>
+</var_decl>
+
+<var_decl>
+  <type>
+    <var>
+      <int_range lo="0" hi="16"/>
+    </var>
+  </type>
+  <id name="INT____4"/>
+  <annotation name="is_defined_var"/>
+  <annotation name="var_is_introduced"/>
+</var_decl>
+
+<var_decl>
+  <type>
+    <var>
+      <int_range lo="0" hi="16"/>
+    </var>
+  </type>
+  <id name="INT____5"/>
+  <annotation name="is_defined_var"/>
+  <annotation name="var_is_introduced"/>
+</var_decl>
+
+<var_decl>
+  <type>
+    <var>
+      <int_range lo="1" hi="16"/>
+    </var>
+  </type>
+  <id name="INT____6"/>
+  <annotation name="is_defined_var"/>
+  <annotation name="var_is_introduced"/>
+</var_decl>
+
+<var_decl>
+  <type>
+    <array>
+      <int_lit value="6"/>
+      <var>
+        <int_range lo="0" hi="16"/>
+      </var>
+    </array>
+  </type>
+  <id name="differences"/>
+  <expr>
+    <array_lit size="6">
+      <id name="INT____1"/>
+      <id name="INT____2"/>
+      <id name="INT____3"/>
+      <id name="INT____4"/>
+      <id name="INT____5"/>
+      <id name="INT____6"/>
+    </array_lit>
+  </expr>
+</var_decl>
+
+<var_decl>
+  <type>
+    <array>
+      <int_lit value="4"/>
+      <var>
+        <int_range lo="0" hi="16"/>
+      </var>
+    </array>
+  </type>
+  <id name="mark"/>
+  <annotation name="output_array">
+    <expr>
+      <array_lit size="1">
+        <set_lit>
+          <int_range lo="1" hi="4"/>
+        </set_lit>
+      </array_lit>
+    </expr>
+  </annotation>
+</var_decl>
+
+<constraint>
+  <pred name="int_eq">
+    <expr>
+      <array_access>
+        <id name="mark"/>
+        <int_lit value="1"/>
+      </array_access>
+    </expr>
+    <expr>
+      <int_lit value="0"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_lin_eq">
+    <expr>
+      <array_lit size="3">
+        <int_lit value="-1"/>
+        <int_lit value="-1"/>
+        <int_lit value="1"/>
+      </array_lit>
+    </expr>
+    <expr>
+      <array_lit size="3">
+        <id name="INT____1"/>
+        <array_access>
+          <id name="mark"/>
+          <int_lit value="1"/>
+        </array_access>
+        <array_access>
+          <id name="mark"/>
+          <int_lit value="2"/>
+        </array_access>
+      </array_lit>
+    </expr>
+    <expr>
+      <int_lit value="0"/>
+    </expr>
+  </pred>
+  <annotation name="defines_var">
+    <expr>
+      <id name="INT____1"/>
+    </expr>
+  </annotation>
+</constraint>
+
+<constraint>
+  <pred name="int_lin_eq">
+    <expr>
+      <array_lit size="3">
+        <int_lit value="-1"/>
+        <int_lit value="-1"/>
+        <int_lit value="1"/>
+      </array_lit>
+    </expr>
+    <expr>
+      <array_lit size="3">
+        <id name="INT____2"/>
+        <array_access>
+          <id name="mark"/>
+          <int_lit value="1"/>
+        </array_access>
+        <array_access>
+          <id name="mark"/>
+          <int_lit value="3"/>
+        </array_access>
+      </array_lit>
+    </expr>
+    <expr>
+      <int_lit value="0"/>
+    </expr>
+  </pred>
+  <annotation name="defines_var">
+    <expr>
+      <id name="INT____2"/>
+    </expr>
+  </annotation>
+</constraint>
+
+<constraint>
+  <pred name="int_lin_eq">
+    <expr>
+      <array_lit size="3">
+        <int_lit value="-1"/>
+        <int_lit value="-1"/>
+        <int_lit value="1"/>
+      </array_lit>
+    </expr>
+    <expr>
+      <array_lit size="3">
+        <id name="INT____3"/>
+        <array_access>
+          <id name="mark"/>
+          <int_lit value="1"/>
+        </array_access>
+        <array_access>
+          <id name="mark"/>
+          <int_lit value="4"/>
+        </array_access>
+      </array_lit>
+    </expr>
+    <expr>
+      <int_lit value="0"/>
+    </expr>
+  </pred>
+  <annotation name="defines_var">
+    <expr>
+      <id name="INT____3"/>
+    </expr>
+  </annotation>
+</constraint>
+
+<constraint>
+  <pred name="int_lin_eq">
+    <expr>
+      <array_lit size="3">
+        <int_lit value="-1"/>
+        <int_lit value="-1"/>
+        <int_lit value="1"/>
+      </array_lit>
+    </expr>
+    <expr>
+      <array_lit size="3">
+        <id name="INT____4"/>
+        <array_access>
+          <id name="mark"/>
+          <int_lit value="2"/>
+        </array_access>
+        <array_access>
+          <id name="mark"/>
+          <int_lit value="3"/>
+        </array_access>
+      </array_lit>
+    </expr>
+    <expr>
+      <int_lit value="0"/>
+    </expr>
+  </pred>
+  <annotation name="defines_var">
+    <expr>
+      <id name="INT____4"/>
+    </expr>
+  </annotation>
+</constraint>
+
+<constraint>
+  <pred name="int_lin_eq">
+    <expr>
+      <array_lit size="3">
+        <int_lit value="-1"/>
+        <int_lit value="-1"/>
+        <int_lit value="1"/>
+      </array_lit>
+    </expr>
+    <expr>
+      <array_lit size="3">
+        <id name="INT____5"/>
+        <array_access>
+          <id name="mark"/>
+          <int_lit value="2"/>
+        </array_access>
+        <array_access>
+          <id name="mark"/>
+          <int_lit value="4"/>
+        </array_access>
+      </array_lit>
+    </expr>
+    <expr>
+      <int_lit value="0"/>
+    </expr>
+  </pred>
+  <annotation name="defines_var">
+    <expr>
+      <id name="INT____5"/>
+    </expr>
+  </annotation>
+</constraint>
+
+<constraint>
+  <pred name="int_lin_eq">
+    <expr>
+      <array_lit size="3">
+        <int_lit value="-1"/>
+        <int_lit value="-1"/>
+        <int_lit value="1"/>
+      </array_lit>
+    </expr>
+    <expr>
+      <array_lit size="3">
+        <id name="INT____6"/>
+        <array_access>
+          <id name="mark"/>
+          <int_lit value="3"/>
+        </array_access>
+        <array_access>
+          <id name="mark"/>
+          <int_lit value="4"/>
+        </array_access>
+      </array_lit>
+    </expr>
+    <expr>
+      <int_lit value="0"/>
+    </expr>
+  </pred>
+  <annotation name="defines_var">
+    <expr>
+      <id name="INT____6"/>
+    </expr>
+  </annotation>
+</constraint>
+
+<constraint>
+  <pred name="int_lt">
+    <expr>
+      <id name="INT____1"/>
+    </expr>
+    <expr>
+      <id name="INT____6"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_lt">
+    <expr>
+      <array_access>
+        <id name="mark"/>
+        <int_lit value="1"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="mark"/>
+        <int_lit value="2"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_lt">
+    <expr>
+      <array_access>
+        <id name="mark"/>
+        <int_lit value="2"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="mark"/>
+        <int_lit value="3"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_lt">
+    <expr>
+      <array_access>
+        <id name="mark"/>
+        <int_lit value="3"/>
+      </array_access>
+    </expr>
+    <expr>
+      <array_access>
+        <id name="mark"/>
+        <int_lit value="4"/>
+      </array_access>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <id name="INT____1"/>
+    </expr>
+    <expr>
+      <id name="INT____2"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <id name="INT____1"/>
+    </expr>
+    <expr>
+      <id name="INT____3"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <id name="INT____1"/>
+    </expr>
+    <expr>
+      <id name="INT____4"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <id name="INT____1"/>
+    </expr>
+    <expr>
+      <id name="INT____5"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <id name="INT____1"/>
+    </expr>
+    <expr>
+      <id name="INT____6"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <id name="INT____2"/>
+    </expr>
+    <expr>
+      <id name="INT____3"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <id name="INT____2"/>
+    </expr>
+    <expr>
+      <id name="INT____4"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <id name="INT____2"/>
+    </expr>
+    <expr>
+      <id name="INT____5"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <id name="INT____2"/>
+    </expr>
+    <expr>
+      <id name="INT____6"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <id name="INT____3"/>
+    </expr>
+    <expr>
+      <id name="INT____4"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <id name="INT____3"/>
+    </expr>
+    <expr>
+      <id name="INT____5"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <id name="INT____3"/>
+    </expr>
+    <expr>
+      <id name="INT____6"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <id name="INT____4"/>
+    </expr>
+    <expr>
+      <id name="INT____5"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <id name="INT____4"/>
+    </expr>
+    <expr>
+      <id name="INT____6"/>
+    </expr>
+  </pred>
+</constraint>
+
+<constraint>
+  <pred name="int_ne">
+    <expr>
+      <id name="INT____5"/>
+    </expr>
+    <expr>
+      <id name="INT____6"/>
+    </expr>
+  </pred>
+</constraint>
+
+<solve>
+  <annotation name="int_search">
+    <expr>
+      <id name="mark"/>
+    </expr>
+    <annotation name="input_order"/>
+    <annotation name="indomain"/>
+    <annotation name="complete"/>
+  </annotation>
+  <minimize>
+    <array_access>
+      <id name="mark"/>
+      <int_lit value="4"/>
+    </array_access>
+  </minimize>
+</solve>
+
+</flatzinc>
+

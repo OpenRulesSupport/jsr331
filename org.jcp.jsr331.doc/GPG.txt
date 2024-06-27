@@ -1,0 +1,12 @@
+GPG key (created using Amazon Linux instance
+
+uid: Jacob Feldman <jacobfeldman@openrules.com>
+passphares: OpenRules.007
+
+Key: 27E2F9454DD9E6A2EBA6942F31A1DAC3F722A18B
+
+
+
+>gpg --list-secret-keys
+
+>gpg -o gpg.public.key --armor --export 1D1EFB72FE082C4267F741E5F0D92A987B818E8C
