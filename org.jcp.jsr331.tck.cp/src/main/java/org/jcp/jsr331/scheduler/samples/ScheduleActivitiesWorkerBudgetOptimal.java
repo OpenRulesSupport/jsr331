@@ -2,11 +2,10 @@ package org.jcp.jsr331.scheduler.samples;
 
 import javax.constraints.*;
 import javax.constraints.scheduler.*;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
 
 public final class ScheduleActivitiesWorkerBudgetOptimal {
 	
-	Schedule s = ScheduleFactory.newSchedule("ScheduleActivitiesWorkerBudget",0,50);
+	Schedule s = ScheduleFactory.newSchedule("ScheduleActivitiesWorkerBudget",0,29);
 	Var objective;
 	
 	public void define() throws Exception {
@@ -65,10 +64,10 @@ public final class ScheduleActivitiesWorkerBudgetOptimal {
 			s.log(budget.toString());
 		}
 		
-		//objective = movingIn.getStart();
-		//objective.setName("Moving In ASAP");
-		objective = s.sum(budget.getCapacities());
-		objective.setName("Total Budget");
+		objective = movingIn.getStart();
+		objective.setName("Moving In ASAP");
+//		objective = s.sum(budget.getCapacities());
+//		objective.setName("Total Budget");
 		
 		s.logActivities();
 		s.log(budget.toString());

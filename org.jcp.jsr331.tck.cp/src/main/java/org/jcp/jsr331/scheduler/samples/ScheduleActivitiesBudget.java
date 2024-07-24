@@ -5,7 +5,7 @@ import javax.constraints.scheduler.*;
 
 public final class ScheduleActivitiesBudget {
 	
-	Schedule s = ScheduleFactory.newSchedule("ScheduleActivitiesBudget",0,100);
+	Schedule s = ScheduleFactory.newSchedule("ScheduleActivitiesBudget",0,29);
 	
 	public void define() throws Exception {
 

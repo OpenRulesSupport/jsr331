@@ -185,9 +185,9 @@ public class BasicActivity extends SchedulingObject implements Activity {
 		// getSchedule().addConstraintRequire(this, resource,
 		// capacity);
 		ConstraintActivityResource rc = new ConstraintRequire(this, resource,capacity);
-		if (resource.getType().equals(ResourceType.CONSUMABLE)) {
-		    rc = new ConstraintConsume(this, resource,capacity);
-		}
+//		if (resource.getType().equals(ResourceType.CONSUMABLE)) {
+//		    rc = new ConstraintConsume(this, resource,capacity);
+//		}
 		this.getResourceConstraints().add(rc);
 		resource.getActivityConstraints().add(rc);
 		getSchedule().add(rc);
@@ -414,6 +414,7 @@ public class BasicActivity extends SchedulingObject implements Activity {
 				buf.append(cap);
 				buf.append(" ");
 			}
+			buf.append(" in a time");
 		}
 		return buf.toString();
 	}

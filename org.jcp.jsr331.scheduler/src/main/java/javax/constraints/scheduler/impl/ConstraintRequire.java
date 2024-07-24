@@ -14,6 +14,7 @@ import javax.constraints.Var;
 import javax.constraints.scheduler.Activity;
 import javax.constraints.scheduler.ConstraintActivityResource;
 import javax.constraints.scheduler.Resource;
+import javax.constraints.scheduler.ResourceType;
 
 public class ConstraintRequire extends AbstractConstraintActivityResource {
 
@@ -22,13 +23,19 @@ public class ConstraintRequire extends AbstractConstraintActivityResource {
 	public ConstraintRequire(Activity activity,
 			Resource resource, int capacity) {
 		super(activity,resource,capacity);
-		setType("requires");
+		setDefaultType();
 	}
 
 	public ConstraintRequire(Activity activity,
 			Resource resource, Var capacityVar) {
 		super(activity,resource,capacityVar);
-		setType("requires");
+		setDefaultType();
+	}
+	
+	void setDefaultType() {
+	    setType("requires");
+        if (resource.getType().equals(ResourceType.CONSUMABLE)) 
+            setType("consumes");
 	}
 	
 	/**
@@ -37,12 +44,12 @@ public class ConstraintRequire extends AbstractConstraintActivityResource {
 	 * to the available resource capacity on this interval
 	 */
 	public void post() {
-		ScheduleImpl p = (ScheduleImpl)getProblem();
+		ScheduleImpl schedule = (ScheduleImpl)getProblem();
 		if (activity.getStartMin() > resource.getTimeMax()
 				|| activity.getEndMax() < resource.getTimeMin()) {
 			String msg = "Resource " + resource.getName() + " and Activity "
 					+ activity.getName() + " do not overlap";
-			p.log(this + " Failure to post ConstraintRequire: " + msg);
+			schedule.log(this + " Failure to post ConstraintRequire: " + msg);
 			activity.getResourceConstraints().remove(this);
 			resource.getActivityConstraints().remove(this);
 			setFailureReason(msg);
@@ -60,11 +67,11 @@ public class ConstraintRequire extends AbstractConstraintActivityResource {
 				Var startVar = activity.getStart();
 				Var endVar = activity.getEnd();
 				if (startVar.getMin() <= i && i < endVar.getMax()) { // activity may cover the i-th interval
-					Var activityWithin = p.createVariable("noname",0,1);
+					Var activityWithin = schedule.createVariable("noname",0,1);
 					//p.remove("noname");
 					Constraint 	activityIsInsideInterval = 
-						p.linear(startVar,"<=",i).and(p.linear(endVar,">",i));
-					p.postIfThen(activityIsInsideInterval, p.linear(activityWithin,"=",1));
+						schedule.linear(startVar,"<=",i).and(schedule.linear(endVar,">",i));
+					schedule.postIfThen(activityIsInsideInterval, schedule.linear(activityWithin,"=",1));
 					if (activityWithin.getMax() > 0) {
 						Var requiredCapacity;
 						if (requireConstraint.getCapacityVar() != null) {
@@ -80,29 +87,39 @@ public class ConstraintRequire extends AbstractConstraintActivityResource {
 			} // end of loop by resource's Activity Constraints
 
 			if (vars.size() > 0) {
-				Var requiredCapacitySum = getProblem().sum(vars.toArray());
-				try {
-				   p.post(requiredCapacitySum,"<=",resource.getCapacityVar(i));
-				}
-				catch(Exception e) {
-					String msg = "Resource " + resource.getName() + " doesn't have enough capacity on the interval " + i
-					  + ": available="+resource.getCapacityVar(i) + " required=" + requiredCapacitySum + " by activities:";
-					String conflictingActivity = null;
-					for(int v=0; v<vars.size(); v++) {
-						String name = vars.elementAt(v).getName();
-						msg += "\n\t"+ name;
-						if (!name.equals(activity.getName()))
-							conflictingActivity = name;
-					}
-					if (conflictingActivity != null)
-						setFailureReason("Conflict with "+conflictingActivity);
-					p.log("Failure to post ResourceConstraintRequires:\n"+ msg);
-					activity.getResourceConstraints().remove(this);
-					resource.getActivityConstraints().remove(this);
-					throw new RuntimeException("Failure to post ConstraintRequire:\n"+ msg);
-				}
+			    postTimeCapacityConstraint(resource, i, vars);
+				if ( (i < resource.getTimeMax()-1) && resource.getType().equals(ResourceType.CONSUMABLE)) {
+				    for(int j=i+1; j < resource.getTimeMax(); j++) {
+				        postTimeCapacityConstraint(resource, j, vars);
+				    }
+		        }
 			}
 		} // end of i loop
+	}
+	
+	void postTimeCapacityConstraint(Resource resource, int time, VectorVar vars) {
+	    ScheduleImpl schedule = (ScheduleImpl)getProblem();
+	    Var requiredCapacitySum = getProblem().sum(vars.toArray());
+	    try {
+            schedule.post(requiredCapacitySum,"<=",resource.getCapacityVar(time));
+         }
+         catch(Exception e) {
+             String msg = "Resource " + resource.getName() + " doesn't have enough capacity on the interval " + time
+               + ": available="+resource.getCapacityVar(time) + " required=" + requiredCapacitySum + " by activities:";
+             String conflictingActivity = null;
+             for(int v=0; v<vars.size(); v++) {
+                 String name = vars.elementAt(v).getName();
+                 msg += "\n\t"+ name;
+                 if (!name.equals(activity.getName()))
+                     conflictingActivity = name;
+             }
+             if (conflictingActivity != null)
+                 setFailureReason("Conflict with "+conflictingActivity);
+             schedule.log("Failure to post ResourceConstraintRequires:\n"+ msg);
+             activity.getResourceConstraints().remove(this);
+             resource.getActivityConstraints().remove(this);
+             throw new RuntimeException("Failure to post ConstraintRequire:\n"+ msg);
+         }
 	}
 	
 }

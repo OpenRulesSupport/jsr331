@@ -372,6 +372,7 @@ public class ScheduleImpl extends ProblemDelegator implements Schedule {
 						output += " " + c.getType() + " " + c.getResource().getName() + cap;
 					}
 				}
+				output += " in a time";
 				log(output);
 			}
 			if (!scheduleVars.isEmpty()) {
