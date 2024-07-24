@@ -31,7 +31,9 @@ public class GoalCheckMaxNumberOfSolutions extends Goal {
 			return null;
 		}
 		if (solver.getSolutions() == null || solver.getNumberOfSolutions() == max) {
-			solver.log("Search interrupted by the MaxNumberOfSolutions: " + max);
+		    String msg = "Search interrupted by the MaxNumberOfSolutions: " + max;
+			solver.log(msg);
+			solver.addExplanation(msg);
 			solver.backtrack();
 			return null; // finish search
 		}

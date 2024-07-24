@@ -30,6 +30,7 @@ public class GoalCheckTimeLimit extends Goal {
 			if (solver.isTimeLimitExceeded() == false) {
 				solver.setTimeLimitExceeded(true);
 				String msg = "Time limit " + solver.getTimeLimit() + " has been exceeded";
+				solver.addExplanation(msg);
 				problem.log(msg);
 			}
 			solver.backtrack();

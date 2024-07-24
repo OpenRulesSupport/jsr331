@@ -55,6 +55,7 @@ abstract public class AbstractSolver implements Solver {
 	boolean traceExecution;
 	boolean traceSolutions;
 	OptimizationStrategy optimizationStrategy;
+	ArrayList<String> explanations;
 	
 //	/**
 //	 * This method executes the searchStrategy passed as the first parameter. 
@@ -98,6 +99,7 @@ abstract public class AbstractSolver implements Solver {
 		traceExecution(false);
 		traceSolutions(false);
 //		setSearchStrategy(newSearchStrategy());
+		explanations = new ArrayList<String>();
 	}
 	
 	/**
@@ -1071,6 +1073,22 @@ abstract public class AbstractSolver implements Solver {
 	public void log(String text) {
 		problem.log(text);
 	}
+	
+	/**
+     * Adds an explanation string to the array of search explanation
+     * @param a string with search explanation
+     */
+    public void addExplanation(String explanation) {
+        explanations.add(explanation);
+    }
+    
+    /**
+     * Returns an array of strings with explanations describing the solution search
+     * @return an array of the type ArrayList<String>
+     */
+    public ArrayList<String> getExplanations() {
+        return explanations;
+    }
 	
 	/**
 	 * Adds an application-specific action that will be executed during backtracking.

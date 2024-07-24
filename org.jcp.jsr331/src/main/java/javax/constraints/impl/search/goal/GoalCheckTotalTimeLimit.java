@@ -34,7 +34,9 @@ public class GoalCheckTotalTimeLimit extends Goal {
 		int timeLimit = solver.getTimeLimit();
 		//if ( timeLimit > 0 && timeLimit*1000 < currTime - startTime) {
 		if ( timeLimit > 0 && timeLimit < currTime - startTime) {
-			problem.log("The search is interrupted by TimeLimit "+timeLimit+ " milliseconds");
+		    String msg = "The search is interrupted by TimeLimit "+timeLimit+ " milliseconds";
+		    solver.addExplanation(msg);
+			problem.log(msg);
 			solver.backtrack();
 		}
 		return null;

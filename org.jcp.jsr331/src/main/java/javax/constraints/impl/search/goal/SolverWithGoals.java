@@ -192,7 +192,9 @@ abstract public class SolverWithGoals extends AbstractSolver {
 		if(solution != null && !solution.isBound()) {
 			if(searchGoal instanceof GoalAssignValuesTimeLimit) {
 				setTimeLimitExceeded(true);
-				getProblem().log("Solver exceeded Time Limit " + getTimeLimit() + " milliseconds");
+				String msg = "Solver exceeded Time Limit " + getTimeLimit() + " milliseconds";
+				addExplanation(msg);
+				getProblem().log(msg);
 				solution = null;
 			}
 		}

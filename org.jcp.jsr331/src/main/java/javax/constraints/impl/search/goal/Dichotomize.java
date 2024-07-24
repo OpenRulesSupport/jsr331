@@ -61,8 +61,8 @@ public class Dichotomize {
 		this.tolerance = solver.getOptimizationTolerance();
 		this.timeLimit = solver.getTimeLimit();
 		if (timeLimit <= 0) {
-		    p.log("Use default time limit per solution: 25 seconds");
-		    solver.setTimeLimit(25);
+		    p.log("Use default time limit per solution: 120 seconds");
+		    solver.setTimeLimit(120);
 		}
 		this.timeLimitGlobal = solver.getTimeLimitGlobal();
 		startTime = System.currentTimeMillis();
@@ -130,7 +130,9 @@ public class Dichotomize {
 	            // Check MaxNumberOfSolutions
 	            int maxSolutions = solver.getMaxNumberOfSolutions();
 	            if (maxSolutions > 0 && numberOfSolutions == maxSolutions) {
-	                p.log("The search is interrupted: MaxNumberOfSolutions " + maxSolutions + " has been reached");
+	                String msg = "The search is interrupted: MaxNumberOfSolutions " + maxSolutions + " has been reached";
+	                solver.addExplanation(msg);
+	                p.log(msg);
 	                return solution; // THE END !!!
 	            }
 	            
@@ -147,7 +149,9 @@ public class Dichotomize {
 			}
 		} catch (Exception e) {
 		    if (solver.getTimeLimit() > 0) {
-                p.log("Dichotomize: Time limit " + solver.getTimeLimit() + " mills for one solution search has been exceeded");
+		        String msg = "Dichotomize: Time limit " + solver.getTimeLimit() + " mills for one solution search has been exceeded";
+		        solver.addExplanation(msg);
+                p.log(msg);
             }
 		}
 		

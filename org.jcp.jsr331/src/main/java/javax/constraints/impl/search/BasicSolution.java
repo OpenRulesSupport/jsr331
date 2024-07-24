@@ -8,6 +8,8 @@
 //============================================= 
 package javax.constraints.impl.search;
 
+import java.util.ArrayList;
+
 /**
  * This class defines a solution to a Problem.
  * It includes all constrained variables that were added to the problem and are
@@ -281,7 +283,7 @@ public class BasicSolution implements Solution {
 //		// TODO for real and set
 		return true;
 	}
-	
+		
 	public void save() {
 		if (intResults != null)
 		for (int i = 0; i < intResults.length; i++) {

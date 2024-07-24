@@ -8,6 +8,7 @@
 //=============================================
 package javax.constraints;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 /**
@@ -186,6 +187,7 @@ public interface Solution {
 	 * Saves the found results back to the constrained variables included into the solution
 	 */
 	public void save();
+	
 	
 //	/**
 //	 * Returns true if the domain of the solution variable with the index i

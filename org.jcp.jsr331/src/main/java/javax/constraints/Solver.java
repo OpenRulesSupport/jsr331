@@ -8,6 +8,7 @@
 //=============================================
 package javax.constraints;
 
+import java.util.ArrayList;
 
 /**
  * The interface Solver is used for Problem Resolution and utilizes concepts 
@@ -639,5 +640,18 @@ public interface Solver {
 	 * @param trueOrFalse boolean
 	 */
 	public void traceSolutions(boolean trueOrFalse);
+	
+	   /**
+     * Return an array of strings with explanations describing the solution search
+     * @return an array of the type ArrayList<String.
+     */
+    public ArrayList<String> getExplanations();
+    
+    /**
+     * Adds an explanation string to the array of search explanations
+     * @param a string with explanation
+     */
+    public void addExplanation(String explanation);
+
 	
 }
