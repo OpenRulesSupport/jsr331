@@ -17,6 +17,7 @@ import javax.constraints.scheduler.ConstraintActivityResource;
 import javax.constraints.scheduler.Resource;
 import javax.constraints.scheduler.ResourceType;
 import javax.constraints.scheduler.Schedule;
+import javax.constraints.scheduler.ConsumptionTable;
 
 /**
  * This class represents constrained scheduling resources
@@ -38,7 +39,9 @@ public class BasicResource extends SchedulingObject implements Resource {
 	private final Var[] capacities; // capacities for each time between timeMin
 									// and timeMax
 	
-	private final Vector<Constraint> activityConstraints;
+	private Vector<Constraint> activityConstraints;
+	
+	private ConsumptionTable consumptionTable = null;
 
 	public BasicResource(Schedule schedule, String name, int timeMin, int timeMax, int capacityMax,
 			         ResourceType type) {
@@ -60,6 +63,7 @@ public class BasicResource extends SchedulingObject implements Resource {
 		    //schedule.post(capacities,"=",capacityMax);
 		    Var sum = schedule.sum(capacities);
 		    schedule.post(sum,"=",capacityMax); 
+		    consumptionTable = new BasicConsumptionTable(this, timeMin, timeMax);
 		}
 		setName(name);
 		activityConstraints = new Vector<Constraint>();
@@ -77,7 +81,19 @@ public class BasicResource extends SchedulingObject implements Resource {
 		this(schedule, name, schedule.getStart(), schedule.getEnd(), capacityMax, type);
 	}
 	
-
+	public ConsumptionTable getConsumptionTable() {
+	    return consumptionTable;
+	}
+	
+	/**
+     * Post all "requires" constraints for CONSUMABLE resources only
+     */
+    public void postConsumptionConstraints() {
+        if (getType().equals(ResourceType.CONSUMABLE)) {
+            getConsumptionTable().postConstraints();
+        }
+    }
+	
 	public ResourceType getType() {
 		return type;
 	}

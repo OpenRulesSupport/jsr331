@@ -5,7 +5,7 @@ import javax.constraints.scheduler.*;
 
 public final class ScheduleActivitiesBudget {
 	
-	Schedule s = ScheduleFactory.newSchedule("ScheduleActivitiesBudget",0,29);
+	Schedule s = ScheduleFactory.newSchedule("ScheduleActivitiesBudget",0,30);
 	
 	public void define() throws Exception {
 
@@ -54,29 +54,36 @@ public final class ScheduleActivitiesBudget {
 		s.log(budget.toString());
 		// Post budget requirement constraints
 		int consumptionPerDay = 1000;
-		for (int i = 0; i < activities.length; i++) {
-			Activity activity = activities[i];
-			s.log("=== POST: "+activity.getName() + " requires $" + consumptionPerDay + " per day");
+		for (Activity activity : activities) {
+			s.log("=== POST: "+activity + " requires $" + consumptionPerDay + " per day");
 			activity.requires(budget, consumptionPerDay);
-			s.log(budget.toString());
 		}
-		
+//		masonry.requires(budget, consumptionPerDay);
+//		carpentry.requires(budget, consumptionPerDay);
+		budget.postConsumptionConstraints();
 		s.logActivities();
 		s.log(budget.toString());
+//		s.log(s.getVars());
 	}
 	
 	public void solve() {
 
 		Solver solver = s.getSolver();
+		Var m = s.getActivity("masonry  ").getStart();
+		//s.post(m,"=",0);
 		solver.setSearchStrategy(s.strategyScheduleActivities());
 		solver.addSearchStrategy(s.strategyAssignResources());
+		solver.traceExecution(true);
+        //solver.trace(s.getActivity("carpentry").getStart());
 		Solution solution = solver.findSolution();
-		if (solution == null)
+		if (solution == null) {
 			s.log("No solutions");
+			s.log(s.getVars());
+		}
 		else {
 			s.log(solution);
 		}
-			
+		solver.logStats();
 	}
 	
 	public static void main(String args[]) throws Exception {

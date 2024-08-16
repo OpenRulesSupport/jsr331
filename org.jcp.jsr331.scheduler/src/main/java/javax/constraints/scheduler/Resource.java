@@ -52,6 +52,18 @@ public interface Resource {
 	 * @see ResourceType
 	 */
 	public void setType(ResourceType type);
+	
+	/**
+     * 
+     * @return an associated consumption table 
+     * @see ConsumptionTable
+     */
+	public ConsumptionTable getConsumptionTable();
+	
+	/**
+	 * Post all "requires" constraints for CONSUMABLE resources only
+	 */
+	public void postConsumptionConstraints();
 
 	/**
 	 * A resource is always associated with a scheduling problem, an instance of the class Schedule.

@@ -184,10 +184,13 @@ public class BasicActivity extends SchedulingObject implements Activity {
 		// ConstraintActivityResource c =
 		// getSchedule().addConstraintRequire(this, resource,
 		// capacity);
-		ConstraintActivityResource rc = new ConstraintRequire(this, resource,capacity);
-//		if (resource.getType().equals(ResourceType.CONSUMABLE)) {
-//		    rc = new ConstraintConsume(this, resource,capacity);
-//		}
+		ConstraintActivityResource rc;
+		if (resource.getType().equals(ResourceType.CONSUMABLE)) {
+		    rc = new ConstraintConsume(this, resource,capacity);
+		}
+		else {
+		    rc = new ConstraintRequire(this, resource,capacity);
+		}
 		this.getResourceConstraints().add(rc);
 		resource.getActivityConstraints().add(rc);
 		getSchedule().add(rc);
@@ -200,10 +203,12 @@ public class BasicActivity extends SchedulingObject implements Activity {
 		// ConstraintActivityResource c =
 		// getSchedule().addConstraintRequire(this, resource,
 		// capacityVar);
-		ConstraintActivityResource rc = new ConstraintRequire(this, resource,
-				capacityVar);
+		ConstraintActivityResource rc; 
 		if (resource.getType().equals(ResourceType.CONSUMABLE)) {
-            rc = new ConstraintConsume(this, resource,capacityVar);
+            rc = new ConstraintConsume(this,resource,capacityVar);
+        }
+		else {
+            rc = new ConstraintRequire(this,resource,capacityVar);
         }
 		this.getResourceConstraints().add(rc);
 		resource.getActivityConstraints().add(rc);

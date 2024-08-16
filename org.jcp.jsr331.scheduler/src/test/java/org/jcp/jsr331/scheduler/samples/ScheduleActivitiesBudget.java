@@ -56,7 +56,7 @@ public final class ScheduleActivitiesBudget {
 		int consumptionPerDay = 1000;
 		for (int i = 0; i < activities.length; i++) {
 			Activity activity = activities[i];
-			s.log("=== POST: "+activity.getName() + " requires $" + consumptionPerDay + " per day");
+			s.log("=== POST: "+activity); //.getName() + " requires $" + consumptionPerDay + " per day");
 			activity.requires(budget, consumptionPerDay);
 			s.log(budget.toString());
 		}
