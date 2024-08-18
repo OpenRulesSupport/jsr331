@@ -69,6 +69,7 @@ public class ConstraintConsume extends AbstractConstraintActivityResource {
             schedule.add(name, consumedCapacity);
             consumptionTable.consume(time,consumedCapacity,duration);
 		} 
+		consumptionTable.postConstraints();
 	}
 	
 }

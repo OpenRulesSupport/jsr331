@@ -53,7 +53,7 @@ public final class ScheduleActivitiesBudget {
 		int totalBudget = initialBudget + 16000;
 		Resource budget = s.resource("Budget",totalBudget,ResourceType.CONSUMABLE);
 		budget.setCapacityMax(0,15,initialBudget);
-		s.log(budget.toString());
+
 		// Post budget requirement constraints
 		int consumptionPerDay = 1000;
 		for (Activity activity : activities) {
@@ -68,21 +68,17 @@ public final class ScheduleActivitiesBudget {
 //        s.post(c,"=",8);
 //		carpentry.requires(budget, consumptionPerDay);
 //		roofing.requires(budget, consumptionPerDay);
-		budget.postConsumptionConstraints();
-		s.logActivities();
-		s.log(budget.toString());
+//		budget.postConsumptionConstraints();
+//		s.logActivities();
+//		s.log(budget.toString());
 //		s.log(s.getVars());
 	}
 	
 	public void solve() {
 	    s.log("Find a Solution...");
 		Solver solver = s.getSolver();
-//		Var m = s.getActivity("masonry  ").getStart();
-//		s.post(m,"=",0);
 		solver.setSearchStrategy(s.strategyScheduleActivities());
 		solver.addSearchStrategy(s.strategyAssignResources());
-		//solver.traceExecution(true);
-        //solver.trace(s.getActivity("carpentry").getStart());
 		Solution solution = solver.findSolution();
 		if (solution == null) {
 			s.log("No solutions");
@@ -97,30 +93,20 @@ public final class ScheduleActivitiesBudget {
 	public void solveOptimal() {
         s.log("Find Optimal Solution...");
         Solver solver = s.getSolver();
-//        for(Var var : s.getVars()) {
-//            if (var.getName().startsWith("masonryCanCoverTime") ||
-//                    var.getName().startsWith("masonryCanConsumedAtTime"))
-//                s.log(var.toString());
-//        }
-        
-//        Var m = s.getActivity("masonry  ").getStart();
-//        s.post(m,"=",0);
         solver.setSearchStrategy(s.strategyScheduleActivities());
         solver.addSearchStrategy(s.strategyAssignResources());
-        solver.addSearchStrategy(s.getVars());
-        solver.setMaxNumberOfSolutions(10);
-        solver.setTimeLimitGlobal(15000);
-        solver.traceExecution(true);
-        solver.traceSolutions(true);
+//        solver.setMaxNumberOfSolutions(10);
+//        solver.setTimeLimitGlobal(15000);
+//        solver.traceExecution(true);
+//        solver.traceSolutions(true);
         Var objective = s.getActivity("moving in").getStart();
-        //Var objective = s.getActivity("masonry  ").getStart();
         Solution solution = solver.findOptimalSolution(Objective.MINIMIZE,objective);
         if (solution == null)
             s.log("No solutions");
         else {
             s.log(solution);
         }
-            
+        solver.logStats();    
     }
 	
 	public static void main(String args[]) throws Exception {
