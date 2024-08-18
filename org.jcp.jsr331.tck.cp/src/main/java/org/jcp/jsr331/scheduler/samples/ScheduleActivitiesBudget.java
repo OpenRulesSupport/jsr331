@@ -41,6 +41,8 @@ public final class ScheduleActivitiesBudget {
 		s.post(movingIn,">",facade);
 		s.post(movingIn,">",garden);
 		s.post(movingIn,">",painting);
+		
+		s.logActivities();
 
 		/* Building the house now requires $1,000 for each s.activity per day.
 		   $13,000 are available on the first day.
@@ -58,8 +60,14 @@ public final class ScheduleActivitiesBudget {
 			s.log("=== POST: "+activity + " requires $" + consumptionPerDay + " per day");
 			activity.requires(budget, consumptionPerDay);
 		}
+		
+//		Var m = s.getActivity("masonry  ").getStart();
+//		s.post(m,"=",0);
 //		masonry.requires(budget, consumptionPerDay);
+//		Var c = s.getActivity("carpentry").getStart();
+//        s.post(c,"=",8);
 //		carpentry.requires(budget, consumptionPerDay);
+//		roofing.requires(budget, consumptionPerDay);
 		budget.postConsumptionConstraints();
 		s.logActivities();
 		s.log(budget.toString());
@@ -67,13 +75,13 @@ public final class ScheduleActivitiesBudget {
 	}
 	
 	public void solve() {
-
+	    s.log("Find a Solution...");
 		Solver solver = s.getSolver();
-		Var m = s.getActivity("masonry  ").getStart();
-		//s.post(m,"=",0);
+//		Var m = s.getActivity("masonry  ").getStart();
+//		s.post(m,"=",0);
 		solver.setSearchStrategy(s.strategyScheduleActivities());
 		solver.addSearchStrategy(s.strategyAssignResources());
-		solver.traceExecution(true);
+		//solver.traceExecution(true);
         //solver.trace(s.getActivity("carpentry").getStart());
 		Solution solution = solver.findSolution();
 		if (solution == null) {
@@ -86,9 +94,39 @@ public final class ScheduleActivitiesBudget {
 		solver.logStats();
 	}
 	
+	public void solveOptimal() {
+        s.log("Find Optimal Solution...");
+        Solver solver = s.getSolver();
+//        for(Var var : s.getVars()) {
+//            if (var.getName().startsWith("masonryCanCoverTime") ||
+//                    var.getName().startsWith("masonryCanConsumedAtTime"))
+//                s.log(var.toString());
+//        }
+        
+//        Var m = s.getActivity("masonry  ").getStart();
+//        s.post(m,"=",0);
+        solver.setSearchStrategy(s.strategyScheduleActivities());
+        solver.addSearchStrategy(s.strategyAssignResources());
+        solver.addSearchStrategy(s.getVars());
+        solver.setMaxNumberOfSolutions(10);
+        solver.setTimeLimitGlobal(15000);
+        solver.traceExecution(true);
+        solver.traceSolutions(true);
+        Var objective = s.getActivity("moving in").getStart();
+        //Var objective = s.getActivity("masonry  ").getStart();
+        Solution solution = solver.findOptimalSolution(Objective.MINIMIZE,objective);
+        if (solution == null)
+            s.log("No solutions");
+        else {
+            s.log(solution);
+        }
+            
+    }
+	
 	public static void main(String args[]) throws Exception {
 		ScheduleActivitiesBudget p = new ScheduleActivitiesBudget();
 		p.define();
-		p.solve();		
+		//p.solve();
+		p.solveOptimal();
 	}
 }

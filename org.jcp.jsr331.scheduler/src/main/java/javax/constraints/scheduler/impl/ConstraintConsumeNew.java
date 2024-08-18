@@ -16,17 +16,17 @@ import javax.constraints.scheduler.ConstraintActivityResource;
 import javax.constraints.scheduler.Resource;
 import javax.constraints.scheduler.ConsumptionTable;
 
-public class ConstraintConsume extends AbstractConstraintActivityResource {
+public class ConstraintConsumeNew extends AbstractConstraintActivityResource {
 
 	Var	index;
 
-	public ConstraintConsume(Activity activity,
+	public ConstraintConsumeNew(Activity activity,
 			Resource resource, int capacity) {
 		super(activity,resource,capacity);
 		setType("consumes");
 	}
 
-	public ConstraintConsume(Activity activity,
+	public ConstraintConsumeNew(Activity activity,
 			Resource resource, Var capacityVar) {
 		super(activity,resource,capacityVar);
 		setType("consumes");
@@ -51,23 +51,32 @@ public class ConstraintConsume extends AbstractConstraintActivityResource {
 		}
 
 		Var activityStartVar = activity.getStart();
+        Var activityEndVar = activity.getEnd();
+        String activityName = activity.getName().trim();
+        		
 		ConsumptionTable consumptionTable = resource.getConsumptionTable();
 		int from = activityStartVar.getMin();
-		int to = activityStartVar.getMax();
-		int duration = activity.getDuration();
-		for(int time=from; time <= to; time++) {
-            Var activityStartsAtTime = schedule.linear(activityStartVar,"=",time).asBool();
-            String name = activity.getName().trim()+"StartsAt"+time;
-            schedule.add(name,activityStartsAtTime);
+		int to = activityEndVar.getMax();
+		// loop by time intervals
+		for(int time=from; time < to; time++) {
+            String coverName = activityName+"CanCoverTime"+time;
+            Var activityCanCoverTime = schedule.variable(coverName,0,1);
+            Constraint  timeIsInsideActivity = 
+                schedule.linear(activityStartVar,"<=",time).and(schedule.linear(activityEndVar,">",time));
+            schedule.postIfThen(timeIsInsideActivity, schedule.linear(activityCanCoverTime,"=",1));
+            Constraint  timeIsNotInsideActivity = 
+                    schedule.linear(activityStartVar,">",time).or(schedule.linear(activityEndVar,"<=",time));
+            schedule.postIfThen(timeIsNotInsideActivity, schedule.linear(activityCanCoverTime,"=",0));
+            
             Var consumedCapacity;
             if (getCapacityVar() != null) {
-                consumedCapacity = activityStartsAtTime.multiply(getCapacityVar());
+                consumedCapacity = activityCanCoverTime.multiply(getCapacityVar());
             } else {
-                consumedCapacity = activityStartsAtTime.multiply(getCapacity());
+                consumedCapacity = activityCanCoverTime.multiply(getCapacity());
             }
-            name = activity.getName().trim()+"["+time+"]Consumes$";
-            schedule.add(name, consumedCapacity);
-            consumptionTable.consume(time,consumedCapacity,duration);
+            String consumeName = activityName+"CanConsumedAtTime"+time;
+            schedule.add(consumeName, consumedCapacity);
+            consumptionTable.addVar(time,consumedCapacity);
 		} 
 	}
 	

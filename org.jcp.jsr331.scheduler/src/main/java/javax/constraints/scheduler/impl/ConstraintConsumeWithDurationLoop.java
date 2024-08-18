@@ -16,17 +16,17 @@ import javax.constraints.scheduler.ConstraintActivityResource;
 import javax.constraints.scheduler.Resource;
 import javax.constraints.scheduler.ConsumptionTable;
 
-public class ConstraintConsume extends AbstractConstraintActivityResource {
+public class ConstraintConsumeWithDurationLoop extends AbstractConstraintActivityResource {
 
 	Var	index;
 
-	public ConstraintConsume(Activity activity,
+	public ConstraintConsumeWithDurationLoop(Activity activity,
 			Resource resource, int capacity) {
 		super(activity,resource,capacity);
 		setType("consumes");
 	}
 
-	public ConstraintConsume(Activity activity,
+	public ConstraintConsumeWithDurationLoop(Activity activity,
 			Resource resource, Var capacityVar) {
 		super(activity,resource,capacityVar);
 		setType("consumes");
@@ -55,19 +55,22 @@ public class ConstraintConsume extends AbstractConstraintActivityResource {
 		int from = activityStartVar.getMin();
 		int to = activityStartVar.getMax();
 		int duration = activity.getDuration();
-		for(int time=from; time <= to; time++) {
-            Var activityStartsAtTime = schedule.linear(activityStartVar,"=",time).asBool();
-            String name = activity.getName().trim()+"StartsAt"+time;
-            schedule.add(name,activityStartsAtTime);
+		for(int startSlot=from; startSlot <= to; startSlot++) {
+            Var activityStartsAtSlot = schedule.linear(activityStartVar,"=",startSlot).asBool();
+            String name = activity.getName().trim()+"StartsAt"+startSlot;
+            schedule.add(name,activityStartsAtSlot);
             Var consumedCapacity;
             if (getCapacityVar() != null) {
-                consumedCapacity = activityStartsAtTime.multiply(getCapacityVar());
+                consumedCapacity = activityStartsAtSlot.multiply(getCapacityVar());
             } else {
-                consumedCapacity = activityStartsAtTime.multiply(getCapacity());
+                consumedCapacity = activityStartsAtSlot.multiply(getCapacity());
             }
-            name = activity.getName().trim()+"["+time+"]Consumes$";
+            name = activity.getName().trim()+"["+startSlot+"]Consumes$";
             schedule.add(name, consumedCapacity);
-            consumptionTable.consume(time,consumedCapacity,duration);
+            for(int durationSlot=0; durationSlot < duration; durationSlot++) {
+                int time = startSlot + durationSlot;
+                consumptionTable.addVar(time,consumedCapacity);
+            }
 		} 
 	}
 	

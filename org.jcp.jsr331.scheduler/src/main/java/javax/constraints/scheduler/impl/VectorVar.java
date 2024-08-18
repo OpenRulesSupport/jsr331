@@ -62,12 +62,13 @@ public final class VectorVar implements java.io.Serializable, Cloneable {
 		elements[size++] = element;
 	}
 	
-	public final void addUnique(Var element) {
+	public final boolean addUnique(Var element) {
 	    for (int i = 0; i < size; i++) {
             if (element.getName().equals(elements[i].getName()))
-                return;
+                return false;
 	    }
         add(element);
+        return true;
     }
 
 	public final void addElement(Var element) {

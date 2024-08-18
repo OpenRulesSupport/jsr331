@@ -26,6 +26,16 @@ public interface ConsumptionTable {
 	public Resource getResource();
 	
 	/**
+     * Adds consumption variables starting from the column "from" 
+     * to each column "time" between from and from+duration-1 using consumption
+     * equal to var.multiply(time+1) 
+     * @param from int
+     * @param var Var
+     * @param duration int
+     */
+    public void consume(int from, Var var, int duration);
+	
+	/**
 	 * Adds a var to the list of variables for the column "time" 
 	 * @param time
 	 * @param var

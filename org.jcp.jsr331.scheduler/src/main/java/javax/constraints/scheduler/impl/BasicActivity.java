@@ -75,7 +75,7 @@ public class BasicActivity extends SchedulingObject implements Activity {
 		setName(name);
 		if (duration > problem.getDuration())
 			throw new RuntimeException("Activity " + name + " duration=" + duration
-					+ " is invalid");
+					+ " is larger than " + problem.getDuration());
 		start = problem.variable(startName(), problem.getStart(), problem.getEnd());
 		end = problem.variable(endName(), problem.getStart(), problem.getEnd());
 		this.duration = duration;

@@ -54,13 +54,84 @@ public class BasicConsumptionTable implements ConsumptionTable {
 	 * @param var
 	 */
 	public void addVar(int time, Var var) {
-	    table[time].addUnique(var);
-	    if (time < to-1) {
-	        for(int t = time+1; t < to-1; t++ ) {
-	            table[t].addUnique(var);
+	    Schedule s = resource.getSchedule();
+	    System.out.println();
+	    if (time == 1)
+	        System.out.println("*** time == 1");
+	    
+	    for(int j=0; j<time;j++) {
+            System.out.print("-");
+        }
+	    System.out.print("[" + time +"] " + var);
+	    table[time].add(var);
+	    
+	    if (time < to) {
+	        for(int t = time+1; t < to; t++ ) {
+	            System.out.println();
+	            for(int j=0; j<t;j++) {
+	                System.out.print("-");
+	            }
+	            System.out.print("[" + t +"] " + var);
+	            table[t].add(var);
 	        }
 	    }
 	}
+	
+	/**
+     * Adds consumption variables starting from the column "from" 
+     * to each column "time" between from and from+duration-1 using consumption
+     * equal to var.multiply(time+1) 
+     * @param from int
+     * @param var Var
+     * @param duration int
+     */
+    public void consume(int from, Var var, int duration) {
+        Schedule s = resource.getSchedule();
+        for(int time=0; time < duration; time++) {
+            int column = from + time;
+            Var consumption = var.multiply(time+1);
+            s.add("["+column+"]"+var.getName(), consumption);
+            System.out.println();
+            for(int j=0; j<column;j++) {
+                System.out.print("-");
+            }
+            System.out.print(consumption);
+            table[column].add(consumption);
+        }
+               
+        if (from + duration < to) {
+            int column = from+duration-1;
+            String name = "[" + column + "]" + var.getName();
+            Var maxConsumption = s.getVar(name);
+            //Var maxConsumption = var.multiply(duration);)
+            for(int t = from + duration; t < to; t++ ) {
+                System.out.println();
+                for(int j=0; j<t;j++) {
+                    System.out.print("-");
+                }
+                System.out.print("["+t+"]"+maxConsumption);
+                table[t].add(maxConsumption);
+            }
+        }
+        
+    }
+	
+	/**
+     * Adds a var to the list of variables for the column "time" only if it has not been already added
+     * @param time
+     * @param var
+     */
+    public void addVarUnique(int time, Var var) {
+        Schedule s = resource.getSchedule();
+        if (table[time].addUnique(var))
+            s.log("Added "+var+" [" + time +"]");
+        if (time < to) {
+            for(int t = time+1; t < to; t++ ) {
+                if (table[t].addUnique(var))
+                    s.log("Added "+var+" [" + t + "]");
+            }
+        }
+    }
 	
 	public VectorVar getColumn(int time) {
 	    return table[time];
@@ -73,14 +144,15 @@ public class BasicConsumptionTable implements ConsumptionTable {
      */
     public void postConstraints() {
         Schedule s = resource.getSchedule();
+        s.log("\n=== postConsumptionConstraints");
         String resourceName = resource.getName().trim();
         for(int time = from; time < to; time++) {
             VectorVar column = getColumn(time);
             if (column.size() > 0) {
                 Var columnCapacity = s.sum(column.toArray());
-                s.add("TotalConsumptionOf" + resourceName + "AtTime" + time, columnCapacity);
-                s.log("Post " + columnCapacity + " <= " + resource.getCapacityVar(time));
-                s.post(columnCapacity,"<=",resource.getCapacityVar(time));
+                s.add("TotalConsumption[" + time + "]$", columnCapacity);
+                s.log("Post " + columnCapacity + " <= " + resource.getCapacityMax(time));
+                s.post(columnCapacity,"<=",resource.getCapacityMax(time));
             }
         }
     }

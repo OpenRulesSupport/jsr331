@@ -306,7 +306,7 @@ public class ScheduleImpl extends ProblemDelegator implements Schedule {
 	 * @return an activity
 	 */
 	public Activity activity(String name) {
-		return activity(name, getStart(), getEnd());
+		return activity(name, getEnd()-getStart());
 	}
 
 	public Resource resource(String name, int capacityMax, ResourceType type) {
