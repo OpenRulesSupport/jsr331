@@ -8,11 +8,8 @@
 //============================================= 
 package javax.constraints.scheduler.impl;
 
-import javax.constraints.Constraint;
-//import javax.constraints.impl.Problem;
 import javax.constraints.Var;
 import javax.constraints.scheduler.Activity;
-import javax.constraints.scheduler.ConstraintActivityResource;
 import javax.constraints.scheduler.Resource;
 import javax.constraints.scheduler.ConsumptionTable;
 
