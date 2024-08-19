@@ -10,7 +10,7 @@ To add JSR331 dependencies and selected constraint and/or linear solvers to your
 <parent>   
     <groupId>com.javasolver</groupId>
     <artifactId>jsr331-parent</artifactId>
-    <version>2.0.3</version>
+    <version>2.3.1</version>
 </parent>
 ~~~
 
