@@ -14,10 +14,6 @@
 	<description>This is a JSR331 JSR331 Technology Compatibility Kit for linear solvers</description>
 	<url>https://github.com/OpenRulesSupport/jsr331</url>
 
-	<properties>
-		<log4j.version>2.16.0</log4j.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>com.javasolver</groupId>

@@ -18,8 +18,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<slf4j.version>1.7.30</slf4j.version>
+		<log4j.version>2.22.1</log4j.version>
 		<jsr331.version>${project.version}</jsr331.version>
 	    <doclint>none</doclint>
+	    <!--<failBuildOnCVSS>7.6</failBuildOnCVSS>-->
+        <owasp.version>10.0.2</owasp.version>
 	</properties>
 
 	<licenses>
@@ -122,6 +125,23 @@
 					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 				</configuration>
 			</plugin>
+			<plugin>
+                <groupId>org.owasp</groupId>
+                <artifactId>dependency-check-maven</artifactId>
+                <version>${owasp.version}</version>
+                <configuration>
+                    <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
+                    <failBuildOnCVSS>${failBuildOnCVSS}</failBuildOnCVSS>
+                    <nvdApiServerId>nvd</nvdApiServerId>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>aggregate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 		</plugins>
 	</build>
 

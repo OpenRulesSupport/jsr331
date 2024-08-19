@@ -33,10 +33,6 @@
 		</developer>
 	</developers>
 	
-	<properties>
-		<log4j.version>2.16.0</log4j.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>com.javasolver</groupId>
