@@ -42,7 +42,19 @@ public abstract class ScheduleDelegator implements	Schedule {
 			return schedule.getAPIVersion();
 		}
 
-		public VarReal add(String name, VarReal var) {
+		public Var addTotalResourceCostVar(String varName, String[] resourceNames, int[] costs) {
+            return schedule.addTotalResourceCostVar(varName, resourceNames, costs);
+        }
+
+        public void logResourceActivityAssignments(Solution solution) {
+            schedule.logResourceActivityAssignments(solution);
+        }
+
+        public void logSolution(Solution solution) {
+            schedule.logSolution(solution);
+        }
+
+        public VarReal add(String name, VarReal var) {
             return schedule.add(name, var);
         }
 
@@ -724,8 +736,8 @@ public abstract class ScheduleDelegator implements	Schedule {
 			schedule.log(solution);
 		}
 
-		public Var[] getConstraintCapacites(Resource resource) {
-			return schedule.getConstraintCapacites(resource);
+		public Var[] getConstraintUsage(Resource resource) {
+			return schedule.getConstraintUsage(resource);
 		}
 		
 		public Var[] getResourceOccupancies(Resource resource) {

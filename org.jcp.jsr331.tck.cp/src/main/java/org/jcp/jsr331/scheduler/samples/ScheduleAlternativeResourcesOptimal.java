@@ -5,9 +5,10 @@ import javax.constraints.scheduler.*;
 
 public class ScheduleAlternativeResourcesOptimal {
 	
-	Schedule s = ScheduleFactory.newSchedule("ScheduleAlternativeResources",0,40);
+	Schedule s = ScheduleFactory.newSchedule("ScheduleAlternativeResources",0,30);
 
 	Activity[] activities;
+	String[] resourceNames = {"Joe", "Jack", "Jim"};
 	ResourceDisjunctive[] resources;
 	Var totalCost;
 
@@ -44,43 +45,47 @@ public class ScheduleAlternativeResourcesOptimal {
 		s.post(movingIn, ">", garden);
 		s.post(movingIn, ">", painting);
 
-		for (int i = 0; i < s.getActivities().size(); ++i) {
-			Activity job = (Activity) s.getActivities().elementAt(i);
-			s.log(job.toString());
-		}
-
 		// Define Resources
 		ResourceDisjunctive joe  = s.resourceDisjunctive("Joe");
-		ResourceDisjunctive jim  = s.resourceDisjunctive("Jim");
 		ResourceDisjunctive jack = s.resourceDisjunctive("Jack");
-		resources = new ResourceDisjunctive[] { joe, jim, jack };
+		ResourceDisjunctive jim  = s.resourceDisjunctive("Jim");
+		resources = new ResourceDisjunctive[] { joe, jack, jim };
 
 		// Posting constraints for alternative resources
-		masonry.requires(joe, jack);
-		carpentry.requires(joe, jim);
-		plumbing.requires(jack);
-		ceiling.requires(joe, jim);
-		roofing.requires(joe, jim);
-		painting.requires(jack, jim);
-		windows.requires(joe, jim);
-		garden.requires(joe, jack, jim);
-		facade.requires(joe, jack);
-		movingIn.requires(joe, jim);
+		masonry.requires(joe, jack).post();
+		carpentry.requires(joe, jim).post();
+		plumbing.requires(jack).post();
+		ceiling.requires(joe, jim).post();
+		roofing.requires(joe, jim).post();
+		painting.requires(jack, jim).post();
+		windows.requires(joe, jim).post();
+		garden.requires(joe, jack, jim).post();
+		facade.requires(joe, jack).post();
+		movingIn.requires(joe, jim).post();
 		
 		// Defining cost
 		int joeDailyCost = 300;
-		int jimDailyCost = 230;
-		int jackDailyCost = 250;
-		int[] dailyCosts = { joeDailyCost, jimDailyCost, jackDailyCost };
-		Var[] costVars = new Var[resources.length];
-		for (int i = 0; i < resources.length; i++) {
-			Resource r = resources[i];
-			Var[] assignments = s.getConstraintCapacites(r);
-			costVars[i] = s.sum(assignments).multiply(dailyCosts[i]);
-		}
-		totalCost = s.sum(costVars);
-		totalCost.setName("Total Cost");
-		s.add(totalCost);
+		int jackDailyCost = 230;
+		int jimDailyCost = 250;
+		
+		int[] dailyCosts = { joeDailyCost, jackDailyCost, jimDailyCost };
+		
+		//Approach 1
+//		Var[] resourceCostVars = new Var[resources.length];
+//		for (int i = 0; i < resources.length; i++) {
+//			Resource r = resources[i];
+//			Var[] usage = s.getConstraintUsage(r);
+//			resourceCostVars[i] = s.sum(usage).multiply(dailyCosts[i]);
+//		}
+//		totalCost = s.sum(resourceCostVars);
+		
+		//Approach 2
+		totalCost = s.addTotalResourceCostVar("Total Cost", resourceNames, dailyCosts);
+		
+		for (int i = 0; i < s.getActivities().size(); ++i) {
+            Activity job = (Activity) s.getActivities().elementAt(i);
+            s.log(job.toString());
+        }
 	}
 	
 	public void solveOne() {
@@ -126,7 +131,7 @@ public class ScheduleAlternativeResourcesOptimal {
 		solver.setMaxNumberOfSolutions(max);
 		int timeLimit = 20; //seconds
 		solver.setTimeLimit(timeLimit*1000);
-		solver.setTimeLimitGlobal(5*timeLimit*1000);
+		solver.setTimeLimitGlobal(200*1000);
 		//solver.setOptimizationStrategy("Dichotomize");
 		solver.setOptimizationStrategy("Basic");
 		solver.traceSolutions(true);
@@ -136,8 +141,8 @@ public class ScheduleAlternativeResourcesOptimal {
 			s.log("No solutions");
 		else {
 			s.log(solution);
-			//s.log("Total Cost = " + solution.getValue("Total Cost"));
-			//solution.log();
+			s.log("Total Cost = " + solution.getValue("Total Cost"));
+			solution.log();
 		}
 		solver.logStats();
 	}

@@ -60,18 +60,6 @@ public final class ScheduleActivitiesBudget {
 			s.log("=== POST: "+activity + " requires $" + consumptionPerDay + " per day");
 			activity.requires(budget, consumptionPerDay);
 		}
-		
-//		Var m = s.getActivity("masonry  ").getStart();
-//		s.post(m,"=",0);
-//		masonry.requires(budget, consumptionPerDay);
-//		Var c = s.getActivity("carpentry").getStart();
-//        s.post(c,"=",8);
-//		carpentry.requires(budget, consumptionPerDay);
-//		roofing.requires(budget, consumptionPerDay);
-//		budget.postConsumptionConstraints();
-//		s.logActivities();
-//		s.log(budget.toString());
-//		s.log(s.getVars());
 	}
 	
 	public void solve() {
@@ -95,10 +83,6 @@ public final class ScheduleActivitiesBudget {
         Solver solver = s.getSolver();
         solver.setSearchStrategy(s.strategyScheduleActivities());
         solver.addSearchStrategy(s.strategyAssignResources());
-//        solver.setMaxNumberOfSolutions(10);
-//        solver.setTimeLimitGlobal(15000);
-//        solver.traceExecution(true);
-//        solver.traceSolutions(true);
         Var objective = s.getActivity("moving in").getStart();
         Solution solution = solver.findOptimalSolution(Objective.MINIMIZE,objective);
         if (solution == null)

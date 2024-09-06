@@ -75,7 +75,7 @@ public class ScheduleAlternativeResourcesOptimal {
 		Var[] costVars = new Var[resources.length];
 		for (int i = 0; i < resources.length; i++) {
 			Resource r = resources[i];
-			Var[] assignments = s.getConstraintCapacites(r);
+			Var[] assignments = s.getConstraintUsage(r);
 			costVars[i] = s.sum(assignments).multiply(dailyCosts[i]);
 		}
 		totalCost = s.sum(costVars);

@@ -22,5 +22,8 @@ public interface ConstraintActivityResource extends Constraint {
 	
 	public String getType();
 	public void setType(String type);
+	
+	public Var getAssignmentVar();
+	public void setAssignmentVar(Var assignmentVar);
 
 }

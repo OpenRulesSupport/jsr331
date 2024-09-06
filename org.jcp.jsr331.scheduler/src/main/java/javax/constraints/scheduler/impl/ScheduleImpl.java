@@ -345,6 +345,10 @@ public class ScheduleImpl extends ProblemDelegator implements Schedule {
 	}
 
 	public void log(Solution solution) {
+	    logSolution(solution);
+	}
+	/*
+	public void log(Solution solution) {
 		if (solution == null) {
 			log("Cannot log an empty solution");
 			return;
@@ -383,6 +387,9 @@ public class ScheduleImpl extends ProblemDelegator implements Schedule {
 			}
 		}
 	}
+	*/
+	
+
 	
 	public void save(Solution solution) {
 		if (solution == null) {
@@ -399,7 +406,6 @@ public class ScheduleImpl extends ProblemDelegator implements Schedule {
 				if (rc.size() > 0) {
 					for (int j = 0; j < rc.size(); j++) {
 						ConstraintActivityResource c = (ConstraintActivityResource) rc.elementAt(j);
-						String cap = null;
 						if (c.getCapacityVar() != null) {
 							int capValue = solution.getValue(c.getCapacityVar().getName());
 							post(c.getCapacityVar(),"=",capValue);
@@ -522,24 +528,26 @@ public class ScheduleImpl extends ProblemDelegator implements Schedule {
 //		}
 //	}
 	
-	public Var[] getConstraintCapacites(Resource resource) {
+	public Var[] getConstraintUsage(Resource resource) {
 		Vector<Constraint> constraints = resource.getActivityConstraints();
 		if (constraints.size() == 0)
 			return null;
-		Var[] capacities = new Var[constraints.size()];
-		for (int i = 0; i < capacities.length; i++) {
+		Var[] usageVars = new Var[constraints.size()];
+		for (int i = 0; i < usageVars.length; i++) {
 			ConstraintActivityResource ci = (ConstraintActivityResource)constraints.get(i);
+			Activity act = ci.getActivity();
 			Var var = ci.getCapacityVar();
 			if (var == null) { 
-				 var = variable(ci.getCapacity(),ci.getCapacity());
+				 //var = variable(ci.getCapacity(),ci.getCapacity());
+			    var = variable(0,ci.getCapacity());
 			}
-			capacities[i] = var;
+			usageVars[i] = var.multiply(act.getDuration()); // added on Aug 25, 2024
 		}
-		return capacities;
+		return usageVars;
 	}
 	
 	public Var[] getResourceOccupancies(Resource resource) {
-        return getConstraintCapacites(resource);
+        return getConstraintUsage(resource);
     }
 	
 	public Var[] getResourceOccupancies() {
@@ -568,5 +576,91 @@ public class ScheduleImpl extends ProblemDelegator implements Schedule {
 		scheduleVars.add(var);
 		return var;
 	}
+	
+	// NEW Resource Cost methods
+	
+	public Var addTotalResourceCostVar(String varName, String[] resourceNames, int[] dailyCosts) {
+        Var[]resourceUsageVars = new Var[resourceNames.length];
+        for(int i=0; i < resourceNames.length; i++) {
+            Resource resource = getResource(resourceNames[i]);
+            if (resource == null) {
+                throw new RuntimeException("Unknown resource " + resourceNames[i]);
+            }
+            Vector<Constraint> constraints = resource.getActivityConstraints();
+            if (constraints.size() == 0)
+                continue;
+            Var[] resourceUsageByActivities = new Var[constraints.size()];
+            for (int j = 0; j < resourceUsageByActivities.length; j++) {
+                ConstraintActivityResource cj = (ConstraintActivityResource)constraints.get(j);
+                Activity act = cj.getActivity();
+                Var capacityVar = cj.getCapacityVar();
+                if (capacityVar == null) { 
+                     capacityVar = variable(0,cj.getCapacity());
+                }
+                resourceUsageByActivities[j] = capacityVar.multiply(act.getDuration()); // added on Aug 25, 2024
+                add(resourceUsageByActivityName(resource,act),resourceUsageByActivities[j]);
+                getScheduleVars().add(resourceUsageByActivities[j]);
+            }
+            resourceUsageVars[i] = sum(resourceUsageByActivities);
+        }
+        Var totalCost =  scalProd(dailyCosts,resourceUsageVars);
+        add(varName,totalCost);
+        getScheduleVars().add(totalCost);
+        return totalCost;
+    }
+    
+    public String resourceUsageByActivityName(Resource resource, Activity activity) {
+        return resource.getName().trim() + "'s usage by " + activity.getName().trim();
+    }
+    
+    public void logResourceActivityAssignments(Solution solution) {
+        log("\nResource-Activity Assignments:");
+        for(Resource resource : getResources()) {
+            for(Activity act : getActivities()) {
+                String name = resourceUsageByActivityName(resource,act);
+                try {
+                    int value = solution.getValue(name);
+                    if (value > 0) {
+                        log(resourceUsageByActivityName(resource,act) + " " + value + " times"); 
+                    }
+                } catch (Exception e) {
+                    // ignore
+                }
+                
+            }
+        }
+    }
+    
+    public void logSolution(Solution solution) {
+        if (solution == null) {
+            log("Cannot log an empty solution");
+            return;
+        }
+        log("SOLUTION #" + solution.getSolutionNumber());
+       
+        for(Activity act : getActivities()) {
+            String actName = act.getName();
+            int start = solution.getValue(act.getStart().getName());
+            log(actName + ": Start=" + start + " Duration=" + act.getDuration());
+            /*
+            for(ConstraintActivityResource constraint : act.getResourceConstraints()) {
+                Resource res = constraint.getResource();
+                try {
+                    Var assignmentVar = constraint.getAssignmentVar();
+                    if (assignmentVar != null && assignmentVar.isBound() && assignmentVar.getValue()>0) {
+                        log("\trequires " + res.getName());
+//                        int assignmentVarValue = solution.getValue(assignmentVar.getName()+".start");
+//                        if (assignmentVarValue > 0) {
+//                            log("\trequires " + res.getName()); 
+//                        }
+                    }
+                } catch (Exception e) {
+                    // ignore
+                }
+            }
+            */
+        }
+    }
+    
 
 }

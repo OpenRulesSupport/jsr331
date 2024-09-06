@@ -15,8 +15,6 @@ import javax.constraints.scheduler.ConsumptionTable;
 
 public class ConstraintConsume extends AbstractConstraintActivityResource {
 
-	Var	index;
-
 	public ConstraintConsume(Activity activity,
 			Resource resource, int capacity) {
 		super(activity,resource,capacity);
@@ -64,7 +62,11 @@ public class ConstraintConsume extends AbstractConstraintActivityResource {
             }
             name = activity.getName().trim()+"["+time+"]Consumes$";
             schedule.add(name, consumedCapacity);
+            schedule.getScheduleVars().add(consumedCapacity);
             consumptionTable.consume(time,consumedCapacity,duration);
+            if (time == from) {
+                setAssignmentVar(consumedCapacity);
+            }
 		} 
 		consumptionTable.postConstraints();
 	}

@@ -52,8 +52,12 @@ public final class ScheduleActivitiesWorker {
 	}
 	
 	public void solve() {
-
-		Solution solution = s.scheduleActivities();
+	    Solver solver = s.getSolver();
+        solver.setSearchStrategy(s.strategyScheduleActivities());
+        solver.addSearchStrategy(s.strategyAssignResources());
+        solver.addSearchStrategy(s.strategyScheduleVars());
+        Solution solution = solver.findSolution();
+		//Solution solution = s.scheduleActivities();
 		if (solution == null)
 			s.log("No solutions");
 		else {

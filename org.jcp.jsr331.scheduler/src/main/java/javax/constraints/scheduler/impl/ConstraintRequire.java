@@ -18,7 +18,7 @@ import javax.constraints.scheduler.ResourceType;
 
 public class ConstraintRequire extends AbstractConstraintActivityResource {
 
-	Var	index;
+//	Var	index;
 
 	public ConstraintRequire(Activity activity,
 			Resource resource, int capacity) {
@@ -77,8 +77,12 @@ public class ConstraintRequire extends AbstractConstraintActivityResource {
 							requiredCapacity = activityWithin.multiply(requireConstraint.getCapacity());
 						}
 						//p.log(""+activity + " activityWithin="+activityWithin);
-						requiredCapacity.setName(activity.getName()+time);
+						requiredCapacity.setName(schedule.resourceUsageByActivityName(resource, activity)+" at "+time);
+						schedule.getScheduleVars().add(requiredCapacity);
 						vars.addElement(requiredCapacity);
+						if (time == startVar.getMin()) {
+						    setAssignmentVar(requiredCapacity);
+						}
 					}
 				}
 			} // end of loop by resource's Activity Constraints
@@ -93,17 +97,6 @@ public class ConstraintRequire extends AbstractConstraintActivityResource {
 			}
 		} // end of i loop
 		
-//		if (resource.getType().equals(ResourceType.CONSUMABLE)) {
-//		    Activity consumeActivity = schedule.activity(consumePrefix+activity.getName());
-//		    Var startVar = activity.getStart();
-//		    int last = resource.getTimeMax()-2;
-//		    Constraint c1 = schedule.linear(startVar,"<",last);
-//		    Constraint c21 = schedule.linear(consumeActivity.getStart(),"=",startVar.plus(1));
-//		    Constraint c22 = schedule.linear(consumeActivity.getEnd(),"=",last);
-//		    Constraint c23 = consumeActivity.requires(resource,capacity); // cannot use "requires" again
-//		    Constraint c2 = c21.and(c22).and(c23);
-//		    schedule.postIfThen(c1, c2);
-//		}
 	}
 	
 	void postTimeCapacityConstraint(Resource resource, int time, VectorVar vars) {

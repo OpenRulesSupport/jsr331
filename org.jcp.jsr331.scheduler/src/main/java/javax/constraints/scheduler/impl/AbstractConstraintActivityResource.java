@@ -28,6 +28,7 @@ abstract public class AbstractConstraintActivityResource extends AbstractConstra
 	Var 		capacityVar;
 	String 		failureReason;
 	String 		type;
+	Var         assignmentVar;
 
 	public AbstractConstraintActivityResource(Activity activity,
 			                   Resource resource,
@@ -47,6 +48,7 @@ abstract public class AbstractConstraintActivityResource extends AbstractConstra
 		this.capacity = -1; // to differentiate from another constructor
 		this.activity = activity;
 		this.resource = resource;
+		this.assignmentVar = null;
 	}
 
 	public Activity getActivity() {
@@ -81,4 +83,10 @@ abstract public class AbstractConstraintActivityResource extends AbstractConstra
 		this.type = type;
 	}
 
+	public Var getAssignmentVar() {
+	    return assignmentVar;
+	};
+    public void setAssignmentVar(Var assignmentVar) {
+        this.assignmentVar = assignmentVar;
+    }
 }

@@ -5,7 +5,7 @@ import javax.constraints.scheduler.*;
 
 public class ScheduleAlternativeResources {
 	
-	Schedule s = ScheduleFactory.newSchedule("ScheduleAlternativeResources",0,40);
+	Schedule s = ScheduleFactory.newSchedule("ScheduleAlternativeResources",0,30);
 
 	Activity[] activities;
 	ResourceDisjunctive[] resources;

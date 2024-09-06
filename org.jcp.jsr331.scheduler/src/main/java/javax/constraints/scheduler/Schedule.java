@@ -314,7 +314,7 @@ public interface Schedule extends Problem {
 	 * @return an array of constrained variables that represent capacities of all constraints
 	 * in which this resource participates
 	 */
-	public Var[] getConstraintCapacites(Resource resource);
+	public Var[] getConstraintUsage(Resource resource);
 	
 	/**
      * 
@@ -328,5 +328,26 @@ public interface Schedule extends Problem {
      * @return an array of constrained variables that represent occupancies of all resources
      */
 	public Var[] getResourceOccupancies();
+	
+	/**
+	 * @param varName the name of a new variable 
+	 * @param resourceNames names of selected resourses
+	 * @param costs their costs
+	 * @return a constrained integer variable that represents the total cost of all assigned resources 
+	 */
+	public Var addTotalResourceCostVar(String varName, String[] resourceNames, int[] costs);
+	
+	/**
+	 * Logs all resources assigned to all activities in the solution
+	 * @param solution
+	 */
+	public void logResourceActivityAssignments(Solution solution);
+	
+	
+	/**
+     * Logs all resources assigned to all activities in the solution
+     * @param solution
+     */
+	public void logSolution(Solution solution);
 
 }

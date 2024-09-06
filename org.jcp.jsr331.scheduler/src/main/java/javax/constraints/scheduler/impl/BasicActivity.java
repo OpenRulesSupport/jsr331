@@ -47,13 +47,13 @@ public class BasicActivity extends SchedulingObject implements Activity {
 	private Vector<ConstraintActivityResource> resourceConstraints;
 	
 	String startName() {
-		return name+".start";
+		return name.trim()+".start";
 	}
 	String endName() {
-		return name+".end";
+		return name.trim()+".end";
 	}
 	String durationName() {
-		return name+".duration";
+		return name.trim()+".duration";
 	}
 
 	public BasicActivity(ScheduleImpl problem, String name, int from, int to) {
@@ -228,7 +228,7 @@ public class BasicActivity extends SchedulingObject implements Activity {
 		Var[] capacityVars = new Var[resources.length];
 		for (int i = 0; i < capacityVars.length; i++) {
 			capacityVars[i] = schedule.variable(
-					getName() + " requires " + resources[i].getName(), 0, 1);
+					getName().trim() + " requires " + resources[i].getName().trim(), 0, 1);
 			requires(resources[i], capacityVars[i]);
 		}
 		Var sum = schedule.sum(capacityVars);
@@ -395,11 +395,14 @@ public class BasicActivity extends SchedulingObject implements Activity {
 		}
 		buf.append(getName() + "[" + start + " -- "
 				+ getDuration() + " --> " + end + ")");
+		/*
 		Vector<ConstraintActivityResource> rc = getResourceConstraints();
 		if (rc.size() > 0) {
 			for (int i = 0; i < rc.size(); i++) {
-				ConstraintActivityResource c = (ConstraintActivityResource) rc
-						.elementAt(i);
+				ConstraintActivityResource c = 
+				        (ConstraintActivityResource) rc.elementAt(i);
+				if (!c.getActivity().getName().equals(getName())) // added on Aug 15, 2024
+				    continue; 
 				String cap = null;
 				if (c.getCapacityVar() == null) {
 					cap = "[" + c.getCapacity() + "]";
@@ -410,7 +413,7 @@ public class BasicActivity extends SchedulingObject implements Activity {
 							+ (capMin == capMax ? "" : ".." + capMax)
 							+ "]";
 				}
-				if (cap.equals("[0]"))
+				if (cap.endsWith("[0]"))
 					continue;
 				// if (i > 0)
 				// buf.append(",");
@@ -421,6 +424,7 @@ public class BasicActivity extends SchedulingObject implements Activity {
 			}
 			buf.append(" in a time");
 		}
+		*/
 		return buf.toString();
 	}
 	
