@@ -28,7 +28,7 @@ public enum Probability {
 	    
 	    public static Probability get(String id) {
 	    	if (id == null)
-	    		return NEVER;
+	    		return ALWAYS;
 	    	String pattern = id.replaceAll("[\\s+_]","");
 	    	if (pattern.equalsIgnoreCase("VERYLOW"))
 	    		return VERY_LOW;
@@ -44,8 +44,10 @@ public enum Probability {
 	    		return HIGH;
 	    	if (pattern.equalsIgnoreCase("VERYHIGH"))
 	    		return VERY_HIGH;
+	    	if (pattern.equalsIgnoreCase("ALWAYS"))
+                return ALWAYS;
 	    
-	    	return NEVER; 
+	    	return ALWAYS; 
 	    }
 	
 }

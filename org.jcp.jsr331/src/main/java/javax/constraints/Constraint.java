@@ -105,7 +105,8 @@ public interface Constraint {
 	 * This method is used to post the constraint assuming that it can be violated. 
 	 * The parameter probability defines a probability that this constraint 
 	 * will not be violated. If it's ALWAYS this is the same as a regular constraint posting.
-	 * If it's NEVER, the posting of this constraint will fail producing a RuntimeException. 
+	 * If it's NEVER, the negation of this constraint will be posted. 
+	 * If it's ALWAYS, this constraint will be posted as a regular hard constraint. 
 	 * All other values allow the constraint to be violated with certain penalties. 
 	 * For instance, probability LOW invokes higher penalty to compare with probability HIGH, but 
 	 * a lower penalty to compare with VERY_LOW. 
