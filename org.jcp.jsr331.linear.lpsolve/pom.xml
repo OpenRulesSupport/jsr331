@@ -58,7 +58,7 @@
 		    <version>2003-11-03</version>
 		</dependency>
 	    -->
-		
+		<!--
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -83,7 +83,7 @@
 			<version>${log4j.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+		-->
 	</dependencies>
 
 </project>

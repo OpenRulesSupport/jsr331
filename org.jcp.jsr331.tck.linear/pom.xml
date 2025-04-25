@@ -99,6 +99,16 @@
 			</dependencies>
 		</profile>
 		<profile>
+			<id>SSC</id>
+			<dependencies>
+				<dependency>
+					<groupId>com.javasolver</groupId>
+					<artifactId>jsr331-ssc</artifactId>
+					<version>${jsr331.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
 			<id>lpsolve</id>
 			<dependencies>
 				<dependency>

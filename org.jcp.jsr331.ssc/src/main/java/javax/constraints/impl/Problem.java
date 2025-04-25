@@ -11,7 +11,6 @@ import javax.constraints.Solver;
 import javax.constraints.Var;
 import javax.constraints.VarBool;
 import javax.constraints.VarReal;
-import javax.constraints.linear.LinearSolver;
 import javax.constraints.linear.LinearSolverFactory;
 import javax.constraints.linear.NonLinearProblemException;
 

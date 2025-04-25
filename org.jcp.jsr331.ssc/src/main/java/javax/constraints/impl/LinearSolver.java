@@ -1,4 +1,4 @@
-package javax.constraints.linear;
+package javax.constraints.impl;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,6 +13,8 @@ import javax.constraints.Var;
 import javax.constraints.VarReal;
 import javax.constraints.impl.AbstractConstrainedVariable;
 import javax.constraints.impl.search.Solver;
+import javax.constraints.linear.MpsGenerator;
+import javax.constraints.linear.StreamGobbler;
 
 abstract public class LinearSolver extends Solver {
 	

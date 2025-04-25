@@ -4,6 +4,7 @@ rem set SOLVER=Scip
 set SOLVER=GLPK
 rem set SOLVER=Coin
 rem set SOLVER=lpsolve
+rem set SOLVER=SSC
 
 @echo off
 cd %~dp0

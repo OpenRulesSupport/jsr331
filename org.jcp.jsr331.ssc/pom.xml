@@ -51,6 +51,19 @@
 		<dependency>
 			<groupId>com.javasolver</groupId>
 			<artifactId>jsr331</artifactId>
+			<version>${jsr331.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.javasolver</groupId>
+			<artifactId>jsr331-linear</artifactId>
+			<version>${jsr331.version}</version>
+		</dependency>
+	</dependencies>
+	<!--
+	<dependencies>
+		<dependency>
+			<groupId>com.javasolver</groupId>
+			<artifactId>jsr331</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
@@ -80,5 +93,5 @@
 		</dependency>
 		
 	</dependencies>
-
+	-->
 </project>
