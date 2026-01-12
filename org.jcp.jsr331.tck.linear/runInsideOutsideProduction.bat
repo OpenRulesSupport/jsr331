@@ -1,7 +1,8 @@
 set CLASS_NAME=org.jcp.jsr331.linear.samples.InsideOutsideProduction
 
 rem set SOLVER=Scip
-set SOLVER=GLPK
+rem set SOLVER=GLPK
+set SOLVER=CLP
 rem set SOLVER=Coin
 rem set SOLVER=lpsolve
 rem set SOLVER=SSC

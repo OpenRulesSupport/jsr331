@@ -86,6 +86,11 @@
 					<artifactId>jsr331-clp</artifactId>
 					<version>${jsr331.version}</version>
 				</dependency>
+				<dependency>
+					  <groupId>com.quantego</groupId>
+					  <artifactId>clp-java</artifactId>
+					  <version>1.16.15</version>
+				</dependency>
 			</dependencies>
 		</profile>
 		<profile>
