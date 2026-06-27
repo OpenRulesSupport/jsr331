@@ -62,7 +62,7 @@ public class Dichotomize {
 		this.timeLimit = solver.getTimeLimit();
 		if (timeLimit <= 0) {
 		    p.log("Use default time limit per solution: 120 seconds");
-		    solver.setTimeLimit(120);
+		    solver.setTimeLimit(120*1000);
 		}
 		this.timeLimitGlobal = solver.getTimeLimitGlobal();
 		startTime = System.currentTimeMillis();
@@ -90,7 +90,7 @@ public class Dichotomize {
             p.log("The search is interrupted by Time Limit Global " + timeLimitGlobal + " milliseconds");
             return solution; // THE END !!!
         }
-		p.log("Dichotomize with objective " + objective + " within [" + objectiveMin + ";" + objectiveMax + "]");
+		p.log("Dichotomize within [" + objectiveMin + ";" + objectiveMax + "]");
 		numberOfTries++;
 
 		// dichotomized search
@@ -114,6 +114,11 @@ public class Dichotomize {
 	            numberOfSolutions++;
 	            solution = newSolution;
 	            solution.setSolutionNumber(numberOfSolutions);
+	            
+	            // Dec-2025: saving intermediate solutions -decided not to do it
+	            //p.log("Save solution #" + numberOfSolutions);
+	            //solver.addSolution(solution); 
+	            
 	            //TODO fix this for VarReal objectives..
 	            int objectiveValue = solution.getValue(objective.getName());
 	            if (solver.isTraceSolutions())
