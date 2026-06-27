@@ -12,7 +12,7 @@ public class Test2 {
 		Var y = p.variable("Y", 0, 10);
 		Var z = p.variable("Z", 0, 10);
 		Var cost = x.multiply(3).multiply(y).minus(z.multiply(4)); // Cost = 3XY - 4Z
-		p.add("cost",cost);
+		p.add("Cost",cost);
 		
 		//======= Define constraints
 		p.post(x,"<",y); 			// X < Y
