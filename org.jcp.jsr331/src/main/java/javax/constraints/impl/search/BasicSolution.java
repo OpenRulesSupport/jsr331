@@ -35,6 +35,7 @@ public class BasicSolution implements Solution {
 	int 			solutionNumber;
 	Var[]		 	vars; 
 	ResultInt[] 	intResults;
+	VarReal[]		varReals;
 	ResultReal[] 	realResults;
 	ResultSet[] 	setResults;
 	
@@ -59,6 +60,15 @@ public class BasicSolution implements Solution {
 			vars[i] = var;
 			intResults[i] = createResult(var);
 		}
+		Problem p = solver.getProblem();
+		varReals = p.getVarReals();
+		if (varReals != null && varReals.length > 0 ) {
+			realResults = new ResultReal[varReals.length];
+			for (int i = 0; i < varReals.length; i++) {
+				VarReal varReal = varReals[i];
+				realResults[i] = createResultReal(varReal);
+			}
+		}
 		
 		// TODO: add loops for realResults and setResults
 	}
@@ -75,28 +85,28 @@ public class BasicSolution implements Solution {
 		return vars;
 	}
 
-//	public VarReal[] getVarReals()
-//	{
-//		return varReals;
-//	}
+	public VarReal[] getVarReals()
+	{
+		return varReals;
+	}
 
-//	public VarReal getVarReal(String name) {
-//		for(int i=0; i < varReals.length; i++) {
-//			VarReal varR = varReals[i];
-//			if (name.equals(varR.getName()))
-//				return varR;
-//		}
-//		return null;
-//	}
+	public VarReal getVarReal(String name) {
+		for(int i=0; i < varReals.length; i++) {
+			VarReal varR = varReals[i];
+			if (name.equals(varR.getName()))
+				return varR;
+		}
+		return null;
+	}
 
-//	public Var getVar(String name) {
-//		for(int i=0; i < vars.length; i++) {
-//			Var var = vars[i];
-//			if (name.equals(var.getName()))
-//				return var;
-//		}
-//		return null;
-//	}
+	public Var getVar(String name) {
+		for(int i=0; i < vars.length; i++) {
+			Var var = vars[i];
+			if (name.equals(var.getName()))
+				return var;
+		}
+		return null;
+	}
 
 //	public VarSet getVarSet(String name)
 //	{
@@ -349,6 +359,23 @@ public class BasicSolution implements Solution {
 	
 	ResultInt createResult(Var var) {
 		ResultInt result = new ResultInt();
+		result.varName = var.getName();
+		if (var.isBound()) {
+			result.value = var.getValue();
+			result.min = result.value;
+			result.max = result.value;
+			result.bound = true;
+		}
+		else {
+			result.min = var.getMin();
+			result.max = var.getMax();
+			result.bound = false;
+		}
+		return result;
+	}
+	
+	ResultReal createResultReal(VarReal var) {
+		ResultReal result = new ResultReal();
 		result.varName = var.getName();
 		if (var.isBound()) {
 			result.value = var.getValue();
