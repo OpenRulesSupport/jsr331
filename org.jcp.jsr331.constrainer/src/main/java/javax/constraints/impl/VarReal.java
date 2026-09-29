@@ -112,6 +112,36 @@ public class VarReal extends AbstractVarReal implements javax.constraints.VarRea
 		FloatExp myVar = (FloatExp) getImpl();
 		return new VarReal(getProblem(),myVar.add((FloatExp)var.getImpl()));
 	}
+	
+	/**
+	 * @return this + varReal
+	 */
+	public VarReal plus(javax.constraints.VarReal var) {
+		FloatExp myVar = (FloatExp) getImpl();
+		return new VarReal(getProblem(),myVar.add((FloatExp)var.getImpl()));
+	}
+	
+	/**
+	 * @return this + value
+	 */
+	public VarReal minus(double value) {
+		return plus(-value);
+	}
+
+	/**
+	 * @return this + var
+	 */
+	public VarReal minus(javax.constraints.Var var) {
+		return plus(var.multiply(-1));
+	}
+	
+	/**
+	 * @return this + varReal
+	 */
+	public VarReal minus(javax.constraints.VarReal var) {
+		return plus(var.multiply(-1));
+	}
+
 
 	/**
 	 * @return this * value
@@ -124,7 +154,17 @@ public class VarReal extends AbstractVarReal implements javax.constraints.VarRea
 	/**
 	 * @return this * var
 	 */
+	@Override
 	public VarReal multiply(javax.constraints.Var var) {
+		FloatExp myVar = (FloatExp) getImpl();
+		return new VarReal(getProblem(),myVar.mul((FloatExp)var.getImpl()));
+	}
+	
+	/**
+	 * @return this * var
+	 */
+	@Override
+	public VarReal multiply(javax.constraints.VarReal var) {
 		FloatExp myVar = (FloatExp) getImpl();
 		return new VarReal(getProblem(),myVar.mul((FloatExp)var.getImpl()));
 	}

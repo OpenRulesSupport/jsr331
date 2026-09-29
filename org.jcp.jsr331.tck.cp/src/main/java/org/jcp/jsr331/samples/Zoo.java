@@ -33,6 +33,7 @@ public class Zoo {
 		Var[] vars = new Var[] { numberOf30Buses, numberOf40Buses };
 		Var totalNumberOfSeats = csp.scalProd("Total number of seats", seats, vars);
 		csp.post(totalNumberOfSeats, ">=", 300);
+		csp.log(totalNumberOfSeats.toString());
 		int[] costs = new int[] { 400, 500 };
 		Var totalCost = csp.scalProd("Total cost", costs, vars);
 		csp.add(totalCost);

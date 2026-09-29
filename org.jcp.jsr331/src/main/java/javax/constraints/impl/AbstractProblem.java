@@ -1126,8 +1126,8 @@ abstract public class AbstractProblem implements Problem {
 	 */
 	@Deprecated
 	public Constraint post(double[] array, VarReal[] vars, String oper, VarReal var) {
-		error("Problem's method post(double[] array, VarReal[] vars, String oper, VarReal var) is not implemented");
-		return null;
+		VarReal scalProd = scalProd(array, vars);
+		return post(scalProd, oper, var);
 	}
 	
 	/**
@@ -1137,8 +1137,8 @@ abstract public class AbstractProblem implements Problem {
 	 */
 	@Deprecated
 	public Constraint post(double[] array, VarReal[] vars, String oper, double value) {
-		error("Problem's method post(double[] array, VarReal[] vars, String oper, double value) is not implemented");
-		return null;
+		VarReal scalProd = scalProd(array, vars);
+		return post(scalProd, oper, value);
 	}
 	
 	/**
@@ -1148,8 +1148,13 @@ abstract public class AbstractProblem implements Problem {
 	 */
 	@Deprecated
 	public Constraint post(double[] array, ConstrainedVariable[] vars, String oper, ConstrainedVariable var) {
-		error("Problem's method post(double[] array, ConstrainedVariable[] vars, String oper, VarReal var) is not implemented");
-		return null;
+		VarReal[] realVars = new VarReal[vars.length];
+		for (int i=0; i<vars.length; i++) {
+			realVars[i] = (VarReal)vars[i];			
+		}
+		VarReal scalProd = scalProd(array, realVars);
+		VarReal realVar = (VarReal)var;
+		return post(scalProd, oper, realVar);
 	}
 	
 	/**
@@ -1945,26 +1950,26 @@ abstract public class AbstractProblem implements Problem {
 //		return sumVar;
 	}
 	
-	/**
-	 * Returns a constrained real variable that is constrained to be 
-	 * the sum of the variables in the array "vars".
-	 * @param vars the array of variables from which we desire the sum.
-	 * @return a constrained integer variable that is equal to the sum of the variables in the array
-	 * 	       "var".
-	 */
-	public VarReal sum(VarReal[] vars) {
-		double min = 0;
-		double max = 0;
-		for (int i = 0; i < vars.length; i++) {
-			min += vars[i].getMin();
-			max += vars[i].getMax();
-		}
-		AbstractProblem p = (AbstractProblem) vars[0].getProblem();
-		VarReal sumVar = p.variableReal("_sum_", min, max);
-		p.remove("_sum_");
-		p.post(vars, "=", sumVar); 
-		return sumVar;
-	}
+//	/**
+//	 * Returns a constrained real variable that is constrained to be 
+//	 * the sum of the variables in the array "vars".
+//	 * @param vars the array of variables from which we desire the sum.
+//	 * @return a constrained integer variable that is equal to the sum of the variables in the array
+//	 * 	       "var".
+//	 */
+//	public VarReal sum(VarReal[] vars) {
+//		double min = 0;
+//		double max = 0;
+//		for (int i = 0; i < vars.length; i++) {
+//			min += vars[i].getMin();
+//			max += vars[i].getMax();
+//		}
+//		AbstractProblem p = (AbstractProblem) vars[0].getProblem();
+//		VarReal sumVar = p.variableReal("_sum_", min, max);
+//		p.remove("_sum_");
+//		p.post(vars, "=", sumVar); 
+//		return sumVar;
+//	}
 	
 	/**
 	 * Returns a constrained real variable that is constrained to be 
@@ -1974,6 +1979,7 @@ abstract public class AbstractProblem implements Problem {
 	 */
 	public VarReal sum(VarReal var1, VarReal var2) {
 		return sum(new VarReal[] { var1, var2 });
+		//return var1.plus(var2); - not defined for VarReal
 	}
 	
 	/**
@@ -1985,6 +1991,18 @@ abstract public class AbstractProblem implements Problem {
 	public VarReal sum(VarReal var1, VarReal var2, VarReal var3) {
 		return sum(new VarReal[] { var1, var2, var3 });
 	}
+	
+	/**
+	 * Returns a constrained real variable that is constrained to be 
+	 * the sum of the variables in the array "vars".
+	 * @param vars the array of variables from which we desire the sum.
+	 * @return a constrained real variable that is equal to the sum of the variables in the array
+	 * 	       "vars".
+	 */
+	 public VarReal sum(VarReal[] vars) {
+		 error("Problem's method sum(VarReal[]) is not implemented");
+		return null;
+	 }
 	
 //	/**
 //	 * Returns a constrained variable equal to the scalar product of an array of values "arrayOfValues"
@@ -2165,17 +2183,21 @@ abstract public class AbstractProblem implements Problem {
 		return scalProd;
 	}
 	
+	
 	/**
-	 * Returns a real constrained variable equal to the scalar product of an array of values "arrayOfValues"
-	 *         and an array of variables "arrayOfVariables".
-	 * @param arrayOfValues the array of values.
-	 * @param arrayOfVariables the array of variables.
-	 * @return a constrained variable equal to the scalar product of an array of values "arrayOfValues"
-	 *         and an array of variables "arrayOfVariables".
+	 * Returns a constrained real variable equal to the scalar product of an array of real variables "arrayOfVariables"
+	 *         and an array of real values "arrayOfValues".
+	 * @param arrayOfVariables the array of real variables.
+	 * @param arrayOfValues the array of real values.
+	 * @return a constrained real variable equal to the scalar product of an array of real variables "arrayOfVariables"
+	 *         and an array of real values "arrayOfValues".
 	 */
 	public VarReal scalProd(double[] arrayOfValues, VarReal[] arrayOfVariables) {
-		error("Problem's method scalProd(double[] arrayOfValues, VarReal[] arrayOfVariables) is not implemented");
-		return null;
+		ConstrainedVariable[] vars = new ConstrainedVariable[arrayOfVariables.length];
+		for (int i=0; i<arrayOfVariables.length; i++) {
+			vars[i] = arrayOfVariables[i];			
+		}
+		return scalProd(arrayOfValues,vars);
 	}
 	
 	public VarReal scalProd(double[] arrayOfValues, ConstrainedVariable[] arrayOfVariables) {

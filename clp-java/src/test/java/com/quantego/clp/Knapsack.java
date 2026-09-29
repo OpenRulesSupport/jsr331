@@ -78,9 +78,11 @@ public class Knapsack {
 	}
 
 	public static void main(String[] args) {
-
+		System.out.println("*** Create CSP ***");
 		Knapsack problem = new Knapsack();
+		System.out.println("*** Define CSP ***");
 		problem.define();
+		System.out.println("*** Solve CSP ***");
 		problem.solve();
 
 	}

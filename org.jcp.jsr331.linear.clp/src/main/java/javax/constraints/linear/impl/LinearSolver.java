@@ -19,7 +19,7 @@ import com.quantego.clp.CLPVariable;
 
 public class LinearSolver extends javax.constraints.linear.LinearSolver {
 
-    static public final String JSR331_LINEAR_SOLVER_VERSION = "CLP v.1.16.10 using clp-java";
+    static public final String JSR331_LINEAR_SOLVER_VERSION = "CLP v.1.16.15 using clp-java";
 
     Problem problem;
     CLP model;

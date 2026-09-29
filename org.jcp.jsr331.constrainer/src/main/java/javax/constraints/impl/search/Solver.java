@@ -32,16 +32,23 @@ import javax.constraints.impl.search.goal.SolverWithGoals;
 
 import com.exigen.ie.constrainer.Constrainer;
 import com.exigen.ie.constrainer.FloatExp;
+import com.exigen.ie.constrainer.FloatExpArray;
 import com.exigen.ie.constrainer.GoalAnd;
 import com.exigen.ie.constrainer.GoalFastMinimize;
 import com.exigen.ie.constrainer.GoalFloatFastMinimize;
+import com.exigen.ie.constrainer.GoalFloatGenerate;
+import com.exigen.ie.constrainer.GoalGenerate;
+import com.exigen.ie.constrainer.GoalPrintObject;
 //import com.exigen.ie.constrainer.GoalGenerate;
 //import com.exigen.ie.constrainer.GoalPrintObject;
 //import com.exigen.ie.constrainer.GoalPrintSolutionNumber;
 import com.exigen.ie.constrainer.IntExp;
 import com.exigen.ie.constrainer.IntExpArray;
+import com.exigen.ie.constrainer.IntSetVarArray;
+import com.exigen.ie.constrainer.IntVar;
 //import com.exigen.ie.constrainer.IntVarSelectorMaxSize;
 import com.exigen.ie.constrainer.TimeLimitException;
+import com.exigen.ie.tools.FastVector;
 
 public class Solver extends SolverWithGoals {
 	
@@ -338,6 +345,73 @@ public class Solver extends SolverWithGoals {
 		addObjective(objectiveVar);
 		javax.constraints.impl.Problem p = (javax.constraints.impl.Problem)getProblem();
 		Constrainer constrainer = p.getConstrainer();
+	
+		com.exigen.ie.constrainer.Goal goalGenerateInt = null;
+		IntExpArray intArray = new IntExpArray(constrainer,constrainer.integers()); 
+		if (intArray.size() > 0) {
+			goalGenerateInt = new GoalGenerate(intArray);
+		}
+		
+		com.exigen.ie.constrainer.Goal goalGenerateFloat = null;
+		FloatExpArray floatArray = new FloatExpArray(constrainer,constrainer.floats()); 
+		if (floatArray.size() > 0) {
+			goalGenerateFloat = new GoalFloatGenerate(floatArray);
+		}
+		
+		com.exigen.ie.constrainer.Goal solutionGoal;
+		if (goalGenerateInt != null) {
+		    solutionGoal = new GoalAnd(goalGenerateInt,goalGenerateFloat);
+		}
+	    else {
+	    	solutionGoal = goalGenerateFloat;
+	    }
+		
+		//clearSolutions();
+		com.exigen.ie.constrainer.Goal saveGoal = new GoalSaveSolution(this);
+		com.exigen.ie.constrainer.Goal totalGoal = new GoalAnd(solutionGoal,saveGoal);
+		
+		FloatExp cObj = (FloatExp)objectiveVar.getImpl();
+		if ( objective.equals(Objective.MAXIMIZE) ) {
+			cObj = cObj.mul(-1);
+		}
+
+		double costStep = 0.1;
+		GoalFloatFastMinimize optimizationGoal = 
+				new GoalFloatFastMinimize(totalGoal, cObj, costStep);
+		optimizationGoal.savesSolutionFlag(true);
+		optimizationGoal.traceFlag(true);
+		
+		Solution solution = null;
+		log("Solution search...");
+		try {
+			if (constrainer.execute(optimizationGoal)) {
+				solution = new BasicSolution(this,1);
+				//solution.setSolutionNumber(optimizationGoal.numberOfSolutions());
+				//solution = this.getSolution();
+				log("Solution found: " + solution);
+			}
+			else {
+				log("No Solutions");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception TimeLimitException
+			if (e instanceof TimeLimitException) {
+				log("TimeLimitException");
+				solution = this.getSolution();
+//				if (optimizationGoal.numberOfSolutions() > 0) {
+//					solution = new BasicSolution(this,1);
+//					solution.setSolutionNumber(optimizationGoal.numberOfSolutions());
+//				}
+			}
+		}
+		return solution;
+	}
+	
+/*
+	 * 	public Solution findOptimalSolution(Objective objective, VarReal objectiveVar) {
+		addObjective(objectiveVar);
+		javax.constraints.impl.Problem p = (javax.constraints.impl.Problem)getProblem();
+		Constrainer constrainer = p.getConstrainer();
 		
 		SearchStrategy searchStrategy = getSearchStrategy();
 		if (isTraceSolutions()) {
@@ -389,6 +463,7 @@ public class Solver extends SolverWithGoals {
 		}
 		return solution;
 	}
+*/
 	
 	public IntExpArray createConstrainerVars(Var[] vars) {
 		javax.constraints.impl.Problem p = (javax.constraints.impl.Problem)getProblem();

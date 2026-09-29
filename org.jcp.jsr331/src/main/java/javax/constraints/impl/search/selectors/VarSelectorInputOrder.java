@@ -15,6 +15,7 @@ package javax.constraints.impl.search.selectors;
 
 import javax.constraints.SearchStrategy;
 import javax.constraints.Var;
+import javax.constraints.VarReal;
 import javax.constraints.VarSelectorType;
 
 public class VarSelectorInputOrder extends AbstractVarSelector {
@@ -35,11 +36,23 @@ public class VarSelectorInputOrder extends AbstractVarSelector {
 	 * variables in order of definition. If no variables to select, it returns -1;
 	 */
 	public int select() {
-
-		for(int i=0; i < getVars().length; i++) {
-			Var var = getVars()[i];
-			if (!var.isBound())
-				return i;
+		
+		Var[] vars = getVars();
+		if (vars != null ) {
+			for(int i=0; i < vars.length; i++) {
+				Var var = vars[i];
+				if (!var.isBound())
+					return i;
+			}
+		}
+		
+		VarReal[] varReals = getVarReals();
+		if (varReals != null ) {
+			for(int i=0; i < varReals.length; i++) {
+				VarReal var = varReals[i];
+				if (!var.isBound())
+					return i;
+			}
 		}
 		return -1;
 	}

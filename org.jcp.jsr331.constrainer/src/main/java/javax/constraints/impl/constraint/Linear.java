@@ -14,10 +14,12 @@ package javax.constraints.impl.constraint;
 
 
 import javax.constraints.Var;
+import javax.constraints.VarReal;
 import javax.constraints.impl.Constraint;
 import javax.constraints.impl.Problem;
 
 import com.exigen.ie.constrainer.Constrainer;
+import com.exigen.ie.constrainer.FloatExp;
 import com.exigen.ie.constrainer.IntExp;
 import com.exigen.ie.constrainer.IntExpArray;
 
@@ -90,5 +92,20 @@ public class Linear extends Constraint {
 		}
 		IntExp sum = constrainer.sum(intvars);
 		problem.defineConstraintImpl(this, sum, oper, var);
+	}
+	
+	public Linear(VarReal var, String oper, double value) {
+		super(var.getProblem(), var.getName()+" "+oper+" "+value);
+		FloatExp cVar = (FloatExp) var.getImpl();
+		Problem problem = (Problem) var.getProblem();
+		problem.defineConstraintImpl(this, cVar, oper, value);
+	}
+	
+	public Linear(VarReal var1, String oper, VarReal var2) {
+		super(var1.getProblem(), var1.getName()+" "+oper+" "+var2.getName());
+		FloatExp cVar1 = (FloatExp) var1.getImpl();
+		FloatExp cVar2 = (FloatExp) var2.getImpl();
+		Problem problem = (Problem) var1.getProblem();
+		problem.defineConstraintImpl(this, cVar1, oper, cVar2);
 	}
 }

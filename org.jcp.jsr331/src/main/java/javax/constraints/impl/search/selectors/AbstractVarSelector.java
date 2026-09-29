@@ -2,6 +2,7 @@ package javax.constraints.impl.search.selectors;
 
 import javax.constraints.SearchStrategy;
 import javax.constraints.Var;
+import javax.constraints.VarReal;
 import javax.constraints.VarSelector;
 
 /**
@@ -30,6 +31,10 @@ abstract public class AbstractVarSelector implements VarSelector {
 
 	final public Var[] getVars() {
 		return strategy.getVars();
+	}
+	
+	final public VarReal[] getVarReals() {
+		return strategy.getVarReals();
 	}
 
 	/**

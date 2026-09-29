@@ -45,20 +45,27 @@ public class BasicSolution implements Solution {
 		
 		Vector<SearchStrategy> searchStrategies = 
 			((AbstractSolver)solver).getSearchStrategies();
+		
 		Vector<Var> allvars = new Vector<Var>();
-		for (SearchStrategy strategy : searchStrategies) {
-			Var[] strategyVars = strategy.getVars();
-			for (Var var : strategyVars) {
-				if (!allvars.contains(var))
-					allvars.add(var);
+		if (searchStrategies != null && searchStrategies.size()>0) {
+			for (SearchStrategy strategy : searchStrategies) {
+				Var[] strategyVars = strategy.getVars();
+				if (strategyVars != null) {
+					for (Var var : strategyVars) {
+						if (!allvars.contains(var))
+							allvars.add(var);
+					}
+				}
 			}
 		}
-		vars = new Var[allvars.size()];
-		intResults = new ResultInt[vars.length];
-		for (int i = 0; i < vars.length; i++) {
-			Var var = allvars.get(i);
-			vars[i] = var;
-			intResults[i] = createResult(var);
+		if (allvars.size() > 0) {
+			vars = new Var[allvars.size()];
+			intResults = new ResultInt[vars.length];
+			for (int i = 0; i < vars.length; i++) {
+				Var var = allvars.get(i);
+				vars[i] = var;
+				intResults[i] = createResult(var);
+			}
 		}
 		Problem p = solver.getProblem();
 		varReals = p.getVarReals();

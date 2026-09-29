@@ -160,6 +160,20 @@ public class Problem extends AbstractProblem {
 	}
 	
 	/**
+	 * Creates a VarReal with the name "name" and domain [min;max] of the default domain type, 
+	 * and returns the newly added VarReal
+	 *
+	 * @param name the name for the new VarReal.
+	 * @param min the minimum value in the domain for the new VarReal.
+	 * @param max the maximum value in the domain for the new VarReal.
+	 * @return the VarReal variable created and added to the problem.
+	 */
+	public VarReal createVariableReal(String name, double min, double max) {
+		javax.constraints.VarReal var = new javax.constraints.impl.VarReal(this, name, min, max);
+		return var;
+	}
+	
+	/**
 	 * Creates a boolean constrained variable with the name "name" and adds
 	 * this variable to the problem, and returns the newly added VarBool.
 	 * @param name the name for the new Var.
@@ -227,6 +241,37 @@ public class Problem extends AbstractProblem {
 	
 	public Constraint linear(Var var1, String oper, Var var2) {
 		return add(new Linear(var1, oper, var2));
+	}
+	
+	/**
+	 * Creates and posts a constraint: var "oper" value
+	 * @throws RuntimeException if the posting fails
+	 * @return a newly created constraint
+	 */
+	public Constraint post(VarReal var, String oper, int value) {
+		return add(new Linear(var, oper, value));
+	}
+	
+	/**
+	 * Creates and posts a constraint: var "oper" value
+	 * @throws RuntimeException if the posting fails
+	 * @return a newly created constraint
+	 */
+	public Constraint post(VarReal var, String oper, double value) {
+		Constraint c = add(new Linear(var, oper, value));
+		c.post();
+		return c;
+	}
+	
+	/**
+	 * Creates and posts a constraint: var "oper" value
+	 * @throws RuntimeException if the posting fails
+	 * @return a newly created constraint
+	 */
+	public Constraint post(VarReal var1, String oper, VarReal var2) {
+		Constraint c = add(new Linear(var1, oper, var2));
+		c.post();
+		return c;
 	}
 
 //	public Constraint post(int[] array, Var[] vars, String oper, int value) {
@@ -407,6 +452,25 @@ public class Problem extends AbstractProblem {
 			IntExp sum = constrainer.sum(intvars);
 			return new javax.constraints.impl.Var(this,sum); 
 	}
+	
+	/**
+	 * Returns a constrained real variable that is constrained to be 
+	 * the sum of the variables in the array "vars".
+	 * @param vars the array of variables from which we desire the sum.
+	 * @return a constrained real variable that is equal to the sum of the variables in the array
+	 * 	       "vars".
+	 */
+	public VarReal sum(VarReal[] vars) {
+		Problem problem = (Problem) vars[0].getProblem();
+		Constrainer constrainer = problem.getConstrainer();
+		FloatExpArray floatvars = new FloatExpArray(constrainer, vars.length);
+		for (int i = 0; i < vars.length; i++) {
+			FloatExp cvar = (FloatExp) vars[i].getImpl();
+			floatvars.set(cvar, i);
+		}
+		FloatExp sum = floatvars.sum();
+		return new javax.constraints.impl.VarReal(this,sum); 
+	}
 
 //	/**
 //	 * Returns a constrained real variable that is equal to the sum of the real
@@ -481,19 +545,6 @@ public class Problem extends AbstractProblem {
 		return new javax.constraints.impl.VarReal(this,scalProd);
 	}
 	
-//	/**
-//	 * Returns a constrained real variable equal to the scalar product of an array of real variables "arrayOfVariables"
-//	 *         and an array of real values "arrayOfValues".
-//	 * @param arrayOfVariables the array of real variables.
-//	 * @param arrayOfValues the array of real values.
-//	 * @return a constrained real variable equal to the scalar product of an array of real variables "arrayOfVariables"
-//	 *         and an array of real values "arrayOfValues".
-//	 */
-//	public VarReal scalProd(double[] arrayOfValues, VarReal[] arrayOfVariables) {
-//		// TODO
-//		return null;
-//	}
-
 
 //	/**
 //	 * Returns an "AND" Constraint. The Constraint "AND" is satisfied if both
@@ -755,6 +806,64 @@ public class Problem extends AbstractProblem {
 			break;
 		case LE:
 			exp = constrainerVar.le(value);
+			break;
+		default:
+			throw new RuntimeException("Invalid Oper " + oper + 
+					" in the constraint "+ constraint.getName());
+		}
+		constraint.setImpl(constrainerVar.constrainer().addConstraint(exp));
+	}
+	
+	public void defineConstraintImpl(Constraint constraint, FloatExp constrainerVar, String oper, double value) { 
+		IntBoolExp exp;
+		Oper op = stringToOper(oper);
+		switch (op) {
+		case EQ:
+			exp = constrainerVar.eq(value);
+			break;
+		case NEQ:
+			exp = constrainerVar.ne(value);
+			break;
+		case GT:
+			exp = constrainerVar.gt(value);
+			break;
+		case GE:
+			exp = constrainerVar.ge(value);
+			break;
+		case LT:
+			exp = constrainerVar.lt(value);
+			break;
+		case LE:
+			exp = constrainerVar.le(value);
+			break;
+		default:
+			throw new RuntimeException("Invalid Oper " + oper + 
+					" in the constraint "+ constraint.getName());
+		}
+		constraint.setImpl(constrainerVar.constrainer().addConstraint(exp));
+	}
+	
+	public void defineConstraintImpl(Constraint constraint, FloatExp constrainerVar, String oper, FloatExp var) { 
+		IntBoolExp exp;
+		Oper op = stringToOper(oper);
+		switch (op) {
+		case EQ:
+			exp = constrainerVar.eq(var);
+			break;
+		case NEQ:
+			exp = constrainerVar.ne(var);
+			break;
+		case GT:
+			exp = constrainerVar.gt(var);
+			break;
+		case GE:
+			exp = constrainerVar.ge(var);
+			break;
+		case LT:
+			exp = constrainerVar.lt(var);
+			break;
+		case LE:
+			exp = constrainerVar.le(var);
 			break;
 		default:
 			throw new RuntimeException("Invalid Oper " + oper + 
