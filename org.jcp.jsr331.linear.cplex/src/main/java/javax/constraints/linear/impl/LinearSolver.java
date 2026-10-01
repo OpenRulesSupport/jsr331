@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.nio.file.Paths;
 import java.util.HashMap;
 
 import javax.constraints.Objective;
@@ -59,7 +60,7 @@ public class LinearSolver extends javax.constraints.linear.LinearSolver {
 		
 		return name;
 	}
-
+	
 	public String getCommanLine() {
 		String exe = System.getProperty(LP_SOLVER_EXE);
 		if (exe == null) {
@@ -69,7 +70,7 @@ public class LinearSolver extends javax.constraints.linear.LinearSolver {
 		if (options == null) {
 			options = "-maximize -dualsimplex";
 		}
-		String name = getProblem().getName();
+		//String name = getProblem().getName();
 		return exe;
 	}
 

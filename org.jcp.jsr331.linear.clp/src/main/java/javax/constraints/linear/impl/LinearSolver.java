@@ -105,7 +105,7 @@ public class LinearSolver extends javax.constraints.linear.LinearSolver {
             else if ("!=".equals(oper))
                 type = CLPConstraint.TYPE.NEQ;
             else {
-                throw new RuntimeException("Uknown linear operator: " + oper);
+                throw new RuntimeException("CLP: Unknown linear operator: " + oper);
             }
 
             model.addConstraint(lhs, type, rhs);

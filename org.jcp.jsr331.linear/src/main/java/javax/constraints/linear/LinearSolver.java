@@ -3,9 +3,7 @@ package javax.constraints.linear;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -27,6 +25,7 @@ abstract public class LinearSolver extends Solver {
 	
 	public LinearSolver() {  
 		super();
+		cleanUp();
 	}
 	
 	public Solution findOptimalSolution(Objective objectiveDirection, Var objectiveVar) {
@@ -124,6 +123,17 @@ abstract public class LinearSolver extends Solver {
 		return null;
 	}
 	
+	
+	protected void cleanUp() {
+		String directory = "./"+OUTPUT_FOLDER;
+		try {
+			System.out.println("Delete directory " + directory);
+			DeleteDirectory.delete(Paths.get(directory));			
+		} catch (Exception e) {
+			System.out.println("Cannot delete directory " + directory);
+		}
+	}
+	
 	public Solution solve(File file) {
 		return solve(file,-1); // no timeout
 	}
@@ -146,8 +156,9 @@ abstract public class LinearSolver extends Solver {
 			// Process proc = rt.exec(command);
 			// //int exitVal = proc.waitFor();
 			// //log("Process exit value: " + exitVal);
-			if (result == false)
+			if (result == false) {
 				return null;
+			}
 		} catch (Throwable t) {
 			log("Cannot execute command: " + command);
 			t.printStackTrace();
@@ -223,8 +234,9 @@ abstract public class LinearSolver extends Solver {
 			Solution solution = new javax.constraints.impl.search.Solution(this, 1);
 			return solution;
 		} 
-		else
+		else {
 			return null;
+		}
 	}
 	
 	public int indexOfVariable(String name) {
