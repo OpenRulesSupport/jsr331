@@ -18,7 +18,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<slf4j.version>1.7.30</slf4j.version>
-		<log4j.version>2.22.1</log4j.version>
+		<log4j.version>2.25.5</log4j.version>
 		<jsr331.version>${project.version}</jsr331.version>
 	    <doclint>none</doclint>
 	    <!--<failBuildOnCVSS>7.6</failBuildOnCVSS>-->
