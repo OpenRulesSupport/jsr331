@@ -1,13 +1,15 @@
 package com.quantego.clp;
 
+import com.quantego.clp.CLPConstraint.TYPE;
+import jnr.ffi.Memory;
+import jnr.ffi.Pointer;
+import jnr.ffi.Runtime;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
-
-import org.bridj.Pointer;
-
-import com.quantego.clp.CLPConstraint.TYPE;
-import com.quantego.clp.CLPNative.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>Java interface for the CLP linear solver. The implementation provides a light-weight wrapper that 
@@ -20,8 +22,7 @@ import com.quantego.clp.CLPNative.*;
  * Models with millions of constraints can be generated quickly.</p>
  * 
  * <p>To update model coefficients, the model is accessed 
- * directly in native memory via direct byte buffers that are provided by the 
- * <a href="https://github.com/nativelibs4java/BridJ">BridJ</a> native interface. 
+ * directly in native memory via direct byte buffers which enables fast resolves.
  * When the model gets gc'ed, native memory will be released automatically.</p>
  * 
  * <p> For debugging a model, use {@link CLP#verbose(int)} to set the internal log level of CLP which will show some solution information
@@ -32,20 +33,19 @@ import com.quantego.clp.CLPNative.*;
  */
 public class CLP {
 	
-	static {
-		NativeLoader.load();
-	}
+	static CLPNative NATIVE = NativeLoader.load();
+	static Runtime RUNTIME = Runtime.getSystemRuntime();
 	
-	Pointer<CLPSimplex> _model;
-	Pointer<CLPSolve> _solve;
-	Pointer<Double> _elements;
-	Pointer<Double> _rowLower;
-	Pointer<Double> _rowUpper;
-	Pointer<Double> _obj;
-	Pointer<Double> _colLower;
-	Pointer<Double> _colUpper;
-	Pointer<Double> _primal;
-	Pointer<Double> _dual;
+	Pointer _model;
+	Pointer _solve;
+	Pointer _elements;
+	Pointer _rowLower;
+	Pointer _rowUpper;
+	Pointer _obj;
+	Pointer _colLower;
+	Pointer _colUpper;
+	Pointer _primal;
+	Pointer _dual;
 	int[] _starts;
 	int[] _index;
 	
@@ -56,13 +56,15 @@ public class CLP {
 	int _numElements;
 	double _objValue = Double.NaN;
 	boolean _maximize;
-	
+	double _offset;
 	int _bufferSize = 100000;
 	double _smallestElement = 1.e-20;
 	int _numNativeCols;
 	int _numNativeRows;
 	ColBuffer _colBuffer = new ColBuffer();
 	RowBuffer _rowBuffer = new RowBuffer();
+	QuadraticObjective _qobj;
+	ALGORITHM _algorithm;
 	
 	/**
 	 * Create an new model instance.
@@ -70,76 +72,109 @@ public class CLP {
 	public CLP () {
 		_model = init();
 	}
-	
-	Pointer<CLPSimplex> init() {
-		Pointer<CLPSimplex> model = CLPNative.clpNewModel();
-		CLPNative.clpSetLogLevel(model,0);
-		CLPNative.clpSetSmallElementValue(model, 0.);
-		CLPNative.clpScaling(model, 0);
+
+	public static CLP createFromMPS(File f) {
+		// Make BridJ Pointer to file
+		String path = f.toPath().toString()+'\0';
+		// Read MPS
+		CLP clp = new CLP();
+		NATIVE.Clp_readMps(clp._model, path, 1, 0);
+
+		// Explicitly release manually allocated memory to be on the safe side
+		// This is normally freed by finalize method from BridJ
+
+		return clp;
+	}
+
+	Pointer init() {
+		Pointer model = NATIVE.Clp_newModel();
+		NATIVE.Clp_setLogLevel(model,0);
+		NATIVE.Clp_setSmallElementValue(model, 0.);
+		NATIVE.Clp_scaling(model, 0);
 		return model;
 	}
 		
 	private void flushBuffers() {
+		NATIVE.Clp_setObjectiveOffset(_model, (_maximize?1:-1)*_offset);
 		if (_colBuffer.size()>0)
 			addCols();
+		if (_numRows == 0)
+			_rowBuffer.addDummyRow();
 		if (_rowBuffer.size()>0)
 			addRows();
+		if (_qobj != null)
+			_qobj.update(_model);	
 	}
 	
 	private void addRows() {
-		CLPNative.clpAddRows(_model, _rowBuffer.size(), 
-				Pointer.pointerToDoubles(_rowBuffer.lower()), 
-				Pointer.pointerToDoubles(_rowBuffer.upper()), 
-				Pointer.pointerToInts(_rowBuffer.starts()), 
-				Pointer.pointerToInts(_rowBuffer.columns()), 
-				Pointer.pointerToDoubles(_rowBuffer.elements()));
+		NATIVE.Clp_addRows(_model, _rowBuffer.size(),
+				arrayToPointer(_rowBuffer.lower()),
+				arrayToPointer(_rowBuffer.upper()),
+				arrayToPointer(_rowBuffer.starts()),
+				arrayToPointer(_rowBuffer.columns()),
+				arrayToPointer(_rowBuffer.elements()));
 		_numElements += _rowBuffer._elements.size();
-		_elements = CLPNative.clpGetElements(_model);
-		_rowLower = CLPNative.clpGetRowLower(_model);
+		_elements = NATIVE.Clp_getElements(_model);
+		_rowLower = NATIVE.Clp_getRowLower(_model);
 		for (int i=0; i<_rowBuffer.size(); i++) {
 			if (_rowBuffer._lower.get(i)==Double.NEGATIVE_INFINITY)
-				_rowLower.setDoubleAtIndex(i+_numNativeRows,Double.NEGATIVE_INFINITY);
+				_rowLower.putDouble((i+_numNativeRows)*Double.BYTES,Double.NEGATIVE_INFINITY);
 		}
-		_rowUpper = CLPNative.clpGetRowUpper(_model);
+		_rowUpper = NATIVE.Clp_getRowUpper(_model);
 		for (int i=0; i<_rowBuffer.size(); i++) {
 			if (_rowBuffer._upper.get(i)==Double.POSITIVE_INFINITY)
-				_rowUpper.setDoubleAtIndex(i+_numNativeRows,Double.POSITIVE_INFINITY);
+				_rowUpper.putDouble((i+_numNativeRows)*Double.BYTES,Double.POSITIVE_INFINITY);
 		}
 		_rowBuffer = new RowBuffer();
-		_dual = CLPNative.clpDualRowSolution(_model);
+		_dual = NATIVE.Clp_dualRowSolution(_model);
 		_numNativeRows = _numRows;
 		_index = null;
 		_starts = null;
 	}
 	
 	private int[] getIndex() {
-		if (_index==null)
-			_index = CLPNative.clpGetIndices(_model).getInts(_numElements);
+		if (_index==null) {
+			_index = new int[_numElements];
+			NATIVE.Clp_getIndices(_model).get(0,_index,0,_numElements);
+		}
 		return _index;
 		
 	}
 	
 	private int[] getStarts() {
-		if (_starts==null)
-			_starts = CLPNative.clpGetVectorStarts(_model).getInts(_numCols+1);
+		if (_starts==null) {
+			_starts = new int[_numCols + 1];
+			NATIVE.Clp_getVectorStarts(_model).get(0,_starts,0,_numCols + 1);
+		}
 		return _starts;
 	}
 	
 	private void addCols() {
-		CLPNative.clpResize(_model, _numNativeRows, _numCols);
-		_obj = CLPNative.clpGetObjCoefficients(_model);
-		_colLower = CLPNative.clpGetColLower(_model);
-		_colUpper = CLPNative.clpGetColUpper(_model);
+		NATIVE.Clp_resize(_model, _numNativeRows, _numCols);
+		_obj = NATIVE.Clp_getObjCoefficients(_model);
+		_colLower = NATIVE.Clp_getColLower(_model);
+		_colUpper = NATIVE.Clp_getColUpper(_model);
 		for (Integer index : _colBuffer.objectives.keySet())
-			_obj.setDoubleAtIndex(index, _colBuffer.objectives.get(index));
+			_obj.putDouble(index*Double.BYTES, _colBuffer.objectives.get(index));
 		for (Integer index : _colBuffer.lower.keySet())
-			_colLower.setDoubleAtIndex(index, _colBuffer.lower.get(index));
+			_colLower.putDouble(index*Double.BYTES, _colBuffer.lower.get(index));
 		for (Integer index : _colBuffer.upper.keySet())
-			_colUpper.setDoubleAtIndex(index, _colBuffer.upper.get(index));
+			_colUpper.putDouble(index*Double.BYTES, _colBuffer.upper.get(index));
 		_colBuffer = new ColBuffer();
 		_numNativeCols = _numCols;
-		_primal = CLPNative.clpPrimalColumnSolution(_model);
+		_primal = NATIVE.Clp_primalColumnSolution(_model);
 	} 
+	
+	private void neg() {
+		if (_colBuffer.size()>0)
+			addCols();
+		if (_rowBuffer.size()>0)
+			addRows();
+		for (int col=0; col<_numCols; col++) 
+			_obj.putDouble(col*Double.BYTES, -_obj.getDouble(col*Double.BYTES));
+		if (_qobj != null)
+			_qobj.neg();
+	}
 	
 	String getVariableName(int index) {
 		String name = _varNames.get(index);
@@ -160,7 +195,7 @@ public class CLP {
 	 * @param filename
 	 */
 	public void storeModel(String filename) {
-		CLPNative.clpSaveModel(_model, Pointer.pointerToCString(filename));
+		NATIVE.Clp_saveModel(_model, filename);
 	}
 	
 	/**
@@ -171,23 +206,23 @@ public class CLP {
 	public void restoreModel(String filename) throws IOException {
 		if (!new File(filename).canRead())
 			throw new IOException(String.format("File '%s' does not exist or cannot be read.",filename));
-		CLPNative.clpRestoreModel(_model, Pointer.pointerToCString(filename));
-		_rowLower = CLPNative.clpGetRowLower(_model);
-		_rowUpper = CLPNative.clpGetRowUpper(_model);
-		_colLower = CLPNative.clpGetColLower(_model);
-		_colUpper = CLPNative.clpGetColUpper(_model);
-		_elements = CLPNative.clpGetElements(_model);
-		_maximize = CLPNative.clpGetObjSense(_model) == -1;
+		NATIVE.Clp_restoreModel(_model, filename);
+		_rowLower = NATIVE.Clp_getRowLower(_model);
+		_rowUpper = NATIVE.Clp_getRowUpper(_model);
+		_colLower = NATIVE.Clp_getColLower(_model);
+		_colUpper = NATIVE.Clp_getColUpper(_model);
+		_elements = NATIVE.Clp_getElements(_model);
+		_maximize = NATIVE.Clp_getObjSense(_model) == -1;
 		_index = null;
 		_starts = null;
-		_dual = CLPNative.clpDualRowSolution(_model);
-		_obj = CLPNative.clpGetObjCoefficients(_model);
-		_primal = CLPNative.clpPrimalColumnSolution(_model);
-		_numCols = CLPNative.clpGetNumCols(_model);
-		_numRows = CLPNative.clpGetNumRows(_model);
+		_dual = NATIVE.Clp_dualRowSolution(_model);
+		_obj = NATIVE.Clp_getObjCoefficients(_model);
+		_primal = NATIVE.Clp_primalColumnSolution(_model);
+		_numCols = NATIVE.Clp_getNumCols(_model);
+		_numRows = NATIVE.Clp_getNumRows(_model);
 		_numNativeCols = _numCols;
 		_numNativeRows = _numRows;
-		_numElements = CLPNative.clpGetNumElements(_model);
+		_numElements = NATIVE.Clp_getNumElements(_model);
 	}
 	
 	/**
@@ -198,7 +233,7 @@ public class CLP {
 	public double getDualSolution(CLPConstraint constraint) {
 		if (constraint._index >= _numNativeRows) 
 			flushBuffers();
-		return _dual.getDoubleAtIndex(constraint._index);
+		return _maximize ? -_dual.getDouble(constraint._index*Double.BYTES) : _dual.getDouble(constraint._index*Double.BYTES);
 	}
 	
 	/**
@@ -209,7 +244,7 @@ public class CLP {
 	public double getSolution(CLPVariable variable) {
 		if (variable._index >= _numNativeCols)
 			flushBuffers();
-		return _primal.getDoubleAtIndex(variable._index);
+		return _primal.getDouble(variable._index*Double.BYTES);
 	}
 	
 	/**
@@ -220,8 +255,8 @@ public class CLP {
 	 */
 	public void setVariableBounds(CLPVariable variable, double lb, double ub) {
 		if (variable._index < _numNativeCols) {
-			_colLower.setDoubleAtIndex(variable._index,lb);
-			_colUpper.setDoubleAtIndex(variable._index,ub);
+			_colLower.putDouble(variable._index*Double.BYTES,lb);
+			_colUpper.putDouble(variable._index*Double.BYTES,ub);
 		}
 		else {
 			_colBuffer.lower.put(variable._index, lb);
@@ -237,7 +272,7 @@ public class CLP {
 	public void setVariableLowerBound(CLPVariable variable, double value) {
 		value = checkValue(value);
 		if (variable._index < _numNativeCols)
-			_colLower.setDoubleAtIndex(variable._index,value);
+			_colLower.putDouble(variable._index*Double.BYTES,value);
 		else
 			_colBuffer.lower.put(variable._index, value);
 	}
@@ -250,7 +285,7 @@ public class CLP {
 	public void setVariableUpperBound(CLPVariable variable, double value) {
 		value = checkValue(value);
 		if (variable._index < _numNativeCols)
-			_colUpper.setDoubleAtIndex(variable._index,value);
+			_colUpper.putDouble(variable._index*Double.BYTES,value);
 		else
 			_colBuffer.upper.put(variable._index, value);
 	}
@@ -281,11 +316,10 @@ public class CLP {
 					throw new IllegalStateException(String.format("Constraint %s does not contain variable %s. Coefficient not set.",constraint.toString(),variable.toString()));
 			}
 			value = checkValue(value);
-			_elements.setDoubleAtIndex(pos-1,value);
+			_elements.putDouble((pos-1)*Double.BYTES,value);
 		}
-		else {
+		else
 			_rowBuffer.setElement(constraint._index,variable._index, value);
-		}
 	}
 	
 	private double checkValue(double value) {
@@ -304,8 +338,8 @@ public class CLP {
 		lb = checkValue(lb);
 		ub = checkValue(ub);
 		if (constraint._index < _numNativeRows) {
-			_rowLower.setDoubleAtIndex(constraint._index,lb);
-			_rowUpper.setDoubleAtIndex(constraint._index,ub);
+			_rowLower.putDouble(constraint._index*Double.BYTES,lb);
+			_rowUpper.putDouble(constraint._index*Double.BYTES,ub);
 		}
 		else {
 			_rowBuffer._lower.set(constraint._index,lb);
@@ -322,7 +356,7 @@ public class CLP {
 	public void setConstraintLowerBound(CLPConstraint constraint, double value) {
 		value = checkValue(value);
 		if (constraint._index < _numNativeRows)
-			_rowLower.setDoubleAtIndex(constraint._index,value);
+			_rowLower.putDouble(constraint._index*Double.BYTES,value);
 		else 
 			_rowBuffer._lower.set(constraint._index,value);
 	}
@@ -335,7 +369,7 @@ public class CLP {
 	public void setConstraintUpperBound(CLPConstraint constraint, double value) {
 		value = checkValue(value);
 		if (constraint._index < _numNativeRows) 
-			_rowUpper.setDoubleAtIndex(constraint._index,value);
+			_rowUpper.putDouble(constraint._index*Double.BYTES,value);
 		else 
 			_rowBuffer._upper.set(constraint._index,value);
 			
@@ -361,7 +395,7 @@ public class CLP {
 	 * @return builder
 	 */
 	public CLP verbose(int level) {
-		CLPNative.clpSetLogLevel(_model,level);
+		NATIVE.Clp_setLogLevel(_model,level);
 		return this;
 	}
 	
@@ -380,8 +414,9 @@ public class CLP {
 	 * @return builder
 	 */
 	public CLP maximization() {
+		if (!_maximize)
+			neg();
 		_maximize = true;
-		CLPNative.clpSetOptimizationDirection(_model, -1);
 		return this;
 	}
 	
@@ -390,8 +425,9 @@ public class CLP {
 	 * @return builder
 	 */
 	public CLP minimization() {
+		if (_maximize)
+			neg();
 		_maximize = false;
-		CLPNative.clpSetOptimizationDirection(_model, 1);
 		return this;
 	}
 	
@@ -422,10 +458,32 @@ public class CLP {
 	 */
 	public void setObjectiveCoefficient(CLPVariable variable, double value) {
 		value = checkValue(value);
+		if (_maximize)
+			value = -value;
 		if (variable._index < _numNativeCols) 
-			_obj.setDoubleAtIndex(variable._index, value);
+			_obj.putDouble(variable._index*Double.BYTES, value);
 		else 
 			_colBuffer.objectives.put(variable._index, value);
+	}
+	
+	/**
+	 * Set the objective coefficient of the given variable.
+	 * @param variable
+	 * @param value
+	 */
+	public void setQuadraticObjectiveCoefficient(CLPVariable variable, double value) {
+		value = checkValue(value);
+		if (_maximize && value>0)
+			throw new IllegalArgumentException(String.format(
+					"Quadratic objective coefficient of variable %s must not be greater than zero.", variable.toString()));
+		if (!_maximize && value<0)
+			throw new IllegalArgumentException(String.format(
+					"Quadratic objective coefficient of variable %s must not be less than zero.", variable.toString()));
+		if (variable._index >= _numCols)
+			setObjectiveCoefficient(variable,0);
+		if (_qobj == null)
+			_qobj = new QuadraticObjective();
+		_qobj.put(variable._index, _maximize ? -value : value);
 	}
 	
 	/**
@@ -434,7 +492,7 @@ public class CLP {
 	 */
 	public void setObjectiveOffset(double value) {
 		value = checkValue(value);
-		CLPNative.clpSetObjectiveOffset(_model, value);
+		_offset = value;
 	}
 	
 	/**
@@ -446,21 +504,20 @@ public class CLP {
 	}
 	
 	/**
-	 * Set the objective function to the model without using {@link CLP#buildExpression()}. Objective coefficients not set remain unchanged.
-	 * @param lhs terms on the left-hand side
-	 * @param type constraint type
-	 * @param rhs right-hand side coefficient
+	 * Set the objective function to the model without using {@link CLP#createExpression()}. Objective coefficients not set remain unchanged.
+	 * @param terms terms of the objective function
+	 * @param offset constant offset in the objective function
 	 * @return
 	 */ 
 	public CLPObjective addObjective(Map<CLPVariable,Double> terms, double offset) {
 		for (CLPVariable var : terms.keySet())
 			setObjectiveCoefficient(var,terms.get(var));
-		setObjectiveOffset(offset);
+		setObjectiveOffset(_offset+offset);
 		return new CLPObjective(this);
 	}
 	
 	/**
-	 * Add a new constraint to the model without using {@link CLP#buildExpression()}.
+	 * Add a new constraint to the model without using {@link CLP#createExpression()}.
 	 * @param lhs terms on the left-hand side
 	 * @param type constraint type
 	 * @param rhs right-hand side coefficient
@@ -475,18 +532,45 @@ public class CLP {
 	}
 	
 	/**
+	 * Add a new constraint to the model without using {@link CLP#createExpression()}.
+	 * @param lhs terms on the left-hand side
+	 * @param type constraint type
+	 * @param rhs right-hand side coefficient
+	 * @return
+	 */
+	public CLPConstraint addConstraint(List<CLPVariable> variables, List<Double> lhs, TYPE type, double rhs) {
+		if (lhs.size()==0) throw new IllegalArgumentException("The constraint does not contain variables.");
+		if (variables.size()!=lhs.size()) throw new IllegalArgumentException("Arrays of unequal size.");
+		if (_rowBuffer.size()>=_bufferSize)
+			flushBuffers();
+		_rowBuffer.addRow(variables,lhs,type,rhs);
+		return new CLPConstraint(this,_numRows++,type);
+	}
+	
+	/**
 	 * Solve the optimization problem. 
 	 * @return solution {@link STATUS}
 	 */
 	public STATUS solve() {
+		//take care of empty problem
 		flushBuffers();
-		if (_solve!=null)
-			CLPNative.clpInitialSolveWithOptions(_model,_solve);
-		else
-			CLPNative.clpInitialSolve(_model);
-		_objValue = CLPNative.clpGetObjValue(_model);
-		int status = CLPNative.clpStatus(_model);
-		if (status == 0) 
+//		if (_solve!=null)
+//			NATIVE.clpInitialSolveWithOptions(_model,_solve);
+//		else
+//			NATIVE.clpInitialSolve(_model);
+		if (_algorithm==ALGORITHM.DUAL)
+			NATIVE.Clp_dual(_model,0);
+		else if (_algorithm==ALGORITHM.PRIMAL)
+			NATIVE.Clp_primal(_model,0);
+		else {
+			if (_solve!=null)
+				NATIVE.Clp_initialSolveWithOptions(_model,_solve);
+			else
+				NATIVE.Clp_initialSolve(_model);
+		}
+		_objValue = NATIVE.Clp_getObjValue(_model);
+		int status = NATIVE.Clp_status(_model);
+		if (status == 0)
 			return STATUS.OPTIMAL;
 		if (status == 1) 
 			return STATUS.INFEASIBLE;
@@ -504,40 +588,49 @@ public class CLP {
 	 */
  	public void reset() {
 		flushBuffers();
-		Pointer<CLPSimplex> newModel = init(); 
-		CLPNative.clpResize(newModel, _numRows, 0);
-		CLPNative.clpAddColumns(newModel, 
-				_numCols, 
-				Pointer.pointerToDoubles(_colLower.getDoubles(_numCols)), 
-				Pointer.pointerToDoubles(_colUpper.getDoubles(_numCols)), 
-				Pointer.pointerToDoubles(_obj.getDoubles(_numCols)), 
-				Pointer.pointerToInts(getStarts()), 
-				Pointer.pointerToInts(getIndex()), 
-				Pointer.pointerToDoubles(_elements.getDoubles(_numElements)));
-		Pointer<Double> rowLower = _rowLower;
-		_rowLower = CLPNative.clpGetRowLower(newModel);
+		Pointer newModel = init(); 
+		NATIVE.Clp_resize(newModel, _numRows, 0);
+		double[] a = new double[_numCols];
+		_colLower.get(0,a,0,_numCols);
+		double[] b = new double[_numCols];
+		_colUpper.get(0,b,0,_numCols);
+		double[] c = new double[_numCols];
+		_obj.get(0,c,0,_numCols);
+		double[] d = new double[_numElements];
+		_elements.get(0,d,0,_numElements);
+		NATIVE.Clp_addColumns(newModel,
+				_numCols,
+				copyOfDoublePointer(_colLower,_numCols),
+				copyOfDoublePointer(_colUpper,_numCols),
+				copyOfDoublePointer(_obj,_numCols),
+				arrayToPointer(getStarts()),
+				arrayToPointer(getIndex()),
+				copyOfDoublePointer(_elements,_numElements));
+		Pointer rowLower = _rowLower;
+		_rowLower = NATIVE.Clp_getRowLower(newModel);
 		for (int i=0; i<_numRows; i++)
-			_rowLower.set(i,rowLower.get(i));
-		Pointer<Double> rowUpper = _rowUpper;
-		_rowUpper = CLPNative.clpGetRowUpper(newModel);
+			_rowLower.putDouble(i*Double.BYTES,rowLower.getDouble(i*Double.BYTES));
+		Pointer rowUpper = _rowUpper;
+		_rowUpper = NATIVE.Clp_getRowUpper(newModel);
 		for (int i=0; i<_numRows; i++)
-			_rowUpper.set(i,rowUpper.get(i));
-		Pointer<Double> colLower = _colLower;
-		_colLower = CLPNative.clpGetColLower(newModel);
+			_rowUpper.putDouble(i*Double.BYTES,rowUpper.getDouble(i*Double.BYTES));
+		Pointer colLower = _colLower;
+		_colLower = NATIVE.Clp_getColLower(newModel);
 		for (int i=0; i<_numCols; i++) 
-			_colLower.set(i,colLower.get(i));
-		Pointer<Double> colUpper = _colUpper;
-		_colUpper = CLPNative.clpGetColUpper(newModel);
+			_colLower.putDouble(i*Double.BYTES,colLower.getDouble(i*Double.BYTES));
+		Pointer colUpper = _colUpper;
+		_colUpper = NATIVE.Clp_getColUpper(newModel);
 		for (int i=0; i<_numCols; i++)
-			_colUpper.set(i,colUpper.get(i));
-		CLPNative.clpSetOptimizationDirection(newModel, _maximize?-1:1);
-		_elements = CLPNative.clpGetElements(newModel);
+			_colUpper.putDouble(i*Double.BYTES,colUpper.getDouble(i*Double.BYTES));
+		_elements = NATIVE.Clp_getElements(newModel);
 		_index = null;
 		_starts = null;
-		_dual = CLPNative.clpDualRowSolution(newModel);
-		_obj = CLPNative.clpGetObjCoefficients(newModel);
-		_primal = CLPNative.clpPrimalColumnSolution(newModel);
-		CLPNative.clpDeleteModel(_model);
+		_dual = NATIVE.Clp_dualRowSolution(newModel);
+		if (_qobj != null) 
+			NATIVE.Clp_loadQuadraticObjective(newModel, _qobj._numElements, _qobj._starts, _qobj._index, _qobj._elements);
+		_obj = NATIVE.Clp_getObjCoefficients(newModel);
+		_primal = NATIVE.Clp_primalColumnSolution(newModel);
+		NATIVE.Clp_deleteModel(_model);
 		_model = newModel;
 	}
 	
@@ -564,7 +657,7 @@ public class CLP {
 	 * @return the optimal objective value
 	 */
 	public double getObjectiveValue() {
-		return _objValue;
+		return _maximize? -_objValue : _objValue;
 	}
 	
 	/**
@@ -589,7 +682,7 @@ public class CLP {
 	 * @return builder
 	 */
 	public CLP dualTolerance(double value) {
-		CLPNative.clpSetDualTolerance(_model, value);
+		NATIVE.Clp_setDualTolerance(_model, value);
 		return this;
 	}
 	
@@ -611,7 +704,7 @@ public class CLP {
 	 * @return builder
 	 */
 	public CLP primalTolerance(double value) {
-		CLPNative.clpSetPrimalTolerance(_model, value);
+		NATIVE.Clp_setPrimalTolerance(_model, value);
 		return this;
 	}
 	
@@ -621,7 +714,7 @@ public class CLP {
 	 * @return builder
 	 */
 	public CLP maxIterations(int iter) {
-		CLPNative.clpSetMaximumIterations(_model, iter);
+		NATIVE.Clp_setMaximumIterations(_model, iter);
 		return this;
 	}
 	
@@ -630,8 +723,8 @@ public class CLP {
 	 * @param seconds
 	 * @return builder
 	 */
-	public CLP maxSeconds(int seconds) {
-		CLPNative.clpSetMaximumSeconds(_model, seconds);
+	public CLP maxSeconds(double seconds) {
+		NATIVE.Clp_setMaximumSeconds(_model, seconds);
 		return this;
 	}
 	
@@ -643,16 +736,16 @@ public class CLP {
 	public CLP scaling(SCALING scaling) {
 		switch(scaling) {
 		case OFF:
-			CLPNative.clpScaling(_model, 0);
+			NATIVE.Clp_scaling(_model, 0);
 			break;
 		case EQULIBRIUM:
-			CLPNative.clpScaling(_model, 1);
+			NATIVE.Clp_scaling(_model, 1);
 			break;
 		case GEOMETRIC:
-			CLPNative.clpScaling(_model, 2);
+			NATIVE.Clp_scaling(_model, 2);
 			break;
 		default:
-			CLPNative.clpScaling(_model, 3);
+			NATIVE.Clp_scaling(_model, 3);
 			break;
 		}
 		return this;
@@ -664,8 +757,8 @@ public class CLP {
 	 * @return builder
 	 */
 	public CLP presolve(boolean on) {
-		if (_solve==null) _solve = CLPNative.clpSolveNew();
-		CLPNative.clpSolveSetPresolveType(_solve, on ? 0 : 1, -1);
+		if (_solve==null) _solve = NATIVE.ClpSolve_new();
+		NATIVE.ClpSolve_setPresolveType(_solve, on ? 0 : 1, -1);
 		return this;
 	}
 	
@@ -675,27 +768,28 @@ public class CLP {
 	 * @return builder
 	 */
 	public CLP algorithm(ALGORITHM algorithm) {
-		if (_solve==null) _solve = CLPNative.clpSolveNew();
+		if (_solve==null) _solve = NATIVE.ClpSolve_new();
 		switch(algorithm) {
 		case DUAL:
-			CLPNative.clpSolveSetSolveType(_solve, 0, -1);
+			NATIVE.ClpSolve_setSolveType(_solve, 0, -1);
 			break;
 		case PRIMAL:
-			CLPNative.clpSolveSetSolveType(_solve, 1, -1);
+			NATIVE.ClpSolve_setSolveType(_solve, 1, -1);
 			break;
 		case PRIMAL_SPRINT:
-			CLPNative.clpSolveSetSolveType(_solve, 2, -1);
+			NATIVE.ClpSolve_setSolveType(_solve, 2, -1);
 			break;
 		case BARRIER:
-			CLPNative.clpSolveSetSolveType(_solve, 3, -1);
+			NATIVE.ClpSolve_setSolveType(_solve, 3, -1);
 			break;
 		case BARRIER_NO_CROSSOVER:
-			CLPNative.clpSolveSetSolveType(_solve, 4, -1);
+			NATIVE.ClpSolve_setSolveType(_solve, 4, -1);
 			break;
 		default:
-			CLPNative.clpSolveSetSolveType(_solve, 5, -1);
+			NATIVE.ClpSolve_setSolveType(_solve, 5, -1);
 			break;
 		}
+		_algorithm = algorithm;
 		return this;
 	}
 
@@ -728,8 +822,8 @@ public class CLP {
 	
 	@Override
 	public void finalize() {
-		CLPNative.clpDeleteModel(_model);
-		CLPNative.clpSolveDelete(_solve); 
+		NATIVE.Clp_deleteModel(_model);
+		NATIVE.ClpSolve_delete(_solve);
 	}
 	
 	
@@ -748,6 +842,63 @@ public class CLP {
 		for (Double d : doubles)
 			ar[i++] = d;
 		return ar;
+	}
+	
+	private class QuadraticObjective {
+		HashMap<Integer,Double> _buffer = new HashMap<>();
+		private Pointer _elements;
+		private Pointer _starts;
+		private Pointer _index;
+		int _numElements;
+		boolean _hasChange;
+		
+		void flush() {
+			if (_buffer.isEmpty()) return;
+			int[] starts = new int[_numCols+1];
+			starts[_numCols] = _numCols;
+			int[] index = new int[_numCols];
+			for (int i=0; i<_numCols; i++) {
+				starts[i] = i;
+				index[i] = i;
+			}
+			_starts = arrayToPointer(starts);
+			_index = arrayToPointer(index);
+			Pointer elements = Memory.allocateDirect(RUNTIME,_numNativeCols*Double.BYTES);
+			if (_elements != null)
+				_elements.transferTo(0,elements,0,elements.size());
+			_elements = elements;
+			_numElements = _numNativeCols;
+			for (Integer i : _buffer.keySet())
+				_elements.putDouble(i*Double.BYTES, _buffer.get(i));
+			_buffer.clear();
+		}
+		
+		void update(Pointer model) {
+			if (!_hasChange) return;
+			flush();
+			NATIVE.Clp_loadQuadraticObjective(model, _numCols, _starts, _index, _elements);
+			_obj = NATIVE.Clp_getObjCoefficients(model);
+		}
+		
+		void put(int index, double value) {
+			value *= 2;
+			if (index < _numElements)
+				_elements.putDouble(index*Double.BYTES, value);
+			else
+				_buffer.put(index, value);
+			_hasChange = true;
+		}
+		
+		double get(int index) {
+			return _elements.getDouble(index*Double.BYTES);
+		}
+		
+		void neg() {
+			for (int i=0; i<_numCols; i++)
+				_elements.putDouble(i*Double.BYTES, -_elements.getDouble(i*Double.BYTES));
+			_hasChange = true;
+			update(_model);
+		}
 	}
 	
 	/**
@@ -824,6 +975,15 @@ public class CLP {
 			_elements.set(pos,value);
 		}
 		
+		void addDummyRow() {
+			_lower.add(Double.NEGATIVE_INFINITY);
+			_upper.add(Double.POSITIVE_INFINITY);
+			_starts.add(_elements.size()+1);
+			_columns.add(0);
+			_elements.add(1.);
+			_numRows++;
+		}
+		
 		void addRow(Map<CLPVariable,Double> lhs, TYPE type, double rhs) {
 			rhs = checkValue(rhs);
 			switch(type) {
@@ -852,6 +1012,33 @@ public class CLP {
 				_elements.add(value);
 			}
 		}
+		
+		void addRow(List<CLPVariable> variables, List<Double> lhs, TYPE type, double rhs) {
+			rhs = checkValue(rhs);
+			switch(type) {
+			case EQ:
+				_lower.add(rhs);
+				_upper.add(rhs);
+				break;
+			case GEQ:
+				_lower.add(rhs);
+				_upper.add(Double.POSITIVE_INFINITY);
+				break;
+			case LEQ:
+				_lower.add(Double.NEGATIVE_INFINITY);
+				_upper.add(rhs);
+				break;
+			default:
+				_lower.add(Double.NEGATIVE_INFINITY);
+				_upper.add(Double.POSITIVE_INFINITY);
+				break;
+			}
+			_starts.add(_elements.size()+lhs.size());
+			for (int i=0; i<variables.size(); i++) {
+				_columns.add(variables.get(i)._index);
+				_elements.add(checkValue(lhs.get(i)));
+			}
+		}
 	}
 	
 	/**
@@ -870,9 +1057,19 @@ public class CLP {
 		flushBuffers();
 		StringBuilder modelString = new StringBuilder();
 		modelString.append(_maximize ? "Maximize" : "Minimize").append("\nobj:");
+		if (_offset != 0) modelString.append(" "+_offset);
 		//objective function
 		for (int col=0; col<_numCols; col++) {
-			modelString.append(termToString(_obj.getDoubleAtIndex(col),getVariableName(col)));
+			double c = _obj.getDouble(col*Double.BYTES);
+			modelString.append(termToString(_maximize ? -c : c,getVariableName(col)));
+		}
+		if (_qobj != null) {
+			modelString.append(" + [");
+			for (int col=0; col<_numCols; col++) {
+				double c = _qobj.get(col);
+				modelString.append(termToString(_maximize ? -c : c, getVariableName(col)+"^2"));
+			}
+			modelString.append(" ] / 2");
 		}
 		modelString.append("\nSubject To\n");
 		//constraints
@@ -886,14 +1083,14 @@ public class CLP {
 			int end = starts[col+1];
 			for (int j=begin; j<end; j++) {
 				int row = index[j];
-				double element = _elements.get(j);
-				if (element != 0)
+				double element = _elements.getDouble(j*Double.BYTES);
+//				if (element != 0)
 					constraintStrings.get(row).append(termToString(element,getVariableName(col)));
 			}
 		}
 		for (int row=0; row<_numRows; row++) {
-			double lb = _rowLower.getDoubleAtIndex(row);
-			double ub = _rowUpper.get(row);
+			double lb = _rowLower.getDouble(row*Double.BYTES);
+			double ub = _rowUpper.getDouble(row*Double.BYTES);
 			if (Double.compare(lb,ub)==0)
 				modelString.append(constraintStrings.get(row).append(" = ").append(lb).append("\n"));
 			else if (lb==Double.NEGATIVE_INFINITY && ub<Double.POSITIVE_INFINITY)
@@ -904,15 +1101,15 @@ public class CLP {
 		//bounds
 		modelString.append("Bounds\n");
 		for (int col=0; col<_numCols; col++) {
-			double lb = _colLower.get(col);
-			double ub = _colUpper.get(col);
+			double lb = _colLower.getDouble(col*Double.BYTES);
+			double ub = _colUpper.getDouble(col*Double.BYTES);
 			if (lb==0 && ub<Double.MAX_VALUE) 
 				modelString.append(getVariableName(col)).append(" <= ").append(ub).append("\n");
-			else if (lb==Double.NEGATIVE_INFINITY && ub==Double.POSITIVE_INFINITY)
+			else if (lb<=-Double.MAX_VALUE && ub>=Double.MAX_VALUE)
 				modelString.append("-inf <= ").append(getVariableName(col)).append(" <= inf\n");
-			else if (lb!=0 && lb>Double.POSITIVE_INFINITY && ub==Double.POSITIVE_INFINITY)
+			else if (lb!=0 && lb>-Double.MAX_VALUE && ub>=Double.MAX_VALUE)
 				modelString.append(lb).append(" <= ").append(getVariableName(col)).append(" <= inf").append("\n");
-			else if (lb==Double.NEGATIVE_INFINITY && ub<Double.POSITIVE_INFINITY)
+			else if (lb<=-Double.MAX_VALUE && ub<Double.MAX_VALUE)
 				modelString.append("-inf <= ").append(getVariableName(col)).append(" <= ").append(ub).append("\n");
 			else if (lb>-Double.MAX_VALUE && ub<Double.MAX_VALUE)
 				modelString.append(lb).append(" <= ").append(getVariableName(col)).append(" <= ").append(ub).append("\n");
@@ -931,5 +1128,24 @@ public class CLP {
 			return " + "+d+" "+s;
 		return " - "+(-d)+" "+s;	
 	}
+
+	static public Pointer arrayToPointer(double[] array) {
+		Pointer pointer = Memory.allocateDirect(RUNTIME,array.length * Double.BYTES);
+		pointer.put(0, array, 0, array.length);
+		return pointer;
+	}
+
+	static public Pointer arrayToPointer(int[] array) {
+		Pointer pointer = Memory.allocateDirect(RUNTIME,array.length * Integer.BYTES);
+		pointer.put(0, array, 0, array.length);
+		return pointer;
+	}
+
+	public static Pointer copyOfDoublePointer(Pointer pointer, int length) {
+		Pointer pointer2 = Memory.allocateDirect(RUNTIME,length * Double.BYTES);
+		pointer.transferTo(0,pointer2,0,length* Double.BYTES);
+		return pointer2;
+	}
+
 
 }

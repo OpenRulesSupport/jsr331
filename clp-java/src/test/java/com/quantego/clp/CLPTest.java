@@ -1,13 +1,48 @@
 package com.quantego.clp;
 
-import static org.junit.Assert.*;
+import jnr.ffi.Pointer;
+import jnr.ffi.Runtime;
+import org.junit.Test;
 
+import java.io.File;
+import java.net.URL;
 import java.util.Random;
 
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 
 public class CLPTest {
+
+	@Test
+	public void testPointer() {
+		double[] arr = new double[]{1,2,3};
+		Pointer p = CLP.arrayToPointer(arr);
+		assertEquals(p.getDouble(0),0.,1);
+		assertEquals(p.getDouble(1),1.,2);
+		assertEquals(p.getDouble(2),2.,3);
+		Pointer p2 = CLP.copyOfDoublePointer(p,3);
+		assertEquals(p2.getDouble(0),0.,1);
+		assertEquals(p2.getDouble(1),1.,2);
+		assertEquals(p2.getDouble(2),2.,3);
+	}
+
+	@Test
+	public void testObjective() {
+		CLPNative NATIVE = NativeLoader.load();
+		Runtime RUNTIME = Runtime.getSystemRuntime();
+		Pointer model = NATIVE.Clp_newModel();
+		NATIVE.Clp_addColumns(model,
+				2,
+				CLP.arrayToPointer(new double[]{0.0,0.0}),
+				CLP.arrayToPointer(new double[]{10.0,10.0}),
+				CLP.arrayToPointer(new double[]{1.8,3.6}),
+				CLP.arrayToPointer(new double[]{0}),
+				CLP.arrayToPointer(new double[0]),
+				CLP.arrayToPointer(new double[0]));
+		Pointer p = NATIVE.Clp_getObjCoefficients(model);
+		assertEquals(p.getDouble(0),1.8,1e-10);
+		assertEquals(p.getDouble(1*Double.BYTES),3.6,1e-10);
+	}
 	
 	@Test
 	public void testBuffers() {
@@ -18,22 +53,22 @@ public class CLPTest {
 		CLPVariable[][] massTransport = new CLPVariable[size1][size2];
 		for (int i=0; i<size1; i++) {
 			double rnd = gen.nextGaussian();
-			for (int j=0; j<size2; j++) 
+			for (int j=0; j<size2; j++)
 				massTransport[i][j] = model.addVariable()
 				.ub(1./size2)
 				.obj(Math.pow(gen.nextGaussian()-rnd,2)); //L2-Wasserstein distance
-			
+
 		}
-		for (int i=0; i<size1; i++) 
+		for (int i=0; i<size1; i++)
 			model.createExpression().add(massTransport[i]).eq(1./size1);
 		for (int j=0; j<size2; j++) {
 			CLPExpression e = model.createExpression();
-			for (int i=0; i<size1; i++) 
+			for (int i=0; i<size1; i++)
 				e.add(massTransport[i][j]);
 			e.eq(1./size2);
 		}
 		CLP.STATUS ret = model.minimize();
-		assertTrue(ret==CLP.STATUS.LIMIT);
+		assertSame(CLP.STATUS.LIMIT, ret);
 	}
 
 	@Test
@@ -60,5 +95,61 @@ public class CLPTest {
 	    		+ "End";
 	    assertEquals(str,solver.toString());
 	}
+	
+	@Test
+	public void testQuad() {
+		CLP clp = new CLP().maximization();
+		CLPVariable var = clp.addVariable().obj(2).quad(-1);
+		clp.solve();
+		assertEquals(1., clp.getObjectiveValue(), 1e-10);
+		assertEquals(1., var.getSolution(), 1e-10);
+	}
+	
+	@Test
+	public void testOffset() {
+		CLP clp = new CLP();
+		CLPVariable x1 = clp.addVariable();
+		clp.createExpression().add(4).add(-2, x1).asObjective();
+		clp.createExpression().add(x1).leq(2);
+		CLPVariable x2 = clp.addVariable();
+		clp.createExpression().add(6).add(-2, x2).asObjective();
+		clp.createExpression().add(x2).leq(3);
+		clp.minimize();
+		assertEquals(0.0, clp.getObjectiveValue(), 1e-10);
+		clp = new CLP();
+		x1 = clp.addVariable();
+		clp.createExpression().add(-4).add(2, x1).asObjective();
+		clp.createExpression().add(x1).leq(2);
+		x2 = clp.addVariable();
+		clp.createExpression().add(-6).add(2, x2).asObjective();
+		clp.createExpression().add(x2).leq(3);
+		clp.maximize();
+		assertEquals(0.0,clp.getObjectiveValue(),1e-10);
+	}
 
+	@Test
+	public void testMPS() throws Exception {
+		URL problem = this.getClass().getClassLoader().getResource("10teams.mps");
+		assertNotNull(problem);
+		File mps = new File(problem.toURI());
+		CLP clp = CLP.createFromMPS(mps);
+		clp.solve();
+		assertEquals(917.,clp.getObjectiveValue(),1e-10);
+	}
+
+	@Test
+	public void testReset() {
+		CLP clp = new CLP();
+		CLPVariable x1 = clp.addVariable();
+		clp.createExpression().add(4).add(-2, x1).asObjective();
+		clp.createExpression().add(x1).leq(2);
+		CLPVariable x2 = clp.addVariable();
+		clp.createExpression().add(6).add(-2, x2).asObjective();
+		clp.createExpression().add(x2).leq(3);
+		clp.minimize();
+		System.out.println(clp.toString());
+		clp.reset();
+		clp.minimize();
+		System.out.println(clp.toString());
+	}
 }

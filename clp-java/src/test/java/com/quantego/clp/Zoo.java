@@ -6,6 +6,7 @@ public class Zoo {
 	
 	int seats[] = new int[] { 30, 40 };
 	int[] costs = new int[] { 400, 500 };
+	int numberOfChildren = 300;
 	
 	CLP solver;
 	CLPVariable numberOf30Buses;
@@ -27,8 +28,8 @@ public class Zoo {
 
 		// === Post Constraint(s)
     	totalSeats = solver.createExpression().add(seats[0],numberOf30Buses).add(seats[1],numberOf40Buses);
-    	constraint = totalSeats.geq(300).name("Seats>=300");
-
+    	constraint = totalSeats.geq(numberOfChildren).name("totalSeats>=numberOfChildren");
+    
 		// Cost
 		//Cost = solver.addVariable().name("Cost");
         cost = solver.createExpression().add(costs[0],numberOf30Buses).add(costs[1],numberOf40Buses).asObjective();

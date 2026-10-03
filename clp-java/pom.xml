@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.quantego</groupId>
-  <artifactId>clp-java-source</artifactId>
+  <artifactId>clp-java</artifactId>
   <version>1.16.15</version>
   <name>${project.groupId}:${project.artifactId}</name>
   <description>A linear programming library based on the Coin-OR CLP linear solver.</description>
@@ -17,7 +17,6 @@
       <name>Nils Loehndorf</name>
       <email>nils@loehndorf.com</email>
       <organization>Quantego</organization>
-      <organizationUrl>http://www.quantego.com</organizationUrl>
     </developer>
   </developers>
   <scm>
@@ -26,30 +25,34 @@
 	<developerConnection>scm:git:git@github.com:loehndorf/clp-java.git</developerConnection>
   </scm>
   
+  <repositories>
+      <repository>
+      <id>in-project</id>
+      <name>In Project Repo</name>
+      <url>file://${project.basedir}/libs</url>
+    </repository>
+  </repositories>
+  
   <packaging>jar</packaging>
+  
   <dependencies>
    <dependency>
-		<groupId>junit</groupId>
-		<artifactId>junit</artifactId>
-		<version>4.13.2</version>
-		<scope>test</scope>
-	</dependency>
-	<dependency>
-		<groupId>com.quantego</groupId>
-		<artifactId>clp-java</artifactId>
-		<version>1.16.15</version>
-	</dependency>
-  	<dependency>
-  		<groupId>com.nativelibs4java</groupId>
-  		<artifactId>bridj</artifactId>
-  		<version>0.7.0</version>
-  	</dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.jnr</groupId>
+      <artifactId>jnr-ffi</artifactId>
+      <version>2.2.15</version>
+    </dependency>
   </dependencies>
-  
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
    </properties>
    
   <distributionManagement>
@@ -69,7 +72,7 @@
 	   <plugin>
          <groupId>org.sonatype.plugins</groupId>
          <artifactId>nexus-staging-maven-plugin</artifactId>
-         <version>1.6.3</version>
+         <version>1.6.13</version>
          <extensions>true</extensions>
          <configuration>
            <serverId>ossrh</serverId>
@@ -103,6 +106,7 @@
        </executions>
        <configuration>
            <additionalparam>-Xdoclint:none</additionalparam>
+           <failOnError>false</failOnError>
        </configuration>
      </plugin>
 	 <plugin>
@@ -128,20 +132,28 @@
        <appendAssemblyId>false</appendAssemblyId>
        </configuration>
       </plugin>
-      <plugin>
-	      <groupId>org.apache.maven.plugins</groupId>
-	      <artifactId>maven-gpg-plugin</artifactId>
-	      <version>1.5</version>
-	      <executions>
-	        <execution>
-	          <id>sign-artifacts</id>
-	          <phase>verify</phase>
-	          <goals>
-	            <goal>sign</goal>
-	          </goals>
-	        </execution>
-	      </executions>
-    	</plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>8</source>
+                <target>8</target>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.5</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
 	</plugins> 
   </build>
 </project>

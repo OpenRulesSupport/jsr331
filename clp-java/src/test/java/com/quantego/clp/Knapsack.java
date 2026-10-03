@@ -82,7 +82,7 @@ public class Knapsack {
 		Knapsack problem = new Knapsack();
 		System.out.println("*** Define CSP ***");
 		problem.define();
-		System.out.println("*** Solve CSP ***");
+		System.out.println("*** S CSP ***");
 		problem.solve();
 
 	}
