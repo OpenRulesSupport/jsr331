@@ -74,6 +74,11 @@ public class VarReal extends AbstractVarReal implements javax.constraints.VarRea
 	}
 	
 	@Override
+    public javax.constraints.VarReal plus(javax.constraints.VarReal var) {
+		return problem.sum(this,var);
+    }
+	
+	@Override
     public javax.constraints.VarReal multiply(double value) {
         Problem p = getProblem();
         VarReal prod = (VarReal)p.scalProd(new double[]{value}, new VarReal[]{this});

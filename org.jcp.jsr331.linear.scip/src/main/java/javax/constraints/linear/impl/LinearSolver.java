@@ -10,7 +10,7 @@ import javax.constraints.VarReal;
 
 public class LinearSolver extends javax.constraints.linear.LinearSolver {
 
-	static public final String JSR331_LINEAR_SOLVER_VERSION = "SCIP v.3.0.0 with SoPlex 1.7.0";
+	static public final String JSR331_LINEAR_SOLVER_VERSION = "The SCIP Optimization Suite 10.0";
 
 	public LinearSolver() {
 	}
