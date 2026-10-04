@@ -19,7 +19,7 @@ import com.quantego.clp.CLPVariable;
 
 public class LinearSolver extends javax.constraints.linear.LinearSolver {
 
-    static public final String JSR331_LINEAR_SOLVER_VERSION = "CLP v.1.16.15 using clp-java";
+    static public final String JSR331_LINEAR_SOLVER_VERSION = "CLP-MIP v.1.16.15 using clp-mip-java";
 
     Problem problem;
     CLP model;
@@ -48,7 +48,8 @@ public class LinearSolver extends javax.constraints.linear.LinearSolver {
         int n = 0;
         if (intSize > 0) {
             for (Var var : vars) {
-                CLPVariable clpVar = model.addVariable().lb(var.getMin()).ub(var.getMax()).name(var.getName());
+                //CLPVariable clpVar = model.addVariable().lb(var.getMin()).ub(var.getMax()).name(var.getName());
+            	CLPVariable clpVar = model.addVariable().name(var.getName()).integer().bounds(var.getMin(),var.getMax()); 
                 var.setObject(clpVar);
                 clpVars[n++] = clpVar;
             }
