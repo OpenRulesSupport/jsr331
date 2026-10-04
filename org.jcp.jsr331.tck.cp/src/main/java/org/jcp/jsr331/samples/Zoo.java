@@ -43,10 +43,14 @@ public class Zoo {
         csp.log("=== SOLVE:");
         Solver solver = csp.getSolver(); 
         Solution solution = solver.findOptimalSolution(Objective.MINIMIZE, csp.getVar("Total cost")); 
-        if (solution != null)
-            solution.log();
-        else
-            csp.log("No Solutions");
+        if (solution == null)
+            csp.log("Unable to derive a solution.");
+        else {
+            csp.log("*** Optimal Solution ***");
+            csp.log("Number Of 30 seats buses = " + solution.getValue("Number Of 30 seats buses"));
+            csp.log("Number Of 40 seats buses = " + solution.getValue("Number Of 40 seats buses"));
+            csp.log("Total Cost = " + solution.getValue("Total cost"));
+        }
         solver.logStats();
     }
 
