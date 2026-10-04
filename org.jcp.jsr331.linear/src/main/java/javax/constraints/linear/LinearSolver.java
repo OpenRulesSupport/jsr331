@@ -127,10 +127,10 @@ abstract public class LinearSolver extends Solver {
 	protected void cleanUp() {
 		String directory = "./"+OUTPUT_FOLDER;
 		try {
-			System.out.println("Delete directory " + directory);
-			DeleteDirectory.delete(Paths.get(directory));			
+			DeleteDirectory.delete(Paths.get(directory));	
+			System.out.println("Deleted directory " + directory);
 		} catch (Exception e) {
-			System.out.println("Cannot delete directory " + directory);
+			//System.out.println("Cannot delete directory " + directory);
 		}
 	}
 	
