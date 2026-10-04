@@ -608,7 +608,7 @@ public class Problem extends AbstractProblem {
 	@Override
 	protected Solver createSolver() {
 		LinearSolver solver = LinearSolverFactory.newLinearSolver(this);
-		log("Solve problem using " + solver.getVersion());
+		log("*** Solve problem with this LP/MIP solver: " + solver.getVersion());
 		return solver;
 	}
 
