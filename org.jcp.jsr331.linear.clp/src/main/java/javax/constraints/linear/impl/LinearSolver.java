@@ -135,17 +135,17 @@ public class LinearSolver extends javax.constraints.linear.LinearSolver {
         // double obj = model.getObjectiveValue();
 
         Solution solution = createSolution();
-        if (numberOfRoundings > 0) {
-            log("\n=================================================================");
-            log("ATTENTION: CLP does not support MIP with integer variables!");
-            log("The following solution is probably infeasible!");
-            log("The number of rounded variables: " + numberOfRoundings);
-            log("You have the following options:");
-            log("1) Switch to a diffrent solver;");
-            log("2) Replace all integer variables with real variables;");
-            log("3) Adjust this 'solution' manually or apply a 'feasibility pump'");
-            log("=================================================================\n");
-        }
+//        if (numberOfRoundings > 0) {
+//            log("\n=================================================================");
+//            log("ATTENTION: CLP does not support MIP with integer variables!");
+//            log("The following solution is probably infeasible!");
+//            log("The number of rounded variables: " + numberOfRoundings);
+//            log("You have the following options:");
+//            log("1) Switch to a diffrent solver;");
+//            log("2) Replace all integer variables with real variables;");
+//            log("3) Adjust this 'solution' manually or apply a 'feasibility pump'");
+//            log("=================================================================\n");
+//        }
         
         return solution;
     }

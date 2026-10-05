@@ -1,155 +1,202 @@
 package javax.constraints.linear.impl;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.util.HashMap;
 
+import javax.constraints.ConstrainedVariable;
+import javax.constraints.Constraint;
 import javax.constraints.Objective;
+import javax.constraints.Problem;
+import javax.constraints.Solution;
 import javax.constraints.Var;
 import javax.constraints.VarReal;
 
+import com.javasolver.SCIP;
+import com.javasolver.SCIPExpression;
+import com.javasolver.SCIPVariable;
+import com.javasolver.SCIP.Status;
+
 public class LinearSolver extends javax.constraints.linear.LinearSolver {
 
-	static public final String JSR331_LINEAR_SOLVER_VERSION = "The SCIP Optimization Suite 10.0"; 
+    static public final String JSR331_LINEAR_SOLVER_VERSION = "SCIP-JAVA v.1.0.0 using SCIP Optimization Suite 10.0";
 
-	public LinearSolver() {
-	}
+    Problem problem;
+    com.javasolver.SCIP model;
+    int numberOfRoundings;
 
-	public String getCommanLine() {
-		String exe = System.getProperty(LP_SOLVER_EXE);
-		if (exe == null) {
-			exe = "scip";
-		}
-		String options = System.getProperty(LP_SOLVER_OPTIONS);
-		if (options == null) {
-			options = "";
-		}
-		return exe + " -c " + "\"read " + getInputFilename() + " " + options 
-				+ " optimize write solution " + getOutputFilename() + " quit\"";
-	}
+    public LinearSolver() {
+        numberOfRoundings = 0;
+    }
 
-	public String getVersion() {
-		return JSR331_LINEAR_SOLVER_VERSION;
-	}
+    public void init() {
+        problem = getProblem();
 
-	/**
-	 * GLPK minimizes by default
-	 */
-	public Objective getDefaultOptimizationObjective() {
-		return Objective.MINIMIZE;
-	}
+        model = new SCIP(); // .verbose(1);
 
-	/*
-	 * Reads an output file and produces an array that is parallel to the array
-	 * of all variables
-	 * 
-	 * solution status: optimal solution found 
-	 * objective value: 	  -261972.299479167 
-	 * take-3 154 (obj:0) 
-	 * take-7 912.356770833333 (obj:0)
-	 * take-8 333.25 (obj:0) 
-	 * take-10 6505.5 (obj:0) 
-	 * take-11 1180.32552083333 (obj:0) 
-	 * costFunc 261972.299479167 (obj:-1)
-	 */
-	public int[] readResultValues() {
+        // Add SCIPVariables (int + real)
+        Var[] vars = problem.getVars();
+        int intSize = 0;
+        if (vars != null)
+            intSize = vars.length;
+        VarReal[] varReals = problem.getVarReals();
+        int realSize = 0;
+        if (varReals != null)
+            realSize = varReals.length;
+        SCIPVariable[] scipVars = new SCIPVariable[intSize + realSize];
+        int n = 0;
+        if (intSize > 0) {
+            for (Var var : vars) {
+            	SCIPVariable scipVar = model.addVariable().name(var.getName()).integer().bounds(var.getMin(),var.getMax()); 
+                var.setObject(scipVar);
+                scipVars[n++] = scipVar;
+            }
+        }
+        if (realSize > 0) {
+            for (VarReal var : varReals) {
+                SCIPVariable scipVar = model.addVariable().lb(var.getMin()).ub(var.getMax()).name(var.getName());
+                var.setObject(scipVar);
+                scipVars[n++] = scipVar;
+            }
+        }
 
-		BufferedReader reader = null;
-		try {
-			// Extract rules only
-			reader = new BufferedReader(new FileReader(getOutputFilename()));
-			javax.constraints.impl.Problem problem = (javax.constraints.impl.Problem) getProblem();
-			// skip 2 lines
-			for (int i = 0; i < 2; i++) {
-				String line = reader.readLine();
-				if (line.indexOf("infeasible") > 0 )
-					return null;
-			}
-			int n = 0;
-			Var[] vars = problem.getVars();
-			if (vars != null)
-				n += vars.length;
-			VarReal[] varReals = problem.getVarReals();
-			if (varReals != null)
-				n += varReals.length;
-			int[] values = new int[n];
-			for (int i = 0; i < n; i++) {
-				values[i] = 0; // why 0? Because solution variables with value 0 not shown... 
-			}
-			for (;;) {
-				String line = reader.readLine();
-				if (line == null)
-					break;
-				String name = line.substring(0, 9);
-				String value = line.substring(10, 53);
-				int index = indexOfVariable(name.trim());
-				if (index >= 0)
-					values[index] = (int) Double.parseDouble(value);
-				else {
-					String msg = "Error in org.jcp.jsr331.linear.scip: "
-							+ "Unknown variable " + name
-							+ " among resulting values";
-					log(msg);
-					throw new RuntimeException(msg);
-				}
-			}
-			return values;
-		} catch (Exception ex) {
-			log("Error during reading the file " + getOutputFilename());
-			ex.printStackTrace();
-			return null;
-		} finally {
-			try {
-				if (reader != null) {
-					// flush and close both "input" and its underlying FileReader
-					reader.close();
-				}
-			} catch (Exception ex) {
-				log("Error during closing the file " + getOutputFilename());
-				ex.printStackTrace();
-				return null;
-			}
-		}
-	}
-	
-	public HashMap<String, String> readResults() {
-		HashMap<String, String> results = new HashMap<String, String>();
-		BufferedReader reader = null;
-		try {
-			// Extract rules only
-			reader = new BufferedReader(new FileReader(getOutputFilename()));
-			javax.constraints.impl.Problem problem = (javax.constraints.impl.Problem) getProblem();
-			// skip 2 lines
-			for (int i = 0; i < 2; i++) {
-				String line = reader.readLine();
-				if (line.indexOf("infeasible") > 0 )
-					return null;
-			}
-			for (;;) {
-				String line = reader.readLine();
-				if (line == null)
-					break;
-				String name = line.substring(0, 9);
-				String value = line.substring(10, 53);
-				results.put(name.trim(), value.trim());
-			}
-			return results;
-		} catch (Exception ex) {
-			log("Error during reading the file " + getOutputFilename());
-			ex.printStackTrace();
-			return null;
-		} finally {
-			try {
-				if (reader != null) {
-					// flush and close both "input" and its underlying FileReader
-					reader.close();
-				}
-			} catch (Exception ex) {
-				log("Error during closing the file " + getOutputFilename());
-				ex.printStackTrace();
-				return null;
-			}
-		}
-	}
+        // Add constraints
+        double precision = 1e-7;
+//      if (isIntegerVariablesOnly())
+//          precision = 1;
+        Constraint[] constraints = problem.getConstraints();
+        for (Constraint constraint : constraints) {
+            javax.constraints.impl.Constraint c = (javax.constraints.impl.Constraint) constraint;
+            double[] constraintCoefficients = c.getCoefficients();
+            ConstrainedVariable[] constraintVars = c.getVars();
+            String oper = c.getOper();
+            double rhs = c.getValue();
+//            log("Constraint: ");
+//            for (ConstrainedVariable v : constraintVars)
+//                log(" " + v);
+//            for (double d : constraintCoefficients)
+//                log("  " + d);
+//            log(oper + " " + rhs);
+            SCIPExpression expression = model.createExpression();
+            for (int i = 0; i < constraintVars.length; i++) {
+                ConstrainedVariable var = constraintVars[i];
+                SCIPVariable scipVar = (SCIPVariable) var.getObject();
+                if (scipVar == null) {
+                    throw new RuntimeException(
+                            "The variable " + var.getName() + " does not have an associated SCIP variable");
+                }
+                Double coef = constraintCoefficients[i];
+                expression.add(coef,scipVar);
+            }
+            
+            if ("=".equals(oper)) {
+            	expression.eq(rhs);
+            }
+            else if (">=".equals(oper)) {
+            	expression.geq(rhs);
+            }
+            else if (">".equals(oper)) {
+                rhs += precision;
+                expression.geq(rhs);
+            } else if ("<".equals(oper)) {
+                rhs -= precision;
+                expression.leq(rhs);
+            } else if ("<=".equals(oper)) {
+            	expression.leq(rhs);
+            }
+//            else if ("!=".equals(oper)) {
+//                // not implemented
+//            }
+            else {
+                throw new RuntimeException("SCIP: Unknown linear operator: " + oper);
+            }
 
+        }
+    }
+
+    public Solution optimize(Objective objectiveDirection, ConstrainedVariable objectiveVar) {
+        // Set Objective
+        SCIPVariable scipObjective = (SCIPVariable) objectiveVar.getObject();
+        model.createExpression().add(scipObjective).asObjective();
+
+        Status status;
+        if (Objective.MAXIMIZE.equals(objectiveDirection)) {
+            status = model.maximize();
+        } else if (Objective.MINIMIZE.equals(objectiveDirection)) {
+            status = model.minimize();
+        } else {
+            throw new RuntimeException("Uknown optimization direction: " + objectiveDirection);
+        }
+
+        if (!status.equals(Status.OPTIMAL)) {
+            System.out.println("SCIP cannot find an optimal solution");
+            return null;
+        }
+
+        // double obj = model.getObjectiveValue();
+
+        Solution solution = createSolution();
+        
+        return solution;
+    }
+    
+    public Solution createSolution() {
+
+        Var[] vars = problem.getVars();
+        if (vars != null) {
+            for (Var v : vars) {
+                javax.constraints.impl.Var var = (javax.constraints.impl.Var) v;
+                SCIPVariable scipVar = (SCIPVariable) var.getObject();
+                double doubleValue = scipVar.getSolution();
+                int value = (int) Math.floor(doubleValue);
+                if (doubleValue != value) {
+                    log("WARNING: " + var.getName() + " = " + doubleValue + " rounded to " + value);
+                    numberOfRoundings++;
+                }
+                var.setValue(value);
+            }
+        }
+        VarReal[] realVars = problem.getVarReals();
+        if (realVars != null) {
+            for (VarReal v : realVars) {
+                javax.constraints.impl.VarReal var = (javax.constraints.impl.VarReal) v;
+                SCIPVariable scipVar = (SCIPVariable) var.getObject();
+                double value = scipVar.getSolution();
+                //log(var.getName() + " = " + value);
+                var.setValue(value);
+            }
+        }
+        return new javax.constraints.impl.search.Solution(this, 1);
+    }
+
+    @Override
+    public Solution findOptimalSolution(Objective objectiveDirection, Var objectiveVar) {
+        init();
+        problem.add(objectiveVar);
+        return optimize(objectiveDirection, objectiveVar);
+    }
+
+    @Override
+    public Solution findOptimalSolution(Objective objectiveDirection, VarReal objectiveVar) {
+        init();
+        problem.add(objectiveVar);
+        return optimize(objectiveDirection, objectiveVar);
+    }
+
+    public String getCommanLine() {
+        throw new RuntimeException("getCommanLine() should not be used for SCIP");
+    }
+
+    public String getVersion() {
+        return JSR331_LINEAR_SOLVER_VERSION;
+    }
+
+    /**
+     * SCIP minimizes by default
+     */
+    public Objective getDefaultOptimizationObjective() {
+        return Objective.MINIMIZE;
+    }
+
+    public HashMap<String, String> readResults() {
+        throw new RuntimeException("readResults() should not be used for SCIP");
+    }
 }

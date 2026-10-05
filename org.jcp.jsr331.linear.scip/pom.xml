@@ -17,7 +17,7 @@
 	To use SCIP with JSR331, download it from https://scip.zib.de/index.php#download 
 	and make sure that your Environment variable PATH includes the path to scip.exe
 	 -->
-	<url>https://scip.zib.de/index.php#about</url>
+	<url>https://github.com/scipopt/scip</url>
 
 	<dependencies>
 		<dependency>
@@ -29,6 +29,11 @@
 			<groupId>com.javasolver</groupId>
 			<artifactId>jsr331-linear</artifactId>
 			<version>${jsr331.version}</version>
+		</dependency>
+		<dependency>
+	  		<groupId>com.javasolver</groupId>
+			<artifactId>scip-java</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
 	
