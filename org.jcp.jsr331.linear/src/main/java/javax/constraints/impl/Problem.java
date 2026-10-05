@@ -21,6 +21,7 @@ public class Problem extends AbstractProblem {
 	static public final String JSR331_LINEAR_VERSION = "JSR-331 Common Implementation for Linear Solvers";
 	
 	int numberOfScalProducts;
+	int numberOfSums;
 
 	public Problem() {
 		this("LinearProblem");
@@ -29,6 +30,7 @@ public class Problem extends AbstractProblem {
 	public Problem(String name) {
 		super(name);
 		numberOfScalProducts = 0;
+		numberOfSums = 0;
 	}
 	
 	@Override
@@ -319,8 +321,9 @@ public class Problem extends AbstractProblem {
 		int n = getConstraints().length;
 		numberOfScalProducts++;
 		Var derivedVar = createVariable("_ScalProd"+numberOfScalProducts, min, max);
+		add(derivedVar);
 		postScalProd(derivedVar, "=", coefficients, vars);
-		remove("_ScalProd");
+		//remove("_ScalProd");
 		// This variable needs to be added to the problem manually to avoid an uncompleted mps-file
 		// add(derivedVar);
 		return derivedVar;
@@ -410,6 +413,7 @@ public class Problem extends AbstractProblem {
 		int n = getConstraints().length;
 		numberOfScalProducts++;
 		VarReal derivedVar = createVariableReal("_ScalProd"+numberOfScalProducts,min,max);
+		add(derivedVar);
 		varsPlus1[arrayOfVariables.length] = derivedVar;
 		javax.constraints.impl.Constraint c = 
 				(javax.constraints.impl.Constraint)post(coefPlus1,varsPlus1,"=",0);
@@ -432,6 +436,7 @@ public class Problem extends AbstractProblem {
 		int n = getConstraints().length;
 		numberOfScalProducts++;
 		VarReal derivedVar = createVariableReal("_ScalProd"+numberOfScalProducts);
+		add(derivedVar);
 		varsPlus1[arrayOfVariables.length] = derivedVar;
 		javax.constraints.impl.Constraint c = 
 				(javax.constraints.impl.Constraint)post(coefPlus1,varsPlus1,"=",0);
@@ -452,14 +457,15 @@ public class Problem extends AbstractProblem {
 			max += vars[i].getMax();
 		}
 		AbstractProblem p = (AbstractProblem) vars[0].getProblem();
-		Var sumVar = p.variable("_sum_", min, max);
+		numberOfSums++;
+		Var sumVar = p.variable("_sum"+numberOfSums, min, max);
+		add(sumVar);
 		p.post(vars, "=", sumVar);
 		int[] coefficients = new int[vars.length];
 		for (int i = 0; i < coefficients.length; i++) {
 			coefficients[i] = 1;
 		}
 		postScalProd(sumVar,"=",coefficients,vars);
-		p.remove("_sum_");
 		return sumVar;
 	}
 	
