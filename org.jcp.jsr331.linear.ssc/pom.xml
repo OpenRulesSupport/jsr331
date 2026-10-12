@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.javasolver</groupId>
+        <artifactId>jsr331-parent</artifactId>
+        <version>2.4.0</version>
+    </parent>
+
+    <artifactId>jsr331-ssc</artifactId>
+
+    <properties>
+        <ssc.version>4.7.8</ssc.version>
+    </properties>
+
+    <name>JSR331 SSC</name>
+    <description>This is a JSR331 interface for SSC (Software for the Calculation of the Simplex), a Java library for solving linear programming problems v. ${ssc.version}. SSC was designed and developed by Stefano Scarioli.</description>
+    <url>https://www.ssclab.org/</url>
+
+    <licenses>
+        <license>
+            <name>GNU General Public License, Version 3</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
+            <distribution>repo</distribution>
+            <comments>Open source license</comments>
+        </license>
+        <license>
+            <name>JCP License</name>
+            <url>https://download.oracle.com/otndocs/jcp/constraint-1_1_0-mrel-spec/license.html</url>
+            <distribution>repo</distribution>
+            <comments>Open source license that allows unrestricted use by commercial and open source applications</comments>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Stefano Scarioli</name>
+            <email>info@sscLab.org</email>
+            <organization>Graduated in Statistical Sciences at the "La Sapienza" University of Rome</organization>
+            <organizationUrl>https://www.ssclab.org/</organizationUrl>
+        </developer>
+        <developer>
+            <name>Jacob Feldman</name>
+            <email>jacobfeldman@openrules.com</email>
+            <organization>OpenRules, Inc.</organization>
+            <organizationUrl>https://openrules.com</organizationUrl>
+        </developer>
+    </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.javasolver</groupId>
+            <artifactId>jsr331</artifactId>
+            <version>${jsr331.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.javasolver</groupId>
+            <artifactId>jsr331-linear</artifactId>
+            <version>${jsr331.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ssclab</groupId>
+            <artifactId>SSC-LP</artifactId>
+            <version>${ssc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

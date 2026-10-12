@@ -104,6 +104,16 @@
 			</dependencies>
 		</profile>
 		<profile>
+			<id>ojAlgo</id>
+			<dependencies>
+				<dependency>
+					<groupId>com.javasolver</groupId>
+					<artifactId>jsr331-ojalgo</artifactId>
+					<version>${jsr331.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
 			<id>SSC</id>
 			<dependencies>
 				<dependency>

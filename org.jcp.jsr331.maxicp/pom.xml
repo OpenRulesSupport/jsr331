@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.javasolver</groupId>
+    <artifactId>jsr331-parent</artifactId>
+    <version>2.4.0</version>
+  </parent>
+  <artifactId>jsr331-maxicp</artifactId>
+  <name>JSR331 MaxiCP</name>
+  <description>JSR-331 adapter for the open-source MaxiCP constraint solver.</description>
+  <url>https://github.com/OpenRulesSupport/jsr331</url>
+  <properties>
+    <maven.compiler.release>21</maven.compiler.release>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <!-- Latest MaxiCP artifact currently published to Maven Central. -->
+    <maxicp.version>0.0.2</maxicp.version>
+  </properties>
+  <licenses>
+    <license>
+      <name>JCP License</name>
+      <url>https://download.oracle.com/otndocs/jcp/constraint-1_1_0-mrel-spec/license.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <dependencies>
+    <dependency>
+      <groupId>com.javasolver</groupId>
+      <artifactId>jsr331</artifactId>
+      <version>${jsr331.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.maxicp</groupId>
+      <artifactId>maxicp</artifactId>
+      <version>${maxicp.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${slf4j.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration><release>21</release></configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -1,96 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>com.javasolver</groupId>
-		<artifactId>jsr331-parent</artifactId>
-		<version>2.4.0</version>
-	</parent>
+    <parent>
+        <groupId>com.javasolver</groupId>
+        <artifactId>jsr331-parent</artifactId>
+        <version>2.4.0</version>
+    </parent>
 
-	<artifactId>jsr331-choco</artifactId>
+    <artifactId>jsr331-choco</artifactId>
 
-	<name>JSR331 Choco</name>
-	<description>This is a JSR331 interface for the open source Java constraint
-		programming library "Choco" v. 2.1.5</description>
-	<url>https://github.com/OpenRulesSupport/jsr331</url>
+    <properties>
+        <choco.version>6.0.1</choco.version>
+    </properties>
 
-	<licenses>
-		<license>
-			<name>BSD licence</name>
-			<url>https://www.freebsd.org/copyright/freebsd-license.html</url>
-			<distribution>repo</distribution>
-			<comments>Open source license</comments>
-		</license>
-		<license>
-			<name>JCP License</name>
-			<url>
-				https://download.oracle.com/otndocs/jcp/constraint-1_1_0-mrel-spec/license.html</url>
-			<distribution>repo</distribution>
-			<comments>Open source license that allows unrestricted use by the
-				commercial and open source applications</comments>
-		</license>
-	</licenses>
+    <name>JSR331 Choco</name>
+    <description>JSR-331 adapter for the open source Choco Solver 6 constraint programming library</description>
+    <url>https://github.com/OpenRulesSupport/jsr331</url>
 
-	<developers>
-		<developer>
-			<name>F. Laburthe</name>
-			<email>choco@emn.fr</email>
-			<organization>Choco</organization>
-			<organizationUrl>http://choco.emn.fr</organizationUrl>
-		</developer>
-		<developer>
-			<name>N. Jussien</name>
-			<email>choco@emn.fr</email>
-			<organization>Choco</organization>
-			<organizationUrl>http://choco.emn.fr</organizationUrl>
-		</developer>
-		<developer>
-			<name>Jacob Feldman</name>
-			<email>jacobfeldman@openrules.com</email>
-			<organization>OpenRules, Inc.</organization>
-			<organizationUrl>https://openrules.com</organizationUrl>
-		</developer>
-	</developers>
+    <licenses>
+        <license>
+            <name>BSD licence</name>
+            <url>https://www.freebsd.org/copyright/freebsd-license.html</url>
+            <distribution>repo</distribution>
+            <comments>Open source license</comments>
+        </license>
+        <license>
+            <name>JCP License</name>
+            <url>https://download.oracle.com/otndocs/jcp/constraint-1_1_0-mrel-spec/license.html</url>
+            <distribution>repo</distribution>
+            <comments>Open source license that permits commercial and open source applications</comments>
+        </license>
+    </licenses>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.javasolver</groupId>
-			<artifactId>jsr331</artifactId>
-			<version>${jsr331.version}</version>
-		</dependency>
-		<dependency> 
-			<groupId>com.javasolver</groupId>
-			<artifactId>jsr331-choco-solver</artifactId> 
-			<version>2.1.5</version>
-		</dependency>
-	 	
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-			<version>${log4j.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>${log4j.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-slf4j-impl</artifactId>
-			<version>${log4j.version}</version>
-			<scope>test</scope>
-		</dependency>
+    <developers>
+        <developer>
+            <name>Jacob Feldman</name>
+            <email>jacobfeldman@openrules.com</email>
+            <organization>OpenRules, Inc.</organization>
+            <organizationUrl>https://openrules.com</organizationUrl>
+        </developer>
+    </developers>
 
-	</dependencies>
-
+    <dependencies>
+        <dependency>
+            <groupId>com.javasolver</groupId>
+            <artifactId>jsr331</artifactId>
+            <version>${jsr331.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.choco-solver</groupId>
+            <artifactId>choco-solver</artifactId>
+            <version>${choco.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>

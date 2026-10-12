@@ -101,6 +101,22 @@
 			</dependencies>
 		</profile>
 		<profile>
+			<id>MaxiCP</id>
+			<activation>
+				<property>
+					<name>solver</name>
+					<value>MaxiCP</value>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.javasolver</groupId>
+					<artifactId>jsr331-maxicp</artifactId>
+					<version>${jsr331.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
 			<id>JSetL</id>
 			<activation>
 				<property>
@@ -112,6 +128,22 @@
 				<dependency>
 					<groupId>com.javasolver</groupId>
 					<artifactId>jsr331-jsetl</artifactId>
+					<version>${jsr331.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>JaCoP</id>
+			<activation>
+				<property>
+					<name>solver</name>
+					<value>JaCoP</value>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.javasolver</groupId>
+					<artifactId>jsr331-jacop</artifactId>
 					<version>${jsr331.version}</version>
 				</dependency>
 			</dependencies>

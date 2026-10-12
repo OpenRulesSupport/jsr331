@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.javasolver</groupId>
+		<artifactId>jsr331-parent</artifactId>
+		<version>2.4.0</version>
+		<relativePath>../org.jcp.jsr331.parent/pom.xml</relativePath>
+	</parent>
+
+	<artifactId>jsr331-jacop</artifactId>
+
+	<name>JSR331 JaCoP</name>
+	<description>JSR-331 adapter for the JaCoP constraint solver</description>
+	<url>https://github.com/OpenRulesSupport/jsr331</url>
+
+	<properties>
+		<jacop.version>4.10.0</jacop.version>
+	</properties>
+
+	<licenses>
+		<license>
+			<name>JCP License</name>
+			<url>https://download.oracle.com/otndocs/jcp/constraint-1_1_0-mrel-spec/license.html</url>
+			<distribution>repo</distribution>
+		</license>
+		<license>
+			<name>GNU Affero General Public License, Version 3</name>
+			<url>https://www.gnu.org/licenses/agpl-3.0.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.javasolver</groupId>
+			<artifactId>jsr331</artifactId>
+			<version>${jsr331.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jacop</groupId>
+			<artifactId>jacop</artifactId>
+			<version>${jacop.version}</version>
+			<!-- The adapter uses JaCoP's Java API only. Its Scala compiler,
+			     test, and logging dependencies are not needed at runtime. -->
+			<exclusions>
+				<exclusion>
+					<groupId>*</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

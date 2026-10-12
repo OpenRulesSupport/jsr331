@@ -37,6 +37,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/choco-solver-2.1.5-20120603-with-sources.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

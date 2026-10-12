@@ -27,8 +27,8 @@ public class Zoo {
 
 	public void define() {
 
-		Var numberOf30Buses = csp.variable("Number Of 30 seats buses", 0, 30);
-		Var numberOf40Buses = csp.variable("Number Of 40 seats buses", 0, 30);
+		Var numberOf30Buses = csp.variable("Number Of 30-seat buses", 0, 30);
+		Var numberOf40Buses = csp.variable("Number Of 40-seat buses", 0, 30);
 		int[] seats = new int[] { 30, 40 };
 		Var[] vars = new Var[] { numberOf30Buses, numberOf40Buses };
 		Var totalNumberOfSeats = csp.scalProd("Total number of seats", seats, vars);
@@ -47,8 +47,8 @@ public class Zoo {
             csp.log("Unable to derive a solution.");
         else {
             csp.log("*** Optimal Solution ***");
-            csp.log("Number Of 30 seats buses = " + solution.getValue("Number Of 30 seats buses"));
-            csp.log("Number Of 40 seats buses = " + solution.getValue("Number Of 40 seats buses"));
+            csp.log("Number Of 30-seat buses = " + solution.getValue("Number Of 30-seat buses"));
+            csp.log("Number Of 40-seat buses = " + solution.getValue("Number Of 40-seat buses"));
             csp.log("Total Cost = " + solution.getValue("Total cost"));
         }
         solver.logStats();
