@@ -161,7 +161,9 @@ abstract public class AbstractProblem implements Problem {
 	 * @return the Var variable added to the problem.
 	 */
 	public Var add(Var var) {
-		add(var.getName(),var);
+		if (var != null) {
+			add(var.getName(),var);
+		}
 		return var;
 	}
 	

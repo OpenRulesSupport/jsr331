@@ -52,7 +52,9 @@ public class Solver extends AbstractSolver {
 
 	@Override
 	public Solution findSolution(ProblemState restoreOrNot) {
-		throw new NotImplementedException("findSolution(ProblemState restoreOrNot)");
+		//throw new NotImplementedException("findSolution(ProblemState restoreOrNot)");
+		Var fakeObjective = getProblem().variable("feasibleSolution",1,1);
+		return findOptimalSolution(Objective.MINIMIZE, fakeObjective);
 	}
 
 	@Override
