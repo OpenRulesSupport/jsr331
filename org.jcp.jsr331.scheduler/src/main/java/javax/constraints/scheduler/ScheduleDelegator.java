@@ -815,6 +815,26 @@ public abstract class ScheduleDelegator implements	Schedule {
 			return schedule.isNotOneOfConstraint(array, var);
 		}
 
+		public VarReal[] getVarRealArray(String name) {
+			return schedule.getVarRealArray(name);
+		}
+
+		public VarReal[] addVarRealArray(String name, VarReal[] vars) {
+			return schedule.addVarRealArray(name, vars);
+		}
+
+		public VarReal[] addVarRealArray(String arrayName, String[] varNames) {
+			return schedule.addVarRealArray(arrayName, varNames);
+		}
+
+		public Constraint linear(VarReal var, String oper, double value) {
+			return schedule.linear(var, oper, value);
+		}
+
+		public Constraint linear(VarReal var1, String oper, VarReal var2) {
+			return schedule.linear(var1, oper, var2);
+		}
+
 
 
 }

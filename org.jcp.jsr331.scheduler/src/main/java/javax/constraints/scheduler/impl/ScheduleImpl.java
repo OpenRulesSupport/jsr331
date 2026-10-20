@@ -29,6 +29,7 @@ import javax.constraints.SearchStrategy;
 import javax.constraints.Solution;
 import javax.constraints.Solver;
 import javax.constraints.Var;
+import javax.constraints.VarReal;
 import javax.constraints.VarSelectorType;
 import javax.constraints.impl.search.selectors.VarSelectorRandom;
 //import javax.constraints.impl.Problem;
@@ -40,6 +41,18 @@ import javax.constraints.scheduler.ResourceType;
 import javax.constraints.scheduler.Schedule;
 
 public class ScheduleImpl extends ProblemDelegator implements Schedule {
+
+	@Override
+	public Constraint linear(VarReal var, String oper, double value) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Constraint linear(VarReal var1, String oper, VarReal var2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	int start;
 	int end;
@@ -661,6 +674,24 @@ public class ScheduleImpl extends ProblemDelegator implements Schedule {
             */
         }
     }
+
+	@Override
+	public VarReal[] getVarRealArray(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public VarReal[] addVarRealArray(String name, VarReal[] vars) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public VarReal[] addVarRealArray(String arrayName, String[] varNames) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 
 }

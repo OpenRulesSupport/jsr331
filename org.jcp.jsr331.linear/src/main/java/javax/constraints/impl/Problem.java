@@ -129,6 +129,16 @@ public class Problem extends AbstractProblem {
 		constraint.setValue(value);
 		return constraint;
 	}
+	
+	@Override
+	public Constraint linear(VarReal var, String oper, double value) {
+		javax.constraints.impl.Constraint constraint = new javax.constraints.impl.Constraint(this);
+		constraint.setCoefficients(new double[]{1});
+		constraint.setVars(new VarReal[]{var});
+		constraint.setOper(oper);
+		constraint.setValue(value);
+		return constraint;
+	}
 
 	@Override
 	public Constraint linear(Var var1, String oper, Var var2) {
@@ -136,6 +146,17 @@ public class Problem extends AbstractProblem {
 		javax.constraints.impl.Constraint constraint = new javax.constraints.impl.Constraint(this);
 		constraint.setCoefficients(new int[]{1,-1});
 		constraint.setVars(new Var[]{var1,var2});
+		constraint.setOper(oper);
+		constraint.setValue(0);
+		return constraint;
+	}
+	
+	@Override
+	public Constraint linear(VarReal var1, String oper, VarReal var2) {
+		//throw new NonLinearProblemException("linear(Var var1, String oper, Var var2)");
+		javax.constraints.impl.Constraint constraint = new javax.constraints.impl.Constraint(this);
+		constraint.setCoefficients(new double[]{1,-1});
+		constraint.setVars(new VarReal[]{var1,var2});
 		constraint.setOper(oper);
 		constraint.setValue(0);
 		return constraint;

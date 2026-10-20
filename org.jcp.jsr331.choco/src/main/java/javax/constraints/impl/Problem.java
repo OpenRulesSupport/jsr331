@@ -8,6 +8,7 @@ import javax.constraints.DomainType;
 import javax.constraints.Solver;
 import javax.constraints.Var;
 import javax.constraints.VarBool;
+import javax.constraints.VarReal;
 import javax.constraints.impl.constraint.AllDifferent;
 import javax.constraints.impl.constraint.Cardinality;
 import javax.constraints.impl.constraint.Element;
@@ -94,7 +95,7 @@ public class Problem extends AbstractProblem {
     @Override public Constraint linear(Var left, String oper, Var right) {
         return add(new Linear(left, oper, right));
     }
-
+    
     @Override public Constraint postElement(int[] array, Var index, String oper, int value) {
         Constraint c = add(new Element(array, index, oper, value)); c.post(); return c;
     }

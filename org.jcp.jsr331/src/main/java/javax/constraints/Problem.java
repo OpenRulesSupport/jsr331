@@ -421,6 +421,42 @@ public interface Problem {
 	public VarReal[] getVarReals();
 	
 	/**
+	 * Returns the array of VarReal variables with the name "name", or null if no such array exists in the problem.
+	 * @param name the name of the desired array of VarReal variables.
+	 * @return the array of VarReal variables with the name "name", or null if no such array exists in the problem.
+	 */
+	public VarReal[] getVarRealArray(String name);
+	
+	/**
+	 * Gives the array of VarReal variables "vars" a new name "name", adds the array
+	 * of variables to the problem, and returns the newly added VarReal array.
+	 * 
+	 * @param name
+	 *            the new name for the array "vars".
+	 * @param vars
+	 *            the array of Var variables to add to the problem.
+	 * 
+	 * @return the array of VarReal variables added to the problem.
+	 */
+	public VarReal[] addVarRealArray(String name, VarReal[] vars);
+	
+	
+	/**
+	 * Creates an array of VarReal variables with name "arrayName". The variables to
+	 * be contained in the array must have already been added to the problem,
+	 * and their names are specified in "varNames".
+	 * 
+	 * @param arrayName
+	 *            the name for the new VarReal array.
+	 * @param varNames
+	 *            an array of names of already added variables, which are to
+	 *            form the new array.
+	 * 
+	 * @return the array of VarReal variables created and added to the problem.
+	 */
+	public VarReal[] addVarRealArray(String arrayName, String[] varNames);
+	
+	/**
 	 * Returns an array containing the VarSet variables previously added to the problem.
 	 * @return an array containing the VarSet variables previously added to the problem.
 	 */
@@ -683,10 +719,22 @@ public interface Problem {
 	public Constraint linear(Var var, String oper, int value);
 	
 	/**
+	 * Creates a constraint: real var "oper" value without posting
+	 * @return a newly created constraint
+	 */
+	public Constraint linear(VarReal var, String oper, double value);
+	
+	/**
 	 * Creates a constraint: var1 "oper" var2 without posting
 	 * @return a newly created constraint
 	 */
 	public Constraint linear(Var var1, String oper, Var var2);
+	
+	/**
+	 * Creates a constraint: real var1 "oper" real var2 without posting
+	 * @return a newly created constraint
+	 */
+	public Constraint linear(VarReal var1, String oper, VarReal var2);
 	
 	/**
 	 * Creates and posts a constraint: var "oper" integer value
@@ -921,6 +969,7 @@ public interface Problem {
 	 * 	       "var".
 	 */
 	public VarReal sum(VarReal[] vars);
+	
 	
 	/**
 	 * Returns a constrained real variable that is constrained to be 

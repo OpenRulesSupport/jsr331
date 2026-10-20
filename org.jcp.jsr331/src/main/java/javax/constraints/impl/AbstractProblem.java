@@ -16,6 +16,7 @@ import javax.constraints.ConstrainedVariable;
 import javax.constraints.Constraint;
 import javax.constraints.DomainType;
 import javax.constraints.Oper;
+import javax.constraints.Probability;
 import javax.constraints.Problem;
 import javax.constraints.Solver;
 import javax.constraints.Var;
@@ -31,8 +32,6 @@ import javax.constraints.impl.constraint.ConstraintMax;
 import javax.constraints.impl.constraint.ConstraintMin;
 import javax.constraints.impl.constraint.ConstraintTrue;
 import javax.constraints.impl.search.goal.Goal;
-
-import javax.constraints.Probability;
 
 /**
  * Problem - a placeholder for all components used to represent and resolve a
@@ -86,6 +85,7 @@ abstract public class AbstractProblem implements Problem {
 	ArrayList<VarReal> varReals;
 	ArrayList<VarBool> varBools;
 	HashMap<String,Var[]> varArrays;
+	HashMap<String,VarReal[]> varRealArrays;
 	ArrayList<Constraint> constraints;
 	Solver	solver;
 	DomainType domainType;
@@ -109,6 +109,7 @@ abstract public class AbstractProblem implements Problem {
 		varBools = new ArrayList<VarBool>();
 		constraints = new ArrayList<Constraint>();
 		varArrays = new HashMap<String,Var[]>();
+		varRealArrays = new HashMap<String,VarReal[]>();
 		varMatrixs = new HashMap<String, VarMatrix>();
 		varStrings = new ArrayList<VarString>();
 		constraintViolations = new ArrayList<Var>();
@@ -498,6 +499,22 @@ abstract public class AbstractProblem implements Problem {
 		varArrays.put(name,vars);
 		return vars;
 	}
+	
+	/**
+	 * Gives the array of VarReal variables "vars" a new name "name", adds the array
+	 * of variables to the problem, and returns the newly added VarReal array.
+	 * 
+	 * @param name
+	 *            the new name for the array "vars".
+	 * @param vars
+	 *            the array of Var variables to add to the problem.
+	 * 
+	 * @return the array of VarReal variables added to the problem.
+	 */
+	public VarReal[] addVarRealArray(String name, VarReal[] vars) {
+		varRealArrays.put(name,vars);
+		return vars;
+	}
 
 	/**
 	 * Creates an array of Var variables with name "arrayName". The variables to
@@ -518,6 +535,28 @@ abstract public class AbstractProblem implements Problem {
 		for (int i = 0; i < n; i++)
 			array[i] = getVar(varNames[i]);
 		varArrays.put(arrayName,array);
+		return array;
+	}
+	
+	/**
+	 * Creates an array of VarReal variables with name "arrayName". The variables to
+	 * be contained in the array must have already been added to the problem,
+	 * and their names are specified in "varNames".
+	 * 
+	 * @param arrayName
+	 *            the name for the new VarReal array.
+	 * @param varNames
+	 *            an array of names of already added variables, which are to
+	 *            form the new array.
+	 * 
+	 * @return the array of VarReal variables created and added to the problem.
+	 */
+	public VarReal[] addVarRealArray(String arrayName, String[] varNames) {
+		int n = varNames.length;
+		VarReal[] array = new VarReal[n];
+		for (int i = 0; i < n; i++)
+			array[i] = getVarReal(varNames[i]);
+		varRealArrays.put(arrayName,array);
 		return array;
 	}
 	
@@ -727,6 +766,19 @@ abstract public class AbstractProblem implements Problem {
 	 */
 	public Var[] getVarArray(String name) {
 		return varArrays.get(name);
+	}
+	
+	/**
+	 * Returns the array of VarReal variables with the name "name", or null if no
+	 * such array exists in the problem.
+	 * 
+	 * @param name
+	 *            the name of the desired array of VarReal variables.
+	 * @return the array of Var variables with the name "name", or null if no
+	 *         such array exists in the problem.
+	 */
+	public VarReal[] getVarRealArray(String name) {
+		return varRealArrays.get(name);
 	}
 
 	/**
@@ -1881,6 +1933,22 @@ abstract public class AbstractProblem implements Problem {
 		return sumVar;
 	}
 	
+//	/**
+//	 * Returns a constrained real variable that is constrained to be 
+//	 * the sum of the variables in the ArrayList of VarReal "vars".
+//	 * @param vars the list of variables from which we desire the sum.
+//	 * @return a constrained real variable that is equal to the sum of the variables in the array
+//	 * 	       "var".
+//	 */
+//	public VarReal sum(ArrayList<VarReal> vars){
+//		if (vars.size()==0) {
+//			log("Attempt to find a sum of an empty array");
+//			return variableReal("Sun_of_empty_real_array",0.0,0.0);
+//		}
+//		VarReal[] array = (VarReal[])vars.toArray(new VarReal[vars.size()]);
+//		return sum(array);
+//	}
+	
 	/**
 	 * Returns a constrained integer variable called "name" that is constrained to be 
 	 * the sum of the variables in the array "vars".
@@ -2145,6 +2213,14 @@ abstract public class AbstractProblem implements Problem {
 	public Constraint linear(VarString var1, String oper, VarString var2) {
 		return linear(var1.getInt(), oper, var2.getInt());
 	}
+	
+	public Constraint linear(VarReal var, String oper, double value) {
+    	throw new UnsupportedOperationException("Unsupported linear constraint for real variables");
+    }
+    
+    public Constraint linear(VarReal var1, String oper, VarReal var2) {
+    	throw new UnsupportedOperationException("Unsupported linear constraint for real variables");
+    }
 
 	public Constraint post(VarString var1, String oper, VarString var2) {
 		// if (!var1.hasSameDomain(var2))
