@@ -65,7 +65,7 @@
 		<dependency>
 	  		<groupId>org.jcp.jsr331</groupId>
 			<artifactId>clp-mip-java</artifactId>
-			<version>1.16.15</version>
+			<version>3.0.0</version>
 		</dependency>
   	
 		<dependency>
