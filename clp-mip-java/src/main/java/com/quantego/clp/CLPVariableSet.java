@@ -23,7 +23,7 @@ public class CLPVariableSet {
 	}
 	
 	/**
-	 * Common name of these variables. An underscore followed by the index will be added automaticall.y
+	 * Common name of these variables. An underscore followed by the index is added automatically.
 	 * @param name
 	 * @return builder
 	 */
@@ -53,9 +53,8 @@ public class CLPVariableSet {
 	}
 	
 	/**
-	 * Lower bounds of these variables. By default variables are 0 <= x <= inf.
-	 * @param lb
-	 * @param ub
+	 * Lower bounds of these variables. By default variables are {@code 0 <= x <= inf}.
+	 * @param value common lower bound
 	 * @return builder
 	 */
 	public CLPVariableSet lb(double value) {
@@ -64,9 +63,8 @@ public class CLPVariableSet {
 	}
 	
 	/**
-	 * Upper bounds of these variables. By default variables are 0 <= x <= inf.
-	 * @param lb
-	 * @param ub
+	 * Upper bounds of these variables. By default variables are {@code 0 <= x <= inf}.
+	 * @param value common upper bound
 	 * @return builder
 	 */
 	public CLPVariableSet ub(double value) {
@@ -75,7 +73,7 @@ public class CLPVariableSet {
 	}
 	
 	/**
-	 * Defines this vaiable as free, -inf <= x <= inf.
+	 * Define these variables as free, {@code -inf <= x <= inf}.
 	 * @return builder
 	 */
 	public CLPVariableSet free() {
@@ -85,7 +83,7 @@ public class CLPVariableSet {
 	}
 	
 	/**
-	 * @return a list of {@link CLPVariable} with the given parameters.
+	 * @return an array of {@link CLPVariable} instances with the configured parameters
 	 */
 	public CLPVariable[] build() {
 		CLPVariable[] set = new CLPVariable[_size];

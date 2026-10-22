@@ -41,7 +41,8 @@ public class CLPConstraint {
 	}
 	
 	/**
-	 * Set the right-hand side of this constraint.
+	 * Set the right-hand side of an equality or one-sided inequality constraint.
+	 * This operation has no effect on the native bounds of a {@link TYPE#NEQ} constraint.
 	 * @param value
 	 * @return
 	 */
@@ -82,7 +83,7 @@ public class CLPConstraint {
 	
 	/**
 	 * 
-	 * @return the right-hand side coeffcient of this constraint
+	 * @return the most recent value passed to {@link #setRhs(double)}, or zero if it has not been called
 	 */
 	public double getRhs() {
 		return _rhs;

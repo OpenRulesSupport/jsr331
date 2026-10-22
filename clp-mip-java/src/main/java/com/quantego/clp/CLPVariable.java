@@ -49,7 +49,7 @@ public class CLPVariable {
 	}
 	
 	/**
-	 * Set variable bounds. By default variables are 0 <= x <= inf.
+	 * Set variable bounds. By default variables are {@code 0 <= x <= inf}.
 	 * @param lb
 	 * @param ub
 	 * @return builder
@@ -60,9 +60,8 @@ public class CLPVariable {
 	}
 	
 	/**
-	 * Set lower bound. By default variables are 0 <= x <= inf.
-	 * @param lb
-	 * @param ub
+	 * Set lower bound. By default variables are {@code 0 <= x <= inf}.
+	 * @param value lower bound
 	 * @return builder
 	 */
 	public CLPVariable lb(double value) {
@@ -71,9 +70,8 @@ public class CLPVariable {
 	}
 	
 	/**
-	 * Set upper bound. By default variables are 0 <= x <= inf.
-	 * @param lb
-	 * @param ub
+	 * Set upper bound. By default variables are {@code 0 <= x <= inf}.
+	 * @param value upper bound
 	 * @return builder
 	 */
 	public CLPVariable ub(double value) {
@@ -82,7 +80,7 @@ public class CLPVariable {
 	}
 	
 	/**
-	 * Defines this vaiable as free, -inf <= x <= inf.
+	 * Define this variable as free, {@code -inf <= x <= inf}.
 	 * @return builder
 	 */
 	public CLPVariable free() {

@@ -54,8 +54,7 @@ public class CLPExpression {
 	
 	/**
 	 * Add the sum of multiple variables.
-	 * @param value
-	 * @param variable
+	 * @param variable variables to add with coefficient 1
 	 * @return builder
 	 */
 	public CLPExpression add(CLPVariable... variable) {
@@ -66,8 +65,8 @@ public class CLPExpression {
 	
 	/**
 	 * Add the sum of multiple variables, each multiplied by the same scalar.
-	 * @param value
-	 * @param variable
+	 * @param value common coefficient
+	 * @param variable variables to add
 	 * @return builder
 	 */
 	public CLPExpression add(double value, CLPVariable... variable) {
@@ -78,8 +77,8 @@ public class CLPExpression {
 	
 	/**
 	 * Add the sum of multiple terms.
-	 * @param value
-	 * @param variable
+	 * @param values coefficients to add
+	 * @param variables variables corresponding to the coefficients
 	 * @return builder
 	 */
 	public CLPExpression add(double[] values, CLPVariable[] variables) {
@@ -112,7 +111,9 @@ public class CLPExpression {
 	}
 	
 	/**
-	 * Add this expression as not-equal constraint to the {@link CLP} model.
+	 * Add this expression as a free (unbounded) constraint to the {@link CLP} model.
+	 * The CLP backend has no not-equal row bound, so {@link CLPConstraint.TYPE#NEQ}
+	 * is represented by negative- and positive-infinite bounds and {@code value} is ignored.
 	 * @param value right-hand side
 	 * @return this expression as {@link CLPConstraint}
 	 */
@@ -139,7 +140,9 @@ public class CLPExpression {
 	}
 	
 	/**
-	 * Set this expression as objective function of the {@link CLP} model.
+	 * Apply this expression to the objective of the {@link CLP} model. Its variable
+	 * coefficients replace the corresponding coefficients, while its constant is
+	 * added to the existing objective offset.
 	 * @return this expression as {@link CLPObjective}
 	 */
 	public CLPObjective asObjective() {

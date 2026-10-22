@@ -80,17 +80,28 @@ public class CLP {
 	double _mipGap = Double.NaN;
 	
 	/**
-	 * Create an new model instance.
+	 * Create a new empty model instance.
 	 */
 	public CLP () {
 		_model = init();
 	}
 
+	/**
+	 * Read an MPS model as a continuous linear program. Integer markers are ignored.
+	 *
+	 * @param f MPS file to read
+	 * @return the model read from the file
+	 */
 	public static CLP createFromMPS(File f) {
 		return createFromMPS(f, false);
 	}
 
-	/** Read an MPS model and honor its integer markers. */
+	/**
+	 * Read an MPS model and honor its integer markers.
+	 *
+	 * @param f MPS file to read
+	 * @return the model read from the file
+	 */
 	public static CLP createMIPFromMPS(File f) {
 		return createFromMPS(f, true);
 	}
@@ -451,12 +462,9 @@ public class CLP {
 	}
 	
 	/**
-	 * Print CLP log to standard out (default=0).</br>
-	 * 0 - none </br>
-     * 1 - just final info</br>
-     * 2 - basic factorization info</br>
-     * 3 - finer factorization info</br>
-     * 4 - verbose
+	 * Print CLP logging to standard output (default 0):
+	 * 0 disables logging, 1 prints final information, 2 prints basic factorization
+	 * information, 3 prints finer factorization information, and 4 is verbose.
 	 * @param level
 	 * @return builder
 	 */
@@ -466,8 +474,9 @@ public class CLP {
 	}
 	
 	/**
-	 * A number of constraints remain in heap space during model building and will be passed to the native methods when needed.
-	 * The buffer gets flushed either when {@link CLP#solve()} gets executed or when the maximum buffer size is reached (default=10000).
+	 * Set the maximum number of new variables or constraints buffered in Java heap before they are passed to the native model.
+	 * The buffers are also flushed when an operation such as {@link CLP#solve()} requires the native model (default=100000).
+	 * @param size maximum number of buffered variables or constraints
 	 * @return builder
 	 */
 	public CLP buffer(int size) {
@@ -476,7 +485,7 @@ public class CLP {
 	}
 	
 	/**
-	 * Solve as maximization problem.
+	 * Configure the model to be solved as a maximization problem.
 	 * @return builder
 	 */
 	public CLP maximization() {
@@ -488,7 +497,7 @@ public class CLP {
 	}
 	
 	/**
-	 * Solve as maximization problem.
+	 * Configure the model to be solved as a minimization problem.
 	 * @return builder
 	 */
 	public CLP minimization() {
@@ -521,7 +530,7 @@ public class CLP {
 	}
 
 	/**
-	 * Set the objective coefficient of the given variable.
+	 * Set the linear objective coefficient of the given variable.
 	 * @param variable
 	 * @param value
 	 */
@@ -537,7 +546,7 @@ public class CLP {
 	}
 	
 	/**
-	 * Set the objective coefficient of the given variable.
+	 * Set the diagonal quadratic objective coefficient of the given variable.
 	 * @param variable
 	 * @param value
 	 */
@@ -576,7 +585,8 @@ public class CLP {
 	}
 	
 	/**
-	 * Set the objective function to the model without using {@link CLP#createExpression()}. Objective coefficients not set remain unchanged.
+	 * Apply objective terms without using {@link CLP#createExpression()}. Coefficients not present in
+	 * {@code terms} remain unchanged, and {@code offset} is added to the current objective offset.
 	 * @param terms terms of the objective function
 	 * @param offset constant offset in the objective function
 	 * @return
@@ -606,6 +616,7 @@ public class CLP {
 	
 	/**
 	 * Add a new constraint to the model without using {@link CLP#createExpression()}.
+	 * @param variables variables corresponding to the coefficients in {@code lhs}
 	 * @param lhs terms on the left-hand side
 	 * @param type constraint type
 	 * @param rhs right-hand side coefficient
@@ -622,7 +633,8 @@ public class CLP {
 	}
 	
 	/**
-	 * Solve the optimization problem. 
+	 * Solve the optimization problem. Models containing integer variables are solved with
+	 * branch-and-bound; otherwise the LP relaxation is solved directly.
 	 * @return solution {@link STATUS}
 	 */
 	public STATUS solve() {
@@ -806,40 +818,60 @@ public class CLP {
 		}
 	}
 
-	/** Set the tolerance used to recognize integer values (default 1e-7). */
+	/**
+	 * Set the tolerance used to recognize integer values (default 1e-7).
+	 * @param value tolerance in the open interval (0, 0.5)
+	 * @return this model
+	 */
 	public CLP mipIntegerTolerance(double value) {
 		if (!(value > 0. && value < .5)) throw new IllegalArgumentException("MIP integer tolerance must be in (0, 0.5).");
 		_mipIntegerTolerance = value;
 		return this;
 	}
 
-	/** Stop when the absolute objective gap is at most this value (default 0). */
+	/**
+	 * Stop when the absolute objective gap is at most this value (default 0).
+	 * @param value non-negative absolute gap
+	 * @return this model
+	 */
 	public CLP mipAbsoluteGap(double value) {
 		if (value < 0.) throw new IllegalArgumentException("MIP absolute gap must be non-negative.");
 		_mipAbsoluteGap = value;
 		return this;
 	}
 
-	/** Stop when the relative objective gap is at most this value (default 0). */
+	/**
+	 * Stop when the relative objective gap is at most this value (default 0).
+	 * @param value non-negative relative gap
+	 * @return this model
+	 */
 	public CLP mipRelativeGap(double value) {
 		if (value < 0.) throw new IllegalArgumentException("MIP relative gap must be non-negative.");
 		_mipRelativeGap = value;
 		return this;
 	}
 
-	/** Limit the number of branch-and-bound nodes. */
+	/**
+	 * Limit the number of branch-and-bound nodes.
+	 * @param value non-negative node limit
+	 * @return this model
+	 */
 	public CLP mipMaxNodes(long value) {
 		if (value < 0) throw new IllegalArgumentException("MIP node limit must be non-negative.");
 		_mipMaxNodes = value;
 		return this;
 	}
 
+	/** @return number of nodes processed by the most recent MIP solve */
 	public long getMipNodeCount() { return _mipNodeCount; }
+	/** @return best objective bound from the most recent MIP solve */
 	public double getMipBestBound() { return _mipBestBound; }
+	/** @return relative objective gap from the most recent MIP solve */
 	public double getMipGap() { return _mipGap; }
 	
 	/**
-	 * Rebuild the model from scratch. The previous model is deleted from memory.
+	 * Rebuild the native model while preserving its variables, constraints, bounds, and objective.
+	 * The previous native model is deleted from memory after the replacement is built.
 	 */
  	public void reset() {
 		flushBuffers();
@@ -1298,7 +1330,7 @@ public class CLP {
 	
 	/**
 	 * Print the model in lp format to standard output. 
-	 * @see {@link CLP#toString()}
+	 * @see CLP#toString()
 	 */
 	public void printModel() {
 		System.out.println(toString());
