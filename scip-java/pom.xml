@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.javasolver</groupId>
   <artifactId>scip-java</artifactId>
-  <version>1.0.0</version>
+  <version>3.0.0</version>
   <name>SCIP Java</name>
   <description>A compact Java modeling API for the SCIP optimization suite.</description>
   <licenses>

@@ -33,7 +33,7 @@
 		<dependency>
 	  		<groupId>com.javasolver</groupId>
 			<artifactId>scip-java</artifactId>
-			<version>1.0.0</version>
+			<version>3.0.0</version>
 		</dependency>
 	</dependencies>
 	

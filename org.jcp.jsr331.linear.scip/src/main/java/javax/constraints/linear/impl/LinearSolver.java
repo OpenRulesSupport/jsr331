@@ -17,7 +17,7 @@ import com.javasolver.SCIP.Status;
 
 public class LinearSolver extends javax.constraints.linear.LinearSolver {
 
-    static public final String JSR331_LINEAR_SOLVER_VERSION = "SCIP-JAVA v.1.0.0 using SCIP Optimization Suite 10.0";
+    static public final String JSR331_LINEAR_SOLVER_VERSION = "SCIP-JAVA v.3.0.0 using SCIP Optimization Suite 10.0";
 
     Problem problem;
     com.javasolver.SCIP model;
