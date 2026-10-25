@@ -299,6 +299,12 @@ public interface Problem {
 	 * @return the VarReal variable created and added to the problem.
 	 */
 	public VarReal variableReal(String name);
+	
+	/**
+	 * @param domain an array specifying the values in the domain for the new VarReal.
+	 * @return the VarReal variable created and added to the problem.
+	 */
+	public VarReal variableReal(String name, double[] domain);
 
 //	/**
 //	 * Creates a BasicVarString with the name "name" and domain "values", adds

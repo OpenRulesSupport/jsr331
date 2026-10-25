@@ -7,6 +7,10 @@ import java.util.Set;
 
 public abstract class ProblemDelegator implements Problem {
 	
+	public VarReal variableReal(String name, double[] domain) {
+		return problem.variableReal(name, domain);
+	}
+
 	private final Problem problem; 
 	
 	public ProblemDelegator(Problem problem) {

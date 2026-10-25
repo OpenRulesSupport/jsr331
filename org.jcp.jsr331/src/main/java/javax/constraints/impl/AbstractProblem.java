@@ -364,6 +364,22 @@ abstract public class AbstractProblem implements Problem {
 		add(var);
 		return var;
 	}
+	
+	/**
+	 * @param domain an array specifying the values in the domain for the new VarReal.
+	 * @return the VarReal variable created and added to the problem.
+	 */
+	public VarReal variableReal(String name, double[] domain) {
+		double min = Double.MAX_VALUE;
+		double max = Double.MIN_VALUE;
+		for(double d : domain) {
+			if (d < min)
+				min = d;
+			if (d > max)
+				max = d;
+		}
+		return variableReal(name, min, max);
+	}
 
 	/**
 	 * Creates a VarReal with the name "name" and default domain
