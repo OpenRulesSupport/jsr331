@@ -835,6 +835,10 @@ public abstract class ScheduleDelegator implements	Schedule {
 			return schedule.linear(var1, oper, var2);
 		}
 
+		public VarReal variableReal(String name, double[] domain) {
+			return schedule.variableReal(name, domain);
+		}
+
 
 
 }
