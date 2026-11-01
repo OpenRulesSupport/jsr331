@@ -1,0 +1,11 @@
+libgmp.10.dylib
+libgmpxx.4.dylib
+libmpfr.6.dylib
+libtbb.12.19.dylib
+libtbb.12.dylib
+libsoplexshared.8.1.0.dylib
+libsoplexshared.8.1.dylib
+libsoplexshared.dylib
+libscip.10.1.0.dylib
+libscip.10.1.dylib
+libscip.dylib
