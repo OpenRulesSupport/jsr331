@@ -15,8 +15,8 @@
     <maven.compiler.release>21</maven.compiler.release>
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
-    <!-- Latest MaxiCP artifact currently published to Maven Central. -->
-    <maxicp.version>0.0.2</maxicp.version>
+    <!-- Official MaxiCP release used by this adapter. -->
+    <maxicp.version>1.0.0</maxicp.version>
   </properties>
   <licenses>
     <license>

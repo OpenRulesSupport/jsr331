@@ -21,7 +21,7 @@ import org.slf4j.LoggerFactory;
 /** JSR-331 problem implementation backed by MaxiCP. */
 public class Problem extends AbstractProblem {
     public static final String JSR331_MAXICP_VERSION =
-            "JSR-331 implementation based on MaxiCP 0.0.2";
+            "JSR-331 implementation based on MaxiCP 1.0.0";
     private static final Logger LOGGER = LoggerFactory.getLogger("javax.constraints");
     private final CPSolver maxiCPSolver;
 

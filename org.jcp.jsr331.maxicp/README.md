@@ -8,10 +8,10 @@ under the directory `org.jcp.jsr331.maxicp`.
 
 ## Requirements
 
-- Java 21 (required by MaxiCP 0.0.2)
+- Java 21 (required by MaxiCP 1.0.0)
 - Maven 3.9 or later
-- `com.javasolver:jsr331:2.4.0`
-- `org.maxicp:maxicp:0.0.2`
+- `com.javasolver:jsr331:3.0.0`
+- `org.maxicp:maxicp:1.0.0`
 
 ## Build
 
