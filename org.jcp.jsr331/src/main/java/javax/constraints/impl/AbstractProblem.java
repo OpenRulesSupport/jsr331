@@ -132,6 +132,7 @@ abstract public class AbstractProblem implements Problem {
 	 * 
 	 * @return the problem name
 	 */
+	@Override
 	public final String getName() {
 		return name;
 	}
@@ -141,9 +142,11 @@ abstract public class AbstractProblem implements Problem {
 	 * 
 	 * @param name
 	 */
+	@Override
 	public final void setName(String name) {
 		this.name = name;
 	}
+	
 	
 	public final DomainType getDomainType() {
 		return domainType;
@@ -161,6 +164,7 @@ abstract public class AbstractProblem implements Problem {
 	 *            the variable to add to the problem.
 	 * @return the Var variable added to the problem.
 	 */
+	@Override
 	public Var add(Var var) {
 		if (var != null) {
 			add(var.getName(),var);
@@ -176,6 +180,7 @@ abstract public class AbstractProblem implements Problem {
 	 *            the boolean variable to add to the problem.
 	 * @return the VarBool variable added to the problem.
 	 */
+	@Override
 	public VarBool add(VarBool varBool) {
 		varBools.add(varBool);
 		return varBool;
@@ -208,6 +213,7 @@ abstract public class AbstractProblem implements Problem {
 	 *            the variable to add to the problem.
 	 * @return the Var variable added to the problem.
 	 */
+	@Override
 	public Var add(String name, Var var) {
 		Var oldVar = getVar(name);
 		if (oldVar != null) {
@@ -227,6 +233,7 @@ abstract public class AbstractProblem implements Problem {
 	 *            the real variable to add to the problem.
 	 * @return the VarReal variable added to the problem.
 	 */
+	@Override
 	public VarReal add(VarReal var) {
 		return add(var.getName(),var);
 	}
@@ -241,6 +248,7 @@ abstract public class AbstractProblem implements Problem {
 	 *            the real variable to add to the problem.
 	 * @return the VarReal variable added to the problem.
 	 */
+	@Override
 	public VarReal add(String name, VarReal var) {
 		VarReal oldVar = getVarReal(name);
 		if (oldVar != null)
@@ -290,12 +298,14 @@ abstract public class AbstractProblem implements Problem {
 	 *         symbolicExpression or if this method is not defined by a concrete
 	 *         solver implementation.
 	 */
+	@Override
 	public Constraint post(String name, String symbolicExpression) {
 		error("The implementation does not support symbolic constraints like:\n"
 				+ symbolicExpression);
 		return null;
 	}
 
+	@Override
 	public Var variable(String name, int min, int max) {
 		Var var = createVariable(name, min, max);
 		add(var);
@@ -313,6 +323,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param max the maximum value in the domain for the new VarReal.
 	 * @return the VarReal variable created and added to the problem.
 	 */
+	@Override
 	public VarReal createVariableReal(String name, double min, double max) {
 		error("Problem's method createVariableReal(String name, double min, double max) is not implemented");
 		return null;
@@ -328,6 +339,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param domainType {@link DomainType}
 	 * @return the Var variable created and added to the problem
 	 */
+	@Override
 	public Var variable(String name, int min, int max, DomainType domainType) {
 		DomainType current = getDomainType();
 		setDomainType(domainType);
@@ -336,6 +348,7 @@ abstract public class AbstractProblem implements Problem {
 		return var;
 	}
 	
+	@Override
 	public Var variable(int min, int max) {
 		Var var = variable("noname",min,max);
 		remove("noname");
@@ -359,6 +372,7 @@ abstract public class AbstractProblem implements Problem {
 	 * 
 	 * @return the VarReal variable created and added to the problem.
 	 */
+	@Override
 	public VarReal variableReal(String name, double min, double max) {
 		VarReal var = createVariableReal(name, min, max);
 		add(var);
@@ -369,6 +383,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param domain an array specifying the values in the domain for the new VarReal.
 	 * @return the VarReal variable created and added to the problem.
 	 */
+	@Override
 	public VarReal variableReal(String name, double[] domain) {
 		double min = Double.MAX_VALUE;
 		double max = Double.MIN_VALUE;
@@ -391,6 +406,7 @@ abstract public class AbstractProblem implements Problem {
 	 * 
 	 * @return the VarReal variable created and added to the problem.
 	 */
+	@Override
 	public VarReal variableReal(String name) {
 		return variableReal(name,Double.MIN_VALUE+1,Double.MAX_VALUE-1);
 	}
@@ -426,6 +442,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param max
 	 * @return a new VarSet variable
 	 */
+	@Override
 	public VarSet variableSet(String name, int min, int max) throws Exception {
 		VarSet var = new BasicVarSet(this, min, max, name);
 		var.setEmpty(false); 
@@ -440,6 +457,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param values
 	 * @return the VarSet variable created and added to the problem.
 	 */
+	@Override
 	public VarSet variableSet(String name, int[] values) throws Exception {
 		VarSet var = new BasicVarSet(this, values, name);
 		var.setEmpty(false); 
@@ -454,6 +472,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param set
 	 * @return the VarSet variable created and added to the problem.
 	 */
+	@Override
 	public VarSet variableSet(String name, Set set) throws Exception {
 		VarSet var = new BasicVarSet(this, set, name);
 		var.setEmpty(false); 
@@ -490,6 +509,7 @@ abstract public class AbstractProblem implements Problem {
 	 * 
 	 * @return the array of Var variables created and added to the problem.
 	 */
+	@Override
 	public Var[] variableArray(String name, int min, int max, int size) {
 		Var[] array = new Var[size];
 		for (int i = 0; i < size; i++) {
@@ -527,6 +547,7 @@ abstract public class AbstractProblem implements Problem {
 	 * 
 	 * @return the array of VarReal variables added to the problem.
 	 */
+	@Override
 	public VarReal[] addVarRealArray(String name, VarReal[] vars) {
 		varRealArrays.put(name,vars);
 		return vars;
@@ -567,6 +588,7 @@ abstract public class AbstractProblem implements Problem {
 	 * 
 	 * @return the array of VarReal variables created and added to the problem.
 	 */
+	@Override
 	public VarReal[] addVarRealArray(String arrayName, String[] varNames) {
 		int n = varNames.length;
 		VarReal[] array = new VarReal[n];
@@ -584,6 +606,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param domain an array of integers
 	 * @return the created variable
 	 */
+	@Override
 	public Var variable(String name, int[] domain) {
 		int max = Integer.MIN_VALUE+1;
 		int min = Integer.MAX_VALUE-1;
@@ -616,6 +639,7 @@ abstract public class AbstractProblem implements Problem {
 		return var;
 	}
 	
+	@Override
 	public Var variable(int[] domain) {
 		return variable("",domain);
 	}
@@ -648,6 +672,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return an array containing the Var variables previously added to the
 	 *         problem.
 	 */
+	@Override
 	public Var[] getVars() {
 		if (vars.isEmpty())
 			return null;
@@ -672,6 +697,7 @@ abstract public class AbstractProblem implements Problem {
 	 * Returns an array containing the VarBool variables previously added to the problem.
 	 * @return an array containing the VarBool variables previously added to the problem.
 	 */
+	@Override
 	public VarBool[] getVarBools() {
 		if (varBools.isEmpty())
 			return null;
@@ -689,6 +715,7 @@ abstract public class AbstractProblem implements Problem {
 	 * Creates a bool var not added to the problem.
 	 * @return the Var variable created 
 	 */
+	@Override
 	public VarBool variableBool() {
 		VarBool var = variableBool("noname");
 		remove("noname");
@@ -703,6 +730,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return an array containing the VarReal variables previously added to the
 	 *         problem.
 	 */
+	@Override
 	public VarReal[] getVarReals() {
 		if (varReals.isEmpty())
 			return null;
@@ -722,6 +750,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return an array containing the VarSet variables previously added to the
 	 *         problem.
 	 */
+	@Override
 	public VarReal[] getVarSets() {
 		// TODO
 		return null;
@@ -736,6 +765,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return the Var variable with the name "name", or null if no such
 	 *         variable exists in the problem.
 	 */
+	@Override
 	public Var getVar(String name) {
 		if (name == null)
 			return null;
@@ -758,6 +788,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return the VarReal variable with the name "name", or null if no such
 	 *         variable exists in the problem.
 	 */
+	@Override
 	public VarReal getVarReal(String name) {
 		if (name == null)
 			return null;
@@ -780,6 +811,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return the array of Var variables with the name "name", or null if no
 	 *         such array exists in the problem.
 	 */
+	@Override
 	public Var[] getVarArray(String name) {
 		return varArrays.get(name);
 	}
@@ -793,6 +825,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return the array of Var variables with the name "name", or null if no
 	 *         such array exists in the problem.
 	 */
+	@Override
 	public VarReal[] getVarRealArray(String name) {
 		return varRealArrays.get(name);
 	}
@@ -843,6 +876,7 @@ abstract public class AbstractProblem implements Problem {
 	 *            the constraint to add to the problem.
 	 * @return the Constraint added to the problem.
 	 */
+	@Override
 	public Constraint add(Constraint constraint) {
 		return add(constraint.getName(),constraint);
 	}
@@ -872,6 +906,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return an array of Objects containing the Constraints previously added
 	 *         to the problem.
 	 */
+	@Override
 	public Constraint[] getConstraints() {
 //		if (constraints.size() == 0)
 //			return null;
@@ -882,6 +917,7 @@ abstract public class AbstractProblem implements Problem {
 		return array;
 	}
 	
+	@Override
 	public final Constraint getConstraint(String name) {
 		if (constraints.size() == 0)
 			return null;
@@ -912,6 +948,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return a constrained integer variable whose domain is the set of values array[i] where each i
 	 *         is in the domain of "indexVar".
 	 */
+	@Override
 	public Var element(int[] array, Var indexVar) {
 		Var elemVar = variable("_element_",array);
 		postElement(array, indexVar, "=", elemVar);
@@ -931,6 +968,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return a constrained integer variable whose domain is the set of values array[i] where each i
 	 *         is in the domain of "indexVar".
 	 */
+	@Override
 	public Var element(Var[] array, Var indexVar) {
 		int min = array[0].getMin();
 		int max = array[0].getMax();
@@ -946,6 +984,7 @@ abstract public class AbstractProblem implements Problem {
 		return elemVar;
 	}
 	
+	@Override
 	public Var element(ArrayList<Var> list, Var indexVar) {
 		Var[] array = (Var[])list.toArray(new Var[list.size()]);
 		return element(array,indexVar);
@@ -959,6 +998,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return a set variable
 	 * @throws Exception
 	 */
+	@Override
 	public VarSet element(Set<Integer>[] sets, Var indexVar) throws Exception {
 		error("Method element(Set[] sets, Var indexVar) is not implemented");
 		return null;
@@ -972,6 +1012,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param c2 a Constraint  
 	 * @return a Constraint "AND" between the Constraints "c1" and "c2".
 	 */
+	@Override
 	public Constraint postAnd(Constraint c1, Constraint c2) {
 		Constraint and = c1.and(c2);
 		and.post();
@@ -986,6 +1027,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param c2 a Constraint  
 	 * @return a Constraint "OR" between the Constraints "c1" and "c2".
 	 */
+	@Override
 	public Constraint postOr(Constraint c1, Constraint c2) {
 		Constraint or = c1.or(c2);
 		or.post();
@@ -1106,6 +1148,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @throws RuntimeException if the posting fails
 	 * @return a newly created constraint
 	 */
+	@Override
 	public Constraint post(VarReal var, String oper, int value) {
 		error("Problem's method post(VarReal var, String oper, int value) is not implemented");
 		return null;
@@ -1116,6 +1159,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @throws RuntimeException if the posting fails
 	 * @return a newly created constraint
 	 */
+	@Override
 	public Constraint post(VarReal var, String oper, double value) {
 		error("Problem's method post(VarReal var, String oper, double value) is not implemented");
 		return null;
@@ -1133,6 +1177,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @throws RuntimeException if the posting fails
 	 * @return a newly created constraint
 	 */
+	@Override
 	public Constraint post(VarReal var1, String oper, VarReal var2) {
 		error("Problem's method post(VarReal var1, String oper, VarReal var2) is not implemented");
 		return null;
@@ -1158,6 +1203,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return a newly created constraint
 	 */
 	@Deprecated
+	@Override
 	public Constraint post(VarReal[] vars, String oper, VarReal var) {
 		double[] array = new double[vars.length];
 		for (int i = 0; i < array.length; i++) {
@@ -1171,6 +1217,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @throws RuntimeException if the posting fails
 	 * @return a newly created constraint
 	 */
+	@Override
 	public Constraint post(VarReal var1, String oper, Var var2) {
 		error("Problem's method post(VarReal var1, String oper, Var var2) is not implemented");
 		return null;
@@ -1195,6 +1242,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return a newly created constraint
 	 */
 	@Deprecated
+	@Override
 	public Constraint post(double[] array, VarReal[] vars, String oper, VarReal var) {
 		VarReal scalProd = scalProd(array, vars);
 		return post(scalProd, oper, var);
@@ -1206,6 +1254,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return a newly created constraint
 	 */
 	@Deprecated
+	@Override
 	public Constraint post(double[] array, VarReal[] vars, String oper, double value) {
 		VarReal scalProd = scalProd(array, vars);
 		return post(scalProd, oper, value);
@@ -1243,6 +1292,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @throws RuntimeException if the posting fails
 	 * @return a newly created constraint
 	 */
+	@Override
 	public Constraint post(Var var1, String oper, VarReal var2) {
 		error("Problem's method post(Var var1, String oper, VarReal var2) is not implemented");
 		return null;
@@ -1251,10 +1301,12 @@ abstract public class AbstractProblem implements Problem {
 	/**
 	 * This constraint is a synonym for constraintAllDifferent
 	 */
+	@Override
 	public Constraint postAllDiff(Var[] vars) {
 		return postAllDifferent(vars);
 	}
 	
+	@Override
 	public Constraint postAllDifferent(ArrayList<Var> vars) {
 		Var[] array = new Var[vars.size()];
 		int i = 0;
@@ -1263,6 +1315,7 @@ abstract public class AbstractProblem implements Problem {
 		return postAllDifferent(array);
 	}
 	
+	@Override
 	public Constraint postAllDiff(ArrayList<Var> vars) {
 		return postAllDifferent(vars);
 	}
@@ -1279,6 +1332,7 @@ abstract public class AbstractProblem implements Problem {
 		return postAllDifferent(array);
 	}
 	
+	@Override
 	public Constraint allDiff(ArrayList<Var> vars) {
 		return postAllDifferent(vars);
 	}
@@ -1291,6 +1345,7 @@ abstract public class AbstractProblem implements Problem {
 	 *            the array of Vars which must all take different values.
 	 * @return the all-different Constraint on the array of Vars.
 	 */
+	@Override
 	public Constraint postAllDifferent(Var[] vars) {
 		Constraint c = allDiff(vars);
 		c.post();
@@ -1300,6 +1355,7 @@ abstract public class AbstractProblem implements Problem {
 	/**
 	 * Posts allDiff constraint for an array of VarString variables
 	 */
+	@Override
 	public Constraint postAllDiff(VarString[] varStrings) {
 		Var[] vars = new Var[varStrings.length];
 		for (int i = 0; i < vars.length; i++) {
@@ -1315,6 +1371,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param var an integer constrained variable
 	 * @return a constraint
 	 */
+	@Override
 	public Constraint isOneOfConstraint(int[] array, Var var) {
 		Var sum;
 		if (array.length == 1)
@@ -1336,6 +1393,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param var an string constrained variable
 	 * @return a constraint
 	 */
+	@Override
 	public Constraint isOneOfConstraint(String[] array, VarString var) {
 		Var sum;
 		if (array.length == 1)
@@ -1357,6 +1415,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param var an integer constrained variable
 	 * @return a constraint
 	 */
+	@Override
 	public Constraint isNotOneOfConstraint(int[] array, Var var) {
 		Var sum;
 		if (array.length == 1)
@@ -1378,6 +1437,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param var an string constrained variable
 	 * @return a constraint
 	 */
+	@Override
 	public Constraint isNotOneOfConstraint(String[] array, VarString var) {
 		Var sum;
 		if (array.length == 1)
@@ -1449,6 +1509,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param constraint2  Then-Constraint in the implication.
 	 * @return a Constraint that means: if constraint1 then constraint2
 	 */
+	@Override
 	public Constraint postIfThen(Constraint constraint1, Constraint constraint2) {
 		Constraint implies = constraint1.implies(constraint2);
 		implies.post();
@@ -1463,6 +1524,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param var2 the VarBool
 	 * @return a Constraint that means "if var1 then var2"
 	 */
+	@Override
 	public Constraint postIfThen(VarBool var1, VarBool var2) {
 		Constraint c1 = linear(var1,"=",1);
 		Constraint c2 = linear(var2,"=",1);
@@ -1491,6 +1553,7 @@ abstract public class AbstractProblem implements Problem {
 	 * If a solver is not defined yet, creates a new Solver and associates it with the problem.
 	 * @return a solver
 	 */
+	@Override
 	public Solver getSolver() {
 		if (!isSolverCreated())
 			solver = createSolver();
@@ -1502,6 +1565,7 @@ abstract public class AbstractProblem implements Problem {
 	 * making it available through the method "getSolver()".
 	 * @param solver
 	 */
+	@Override
 	public void setSolver(Solver solver) {
 		this.solver = solver;
 	}
@@ -1533,6 +1597,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param vars
 	 *            the array of Vars to log.
 	 */
+	@Override
 	public void log(Var[] vars) {
 		//log(getId() + " vars#: " + vars.length);
 		if (vars != null)
@@ -1542,6 +1607,7 @@ abstract public class AbstractProblem implements Problem {
 		}
 	}
 	
+	@Override
 	public void log(ArrayList<Var> vars) {
 		if (vars != null)
 		for (int i = 0; i < vars.size(); i++) {
@@ -1570,6 +1636,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param vars
 	 *            the array of VarReals to log.
 	 */
+	@Override
 	public void log(VarReal[] vars) {
 		//log(getId() + " varReals#: " + vars.length);
 		if (vars != null)
@@ -1647,6 +1714,7 @@ abstract public class AbstractProblem implements Problem {
 	 * This constraint does NOT assume a creation of an intermediate 
 	 * variable "cardinality(vars,cardValue)".
 	 */
+	@Override
 	public Constraint postCardinality(Var[] vars, Var cardVar, String oper, Var var) {
 		VarBool[] boolVars = new VarBool[vars.length];
 		for (int i = 0; i < boolVars.length; i++) {
@@ -1659,6 +1727,7 @@ abstract public class AbstractProblem implements Problem {
 	 * This method is similar to the one above but instead of var 
 	 * it uses "value"
 	 */
+	@Override
 	public Constraint postCardinality(Var[] vars, Var cardVar, String oper, int value) {
 		VarBool[] boolVars = new VarBool[vars.length];
 		for (int i = 0; i < boolVars.length; i++) {
@@ -1667,32 +1736,38 @@ abstract public class AbstractProblem implements Problem {
 		return post(boolVars, oper, value);
 	}
 	
+	@Override
 	public Constraint postCardinality(ArrayList<Var> vars, int cardValue, String oper, int value) {
 		Var[] array = (Var[])vars.toArray(new Var[vars.size()]);
 		return postCardinality(array, cardValue, oper, value);
 	}
 	
+	@Override
 	public Constraint postCardinality(ArrayList<Var> vars, int cardValue, String oper, Var var) {
 		Var[] array = (Var[])vars.toArray(new Var[vars.size()]);
 		return postCardinality(array, cardValue, oper, var);
 	}
 	
+	@Override
 	public Constraint postCardinality(ArrayList<Var> vars, Var cardVar, String oper, int value) {
 		Var[] array = (Var[])vars.toArray(new Var[vars.size()]);
 		return postCardinality(array, cardVar, oper, value);
 	}
 	
+	@Override
 	public Constraint postCardinality(ArrayList<Var> vars, Var cardVar, String oper, Var var) {
 		Var[] array = (Var[])vars.toArray(new Var[vars.size()]);
 		return postCardinality(array, cardVar, oper, var);
 	}
 	
+	@Override
 	public Constraint postGlobalCardinality(Var[] vars, int[] values, Var[] cardinalityVars) {
 		Constraint c = new ConstraintGlobalCardinality(vars, values, cardinalityVars);
 		c.post();
 		return c;
 	}
 	
+	@Override
 	public Constraint postGlobalCardinality(ArrayList<Var> vars, int[] values, Var[] cardinalityVars) {
 		Var[] array = (Var[])vars.toArray(new Var[vars.size()]);
 		return postGlobalCardinality(array, values, cardinalityVars);
@@ -1708,6 +1783,7 @@ abstract public class AbstractProblem implements Problem {
 	 * Note that arrays values, cardMin, and cardMax should have the same size 
 	 * otherwise a RuntimeException will be thrown
 	 */
+	@Override
 	public Constraint postGlobalCardinality(Var[] vars, int[] values, int[] cardMin, int[] cardMax) {
 		int min = cardMin[0];
 		int max = cardMax[0];
@@ -1729,6 +1805,7 @@ abstract public class AbstractProblem implements Problem {
 		return c;	
 	}
 	
+	@Override
 	public Constraint postGlobalCardinality(ArrayList<Var> vars, int[] values, int[] cardMin, int[] cardMax) {
 		Var[] array = (Var[])vars.toArray(new Var[vars.size()]);
 		return postGlobalCardinality(array, values, cardMin, cardMax);
@@ -1744,6 +1821,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param oper
 	 * @param var
 	 */
+	@Override
 	public Constraint postMax(Var[] vars, String oper, Var var) {
 		Constraint c = new ConstraintMax(vars, oper, var);
 		c.post();
@@ -1758,6 +1836,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param oper
 	 * @param value
 	 */
+	@Override
 	public Constraint postMax(Var[] vars, String oper, int value) {
 		Constraint c = new ConstraintMax(vars, oper, value);
 		c.post();
@@ -1772,6 +1851,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param oper
 	 * @param var
 	 */
+	@Override
 	public Constraint postMin(Var[] vars, String oper, Var var) {
 		Constraint c = new ConstraintMin(vars, oper, var);
 		c.post();
@@ -1786,6 +1866,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param oper
 	 * @param value
 	 */
+	@Override
 	public Constraint postMin(Var[] vars, String oper, int value) {
 		Constraint c = new ConstraintMin(vars, oper, value);
 		c.post();
@@ -1803,6 +1884,7 @@ abstract public class AbstractProblem implements Problem {
 	 *         variable in the array "arrayOfVariables" when they are all
 	 *         instantiated.
 	 */
+	@Override
 	public Var min(Var[] vars) {
 		int m = vars[0].getMin(); // the smallest minimum
 		int M = vars[0].getMax(); // the smallest maximum
@@ -1840,6 +1922,7 @@ abstract public class AbstractProblem implements Problem {
 	 *         variable in the array "arrayOfVariables" when they are all
 	 *         instantiated.
 	 */
+	@Override
 	public Var max(Var[] vars) {
 		int m = vars[0].getMin(); // the largest minimum
 		int M = vars[0].getMax(); // the largest maximum
@@ -1866,11 +1949,13 @@ abstract public class AbstractProblem implements Problem {
 		return maxVar;
 	}
 	
+	@Override
 	public Var max(ArrayList<Var> vars) {
 		Var[] array = (Var[])vars.toArray(new Var[vars.size()]);
 		return max(array);
 	}
 	
+	@Override
 	public Var min(ArrayList<Var> vars) {
 		Var[] array = (Var[])vars.toArray(new Var[vars.size()]);
 		return min(array);
@@ -1879,6 +1964,7 @@ abstract public class AbstractProblem implements Problem {
 	/**
 	 * @return minimum of two variables: var1 and var2
 	 */
+	@Override
 	public Var min(Var var1, Var var2) {
 		try {
 			int minVal = (var1.getMin() < var2.getMin() ? var1.getMin() : var2.getMin());
@@ -1902,6 +1988,7 @@ abstract public class AbstractProblem implements Problem {
 	/**
 	 * @return maximum of two variables: var1 and var2
 	 */
+	@Override
 	public Var max(Var var1, Var var2) {
 		try {
 			int minVal = (var1.getMin() > var2.getMin() ? var1.getMin() : var2.getMin());
@@ -1931,6 +2018,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return a constrained integer variable that is equal to the sum of the variables in the array
 	 * 	       "var".
 	 */
+	@Override
 	public Var sum(Var[] vars) {
 		if (vars.length==0) {
 			log("Attempt to find a sum of an empty array");
@@ -1972,6 +2060,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return a constrained integer variable that is equal to the sum of the variables in the array
 	 * 	       "var".
 	 */
+	@Override
 	public Var sum(String name, Var[] vars) {
 		if (vars.length==0) {
 			log("Attempt to find a sum of an empty array");
@@ -1995,6 +2084,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param var1, var2 - variables which we desire to sum
 	 * @return a constrained integer variable that is equal to the sum of the variables var1 and var2
 	 */
+	@Override
 	public Var sum(Var var1, Var var2) {
 		return sum(new Var[] { var1, var2 });
 	}
@@ -2005,6 +2095,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param var1, var2, var3 - variables which we desire to sum
 	 * @return a constrained integer variable that is equal to the sum of the variables var1, var2, and var3
 	 */
+	@Override
 	public Var sum(Var var1, Var var2, Var var3) {
 		return sum(new Var[] { var1, var2, var3 });
 	}
@@ -2016,6 +2107,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return a constrained integer variable that is equal to the sum of the variables in the array
 	 * 	       "var".
 	 */
+	@Override
 	public Var sum(ArrayList<Var> vars){
 		if (vars.size()==0) {
 			log("Attempt to find a sum of an empty array");
@@ -2063,6 +2155,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param var1, var2 - variables which we desire to sum
 	 * @return a constrained integer variable that is equal to the sum of the variables var1 and var2
 	 */
+	@Override
 	public VarReal sum(VarReal var1, VarReal var2) {
 		return sum(new VarReal[] { var1, var2 });
 		//return var1.plus(var2); - not defined for VarReal
@@ -2074,6 +2167,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param var1, var2, var3 - variables which we desire to sum
 	 * @return a constrained integer variable that is equal to the sum of the variables var1, var2, and var3
 	 */
+	@Override
 	public VarReal sum(VarReal var1, VarReal var2, VarReal var3) {
 		return sum(new VarReal[] { var1, var2, var3 });
 	}
@@ -2085,6 +2179,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return a constrained real variable that is equal to the sum of the variables in the array
 	 * 	       "vars".
 	 */
+	@Override
 	 public VarReal sum(VarReal[] vars) {
 		 error("Problem's method sum(VarReal[]) is not implemented");
 		return null;
@@ -2106,6 +2201,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @param value
 	 *            the new precision for VarReals
 	 */
+	@Override
 	public void setRealPrecision(double value) {
 		REAL_PRECISION = value;
 	}
@@ -2115,6 +2211,7 @@ abstract public class AbstractProblem implements Problem {
 	 * 
 	 * @return the precision for VarReals
 	 */
+	@Override
 	public double getRealPrecision() {
 		return REAL_PRECISION;
 	}
@@ -2147,6 +2244,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @throws RuntimeException if the posting fails 
 	 * @return a newly created constraint
 	 */
+	@Override
 	public Constraint postElement(Set[] arrayOfSets, Var indexVar, String oper, VarSet var) {
 		notImplementedException("Constraint postElement is not implemented on Sets");
 		return null;
@@ -2156,6 +2254,7 @@ abstract public class AbstractProblem implements Problem {
 	 * Returns the constant constraint that always will fail when it is posted or executed.
 	 * @return the False Constraint 
 	 */
+	@Override
 	public Constraint getFalseConstraint() {
 		return new ConstraintFalse(this);
 	}
@@ -2164,6 +2263,7 @@ abstract public class AbstractProblem implements Problem {
 	 * Returns the constant constraint that always succeeds when it is posted or executed.
 	 * @return the True Constraint 
 	 */
+	@Override
 	public Constraint getTrueConstraint() {
 		return new ConstraintTrue(this);
 	}
@@ -2174,11 +2274,12 @@ abstract public class AbstractProblem implements Problem {
 		throw new RuntimeException(msg);
 	}
 	
-	
+	@Override
 	public void add(VarString var) {
 		varStrings.add(var);
 	}
 
+	@Override
 	public VarString[] getVarStrings() {
 		if (varStrings.isEmpty())
 			return null;
@@ -2191,6 +2292,7 @@ abstract public class AbstractProblem implements Problem {
 		return array;
 	}
 
+	@Override
 	public VarString getVarString(String name) {
 		if (varStrings.isEmpty())
 			return null;
@@ -2204,12 +2306,14 @@ abstract public class AbstractProblem implements Problem {
 		return null;
 	}
 
+	@Override
 	public VarString variableString(String name, String[] allStrings) {
 		VarString varString = new BasicVarString(this, name, allStrings);
 		add(varString);
 		return varString;
 	}
 
+	@Override
 	public Constraint post(VarString var, String oper, String value) {
 		int index = var.getIndex(value);
 		if (index < 0)
@@ -2218,6 +2322,7 @@ abstract public class AbstractProblem implements Problem {
 		return post(var.getInt(), oper, index);
 	}
 
+	@Override
 	public Constraint linear(VarString var, String oper, String value) {
 		int index = var.getIndex(value);
 		if (index < 0)
@@ -2226,18 +2331,22 @@ abstract public class AbstractProblem implements Problem {
 		return linear(var.getInt(), oper, index);
 	}
 	
+	@Override
 	public Constraint linear(VarString var1, String oper, VarString var2) {
 		return linear(var1.getInt(), oper, var2.getInt());
 	}
 	
+	@Override
 	public Constraint linear(VarReal var, String oper, double value) {
     	throw new UnsupportedOperationException("Unsupported linear constraint for real variables");
     }
     
+	@Override
     public Constraint linear(VarReal var1, String oper, VarReal var2) {
     	throw new UnsupportedOperationException("Unsupported linear constraint for real variables");
     }
 
+	@Override
 	public Constraint post(VarString var1, String oper, VarString var2) {
 		// if (!var1.hasSameDomain(var2))
 		// throw new RuntimeException("Constraint " + getName() +
@@ -2245,11 +2354,13 @@ abstract public class AbstractProblem implements Problem {
 		return post(var1.getInt(), oper, var2.getInt());
 	}
 	
+	@Override
 	public Constraint post(ArrayList<Var> vars, String oper, int value) {
 		Var[] array = (Var[])vars.toArray(new Var[vars.size()]);
 		return post(array,oper,value);
 	}
 	
+	@Override
 	public Constraint post(ArrayList<Var> vars, String oper, Var var) {
 		Var[] array = (Var[])vars.toArray(new Var[vars.size()]);
 		return post(array,oper,var);
@@ -2262,15 +2373,18 @@ abstract public class AbstractProblem implements Problem {
 	 * @param arrayOfVariables the array of variables.
 	 * @return a constraint 
 	 */
+	@Override
 	public Constraint postScalProd(Var var, String oper, int[] arrayOfValues, Var[] arrayOfVariables) {
 		return post(var,oper,scalProd(arrayOfValues,arrayOfVariables));
 	}
 	
+	@Override
 	public Var scalProd(int[] arrayOfValues, ArrayList<Var> vars) {
 		Var[] arrayOfVariables = (Var[])vars.toArray(new Var[vars.size()]);
 		return scalProd(arrayOfValues, arrayOfVariables);
 	}
 	
+	@Override
 	public Var scalProd(String name, int[] arrayOfValues, Var[] arrayOfVariables) {
 		Var scalProd = scalProd(arrayOfValues, arrayOfVariables);
 		add(name,scalProd);
@@ -2286,6 +2400,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @return a constrained real variable equal to the scalar product of an array of real variables "arrayOfVariables"
 	 *         and an array of real values "arrayOfValues".
 	 */
+	@Override
 	public VarReal scalProd(double[] arrayOfValues, VarReal[] arrayOfVariables) {
 		ConstrainedVariable[] vars = new ConstrainedVariable[arrayOfVariables.length];
 		for (int i=0; i<arrayOfVariables.length; i++) {
@@ -2294,6 +2409,7 @@ abstract public class AbstractProblem implements Problem {
 		return scalProd(arrayOfValues,vars);
 	}
 	
+	@Override
 	public VarReal scalProd(double[] arrayOfValues, ConstrainedVariable[] arrayOfVariables) {
 		error("Problem's method scalProd(double[] arrayOfValues, ConstrainedVariable[] arrayOfVariables) is not implemented");
 		return null;
@@ -2303,6 +2419,7 @@ abstract public class AbstractProblem implements Problem {
 //		return new ArrayList<Var>();
 //	}
 	
+	@Override
 	public VarMatrix variableMatrix(String name, int min, int max, int rows,
 			int columns) {
 		VarMatrix matrix = new BasicVarMatrix(this, name, min, max, rows, columns);
@@ -2310,6 +2427,7 @@ abstract public class AbstractProblem implements Problem {
 		return matrix;
 	}
 
+	@Override
 	public VarMatrix getVarMatrix(String name) {
 		return varMatrixs.get(name);
 	}
@@ -2331,6 +2449,7 @@ abstract public class AbstractProblem implements Problem {
 	 * Returns a Var that is equal to the sum of all weighted violations of all
 	 * constraints posted with some Probability. Returns null if there are no such constraints. 
 	 */
+	@Override
 	public Var getTotalConstraintViolation() {
 		if (!areThereProbabilityConstraints()) {
 			log("There are no constraint postings with probabilities");
@@ -2345,6 +2464,7 @@ abstract public class AbstractProblem implements Problem {
 	 * @returns true if there are constraints posted with a probability between VER_LOW and VERY_HIGH
 	 * @returns false otherwise
 	 */
+	@Override
 	public boolean areThereProbabilityConstraints() {
 		return constraintViolations.size() > 0; 
 	}
