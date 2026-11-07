@@ -608,7 +608,7 @@ public class ScheduleImpl extends ProblemDelegator implements Schedule {
                 Activity act = cj.getActivity();
                 Var capacityVar = cj.getCapacityVar();
                 if (capacityVar == null) { 
-                     capacityVar = variable(0,cj.getCapacity());
+                     capacityVar = variable(cj.getCapacity(),cj.getCapacity()); // added on Nov 7, 2026
                 }
                 resourceUsageByActivities[j] = capacityVar.multiply(act.getDuration()); // added on Aug 25, 2024
                 add(resourceUsageByActivityName(resource,act),resourceUsageByActivities[j]);
@@ -629,18 +629,20 @@ public class ScheduleImpl extends ProblemDelegator implements Schedule {
     public void logResourceActivityAssignments(Solution solution) {
         log("\nResource-Activity Assignments:");
         for(Resource resource : getResources()) {
+        	int total = 0;
             for(Activity act : getActivities()) {
                 String name = resourceUsageByActivityName(resource,act);
                 try {
                     int value = solution.getValue(name);
                     if (value > 0) {
                         log(resourceUsageByActivityName(resource,act) + " " + value + " times"); 
+                        total += value;
                     }
                 } catch (Exception e) {
                     // ignore
                 }
-                
             }
+            log(resource.getName() + " total: " + total);
         }
     }
     
