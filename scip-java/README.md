@@ -28,9 +28,11 @@ try (SCIP model = new SCIP()) {
 - LP/MPS/CIP export through SCIP's writer plugins;
 - deterministic cleanup with `AutoCloseable`.
 
-The `full` JAR bundles the official SCIP 10.1.0 Windows x64 runtime. On Linux
-and macOS, install SCIP as a shared library and either make it visible to the
-system loader or set `SCIP_LIBRARY_PATH` to the library file or directory.
+The `full` JAR bundles the official SCIP 10.1.0 runtime for Windows x64, Linux
+x86_64, Linux aarch64, and macOS aarch64. On other platforms, install SCIP as a
+shared library and either make it visible to the system loader or set
+`SCIP_LIBRARY_PATH` to the library file or directory (this also overrides the
+bundled runtime).
 
 ## Build
 
