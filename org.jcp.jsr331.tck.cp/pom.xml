@@ -14,6 +14,12 @@
 	<name>JSR331 Technology Compatibility Kit CP</name>
 	<description>This is a JSR331 Technology Compatibility Kit for constraint solvers</description>
 	<url>https://github.com/OpenRulesSupport/jsr331</url>
+	
+	<properties>
+	    <maven.compiler.release>21</maven.compiler.release>
+	    <maven.compiler.source>21</maven.compiler.source>
+	    <maven.compiler.target>21</maven.compiler.target>
+  	</properties>
 
 	<dependencies> 
 		<dependency>
@@ -52,11 +58,11 @@
 	
 	<profiles>
 		<profile>
-			<id>Sugar</id>
+			<id>SUGAR</id>
 			<activation>
 				<property>
 					<name>solver</name>
-					<value>Sugar</value>
+					<value>SUGAR</value>
 				</property>
 			</activation>
 			<dependencies>
@@ -68,13 +74,12 @@
 			</dependencies>
 		</profile>
 		<profile>
-			<id>Constrainer</id>
+			<id>CONSTRAINER</id>
 			<activation>
 				<property>
 					<name>solver</name>
-					<value>Constrainer</value>
+					<value>CONSTRAINER</value>
 				</property>
-				<activeByDefault>true</activeByDefault>
 			</activation>
 			<dependencies>
 				<dependency>
@@ -85,11 +90,11 @@
 			</dependencies>
 		</profile>
 		<profile>
-			<id>Choco</id>
+			<id>CHOCO</id>
 			<activation>
 				<property>
 					<name>solver</name>
-					<value>Choco</value>
+					<value>CHOCO</value>
 				</property>
 			</activation>
 			<dependencies>
@@ -101,12 +106,13 @@
 			</dependencies>
 		</profile>
 		<profile>
-			<id>MaxiCP</id>
+			<id>MAXICP</id>
 			<activation>
 				<property>
 					<name>solver</name>
 					<value>MaxiCP</value>
 				</property>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<dependencies>
 				<dependency>
@@ -117,11 +123,11 @@
 			</dependencies>
 		</profile>
 		<profile>
-			<id>JSetL</id>
+			<id>JSETL</id>
 			<activation>
 				<property>
 					<name>solver</name>
-					<value>JSetL</value>
+					<value>JSETL</value>
 				</property>
 			</activation>
 			<dependencies>
@@ -133,11 +139,11 @@
 			</dependencies>
 		</profile>
 		<profile>
-			<id>JaCoP</id>
+			<id>JACOP</id>
 			<activation>
 				<property>
 					<name>solver</name>
-					<value>JaCoP</value>
+					<value>JACOP</value>
 				</property>
 			</activation>
 			<dependencies>
@@ -150,5 +156,16 @@
 		</profile>
 		
 	</profiles>
+	
+	<build>
+	    <plugins>
+	      <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-compiler-plugin</artifactId>
+	        <version>3.13.0</version>
+	        <configuration><release>21</release></configuration>
+	      </plugin>
+	    </plugins>
+  	</build>
 	
 </project>

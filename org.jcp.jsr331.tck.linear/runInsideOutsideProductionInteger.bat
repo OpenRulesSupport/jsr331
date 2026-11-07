@@ -1,10 +1,10 @@
 set CLASS_NAME=org.jcp.jsr331.linear.samples.InsideOutsideProductionInteger
 
-rem set SOLVER=Scip
+rem set SOLVER=SCIP
 rem set SOLVER=GLPK
 set SOLVER=CLP
-rem set SOLVER=Coin
-rem set SOLVER=lpsolve
+rem set SOLVER=COIN
+rem set SOLVER=LPSOLVE
 rem set SOLVER=SSC
 
 @echo off

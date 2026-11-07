@@ -1,7 +1,7 @@
 set CLASS_NAME=org.jcp.jsr331.scheduler.samples.ScheduleActivitiesBudget
-set SOLVER=Constrainer
-rem set SOLVER=Sugar
-rem set SOLVER=JSetL
+set SOLVER=CONSTRAINER
+rem set SOLVER=SUGAR
+rem set SOLVER=JSETL
 cd %~dp0
 call run
 pause

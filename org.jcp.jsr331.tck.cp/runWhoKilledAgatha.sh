@@ -4,9 +4,9 @@ SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 cd "$SCRIPT_DIR" || exit 1
 
 export CLASS_NAME=org.jcp.jsr331.samples.WhoKilledAgatha
-# export SOLVER=Constrainer
+# export SOLVER=CONSTRAINER
 # export SOLVER=CLP
-# export SOLVER=Choco
-# export SOLVER=JSetL
+# export SOLVER=CHOCO
+# export SOLVER=JSETL
 # export SOLVER=sugar
 sh ./run.sh

@@ -4,6 +4,6 @@ SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 cd "$SCRIPT_DIR" || exit 1
 
 export CLASS_NAME=org.jcp.jsr331.samples.Warehouse
-export SOLVER=Constrainer
-export SOLVER=MaxiCP
+export SOLVER=CONSTRAINER
+export SOLVER=MAXICP
 sh ./run.sh

@@ -5,10 +5,10 @@ cd "$SCRIPT_DIR" || exit 1
 
 export CLASS_NAME=org.jcp.jsr331.linear.samples.KnapsackReal
 
-export SOLVER=Scip
+export SOLVER=SCIP
 # export SOLVER=GLPK
 # export SOLVER=CLP
-# export SOLVER=Coin
-# export SOLVER=lpsolve
+# export SOLVER=COIN
+# export SOLVER=LPSOLVE
 
 sh ./run.sh

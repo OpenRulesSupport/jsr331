@@ -1,12 +1,12 @@
 set CLASS_NAME=org.jcp.jsr331.linear.samples.Knapsack
 
-rem set SOLVER=Scip
+rem set SOLVER=SCIP
 rem set SOLVER=GLPK
-rem set SOLVER=Coin
+rem set SOLVER=COIN
 rem set SOLVER=CLP
-rem set SOLVER=lpsolve
+rem set SOLVER=LPSOLVE
 rem set SOLVER=SSC
-rem set SOLVER=ojAlgo
+rem set SOLVER=OJALGO
 set SOLVER=SSC
 @echo off
 cd %~dp0

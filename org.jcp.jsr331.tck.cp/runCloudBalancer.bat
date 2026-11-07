@@ -1,8 +1,8 @@
 set CLASS_NAME=cloud.balancing.CloudBalancer
-set SOLVER=Constrainer
+set SOLVER=CONSTRAINER
 cd %~dp0
-rem set SOLVER=Constrainer
-set SOLVER=Choco
-rem set SOLVER=JSetL
+rem set SOLVER=CONSTRAINER
+set SOLVER=CHOCO
+rem set SOLVER=JSETL
 call run
 pause

@@ -1,8 +1,8 @@
 set CLASS_NAME=org.jcp.jsr331.samples.SendMoreMoney
-set SOLVER=Constrainer
-rem set SOLVER=Choco
-rem set SOLVER=JSetL
-rem set SOLVER=Sugar
+set SOLVER=CONSTRAINER
+rem set SOLVER=CHOCO
+rem set SOLVER=JSETL
+rem set SOLVER=SUGAR
 
 cd %~dp0
 call run

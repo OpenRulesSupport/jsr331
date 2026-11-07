@@ -24,6 +24,12 @@
 		</license>
 	</licenses>
 	
+	<properties>
+	    <maven.compiler.release>21</maven.compiler.release>
+	    <maven.compiler.source>21</maven.compiler.source>
+	    <maven.compiler.target>21</maven.compiler.target>
+  	</properties>
+	
 	<developers>
 		<developer>
 			<name>Jacob Feldman</name>
@@ -54,5 +60,16 @@
 		</dependency>
 		
 	</dependencies>
+	
+	<build>
+	    <plugins>
+	      <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-compiler-plugin</artifactId>
+	        <version>3.13.0</version>
+	        <configuration><release>21</release></configuration>
+	      </plugin>
+	    </plugins>
+  	</build>
 
 </project>

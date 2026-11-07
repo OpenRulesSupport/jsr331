@@ -1,9 +1,9 @@
 set CLASS_NAME=org.jcp.jsr331.samples.Zebra
-rem set SOLVER=Constrainer
-rem set SOLVER=Choco
-rem set SOLVER=JSetL
+rem set SOLVER=CONSTRAINER
+rem set SOLVER=CHOCO
+rem set SOLVER=JSETL
 rem set SOLVER=sugar
-rem set SOLVER=MaxiCP
+rem set SOLVER=MAXICP
 set SOLVER=JaCoP
 @echo off
 cd %~dp0

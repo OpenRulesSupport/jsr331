@@ -5,11 +5,11 @@ cd "$SCRIPT_DIR" || exit 1
 
 export CLASS_NAME=org.jcp.jsr331.linear.samples.InsideOutsideProduction
 
-# export SOLVER=Scip
+# export SOLVER=SCIP
 # export SOLVER=GLPK
 # export SOLVER=CLP
-# export SOLVER=Coin
-# export SOLVER=lpsolve
+# export SOLVER=COIN
+# export SOLVER=LPSOLVE
 export SOLVER=SSC
-# export SOLVER=ojAlgo
+# export SOLVER=OJALGO
 sh ./run.sh

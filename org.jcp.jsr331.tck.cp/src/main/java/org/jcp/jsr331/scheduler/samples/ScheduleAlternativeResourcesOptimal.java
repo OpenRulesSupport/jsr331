@@ -127,7 +127,7 @@ public class ScheduleAlternativeResourcesOptimal {
 		solver.setSearchStrategy(s.strategyScheduleActivities());
 		solver.addSearchStrategy(s.strategyAssignResources());
 		solver.addSearchStrategy(s.strategyScheduleVars());
-		int max = 5;
+		int max = 7;
 		solver.setMaxNumberOfSolutions(max);
 		int timeLimit = 20; //seconds
 		solver.setTimeLimit(timeLimit*1000);
@@ -142,7 +142,8 @@ public class ScheduleAlternativeResourcesOptimal {
 		else {
 			s.log(solution);
 			s.log("Total Cost = " + solution.getValue("Total Cost"));
-			solution.log();
+			s.logResourceActivityAssignments(solution);
+			//solution.log();
 		}
 		solver.logStats();
 	}
