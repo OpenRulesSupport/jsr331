@@ -1,4 +1,4 @@
-package com.quantego.clp;
+package com.javasolver.clpmip;
 
 import jnr.ffi.LibraryLoader;
 

@@ -1,8 +1,14 @@
-package com.quantego.clp;
+package com.javasolver.clpmip;
 
 import jnr.ffi.Pointer;
 import jnr.ffi.Runtime;
 import org.junit.Test;
+
+import com.javasolver.clpmip.CLP;
+import com.javasolver.clpmip.CLPExpression;
+import com.javasolver.clpmip.CLPNative;
+import com.javasolver.clpmip.CLPVariable;
+import com.javasolver.clpmip.NativeLoader;
 
 import java.io.File;
 import java.net.URL;
@@ -73,7 +79,7 @@ public class CLPTest {
 
 	@Test
 	public void testToString() {
-		CLP solver = new com.quantego.clp.CLP().buffer(2).maximization();
+		CLP solver = new com.javasolver.clpmip.CLP().buffer(2).maximization();
 	    CLPVariable x0 = solver.addVariable().ub(1.0);
 	    CLPVariable x1 = solver.addVariable().ub(0.3).obj(2.655523).name("var_1");
 	    CLPVariable x2 = solver.addVariable().ub(0.3).obj(-2.70917);

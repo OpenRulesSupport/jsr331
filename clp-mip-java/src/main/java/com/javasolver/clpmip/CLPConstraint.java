@@ -1,4 +1,4 @@
-package com.quantego.clp;
+package com.javasolver.clpmip;
 
 /**
  * Holds a constraint of a {@link CLP} model.
@@ -41,7 +41,8 @@ public class CLPConstraint {
 	}
 	
 	/**
-	 * Set the right-hand side of this constraint.
+	 * Set the right-hand side of an equality or one-sided inequality constraint.
+	 * This operation has no effect on the native bounds of a {@link TYPE#NEQ} constraint.
 	 * @param value
 	 * @return
 	 */
@@ -82,20 +83,20 @@ public class CLPConstraint {
 	
 	/**
 	 * 
-	 * @return the right-hand side coeffcient of this constraint
+	 * @return the most recent value passed to {@link #setRhs(double)}, or zero if it has not been called
 	 */
 	public double getRhs() {
 		return _rhs;
 	}
 	
-//	/**
-//	 * Constraint type.
-//	 * @author Nils Loehndorf
-//	 *
-//	 */
-//	public enum TYPE {
-//		LEQ, GEQ, EQ, NEQ
-//	}
+	/**
+	 * Constraint type.
+	 * @author Nils Loehndorf
+	 *
+	 */
+	public enum TYPE {
+		LEQ, GEQ, EQ, NEQ
+	}
 	
 	@Override
 	public String toString() {

@@ -1,6 +1,5 @@
-package com.quantego.clp;
+package com.javasolver.clpmip;
 
-import com.quantego.clp.CLPConstraint.TYPE;
 import jnr.ffi.Memory;
 import jnr.ffi.Pointer;
 import jnr.ffi.Runtime;
@@ -13,6 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+
+import com.javasolver.clpmip.CLPConstraint.TYPE;
 
 /**
  * <p>Java interface for the CLP linear solver. The implementation provides a light-weight wrapper that 

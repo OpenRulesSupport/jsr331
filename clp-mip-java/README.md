@@ -1,10 +1,10 @@
-# Linear Programming in Java
+# clp-mip-java
 
-Java interface for the [CLP linear solver](https://projects.coin-or.org/Clp), optimized towards fast model building and fast resolves.
+Java interface for the [Coin-OR CLP linear solver](https://github.com/coin-or/Clp the Coin-OR CBC solver with mixed-integer programming support, optimized for fast model building and fast re-solves.
 
 ## Overview
 
-The interface provides a number of useful features for Java programmers who want to build either large models or apply decomposition strategies that require a lot of resolves. The interface has undergone several rounds of testing and profiling outside of unit tests.
+The interface provides a number of useful features for Java programmers who want to build either large models or apply decomposition strategies that require many re-solves. The interface has undergone several rounds of testing and profiling outside of unit tests.
 
 #### Compact model creation using builders
 
@@ -19,7 +19,7 @@ Since there is no operator overloading in Java, algebraic formulations are not p
 ```
 model.createExpression().add(3,x).add(4,y).leq(10);
 ```
-The *add* statements also accepts vectors of variables and coefficients. See the [javadoc](http://quantego.github.io/clp-java) for further reference.
+The *add* statements also accept vectors of variables and coefficients. See the [original clp-java Javadoc](https://quantego.github.io/clp-java) for further reference.
 
 #### Mixed-integer models
 
@@ -44,8 +44,9 @@ and `getMipGap`. Use `createMIPFromMPS(file)` to honor integer markers in an
 MPS file; `createFromMPS(file)` retains its historical LP-relaxation behavior.
 
 This implementation provides portable basic MILP support without adding new
-native libraries. It is not a replacement for CBC's full branch-and-cut engine:
-it does not include CBC's cuts, primal heuristics, SOS constraints, callbacks,
+native libraries. Its branch-and-bound design was informed by Coin-OR CBC, but
+it is not a replacement for CBC's full branch-and-cut engine. It does not include
+CBC's cuts, primal heuristics, SOS constraints, callbacks,
 or parallel search, and is intended for small and medium integer models.
 
 #### Fast model building
@@ -54,35 +55,48 @@ Chunks of a model are buffered in heap for model building before being sent to t
 
 #### Direct memory access
 
-Once a model is build it only lives in native memory, with the exception of referenced objects of variables and constraints which remain in heap. To update model coefficients, the model is accessed directly in native memory via direct byte buffers which speeds up resolves. When the model gets gc'ed, native memory will be released automatically.
+Once a model is built, it lives only in native memory, except for referenced variable and constraint objects that remain on the heap. To update model coefficients, the model is accessed directly in native memory through direct byte buffers, which speeds up re-solves. When the model is garbage-collected, its native memory is released automatically.
 
 ## Installation
 
 #### Maven
-The project is available at the central repository. Simply add the following dependency to your pom file
+Use the following Maven coordinates:
 ```
 <dependency>
-  <groupId>com.quantego</groupId>
-  <artifactId>clp-java</artifactId>
-  <version>1.16.15</version>
+  <groupId>com.javasolver</groupId>
+  <artifactId>clp-mip-java</artifactId>
+  <version>3.0.0</version>
 </dependency>
 ```
 
 #### All-in-one jar file
-Download the [latest build](https://github.com/quantego/clp-java/releases/latest) of the jar from the release page.
+Build the all-in-one `clp-mip-java` jar with:
 
-The jar file contains the native libs for the most important host systems (Intel Mac, Apple Silcon, Win 64, Linux ARM and x86), so there won't be `UnsatisfiedLinkError`messages and there is no messing around with setting build paths. A copy of the native libs will be created in a temporary directory at runtime. Simply import the jar and you're done.
+```sh
+mvn package
+```
+
+The resulting jar is created as `target/clp-mip-java-3.0.0-full.jar`.
+
+The jar file contains the native libraries for the most important host systems (Intel Mac, Apple Silicon, Windows 64-bit, and Linux ARM and x86), avoiding `UnsatisfiedLinkError` messages and manual native-library path configuration. Copies of the required native libraries are created in a temporary directory at runtime.
+
+#### Publishing to Maven Central
+
+After configuring the `central` server credentials and a GPG signing key, publish with:
+
+```sh
+mvn deploy -Prelease
+```
 
 ## Requirements
 
-* Java JDK 8
+* Java JDK 21
 * 64-bit Linux, Mac OS, or Windows
 
 ## Documentation
 
-See the [javadoc](http://quantego.github.io/clp-java) for a full class reference.
+See the original [clp-java Javadoc](https://quantego.github.io/clp-java) for the inherited API. The mixed-integer extensions are described above.
 
-## Author
-Nils Löhndorf
+## Acknowledgment
 
-
+The MIP support was developed with the assistance of OpenAI Codex based on the Coin-OR CBC solver and reviewed and tested by Jacob Feldman. It builds on clp-java by Nils Loehndorf (Quantego) and the Coin-OR CLP solver. 

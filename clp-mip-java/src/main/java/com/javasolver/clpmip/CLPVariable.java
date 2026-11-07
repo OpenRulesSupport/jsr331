@@ -1,4 +1,4 @@
-package com.quantego.clp;
+package com.javasolver.clpmip;
 
 /**
  * Holds a variable of a {@link CLP} model.
@@ -6,6 +6,9 @@ package com.quantego.clp;
  *
  */
 public class CLPVariable {
+
+	/** Variable domain. */
+	public enum TYPE { CONTINUOUS, INTEGER, BINARY }
 	
 	CLP _solver;
 	int _index;
@@ -36,7 +39,17 @@ public class CLPVariable {
 	}
 	
 	/**
-	 * Set variable bounds. By default variables are 0 <= x <= inf.
+	 * Quadratic objective coefficient of this variable.
+	 * @param value
+	 * @return builder
+	 */
+	public CLPVariable quad(double value) {
+		_solver.setQuadraticObjectiveCoefficient(this,value);
+		return this;
+	}
+	
+	/**
+	 * Set variable bounds. By default variables are {@code 0 <= x <= inf}.
 	 * @param lb
 	 * @param ub
 	 * @return builder
@@ -47,9 +60,8 @@ public class CLPVariable {
 	}
 	
 	/**
-	 * Set lower bound. By default variables are 0 <= x <= inf.
-	 * @param lb
-	 * @param ub
+	 * Set lower bound. By default variables are {@code 0 <= x <= inf}.
+	 * @param value lower bound
 	 * @return builder
 	 */
 	public CLPVariable lb(double value) {
@@ -58,9 +70,8 @@ public class CLPVariable {
 	}
 	
 	/**
-	 * Set upper bound. By default variables are 0 <= x <= inf.
-	 * @param lb
-	 * @param ub
+	 * Set upper bound. By default variables are {@code 0 <= x <= inf}.
+	 * @param value upper bound
 	 * @return builder
 	 */
 	public CLPVariable ub(double value) {
@@ -69,12 +80,35 @@ public class CLPVariable {
 	}
 	
 	/**
-	 * Defines this vaiable as free, -inf <= x <= inf.
+	 * Define this variable as free, {@code -inf <= x <= inf}.
 	 * @return builder
 	 */
 	public CLPVariable free() {
 		_solver.setVariableBounds(this, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY);
 		return this;
+	}
+
+	/** Restrict this variable to integer values. */
+	public CLPVariable integer() {
+		_solver.setVariableType(this, TYPE.INTEGER);
+		return this;
+	}
+
+	/** Restrict this variable to zero or one. Existing bounds become [0,1]. */
+	public CLPVariable binary() {
+		_solver.setVariableType(this, TYPE.BINARY);
+		return this;
+	}
+
+	/** Make this variable continuous again. */
+	public CLPVariable continuous() {
+		_solver.setVariableType(this, TYPE.CONTINUOUS);
+		return this;
+	}
+
+	/** @return the variable domain */
+	public TYPE getType() {
+		return _solver.getVariableType(this);
 	}
 	
 	/**
