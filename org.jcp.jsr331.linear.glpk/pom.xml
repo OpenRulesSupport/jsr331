@@ -10,14 +10,39 @@
 	</parent>
 	
 	<artifactId>jsr331-glpk</artifactId>
+	<packaging>jar</packaging>
 
-	<name>JSR331 GLPK</name>
-	<description>This is a JSR331 interface for the open source linear solver "GLPK"</description>
+	<name>JSR 331 GLPK Adapter</name>
+	<description>JSR 331 command-line adapter for the open source GNU Linear Programming Kit.</description>
 	<!-- 
 	To use GLPK with JSR331, download it from https://www.gnu.org/software/glpk/#downloading
     and make sure that your Environment variable PATH include the path to glpsol.exe
 	 -->
-	<url>https://www.gnu.org/software/glpk/</url>
+	<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.glpk</url>
+
+	<licenses>
+		<license>
+			<name>JCP License</name>
+			<url>https://download.oracle.com/otndocs/jcp/constraint-1_1_0-mrel-spec/license.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Jacob Feldman</name>
+			<email>jacobfeldman@openrules.com</email>
+			<organization>OpenRules, Inc.</organization>
+			<organizationUrl>https://openrules.com</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:https://github.com/OpenRulesSupport/jsr331.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/OpenRulesSupport/jsr331.git</developerConnection>
+		<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.glpk</url>
+		<tag>HEAD</tag>
+	</scm>
 
 	<dependencies>
 		<dependency>

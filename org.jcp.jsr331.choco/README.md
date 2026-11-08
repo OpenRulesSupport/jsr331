@@ -26,6 +26,20 @@ Maven resolves Choco from Maven Central:
 The adapter preserves the standard `javax.constraints.impl` package names, so existing
 JSR-331 applications can select it without changing their model code.
 
+Version 3.0.0 requires JDK 21.
+
+## Maven dependency
+
+After version 3.0.0 is published to Maven Central, add:
+
+```xml
+<dependency>
+  <groupId>com.javasolver</groupId>
+  <artifactId>jsr331-choco</artifactId>
+  <version>3.0.0</version>
+</dependency>
+```
+
 ## Build and test
 
 From a checkout where the JSR-331 parent and API modules are available to Maven:
@@ -39,3 +53,13 @@ constraints, solution iteration, arithmetic expressions, and optimization.
 
 Custom JSR-331 propagators, XML import/export, real variables, and set variables remain
 outside this adapter's native feature set.
+
+## Publishing to Maven Central
+
+Publish `jsr331-parent` and `jsr331` version 3.0.0 first. With the Maven Central credentials and GPG key configured, run:
+
+```shell
+mvn clean deploy -Prelease
+```
+
+MvnRepository indexes releases after they become available from Maven Central.

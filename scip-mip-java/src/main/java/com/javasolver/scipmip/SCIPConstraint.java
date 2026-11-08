@@ -1,4 +1,4 @@
-package com.javasolver;
+package com.javasolver.scipmip;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;

@@ -1,21 +1,30 @@
-# JSR331 - www.jsr331.org    
+# JSR 331
+
 [![N|Solid](https://jsr331.files.wordpress.com/2013/05/jcp.jpg)](http://jcp.org/en/jsr/detail?id=331)
-[JSR331 “Java Constraint Programming API”](http://jsr331.org) is a JCP Specification Standard that has been developed under the terms of the www.JCP.org. 
 
-# Project org.jcp.jsr331.parent
-This project a parent project that contains the [pom.xml](https://github.com/OpenRulesSupport/jsr331/blob/master/org.jcp.jsr331.parent/pom.xml) file common for all JSR331 projects. It is avaible from this [GitHub repository](https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.parent) 
+[JSR 331, Java Constraint Programming API](https://jsr331.org/), is a Java Community Process specification.
 
-To add JSR331 dependencies and selected constraint and/or linear solvers to your Maven-based application, your own pom.xml should include
-~~~
+## JSR 331 Parent POM
+
+This project provides the common Maven configuration for JSR 331 projects. Its source is available in the [JSR 331 GitHub repository](https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.parent).
+
+Version 3.0.0 requires JDK 21.
+
+## Using the parent POM
+
+To use the parent configuration in a Maven project, add:
+
+```xml
 <parent>   
     <groupId>com.javasolver</groupId>
     <artifactId>jsr331-parent</artifactId>
-    <version>2.3.2</version>
+    <version>3.0.0</version>
 </parent>
-~~~
+```
 
-You also need to add these dependencies and profiles:
-~~~
+Add the JSR 331 API and any required logging dependencies:
+
+```xml
 <dependency>
     <groupId>com.javasolver</groupId>
     <artifactId>jsr331</artifactId>
@@ -24,7 +33,7 @@ You also need to add these dependencies and profiles:
 <dependency>
     <groupId>junit</groupId>
     <artifactId>junit</artifactId>
-    <version>4.12</version>
+    <version>4.13.2</version>
     <scope>test</scope>
 </dependency>
 <dependency>
@@ -42,9 +51,9 @@ You also need to add these dependencies and profiles:
     <artifactId>log4j-slf4j-impl</artifactId>
     <version>${log4j.version}</version>
 </dependency>
-~~~
+```
 To use CP solvers, you also need to add these profiles:
-~~~
+```xml
 <profiles>
 		<profile>
 			<id>Constrainer</id>
@@ -112,9 +121,9 @@ To use CP solvers, you also need to add these profiles:
 			</dependencies>
 		</profile>
 </profiles>
-~~~
+```
 To use LP solvers, you also need to add these profiles:
-~~~	
+```xml
 <profiles>
 		<profile>
 			<id>Scip</id>
@@ -150,8 +159,18 @@ To use LP solvers, you also need to add these profiles:
 			</dependencies>
 		</profile>
 </profiles>
-~~~
+```
 The corresponding examples of the "pom.xml" files can be found at the GitHub projects:
 * org.jcp.jsr331.tck.cp
 * org.jcp.jsr331.tck.linear
+
+## Publishing to Maven Central
+
+Configure the `central` server credentials in Maven `settings.xml`, make sure the signing key's public key is available from a supported public key server, and run:
+
+```shell
+mvn clean deploy -Prelease
+```
+
+The release profile signs the POM and submits it to the Maven Central Publisher Portal. After Maven Central publishes version 3.0.0, third-party indexes such as [MvnRepository](https://mvnrepository.com/) will discover it automatically.
 

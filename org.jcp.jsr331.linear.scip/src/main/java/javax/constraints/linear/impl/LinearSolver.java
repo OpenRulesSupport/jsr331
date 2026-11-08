@@ -10,17 +10,17 @@ import javax.constraints.Solution;
 import javax.constraints.Var;
 import javax.constraints.VarReal;
 
-import com.javasolver.SCIP;
-import com.javasolver.SCIPExpression;
-import com.javasolver.SCIPVariable;
-import com.javasolver.SCIP.Status;
+import com.javasolver.scipmip.SCIP;
+import com.javasolver.scipmip.SCIPExpression;
+import com.javasolver.scipmip.SCIPVariable;
+import com.javasolver.scipmip.SCIP.Status;
 
 public class LinearSolver extends javax.constraints.linear.LinearSolver {
 
-    static public final String JSR331_LINEAR_SOLVER_VERSION = "SCIP-JAVA v.3.0.0 using SCIP Optimization Suite 10.0";
+    static public final String JSR331_LINEAR_SOLVER_VERSION = "SCIP-MIP-JAVA v.3.0.0 using SCIP Optimization Suite 10.0";
 
     Problem problem;
-    com.javasolver.SCIP model;
+    com.javasolver.scipmip.SCIP model;
     int numberOfRoundings;
 
     public LinearSolver() {

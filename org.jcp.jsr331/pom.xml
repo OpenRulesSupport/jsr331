@@ -13,8 +13,32 @@
 	<artifactId>jsr331</artifactId>
 	<packaging>jar</packaging>
 	
-	<name>JSR 331</name>
-	<description>JCP Standard JSR331 “Java Constraint Programming API”. It is used for Modeling and Solving Constraint Satisfaction and Optimization Problems using Java and off-the-shelf Constraint/Linear Solvers</description>
-	<url>https://jsr331.org/</url>
+	<name>JSR 331 API</name>
+	<description>Java Constraint Programming API for modeling and solving constraint satisfaction and optimization problems with interchangeable constraint and linear solvers.</description>
+	<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331</url>
+
+	<licenses>
+		<license>
+			<name>JCP License</name>
+			<url>https://download.oracle.com/otndocs/jcp/constraint-1_1_0-mrel-spec/license.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Jacob Feldman</name>
+			<email>jacobfeldman@openrules.com</email>
+			<organization>OpenRules, Inc.</organization>
+			<organizationUrl>https://openrules.com</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:https://github.com/OpenRulesSupport/jsr331.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/OpenRulesSupport/jsr331.git</developerConnection>
+		<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331</url>
+		<tag>HEAD</tag>
+	</scm>
 
 </project>

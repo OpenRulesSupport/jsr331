@@ -12,10 +12,11 @@
 	</parent>
 
 	<artifactId>jsr331-jacop</artifactId>
+	<packaging>jar</packaging>
 
-	<name>JSR331 JaCoP</name>
+	<name>JSR 331 JaCoP Adapter</name>
 	<description>JSR-331 adapter for the JaCoP constraint solver</description>
-	<url>https://github.com/OpenRulesSupport/jsr331</url>
+	<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.jacop</url>
 
 	<properties>
 		<jacop.version>4.10.0</jacop.version>
@@ -34,6 +35,22 @@
 		</license>
 	</licenses>
 
+	<developers>
+		<developer>
+			<name>Jacob Feldman</name>
+			<email>jacobfeldman@openrules.com</email>
+			<organization>OpenRules, Inc.</organization>
+			<organizationUrl>https://openrules.com</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:https://github.com/OpenRulesSupport/jsr331.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/OpenRulesSupport/jsr331.git</developerConnection>
+		<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.jacop</url>
+		<tag>HEAD</tag>
+	</scm>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.javasolver</groupId>
@@ -44,15 +61,6 @@
 			<groupId>org.jacop</groupId>
 			<artifactId>jacop</artifactId>
 			<version>${jacop.version}</version>
-			<!-- The adapter uses JaCoP's Java API only. Its Scala compiler,
-			     test, and logging dependencies are not needed at runtime. 
-			<exclusions>
-				<exclusion>
-					<groupId>*</groupId>
-					<artifactId>*</artifactId>
-				</exclusion>
-			</exclusions>
-			-->
 		</dependency>
 		<dependency>
             <groupId>junit</groupId>

@@ -1,9 +1,10 @@
-# JSR331 - www.jsr331.org    
-[![N|Solid](https://jsr331.files.wordpress.com/2013/05/jcp.jpg)](http://jcp.org/en/jsr/detail?id=331)
-[JSR331 “Java Constraint Programming API”](http://jsr331.org) is a JCP Specification Standard that has been developed under the terms of the www.JCP.org. 
+# JSR 331 Constrainer Adapter
 
-# Project org.jcp.jsr331.constrainer
-This project provides the JSR331 implementation of a constraint solver that is based on the Java constraint programming library "Constrainer" copyrighted by Exigen Properties, Inc. and/or affiliates: 
+This project provides a [JSR 331](https://jsr331.org/) implementation based on the Constrainer Java constraint programming library. Version 3.0.0 requires JDK 21.
+
+## Copyright and history
+
+Constrainer is copyrighted by Exigen Properties, Inc. and/or affiliates:
 //////////////////////////////////////////////////////////////
 Copyright Exigen Group 1998, 1999, 2000
 320 Amboy Ave., Metuchen, NJ, 08840, USA, www.exigengroup.com
@@ -17,12 +18,12 @@ the program(s) have been supplied.
 //////////////////////////////////////////////////////////////
 
 The original Constrainer was developed in 1998-1999 by Dr. Jacob Feldman of IntelEngine, Inc. After IntelEngine, Inc. was acquired by Exigen Group in 2000, the Constrainer was made publicly available under the terms of open source GNU LGPL 
-license and can be downloaded from the SourceForge: http://sourceforge.net/projects/constrainer/.
+license and can be downloaded from [SourceForge](https://sourceforge.net/projects/constrainer/).
 
 The source code of the Exigen's Constrainer version 5.4 was downloaded from a CVS repository in 2010 using the command:
 *cvs -d:pserver:anonymous@openl-tablets.cvs.sourceforge.net:/cvsroot/openl-tablets*
  
-Then it was modified to include only those features which needed to support the JSR331 interface. It was made publicly available under the terms of the same LGPL license. The modified source code keeps all Exigen Copyright notices and all major modifications in the source code are marked by "== Changed". All sources of the modified version including the JSR331 interface are available from from this [GitHub repository](https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.constrainer). This modified version is supported by Dr. Jacob Feldman, the JSR331 Specification Lead.
+Then it was modified to include only those features needed to support the JSR 331 interface. It was made publicly available under the terms of the same LGPL license. The modified source code keeps all Exigen copyright notices, and all major modifications in the source code are marked by "== Changed". All sources of the modified version, including the JSR 331 interface, are available from this [GitHub repository](https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.constrainer). This modified version is supported by Dr. Jacob Feldman, the JSR 331 Specification Lead.
 
 Major Changes and Bug Fixes:
 
@@ -34,8 +35,8 @@ repositories under the terms of open source GNU LGPL.
 
 * The development and deployment facilities were modernized to support
 modern building and version control options. The modified Constrainer is
-available from the public GitHub and MVN repositories as an open source
-product with unresticted use by the commercial and open source applications.
+available from the public GitHub and Maven repositories as an open source
+product for use by commercial and open source applications.
 
 **August, 2012**
 * Constrainer did not correctly stop upon a time limit for one solution search. 
@@ -64,3 +65,31 @@ The following packages have been removed:
 - com.exigen.ie.simplex
 - org.open.crt
 - org.openl.util
+
+## Maven dependency
+
+After version 3.0.0 is published to Maven Central, add:
+
+```xml
+<dependency>
+  <groupId>com.javasolver</groupId>
+  <artifactId>jsr331-constrainer</artifactId>
+  <version>3.0.0</version>
+</dependency>
+```
+
+## Build and test
+
+```shell
+mvn clean test
+```
+
+## Publishing to Maven Central
+
+Publish `jsr331-parent` and `jsr331` version 3.0.0 first. With the Maven Central credentials and GPG key configured, run:
+
+```shell
+mvn clean deploy -Prelease
+```
+
+MvnRepository indexes releases after they become available from Maven Central.

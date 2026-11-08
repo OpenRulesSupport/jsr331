@@ -10,10 +10,11 @@
 	</parent>
 
 	<artifactId>jsr331-scheduler</artifactId> 
+	<packaging>jar</packaging>
 	
-	<name>JSR331 Scheduler</name>
-	<description>This is a JSR331 package for scheduling and resource allocation problems</description>
-	<url>http://openrules.com/</url>
+	<name>JSR 331 Scheduler</name>
+	<description>Generic JSR 331 API for scheduling and resource-allocation problems.</description>
+	<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.scheduler</url>
 	
 	<licenses>
 		<license>
@@ -26,8 +27,6 @@
 	
 	<properties>
 	    <maven.compiler.release>21</maven.compiler.release>
-	    <maven.compiler.source>21</maven.compiler.source>
-	    <maven.compiler.target>21</maven.compiler.target>
   	</properties>
 	
 	<developers>
@@ -39,11 +38,18 @@
 		</developer>
 	</developers>
 
+	<scm>
+		<connection>scm:git:https://github.com/OpenRulesSupport/jsr331.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/OpenRulesSupport/jsr331.git</developerConnection>
+		<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.scheduler</url>
+		<tag>HEAD</tag>
+	</scm>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.javasolver</groupId>
 			<artifactId>jsr331</artifactId>
-			<version>${project.version}</version>
+			<version>${jsr331.version}</version>
 		</dependency>
 
 		<dependency>
@@ -61,15 +67,4 @@
 		
 	</dependencies>
 	
-	<build>
-	    <plugins>
-	      <plugin>
-	        <groupId>org.apache.maven.plugins</groupId>
-	        <artifactId>maven-compiler-plugin</artifactId>
-	        <version>3.13.0</version>
-	        <configuration><release>21</release></configuration>
-	      </plugin>
-	    </plugins>
-  	</build>
-
 </project>

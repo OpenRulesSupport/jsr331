@@ -10,14 +10,13 @@
   </parent>
 
   <artifactId>jsr331-ojalgo</artifactId>
-  <name>JSR331 ojAlgo</name>
-  <description>JSR-331 linear-programming adapter for ojAlgo.</description>
-  <url>https://github.com/OpenRulesSupport/jsr331</url>
+  <packaging>jar</packaging>
+  <name>JSR 331 ojAlgo Adapter</name>
+  <description>JSR 331 linear and mixed-integer programming adapter for ojAlgo.</description>
+  <url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.ojAlgo</url>
 
   <properties>
     <maven.compiler.release>21</maven.compiler.release>
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
     <ojalgo.version>57.4.0</ojalgo.version>
   </properties>
 
@@ -28,6 +27,22 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
+
+  <developers>
+    <developer>
+      <name>Jacob Feldman</name>
+      <email>jacobfeldman@openrules.com</email>
+      <organization>OpenRules, Inc.</organization>
+      <organizationUrl>https://openrules.com</organizationUrl>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:https://github.com/OpenRulesSupport/jsr331.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/OpenRulesSupport/jsr331.git</developerConnection>
+    <url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.ojAlgo</url>
+    <tag>HEAD</tag>
+  </scm>
 
   <dependencies>
     <dependency>
@@ -53,16 +68,4 @@
     </dependency>
   </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
-        <configuration>
-          <release>11</release>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>

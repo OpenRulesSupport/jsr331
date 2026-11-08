@@ -10,12 +10,18 @@
 	</parent>
 	
 	<artifactId>jsr331-constrainer</artifactId>
+	<packaging>jar</packaging>
 	
-	<name>JSR331 Constrainer</name>
-	<description>This is a JSR331 implementation based on the Java constraint programming library "Constrainer" available under the terms of the open source GNU LGPL license.</description>
-	<url>https://github.com/OpenRulesSupport/jsr331</url>
+	<name>JSR 331 Constrainer Adapter</name>
+	<description>JSR 331 implementation based on the Constrainer Java constraint programming library.</description>
+	<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.constrainer</url>
 
 	<licenses>
+		<license>
+			<name>GNU Library General Public License, Version 2</name>
+			<url>https://www.gnu.org/licenses/old-licenses/lgpl-2.0.html</url>
+			<distribution>repo</distribution>
+		</license>
 		<license>
 			<name>JCP License</name>
 			<url>https://download.oracle.com/otndocs/jcp/constraint-1_1_0-mrel-spec/license.html</url>
@@ -32,6 +38,13 @@
 			<organizationUrl>https://openrules.com</organizationUrl>
 		</developer>
 	</developers>
+
+	<scm>
+		<connection>scm:git:https://github.com/OpenRulesSupport/jsr331.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/OpenRulesSupport/jsr331.git</developerConnection>
+		<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.constrainer</url>
+		<tag>HEAD</tag>
+	</scm>
 	
 	<dependencies>
 		<dependency>

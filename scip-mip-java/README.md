@@ -1,7 +1,7 @@
-# SCIP Java
+# scip-mip-java
 
-A compact Java 8+ modeling API backed by the native
-[SCIP](https://github.com/scipopt/scip) 10.1.0 solver.
+A compact Java 8+ modeling API for mixed-integer programming, backed by the
+native [SCIP Optimization Suite](https://github.com/scipopt/scip) 10.1.0 solver.
 
 ```java
 try (SCIP model = new SCIP()) {
@@ -34,12 +34,44 @@ shared library and either make it visible to the system loader or set
 `SCIP_LIBRARY_PATH` to the library file or directory (this also overrides the
 bundled runtime).
 
+## Maven
+
+Use the following dependency after version 3.0.0 is published to Maven Central:
+
+```xml
+<dependency>
+  <groupId>com.javasolver</groupId>
+  <artifactId>scip-mip-java</artifactId>
+  <version>3.0.0</version>
+</dependency>
+```
+
 ## Build
 
 ```shell
 mvn test
 mvn package
 ```
+
+The regular JAR, source JAR, Javadoc JAR, and `full` JAR are created in
+`target/`. The `full` JAR includes the supported native SCIP runtimes and all
+Java dependencies.
+
+## Publishing to Maven Central
+
+After configuring the `central` server credentials in Maven `settings.xml`, a
+GPG signing key, and publishing that public key to a Sonatype-supported
+keyserver, publish with:
+
+```shell
+mvn clean deploy -Prelease
+```
+
+## Acknowledgment
+
+The project was developed based on SCIP Optimization Suite 10.0 [https://github.com/scipopt/scip](https://github.com/scipopt/scip) with the assistance of OpenAI Codex and reviewed and tested by Jacob Feldman.
+
+## License
 
 The Java adapter is Apache-2.0 licensed. Bundled native components retain the
 licenses shipped in the official SCIP distribution; see `THIRD_PARTY_LICENSES`.

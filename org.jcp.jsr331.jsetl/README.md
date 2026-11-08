@@ -1,9 +1,6 @@
-# JSR331 - www.jsr331.org    
-[![N|Solid](https://jsr331.files.wordpress.com/2013/05/jcp.jpg)](http://jcp.org/en/jsr/detail?id=331)
-[JSR331 “Java Constraint Programming API”](http://jsr331.org) is a JCP Specification Standard that has been developed under the terms of the www.JCP.org. 
+# JSR 331 JSetL Adapter
 
-# Project org.jcp.jsr331.jsetl
-This project provides the JSR331 implementation of a constraint solver that is based on the open source Java constraint programming library "JSetL" v. 3.0. It is available from this [GitHub repository](https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.jsetl). 
+This project provides a [JSR 331](https://jsr331.org/) implementation based on the open source JSetL 3.0 Java constraint programming library. Version 3.0.0 requires JDK 21. Its source is available from this [GitHub repository](https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.jsetl).
 
 JSetL is a Java library that combines the object-oriented programming paradigm 
 of Java with valuable concepts of CLP languages, such as logical variables, 
@@ -17,13 +14,36 @@ solver that accounts for partially specified sets (i.e., sets containing unknown
 elements). Equality, inequality and comparison constraints on integers are dealt 
 with as Finite-Domain Constraints. 
 
-JSetL has been developed at the Department of Mathematics of the University of 
-Parma (Italy). It is completely written in Java. The full Java code of the JSetL 
-library, along with sample programs and related documents, is available at 
-http://cmt.math.unipr.it/jsetl.html#current. The library is free software; 
-you can redistribute it and/or modify it under the terms of the GNU General 
-Public License - http://www.gnu.org/licenses/gpl.html.
+JSetL was developed at the Department of Mathematics of the University of Parma, Italy. The library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License, Version 3.
 
-*Note.* The project has been upgrated in July-2020 by the University of Parma from v. 2.3 to 3.0
+*Note.* The project was upgraded in July 2020 by the University of Parma from version 2.3 to 3.0.
+
+## Maven dependency
+
+After version 3.0.0 is published to Maven Central, add:
+
+```xml
+<dependency>
+  <groupId>com.javasolver</groupId>
+  <artifactId>jsr331-jsetl</artifactId>
+  <version>3.0.0</version>
+</dependency>
+```
+
+## Build and test
+
+```shell
+mvn clean test
+```
+
+## Publishing to Maven Central
+
+Publish `jsr331-parent` and `jsr331` version 3.0.0 first. With the Maven Central credentials and GPG key configured, run:
+
+```shell
+mvn clean deploy -Prelease
+```
+
+MvnRepository indexes releases after they become available from Maven Central.
 
 

@@ -1,4 +1,4 @@
-package com.javasolver;
+package com.javasolver.scipmip;
 
 import jnr.ffi.Pointer;
 import jnr.ffi.byref.PointerByReference;

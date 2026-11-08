@@ -10,14 +10,36 @@
 	</parent>
 	
 	<artifactId>jsr331-scip</artifactId>
+	<packaging>jar</packaging>
 
-	<name>JSR331 Scip</name>
-	<description>This is a JSR331 interface for the open source linear solver "SCIP"</description>
-	<!-- 
-	To use SCIP with JSR331, download it from https://scip.zib.de/index.php#download 
-	and make sure that your Environment variable PATH includes the path to scip.exe
-	 -->
-	<url>https://github.com/scipopt/scip</url>
+	<name>JSR 331 SCIP Adapter</name>
+	<description>JSR 331 linear and mixed-integer programming adapter for scip-mip-java and the SCIP Optimization Suite.</description>
+	
+	<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.scip</url>
+
+	<licenses>
+		<license>
+			<name>JCP License</name>
+			<url>https://download.oracle.com/otndocs/jcp/constraint-1_1_0-mrel-spec/license.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Jacob Feldman</name>
+			<email>jacobfeldman@openrules.com</email>
+			<organization>OpenRules, Inc.</organization>
+			<organizationUrl>https://openrules.com</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:https://github.com/OpenRulesSupport/jsr331.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/OpenRulesSupport/jsr331.git</developerConnection>
+		<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.scip</url>
+		<tag>HEAD</tag>
+	</scm>
 
 	<dependencies>
 		<dependency>
@@ -32,7 +54,7 @@
 		</dependency>
 		<dependency>
 	  		<groupId>com.javasolver</groupId>
-			<artifactId>scip-java</artifactId>
+			<artifactId>scip-mip-java</artifactId>
 			<version>3.0.0</version>
 		</dependency>
 	</dependencies>

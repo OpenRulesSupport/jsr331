@@ -1,4 +1,4 @@
-package com.javasolver;
+package com.javasolver.scipmip;
 
 /** A decision variable owned by a {@link SCIP} model. */
 public final class SCIPVariable {

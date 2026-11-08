@@ -10,14 +10,36 @@
 	</parent>
 	
 	<artifactId>jsr331-coin</artifactId>
+	<packaging>jar</packaging>
 
-	<name>JSR331 COIN</name>
-	<description>This is a JSR331 interface for the open source linear solver "COIN"</description>
-	<!-- 
-	To use COIN Clp with JSR331, download it from https://www.coin-or.org/downloading/
-    and make sure that your Environment variable PATH includes the path to clp.exe
-	 -->
-	<url>https://projects.coin-or.org/Clp</url>
+	<name>JSR 331 COIN-OR CLP Adapter</name>
+	<description>JSR 331 command-line adapter for the open source COIN-OR CLP linear and mixed-integer solver.</description>
+	
+	<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.coin</url>
+
+	<licenses>
+		<license>
+			<name>JCP License</name>
+			<url>https://download.oracle.com/otndocs/jcp/constraint-1_1_0-mrel-spec/license.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Jacob Feldman</name>
+			<email>jacobfeldman@openrules.com</email>
+			<organization>OpenRules, Inc.</organization>
+			<organizationUrl>https://openrules.com</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git:https://github.com/OpenRulesSupport/jsr331.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/OpenRulesSupport/jsr331.git</developerConnection>
+		<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.coin</url>
+		<tag>HEAD</tag>
+	</scm>
 
 	<dependencies>
 		<dependency>

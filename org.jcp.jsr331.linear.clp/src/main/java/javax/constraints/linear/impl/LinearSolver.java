@@ -11,11 +11,11 @@ import javax.constraints.Solution;
 import javax.constraints.Var;
 import javax.constraints.VarReal;
 
-import com.quantego.clp.CLP;
-import com.quantego.clp.CLP.STATUS;
-import com.quantego.clp.CLPConstraint;
-import com.quantego.clp.CLPConstraint.TYPE;
-import com.quantego.clp.CLPVariable;
+import com.javasolver.clpmip.CLP;
+import com.javasolver.clpmip.CLPConstraint;
+import com.javasolver.clpmip.CLPVariable;
+import com.javasolver.clpmip.CLP.STATUS;
+import com.javasolver.clpmip.CLPConstraint.TYPE;
 
 public class LinearSolver extends javax.constraints.linear.LinearSolver {
 

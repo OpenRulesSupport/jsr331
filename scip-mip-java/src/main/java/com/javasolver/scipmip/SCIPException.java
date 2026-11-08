@@ -1,4 +1,4 @@
-package com.javasolver;
+package com.javasolver.scipmip;
 
 /** Indicates an error reported by the native SCIP library. */
 public class SCIPException extends RuntimeException {

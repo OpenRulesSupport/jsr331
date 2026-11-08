@@ -19,6 +19,16 @@ under the directory `org.jcp.jsr331.maxicp`.
 mvn clean test
 ```
 
+## Maven dependency
+
+```xml
+<dependency>
+  <groupId>com.javasolver</groupId>
+  <artifactId>jsr331-maxicp</artifactId>
+  <version>3.0.0</version>
+</dependency>
+```
+
 When building from a JSR-331 source checkout, install the parent and common API
 first:
 
@@ -77,3 +87,13 @@ runtime classpath is enough for `ProblemFactory` to instantiate it.
 These limitations match the integer-focused scope of the older JSR-331 Choco
 adapter while leaving room for later scheduling and sequence-variable
 extensions specific to MaxiCP.
+
+## Publishing to Maven Central
+
+Publish `jsr331-parent` and `jsr331` version 3.0.0 first. Then run:
+
+```shell
+mvn clean deploy -Prelease
+```
+
+MvnRepository indexes releases after they become available from Maven Central.

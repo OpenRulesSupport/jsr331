@@ -1,8 +1,8 @@
-package com.javasolver;
+package com.javasolver.scipmip;
 
-import com.javasolver.SCIP;
-import com.javasolver.SCIPConstraint;
-import com.javasolver.SCIPVariable;
+import com.javasolver.scipmip.SCIP;
+import com.javasolver.scipmip.SCIPConstraint;
+import com.javasolver.scipmip.SCIPVariable;
 
 public class Test {
 	public static void main(String[] args) {

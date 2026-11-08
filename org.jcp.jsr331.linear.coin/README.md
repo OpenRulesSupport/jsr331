@@ -1,11 +1,35 @@
-# JSR331 - www.jsr331.org    
-[![N|Solid](https://jsr331.files.wordpress.com/2013/05/jcp.jpg)](http://jcp.org/en/jsr/detail?id=331)
-[JSR331 “Java Constraint Programming API”](http://jsr331.org) is a JCP Specification Standard that has been developed under the terms of the www.JCP.org. 
+# JSR 331 COIN-OR CLP Adapter
 
-# Project org.jcp.jsr331.coin
-This project provides the JSR331 implementation of a linear solver that is based on  an open-source linear programming solver ["COIN"](https://projects.coin-or.org/Clp) written in C++. It is avaible from this [GitHub repository](https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.coin). 
+This project provides a [JSR 331](https://jsr331.org/) command-line adapter for the open source [COIN-OR CLP](https://github.com/coin-or/Clp) linear and mixed-integer solver. Version 3.0.0 requires JDK 21.
 
-# Installation
-As this implementation uses the COIN's executable **clp.exe**, you need to download this executable from https://www.coin-or.org/downloading/ and make sure that your Environment variable PATH includes the path to clp.exe.
+## Installation
 
+Install the CLP command-line executable and ensure that `clp` (`clp.exe` on Windows) is available on `PATH`. The executable can also be selected with the `LP_SOLVER_EXE` Java system property.
 
+## Maven dependency
+
+```xml
+<dependency>
+  <groupId>com.javasolver</groupId>
+  <artifactId>jsr331-coin</artifactId>
+  <version>3.0.0</version>
+</dependency>
+```
+
+## Build
+
+```shell
+mvn clean package
+```
+
+Solver-dependent tests require a working CLP executable.
+
+## Publishing to Maven Central
+
+Publish version 3.0.0 of `jsr331-parent`, `jsr331`, and `jsr331-linear` first. Then run:
+
+```shell
+mvn clean deploy -Prelease
+```
+
+MvnRepository indexes releases after they become available from Maven Central.

@@ -1,9 +1,9 @@
-package com.javasolver;
+package com.javasolver.scipmip;
 
 import org.junit.Test;
 
-import com.javasolver.SCIP;
-import com.javasolver.SCIPVariable;
+import com.javasolver.scipmip.SCIP;
+import com.javasolver.scipmip.SCIPVariable;
 
 import static org.junit.Assert.*;
 

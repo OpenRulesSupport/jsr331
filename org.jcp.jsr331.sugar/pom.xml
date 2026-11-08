@@ -10,10 +10,11 @@
 	</parent>
 
 	<artifactId>jsr331-sugar</artifactId>
+	<packaging>jar</packaging>
 	
-	<name>JSR331 Sugar</name>
-	<description>This is a JSR331 interface for the open source Java constraint programming library "Sugar" v. 2.1.3</description>
-	<url>http://bach.istc.kobe-u.ac.jp/sugar/</url>
+	<name>JSR 331 Sugar Adapter</name>
+	<description>JSR 331 adapter for the open source Sugar 2.1.3 constraint solver.</description>
+	<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.sugar</url>
 	
 	<licenses>
 		<license>
@@ -45,11 +46,18 @@
 		</developer>
 	</developers>
 
+	<scm>
+		<connection>scm:git:https://github.com/OpenRulesSupport/jsr331.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/OpenRulesSupport/jsr331.git</developerConnection>
+		<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.sugar</url>
+		<tag>HEAD</tag>
+	</scm>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.javasolver</groupId>
 			<artifactId>jsr331</artifactId>
-			<version>${project.version}</version>
+			<version>${jsr331.version}</version>
 		</dependency>
 
 		<dependency>

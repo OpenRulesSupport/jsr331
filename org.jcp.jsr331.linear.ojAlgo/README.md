@@ -27,9 +27,19 @@ a single linear constraint. Strict inequalities over continuous expressions are
 also rejected because they cannot be represented exactly by a closed LP feasible
 region.
 
-## Build and test
+## Maven dependency
 
-Prerequisites: JDK 11 or newer and Maven 3.8 or newer.
+Version 3.0.0 requires JDK 21.
+
+```xml
+<dependency>
+  <groupId>com.javasolver</groupId>
+  <artifactId>jsr331-ojalgo</artifactId>
+  <version>3.0.0</version>
+</dependency>
+```
+
+## Build and test
 
 ```shell
 mvn test
@@ -41,20 +51,18 @@ integral inequalities.
 
 ### JSR 331 mixed-domain helper note
 
-The shared `jsr331-linear` 2.4.0 implementation creates an invalid default
+The shared `jsr331-linear` implementation creates an invalid default
 domain in `scalProd(double[], ConstrainedVariable[])`. For a mixed-domain
 objective, declare a bounded `VarReal` and link it with the corresponding
 `post(double[], ConstrainedVariable[], "=", objective)` overload. The adapter
 fully supports the resulting mixed model; the test suite includes this pattern.
 
-## Add to the JSR 331 reactor
+## Publishing to Maven Central
 
-Copy this directory into the root of the
-[`OpenRulesSupport/jsr331`](https://github.com/OpenRulesSupport/jsr331) checkout
-and add this module to the root `pom.xml`:
+Publish version 3.0.0 of `jsr331-parent`, `jsr331`, and `jsr331-linear` first. Then run:
 
-```xml
-<module>org.jcp.jsr331.linear.ojAlgo</module>
+```shell
+mvn clean deploy -Prelease
 ```
 
-The resulting Maven artifact is `com.javasolver:jsr331-ojalgo:2.4.0`.
+The Maven artifact is `com.javasolver:jsr331-ojalgo:3.0.0`. MvnRepository indexes releases after they become available from Maven Central.

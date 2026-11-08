@@ -1,11 +1,35 @@
-# JSR331 - www.jsr331.org    
-[![N|Solid](https://jsr331.files.wordpress.com/2013/05/jcp.jpg)](http://jcp.org/en/jsr/detail?id=331)
-[JSR331 "Java Constraint Programming API"](http://jsr331.org) is a JCP Specification Standard that has been developed under the terms of the www.JCP.org. 
+# JSR 331 lp_solve Adapter
 
-# Project org.jcp.jsr331.lpsolve
-This project provides the JSR331 implementation of a Mixed Integer Linear Programming solver lp_solve. It is available from this  [GitHub repository](https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.lpsolve). 
+This project provides a [JSR 331](https://jsr331.org/) command-line adapter for the open source [lp_solve](https://sourceforge.net/projects/lpsolve/) mixed-integer linear programming solver. Version 3.0.0 requires JDK 21.
 
+## Installation
 
+Install lp_solve and ensure that `lp_solve` (`lp_solve.exe` on Windows) is available on `PATH`. The executable can also be selected with the `LP_SOLVER_EXE` Java system property.
 
+## Maven dependency
 
+```xml
+<dependency>
+  <groupId>com.javasolver</groupId>
+  <artifactId>jsr331-lpsolve</artifactId>
+  <version>3.0.0</version>
+</dependency>
+```
 
+## Build
+
+```shell
+mvn clean package
+```
+
+Running solver-dependent examples requires a working lp_solve executable.
+
+## Publishing to Maven Central
+
+Publish version 3.0.0 of `jsr331-parent`, `jsr331`, and `jsr331-linear` first. Then run:
+
+```shell
+mvn clean deploy -Prelease
+```
+
+MvnRepository indexes releases after they become available from Maven Central.

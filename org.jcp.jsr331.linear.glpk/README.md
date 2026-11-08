@@ -1,11 +1,35 @@
-# JSR331 - www.jsr331.org    
-[![N|Solid](https://jsr331.files.wordpress.com/2013/05/jcp.jpg)](http://jcp.org/en/jsr/detail?id=331)
-[JSR331 “Java Constraint Programming API”](http://jsr331.org) is a JCP Specification Standard that has been developed under the terms of the www.JCP.org. 
+# JSR 331 GLPK Adapter
 
-# Project org.jcp.jsr331.glpk
-This project provides the JSR331 implementation of a linear solver that is based on  an open-source linear programming solver ["GLPK"](https://www.gnu.org/software/glpk/) written in C++. It is avaible from this [GitHub repository](https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.glpk). 
+This project provides a [JSR 331](https://jsr331.org/) command-line adapter for the open source [GNU Linear Programming Kit](https://www.gnu.org/software/glpk/). Version 3.0.0 requires JDK 21.
 
-# Installation
-As this implementation uses the GLPK's executable **glpsol.exe**, you need to download this executable from https://www.gnu.org/software/glpk/ and make sure that your Environment variable PATH includes the path to glpsol.exe.
+## Installation
 
+Install GLPK and ensure that `glpsol` (`glpsol.exe` on Windows) is available on `PATH`. The executable can also be selected with the `LP_SOLVER_EXE` Java system property.
 
+## Maven dependency
+
+```xml
+<dependency>
+  <groupId>com.javasolver</groupId>
+  <artifactId>jsr331-glpk</artifactId>
+  <version>3.0.0</version>
+</dependency>
+```
+
+## Build
+
+```shell
+mvn clean package
+```
+
+Runtime solving requires a working GLPK installation.
+
+## Publishing to Maven Central
+
+Publish version 3.0.0 of `jsr331-parent`, `jsr331`, and `jsr331-linear` first. Then run:
+
+```shell
+mvn clean deploy -Prelease
+```
+
+MvnRepository indexes releases after they become available from Maven Central.

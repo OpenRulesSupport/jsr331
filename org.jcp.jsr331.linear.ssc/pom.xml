@@ -10,14 +10,15 @@
     </parent>
 
     <artifactId>jsr331-ssc</artifactId>
+    <packaging>jar</packaging>
 
     <properties>
         <ssc.version>4.7.8</ssc.version>
     </properties>
 
-    <name>JSR331 SSC</name>
-    <description>This is a JSR331 interface for SSC (Software for the Calculation of the Simplex), a Java library for solving linear programming problems v. ${ssc.version}. SSC was designed and developed by Stefano Scarioli.</description>
-    <url>https://www.ssclab.org/</url>
+    <name>JSR 331 SSC Adapter</name>
+    <description>JSR 331 linear-programming adapter for SSC ${ssc.version}, designed and developed by Stefano Scarioli.</description>
+    <url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.ssc</url>
 
     <licenses>
         <license>
@@ -48,6 +49,13 @@
             <organizationUrl>https://openrules.com</organizationUrl>
         </developer>
     </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/OpenRulesSupport/jsr331.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/OpenRulesSupport/jsr331.git</developerConnection>
+        <url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.ssc</url>
+        <tag>HEAD</tag>
+    </scm>
 
     <dependencies>
         <dependency>

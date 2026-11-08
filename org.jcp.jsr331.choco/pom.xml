@@ -11,14 +11,15 @@
     </parent>
 
     <artifactId>jsr331-choco</artifactId>
+    <packaging>jar</packaging>
 
     <properties>
         <choco.version>6.0.1</choco.version>
     </properties>
 
-    <name>JSR331 Choco</name>
+    <name>JSR 331 Choco Adapter</name>
     <description>JSR-331 adapter for the open source Choco Solver 6 constraint programming library</description>
-    <url>https://github.com/OpenRulesSupport/jsr331</url>
+    <url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.choco</url>
 
     <licenses>
         <license>
@@ -37,12 +38,19 @@
 
     <developers>
         <developer>
-            <name>Jacob Feldman with OpenAI Codex</name>
+            <name>Jacob Feldman</name>
             <email>jacobfeldman@openrules.com</email>
             <organization>OpenRules, Inc.</organization>
             <organizationUrl>https://openrules.com</organizationUrl>
         </developer>
     </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/OpenRulesSupport/jsr331.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/OpenRulesSupport/jsr331.git</developerConnection>
+        <url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.choco</url>
+        <tag>HEAD</tag>
+    </scm>
 
     <dependencies>
         <dependency>

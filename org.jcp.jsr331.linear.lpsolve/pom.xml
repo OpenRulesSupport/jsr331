@@ -10,10 +10,11 @@
 	</parent>
 
 	<artifactId>jsr331-lpsolve</artifactId>
+	<packaging>jar</packaging>
 	
-	<name>JSR331 LPSOLVE</name>
-	<description>This is a JSR331 interface for the open source linear programming library "lp_solve" v. 5.5.2</description>
-	<url>http://jsci.sourceforge.net/</url>
+	<name>JSR 331 lp_solve Adapter</name>
+	<description>JSR 331 command-line adapter for the open source lp_solve mixed-integer linear programming solver.</description>
+	<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.lpsolve</url>
 	
 	<licenses>
 		<license>
@@ -39,6 +40,13 @@
 		</developer>
 	</developers>
 
+	<scm>
+		<connection>scm:git:https://github.com/OpenRulesSupport/jsr331.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/OpenRulesSupport/jsr331.git</developerConnection>
+		<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.lpsolve</url>
+		<tag>HEAD</tag>
+	</scm>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.javasolver</groupId>
@@ -51,39 +59,7 @@
 			<version>${jsr331.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/net.sf.jsci/lpsolve
-		<dependency>
-		    <groupId>net.sf.jsci</groupId>
-		    <artifactId>lpsolve</artifactId>
-		    <version>2003-11-03</version>
-		</dependency>
-	    -->
-		<!--
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-			<version>${log4j.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>${log4j.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-slf4j-impl</artifactId>
-			<version>${log4j.version}</version>
-			<scope>test</scope>
-		</dependency>
-		-->
+		
 	</dependencies>
 
 </project>
