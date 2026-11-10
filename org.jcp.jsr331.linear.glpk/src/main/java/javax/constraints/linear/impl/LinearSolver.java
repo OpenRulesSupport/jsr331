@@ -35,6 +35,7 @@ public final class LinearSolver extends javax.constraints.linear.LinearSolver {
     private static final int GLP_FEAS = 2;
     private static final int GLP_OPT = 5;
     private static final int GLP_ON = 1;
+    private static final int GLP_OFF = 0;
     private static final int GLP_MSG_OFF = 0;
     private static final int GLP_MPS_FILE = 2;
     private static final int UNLIMITED_TIME = Integer.MAX_VALUE;
@@ -88,8 +89,16 @@ public final class LinearSolver extends javax.constraints.linear.LinearSolver {
 
         Pointer nativeProblem = createProblem(file.getName());
         try {
-            int result = glpk.glp_read_mps(
-                    nativeProblem, GLP_MPS_FILE, null, file.getAbsolutePath());
+            int result;
+            synchronized (GlpkLibrary.class) {
+                int previousOutput = glpk.glp_term_out(GLP_OFF);
+                try {
+                    result = glpk.glp_read_mps(
+                            nativeProblem, GLP_MPS_FILE, null, file.getAbsolutePath());
+                } finally {
+                    glpk.glp_term_out(previousOutput);
+                }
+            }
             if (result != 0) {
                 throw new IllegalArgumentException("GLPK cannot read MPS model: " + file);
             }
@@ -195,6 +204,20 @@ public final class LinearSolver extends javax.constraints.linear.LinearSolver {
     }
 
     private boolean solveNative(
+            Pointer nativeProblem, boolean integerModel, int timeoutMilliSeconds) {
+
+        synchronized (GlpkLibrary.class) {
+            int previousOutput = glpk.glp_term_out(GLP_OFF);
+            try {
+                return solveNativeSilently(
+                        nativeProblem, integerModel, timeoutMilliSeconds);
+            } finally {
+                glpk.glp_term_out(previousOutput);
+            }
+        }
+    }
+
+    private boolean solveNativeSilently(
             Pointer nativeProblem, boolean integerModel, int timeoutMilliSeconds) {
 
         GlpkLibrary.SimplexParameters simplex = new GlpkLibrary.SimplexParameters();

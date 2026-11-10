@@ -2,6 +2,8 @@ The GLPK package is a part of the GNU project, released under the aegis of GNU:
 
 https://www.gnu.org/software/glpk/
 
-To use GLPK with Java Solver, download it from https://www.gnu.org/software/glpk/#downloading
+To use GLPK with JavaSolver, install its callable native library and make sure
+that the library is on the operating system's native library path. You can also
+set the Java system property jsr331.glpk.library to its absolute path.
 
-and make sure that your Environment variable PATH include the path to glpsol.exe
+See README.md for supported model features, configuration, and build details.

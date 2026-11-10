@@ -1,7 +1,5 @@
 package javax.constraints.linear.impl;
 
-import java.util.List;
-
 import com.sun.jna.Library;
 import com.sun.jna.Pointer;
 import com.sun.jna.Structure;
@@ -78,6 +76,8 @@ interface GlpkLibrary extends Library {
     }
 
     String glp_version();
+
+    int glp_term_out(int flag);
 
     Pointer glp_create_prob();
 
