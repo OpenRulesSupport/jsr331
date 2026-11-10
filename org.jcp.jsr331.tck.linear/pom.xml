@@ -114,6 +114,16 @@
 			</dependencies>
 		</profile>
 		<profile>
+			<id>HIGHS</id>
+			<dependencies>
+				<dependency>
+					<groupId>com.javasolver</groupId>
+					<artifactId>jsr331-highs</artifactId>
+					<version>${jsr331.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
 			<id>SSC</id>
 			<dependencies>
 				<dependency>

@@ -5,8 +5,9 @@ rem set SOLVER=GLPK
 rem set SOLVER=CLP
 rem set SOLVER=COIN
 rem set SOLVER=LPSOLVE
-set SOLVER=SSC
+rem set SOLVER=SSC
 rem set SOLVER=OJALGO
+set SOLVER=HIGHS
 @echo off
 cd %~dp0
 call .\run
