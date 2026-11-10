@@ -13,11 +13,7 @@
 	<packaging>jar</packaging>
 
 	<name>JSR 331 GLPK Adapter</name>
-	<description>JSR 331 command-line adapter for the open source GNU Linear Programming Kit.</description>
-	<!-- 
-	To use GLPK with JSR331, download it from https://www.gnu.org/software/glpk/#downloading
-    and make sure that your Environment variable PATH include the path to glpsol.exe
-	 -->
+	<description>JSR 331 direct Java adapter for the open source GNU Linear Programming Kit.</description>
 	<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.glpk</url>
 
 	<licenses>
@@ -54,6 +50,17 @@
 			<groupId>com.javasolver</groupId>
 			<artifactId>jsr331-linear</artifactId>
 			<version>${jsr331.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>net.java.dev.jna</groupId>
+			<artifactId>jna</artifactId>
+			<version>5.17.0</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13.2</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	

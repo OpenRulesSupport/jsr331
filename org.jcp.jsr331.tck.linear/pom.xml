@@ -124,6 +124,16 @@
 			</dependencies>
 		</profile>
 		<profile>
+			<id>ORTOOLS</id>
+			<dependencies>
+				<dependency>
+					<groupId>com.javasolver</groupId>
+					<artifactId>jsr331-ortools</artifactId>
+					<version>${jsr331.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
 			<id>SSC</id>
 			<dependencies>
 				<dependency>
