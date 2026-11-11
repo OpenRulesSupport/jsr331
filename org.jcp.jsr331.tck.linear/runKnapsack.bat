@@ -7,7 +7,10 @@ rem set SOLVER=CLP
 rem set SOLVER=LPSOLVE
 rem set SOLVER=SSC
 rem set SOLVER=OJALGO
-set SOLVER=SSC
+rem set SOLVER=SSC
+set SOLVER=CPLEX
+echo SOLVER=%SOLVER%
+
 @echo off
 cd %~dp0
 call .\run

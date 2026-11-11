@@ -9,8 +9,10 @@ rem set SOLVER=LPSOLVE
 rem set SOLVER=SSC
 rem set SOLVER=OJALGO
 rem set SOLVER=HIGHS
-rem set SOLVER=CPLEX
 rem set SOLVER=GUROBI
+set SOLVER=CPLEX
+echo SOLVER=%SOLVER%
+
 @echo off
 cd %~dp0
 call .\run
