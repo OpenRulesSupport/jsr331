@@ -80,6 +80,14 @@ public class Problem extends AbstractProblem {
     void register(javax.constraints.impl.Var variable) {
         if (registered.add(variable)) {
             allVariables.add(variable);
+            try {
+                // A JSR 331 variable may remain otherwise unconstrained but still be
+                // included in a search strategy. CP Optimizer requires every such
+                // search variable to be explicitly extracted into the model.
+                cp.add(variable.getCpVar());
+            } catch (IloException exception) {
+                throw failure("extract variable " + variable.getName(), exception);
+            }
         }
     }
 

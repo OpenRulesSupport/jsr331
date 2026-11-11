@@ -99,4 +99,17 @@ public class CpOptimizerConstraintAdapterTest {
         while (iterator.hasNext()) { count++; total += iterator.next().getValue("value"); }
         assertArrayEquals(new int[] {3, 6}, new int[] {count, total});
     }
+
+    @Test public void extractsUnconstrainedVariablesUsedByDefaultSearch() {
+        Problem problem = new javax.constraints.impl.Problem("unconstrained-search-vars");
+        Var constrained = problem.variable("constrained", 0, 2);
+        problem.variableArray("unused", 0, 1, 3);
+        problem.post(constrained, "=", 1);
+
+        Solution solution = problem.getSolver().findSolution();
+
+        assertNotNull(solution);
+        assertEquals(1, solution.getValue("constrained"));
+        assertEquals(0, solution.getValue("unused-0"));
+    }
 }
