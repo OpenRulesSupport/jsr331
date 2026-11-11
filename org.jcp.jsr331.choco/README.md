@@ -63,3 +63,7 @@ mvn clean deploy -Prelease
 ```
 
 MvnRepository indexes releases after they become available from Maven Central.
+
+## Acknowledgment
+
+This JSR 331 adapter was developed based on [Choco Solver](https://github.com/chocoteam/choco-solver/) 6.0.1 with the assistance of OpenAI Codex and reviewed and tested by Jacob Feldman.
