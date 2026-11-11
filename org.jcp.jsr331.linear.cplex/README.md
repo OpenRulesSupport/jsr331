@@ -8,19 +8,22 @@ The adapter creates variables, constraints, and objectives through the CPLEX Con
 
 Install and license CPLEX. CPLEX is commercial software and its `cplex.jar` and native libraries are not included in this Maven artifact.
 
-Install the CPLEX Java API from your CPLEX installation into the local Maven repository. The following example targets CPLEX 22.1.2 on Windows:
+Install the CPLEX Java API from your CPLEX installation into the local Maven repository. The following example targets CPLEX 22.2.0 Community Edition on Windows:
 
 ```shell
-mvn install:install-file "-Dfile=%CPLEX_STUDIO_DIR2212%\cplex\lib\cplex.jar" -DgroupId=com.ibm.ilog.optim -DartifactId=cplex-jar -Dversion=22.1.2 -Dpackaging=jar
+mvn install:install-file "-Dfile=C:\Program Files\IBM\ILOG\CPLEX_Studio_Community222\cplex\lib\cplex.jar" -DgroupId=com.ibm.ilog.optim -DartifactId=cplex-jar -Dversion=22.2.0 -Dpackaging=jar
 ```
 
-Add `cplex.jar` to the application classpath. Also configure the CPLEX native-library directory, for example:
+Add `cplex.jar` to the application classpath. The adapter automatically locates the version-matched native library in standard CPLEX Studio installation directories and in directories identified by `CPLEX_STUDIO_DIR*` or `CPLEX_HOME` environment variables.
+
+For a nonstandard installation, identify either the library itself or the CPLEX Studio directory:
 
 ```shell
-java -Djava.library.path="%CPLEX_STUDIO_DIR2212%\cplex\bin\x64_win64" ...
+java -Djsr331.cplex.library="C:\path\to\cplex2220.dll" ...
+java -Djsr331.cplex.home="C:\path\to\CPLEX_Studio_Community222" ...
 ```
 
-Alternatively, add that native-library directory to `PATH` on Windows or the corresponding operating-system library path on Linux or macOS. The JAR and native library must come from the same CPLEX release and platform.
+The traditional `-Djava.library.path=...`, `PATH`, or corresponding Linux/macOS library-path configuration remains supported. The JAR and native library must come from the same CPLEX release and platform.
 
 ## Maven dependencies
 
@@ -33,7 +36,7 @@ Alternatively, add that native-library directory to `PATH` on Windows or the cor
 <dependency>
   <groupId>com.ibm.ilog.optim</groupId>
   <artifactId>cplex-jar</artifactId>
-  <version>22.1.2</version>
+  <version>22.2.0</version>
 </dependency>
 ```
 

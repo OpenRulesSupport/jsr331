@@ -22,6 +22,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import ilog.cplex.IloCplex;
+import javax.constraints.linear.impl.CplexRuntime;
 
 public class LinearSolverTest {
 
@@ -29,6 +30,7 @@ public class LinearSolverTest {
     public static void requireCplexRuntime() {
         IloCplex cplex = null;
         try {
+            CplexRuntime.ensureLoaded();
             cplex = new IloCplex();
         } catch (Throwable unavailable) {
             Assume.assumeTrue(

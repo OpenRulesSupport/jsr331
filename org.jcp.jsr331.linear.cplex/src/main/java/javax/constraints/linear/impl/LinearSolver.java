@@ -157,13 +157,16 @@ public final class LinearSolver extends javax.constraints.linear.LinearSolver {
 
     private static IloCplex createCplex() {
         try {
+            CplexRuntime.ensureLoaded();
             return new IloCplex();
+        } catch (IllegalStateException exception) {
+            throw exception;
         } catch (IloException exception) {
             throw cplexFailure("create a CPLEX environment", exception);
         } catch (UnsatisfiedLinkError error) {
             throw new IllegalStateException(
-                    "CPLEX native libraries are unavailable. Configure java.library.path "
-                    + "or the operating-system library path for the installed CPLEX version.",
+                    "CPLEX native libraries could not be initialized after runtime discovery. "
+                    + "The CPLEX Java JAR and native library must be from the same release.",
                     error);
         }
     }

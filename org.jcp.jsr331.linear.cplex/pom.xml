@@ -17,7 +17,7 @@
 
   <properties>
     <maven.compiler.release>21</maven.compiler.release>
-    <cplex.version>22.1.2</cplex.version>
+    <cplex.version>22.2.0</cplex.version>
   </properties>
 
   <licenses>
