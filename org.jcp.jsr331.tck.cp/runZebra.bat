@@ -4,7 +4,8 @@ rem set SOLVER=CHOCO
 rem set SOLVER=JSETL
 rem set SOLVER=sugar
 rem set SOLVER=MAXICP
-set SOLVER=JaCoP
+rem set SOLVER=JaCoP
+set SOLVER=ORTOOLS
 @echo off
 cd %~dp0
 call .\run

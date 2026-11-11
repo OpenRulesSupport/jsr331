@@ -9,9 +9,9 @@
     <version>3.0.0</version>
   </parent>
 
-  <artifactId>jsr331-ortools</artifactId>
+  <artifactId>jsr331-ortools-lp</artifactId>
   <packaging>jar</packaging>
-  <name>JSR 331 OR-Tools Adapter</name>
+  <name>JSR 331 OR-Tools Linear Adapter</name>
   <description>JSR 331 linear and mixed-integer programming adapter for Google OR-Tools.</description>
   <url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.ortools</url>
 
