@@ -1,60 +1,71 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	
-	<parent>
-		<groupId>com.javasolver</groupId>
-		<artifactId>jsr331-parent</artifactId>
-		<version>3.0.0</version>
-	</parent>
-	
-	<artifactId>jsr331-gurobi</artifactId>
-	<packaging>jar</packaging>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-	<name>JSR 331 Gurobi Adapter</name>
-	<description>JSR 331 command-line adapter for the commercial Gurobi Optimizer.</description>
-	<!-- 
-	To use GUROBI with JSR331, get it from https://www.gurobi.com/products/gurobi-optimizer/
-    and make sure that your Environment variable PATH include the path to gurobi_cl.exe
-	 -->
-	<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.gurobi</url>
+  <parent>
+    <groupId>com.javasolver</groupId>
+    <artifactId>jsr331-parent</artifactId>
+    <version>3.0.0</version>
+  </parent>
 
-	<licenses>
-		<license>
-			<name>JCP License</name>
-			<url>https://download.oracle.com/otndocs/jcp/constraint-1_1_0-mrel-spec/license.html</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+  <artifactId>jsr331-gurobi</artifactId>
+  <packaging>jar</packaging>
+  <name>JSR 331 Gurobi Adapter</name>
+  <description>JSR 331 linear and mixed-integer programming adapter for Gurobi Optimizer.</description>
+  <url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.gurobi</url>
 
-	<developers>
-		<developer>
-			<name>Jacob Feldman</name>
-			<email>jacobfeldman@openrules.com</email>
-			<organization>OpenRules, Inc.</organization>
-			<organizationUrl>https://openrules.com</organizationUrl>
-		</developer>
-	</developers>
+  <properties>
+    <maven.compiler.release>21</maven.compiler.release>
+    <gurobi.version>13.0.3</gurobi.version>
+  </properties>
 
-	<scm>
-		<connection>scm:git:https://github.com/OpenRulesSupport/jsr331.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/OpenRulesSupport/jsr331.git</developerConnection>
-		<url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.gurobi</url>
-		<tag>HEAD</tag>
-	</scm>
+  <licenses>
+    <license>
+      <name>JCP License</name>
+      <url>https://download.oracle.com/otndocs/jcp/constraint-1_1_0-mrel-spec/license.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.javasolver</groupId>
-			<artifactId>jsr331</artifactId>
-			<version>${jsr331.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.javasolver</groupId>
-			<artifactId>jsr331-linear</artifactId>
-			<version>${jsr331.version}</version>
-		</dependency>
-	</dependencies>
-	
+  <developers>
+    <developer>
+      <name>Jacob Feldman</name>
+      <email>jacobfeldman@openrules.com</email>
+      <organization>OpenRules, Inc.</organization>
+      <organizationUrl>https://openrules.com</organizationUrl>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:https://github.com/OpenRulesSupport/jsr331.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/OpenRulesSupport/jsr331.git</developerConnection>
+    <url>https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.linear.gurobi</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.javasolver</groupId>
+      <artifactId>jsr331</artifactId>
+      <version>${jsr331.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.javasolver</groupId>
+      <artifactId>jsr331-linear</artifactId>
+      <version>${jsr331.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.gurobi</groupId>
+      <artifactId>gurobi</artifactId>
+      <version>${gurobi.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
 </project>

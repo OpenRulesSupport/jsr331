@@ -1,10 +1,12 @@
 # JSR 331 Gurobi Adapter
 
-This project provides a [JSR 331](https://jsr331.org/) command-line adapter for the commercial [Gurobi Optimizer](https://www.gurobi.com/solutions/gurobi-optimizer/). Version 3.0.0 requires JDK 21.
+This project provides a direct Java adapter from [JSR 331](https://jsr331.org/) to the commercial [Gurobi Optimizer](https://www.gurobi.com/solutions/gurobi-optimizer/). It supports linear and mixed-integer models and requires JDK 21.
 
-## Installation
+The adapter creates variables, constraints, and objectives through Gurobi's Java API. Normal JSR 331 solves remain in memory: they do not create intermediate MPS or solution files. The explicit `solve(File)` API still accepts model formats supported by Gurobi, including LP and MPS.
 
-Install and license Gurobi, then ensure that `gurobi_cl` (`gurobi_cl.exe` on Windows) is available on `PATH`. The executable can also be selected with the `LP_SOLVER_EXE` Java system property. Gurobi itself is not included in this Maven artifact.
+## Installation and license
+
+The Maven dependency downloads Gurobi's full Java package, including native solver libraries for supported Windows, Linux, and macOS platforms. A valid Gurobi license is still required. Configure the license using the method appropriate for your Gurobi installation or license service.
 
 ## Maven dependency
 
@@ -16,13 +18,15 @@ Install and license Gurobi, then ensure that `gurobi_cl` (`gurobi_cl.exe` on Win
 </dependency>
 ```
 
-## Build
+`jsr331-gurobi` depends on `com.gurobi:gurobi:13.0.3`, which Gurobi publishes to Maven Central.
+
+## Build and test
 
 ```shell
-mvn clean package
+mvn clean test
 ```
 
-Runtime solving requires a valid Gurobi installation and license.
+The integration tests run when a valid Gurobi license is available. Otherwise they are skipped.
 
 ## Publishing to Maven Central
 
