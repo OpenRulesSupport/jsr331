@@ -66,3 +66,7 @@ mvn clean deploy -Prelease
 ```
 
 The Maven artifact is `com.javasolver:jsr331-ojalgo:3.0.0`. MvnRepository indexes releases after they become available from Maven Central.
+
+## Acknowledgment
+
+This JSR 331 adapter was developed based on [ojAlgo 57.4.0](https://github.com/optimatika/ojAlgo/releases/tag/v57.4.0) with the assistance of OpenAI Codex and reviewed and tested by Jacob Feldman.
