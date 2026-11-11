@@ -97,3 +97,7 @@ mvn clean deploy -Prelease
 ```
 
 MvnRepository indexes releases after they become available from Maven Central.
+
+## Acknowledgment
+
+This JSR 331 adapter was developed based on [MaxiCP](https://github.com/aia-uclouvain/maxicp) CP Solver 1.0.0 with the assistance of OpenAI Codex and reviewed and tested by Jacob Feldman.
