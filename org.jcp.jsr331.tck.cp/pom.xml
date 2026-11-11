@@ -154,6 +154,22 @@
 				</dependency>
 			</dependencies>
 		</profile>
+		<profile>
+			<id>ORTOOLS</id>
+			<activation>
+				<property>
+					<name>solver</name>
+					<value>ORTOOLS</value>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.javasolver</groupId>
+					<artifactId>jsr331-ortools-cp</artifactId>
+					<version>${jsr331.version}</version>
+				</dependency>
+			</dependencies>
+		</profile>
 		
 	</profiles>
 	

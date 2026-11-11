@@ -21,7 +21,7 @@ After version 3.0.0 is published to Maven Central, add:
 </dependency>
 ```
 
-A solver adapter such as `jsr331-choco`, `jsr331-constrainer`, `jsr331-jacop`, or `jsr331-jsetl` is also required to solve a model.
+A solver adapter such as `jsr331-choco`, `jsr331-constrainer`, `jsr331-jacop`, `jsr331-jsetl`, or `jsr331-ortools-cp` is also required to solve a model.
 
 ## Build and test
 

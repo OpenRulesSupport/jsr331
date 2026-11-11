@@ -5,4 +5,10 @@
 # Project org.jcp.jsr331.tck.cp
 This project provides the JSR331 TCK (Technology Compatibility Kit) for all constraint solvers. It is avaible from this [GitHub repository](https://github.com/OpenRulesSupport/jsr331/tree/master/org.jcp.jsr331.tck.cp).
 
+Run the compatibility suite against the OR-Tools CP-SAT adapter with:
+
+```shell
+mvn test -Dsolver=ORTOOLS
+```
+
 
