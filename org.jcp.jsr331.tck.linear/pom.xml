@@ -79,6 +79,21 @@
 			</dependencies>
 		</profile>
 		<profile>
+			<id>CPLEX</id>
+			<dependencies>
+				<dependency>
+					<groupId>com.javasolver</groupId>
+					<artifactId>jsr331-cplex</artifactId>
+					<version>${jsr331.version}</version>
+				</dependency>
+				<dependency>
+					<groupId>com.ibm.ilog.optim</groupId>
+					<artifactId>cplex-jar</artifactId>
+					<version>22.1.2</version>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
 			<id>CLP</id>
 			<dependencies>
 				<dependency>
