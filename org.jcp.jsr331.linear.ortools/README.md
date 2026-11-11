@@ -80,3 +80,7 @@ mvn clean deploy -Prelease
 ```
 
 The Maven artifact is `com.javasolver:jsr331-ortools:3.0.0`.
+
+## Acknowledgment
+
+This JSR 331 adapter was developed based on [Google OR-Tools](https://github.com/google/or-tools) linear/MIP solver with the assistance of OpenAI Codex and reviewed and tested by Jacob Feldman.
