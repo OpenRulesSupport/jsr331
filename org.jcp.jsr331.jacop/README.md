@@ -35,3 +35,7 @@ mvn clean deploy -Prelease
 ```
 
 MvnRepository indexes releases after they become available from Maven Central.
+
+## Acknowledgment
+
+This JSR 331 adapter was developed based on [JaCoP 4.10.0](https://github.com/radsz/jacop/tree/4.10.0) with the assistance of OpenAI Codex and reviewed and tested by Jacob Feldman.
