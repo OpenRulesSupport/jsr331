@@ -29,3 +29,7 @@ mvn clean deploy -Prelease
 ```
 
 MvnRepository indexes releases after they become available from Maven Central.
+
+## Acknowledgment
+
+This JSR 331 adapter was developed based on [SCIP Optimization Suite](https://github.com/scipopt/scip) linear/MIP solver with the assistance of OpenAI Codex and reviewed and tested by Jacob Feldman.
