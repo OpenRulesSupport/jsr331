@@ -61,3 +61,7 @@ mvn clean deploy -Prelease
 ```
 
 MvnRepository indexes releases after they become available from Maven Central.
+
+## Acknowledgment
+
+This JSR 331 adapter was developed based on [IBM ILOG CPLEX Optimization Studio](https://www.ibm.com/products/ilog-cplex-optimization-studio) with the assistance of OpenAI Codex and reviewed and tested by Jacob Feldman.

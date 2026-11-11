@@ -69,3 +69,7 @@ mvn clean deploy -Prelease
 ```
 
 The Maven artifact is `com.javasolver:jsr331-highs:3.0.0`.
+
+## Acknowledgment
+
+This JSR 331 adapter was developed based on [HiGHS](https://highs.dev/) LP/MIP solver with the assistance of OpenAI Codex and reviewed and tested by Jacob Feldman.

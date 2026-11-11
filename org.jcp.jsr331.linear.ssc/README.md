@@ -29,3 +29,7 @@ mvn clean deploy -Prelease
 ```
 
 Do not also deploy the duplicate `org.jcp.jsr331.ssc` directory under the same version. MvnRepository indexes the canonical release after it becomes available from Maven Central.
+
+## Acknowledgment
+
+This JSR 331 adapter was developed based on [SSC](https://www.ssclab.org/) LP Solver 4.7.8 with the assistance of OpenAI Codex and reviewed and tested by Jacob Feldman.
